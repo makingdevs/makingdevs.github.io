@@ -1,13 +1,21 @@
 ---
 layout: post
 title: "Uso de camara en android"
-date: 2016-07-11 22:53:27 -0500
+date: 2016-07-20 22:53:27 -0500
 comments: true
 author: Juan Francisco Reyes Silva
-published: false
----   
+published: true
+comments: true
+tags: groovy, android, mobile, closure
+categories:
+- groovy
+- mobile
+- android
+categories:
+- groovy
+---
 
-Android esta enfoca al desarrollo móvil, como es de esperarse cuenta con las herramientas necesarias para hacer uso del hardware, en esta ocasión se mostrará cómo usar la cámara en un Activity.   
+Android se enfoca al desarrollo móvil, como es de esperarse cuenta con las herramientas necesarias para hacer uso del hardware, en esta ocasión se mostrará cómo usar la cámara en un Activity. Adicionalmente, el ejemplo está hecho en Groovy, puedes leer más al respecto en el post anterior.
 
 <!-- more -->
 
@@ -107,8 +115,3 @@ Pueden encontrar el código completo [*aquí*][1].
 [5]: https://developer.android.com/training/basics/intents/result.html
 
 [6]: https://developer.android.com/guide/topics/ui/notifiers/toasts.html
-
-
-
-
-
