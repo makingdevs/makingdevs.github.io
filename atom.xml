@@ -4,7 +4,7 @@
   <title><![CDATA[Blog de MakingDevs]]></title>
   <link href="http://blog.makingdevs.com/atom.xml" rel="self"/>
   <link href="http://blog.makingdevs.com/"/>
-  <updated>2016-09-06T08:59:29-05:00</updated>
+  <updated>2016-09-06T09:00:38-05:00</updated>
   <id>http://blog.makingdevs.com/</id>
   <author>
     <name><![CDATA[MakingDevs]]></name>
@@ -12,31 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Routing Con Elm]]></title>
-    <link href="http://blog.makingdevs.com/2016/09/06/routing-con-elm/"/>
-    <updated>2016-09-06T08:38:45-05:00</updated>
-    <id>http://blog.makingdevs.com/2016/09/06/routing-con-elm</id>
-    <content type="html"><![CDATA[<h2>Introducción a Elm</h2>
-
-<p>En este post les mostraré com se hace una verdadera aplicación asi bien chida mamastrosa&hellip;..</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello world&quot;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Y aqui otro pedacito:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;hola inmundo&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Otro subtituloi</h3>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Uso De Camara en Android]]></title>

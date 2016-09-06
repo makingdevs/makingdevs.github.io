@@ -9,7 +9,7 @@
   <meta name="author" content="MakingDevs">
 
   
-  <meta name="description" content="Si bien, existen muchas tecnologías muy completas que permiten la creación de servicios robustos, a veces me he visto en la necesidad de hacer algo &hellip;">
+  <meta name="description" content="Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,56 +66,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2016/03/08/microservicios-con-groovy/">MicroServicios Con Groovy</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-03-08T21:38:08-06:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:38 pm</span></time>
-        
-           | <a href="/2016/03/08/microservicios-con-groovy/#disqus_thread"
-             data-disqus-identifier="http://blog.makingdevs.com/2016/03/08/microservicios-con-groovy/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Si bien, existen muchas tecnologías muy completas que permiten la creación de servicios robustos, a veces me he visto en la necesidad de hacer algo pequeño. muy concreto pero mantenible, y que pueda soportar un volumen determinado. Es por esto que me he apoyado del poder que ofrece Groovy con ayuda de los <a href="http://docs.groovy-lang.org/latest/html/api/groovy/servlet/GroovyServlet.html">Groovlets</a>.</p>
-
-<p>La parte que me gusta de este acercamiento es que el poder del Scripting se pasa al navegador, o en este caso, a un cliente que consume algún servicio web. Cuando usamos <em>Groovlets</em> tenemos disponible lo sisguiente:</p>
-
-<ul>
-<li><em>request</em> - <code>HttpServletRequest</code></li>
-<li><em>response</em> - <code>HttpServletResponse</code></li>
-<li><em>application</em> - <code>ServletContext</code></li>
-<li><em>session</em> - <code>HttpSession</code></li>
-<li><em>out</em> - <code>PrintWriter</code></li>
-<li><em>headers</em> - <code>Header[]</code></li>
-<li><em>params</em> - Un objeto tipo <code>Map</code> que contiene los parámetros</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2016/03/08/microservicios-con-groovy/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
   
   
     <article>
@@ -315,6 +265,45 @@
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2015/07/26/hot-deployment-en-gradle/">Hot Deployment en Gradle</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-26T23:19:13-05:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:19 pm</span></time>
+        
+           | <a href="/2015/07/26/hot-deployment-en-gradle/#disqus_thread"
+             data-disqus-identifier="http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre <a href="https://github.com/spring-projects/spring-loaded" title="springloaded">SpringLoaded</a>.</p>
+
+<p>Después me di cuenta que frameworks como <a href="https://github.com/spring-projects/spring-loaded" title="dropwizard">Dropwizard</a> lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré <a href="http://www.cholick.com/entry/show/280" title="tomcat">un artículo</a> en donde explica como ponerlo en acción usando propiamente <a href="https://github.com/spring-projects/spring-loaded" title="dropwizard">Dropwizard</a>. Fue un buen acercamiento, el problema es el siguiente bloque de código en configuración de gradle:</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2015/07/26/hot-deployment-en-gradle/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -332,10 +321,6 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2016/09/06/routing-con-elm/">Routing Con Elm</a>
-      </li>
-    
-      <li class="post">
         <a href="/2016/07/20/uso-de-camara-en-android/">Uso De Camara en Android</a>
       </li>
     
@@ -349,6 +334,10 @@
     
       <li class="post">
         <a href="/2016/03/24/phoenix-bootstrap/">Add Complete Bootstrap to Phoenix</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/03/08/microservicios-con-groovy/">MicroServicios Con Groovy</a>
       </li>
     
   </ul>
