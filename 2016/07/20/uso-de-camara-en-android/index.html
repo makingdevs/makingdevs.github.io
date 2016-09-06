@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Uso De Camara en Android - Blog de MakingDevs</title>
+  <meta name="author" content="MakingDevs">
+
+  
+  <meta name="description" content="Android se enfoca al desarrollo móvil, como es de esperarse cuenta con las herramientas necesarias para hacer uso del hardware, en esta ocasión se &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog de MakingDevs" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blog de MakingDevs</a></h1>
+  
+    <h2>El código que a veces olvidamos y no documentamos.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="blog.makingdevs.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Uso De Camara en Android</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-07-20T22:53:27-05:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:53 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://blog.makingdevs.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Android se enfoca al desarrollo móvil, como es de esperarse cuenta con las herramientas necesarias para hacer uso del hardware, en esta ocasión se mostrará cómo usar la cámara en un Activity. Adicionalmente, el ejemplo está hecho en Groovy, puedes leer más al respecto en el post anterior.</p>
+
+<!-- more -->
+
+
+<h2>Intent en android</h2>
+
+<p>Para poder hacer uso de la cámara se realiza mediante intent, que son el mecanismo por el cual se comunica la aplicación en tiempo de ejecución con otros componentes, así como lanzar eventos, se cuenta con dos tipos los cuales son:  <br/>
+<strong>Intento implícito</strong> <br/>
+Se puede iniciar una actividad en otra aplicación en el dispositivo <br/>
+<strong>Intento explicito</strong>     <br/>
+Se especifica la clase de la actividad a empezar para que el sistema operativo la inicie</p>
+
+<h2>Acceso a la cámara</h2>
+
+<p>Android cuenta con la clase <strong>MediaStore</strong>, esta se encarga de proveer los medios de comunicación, el que nos interesa es <strong>ACTION_IMAGE_CAPTURE</strong>, este en el intent con el cual podemos hacer uso de la cámara. <br/>
+El siguiente metodo muestra como usar la camara nativa de Android, la clase que se encarga de usarlo es <strong>ExampleCamera</strong>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kt">void</span> <span class="nf">launchCamera</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">Intent</span> <span class="n">camera</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">MediaStore</span><span class="o">.</span><span class="na">ACTION_IMAGE_CAPTURE</span><span class="o">)</span>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">camera</span><span class="o">.</span><span class="na">resolveActivity</span><span class="o">(</span><span class="n">getPackageManager</span><span class="o">()))</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">filePhoto</span> <span class="o">=</span> <span class="n">createPhoto</span><span class="o">(</span><span class="s2">&quot;IMG_&quot;</span><span class="o">)</span>
+</span><span class='line'>          <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>              <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s2">&quot;Error ${ex.message}&quot;</span><span class="o">)</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>          <span class="k">if</span> <span class="o">(</span><span class="n">filePhoto</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>              <span class="n">camera</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="n">MediaStore</span><span class="o">.</span><span class="na">EXTRA_OUTPUT</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">fromFile</span><span class="o">(</span><span class="n">filePhoto</span><span class="o">))</span>
+</span><span class='line'>              <span class="n">startActivityForResult</span><span class="o">(</span><span class="n">camera</span><span class="o">,</span> <span class="n">CAPTURE_IMAGE</span><span class="o">)</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h2>Almacenamiento externo</h2>
+
+<p>Al capturar una foto, esta debe ser almacenada para poder ser usada posteriormente, Android provee una unidad principal para ello, la cual puede ser su almacenamiento interno o una memoria SD.</p>
+
+<p>Para acceder a ese directorio, Android cuenta con una clase llamada <strong>Environment</strong>, el método que regresa el directorio de almacenamiento común/externo es <strong>getExternalStoragePublicDirectory(…)</strong>, el tipo de archivo son imágenes por lo cual el parámetro para este caso será <strong>Environment.DIRECTORY_PICTURES</strong>.</p>
+
+<p>El método <strong>createPhoto(&hellip;)</strong> se encarga de crear un directorio denominado <strong>ExampleCamera</strong> dentro de <strong>PICTURES</strong>, además de generar el archivo para cada foto, un dato interesante es que no se realizó el import de la clase <strong>File</strong>, la razón es que al usar <strong>groovy</strong>, ciertos paquetes vienen incluidos por default.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">File</span> <span class="nf">createPhoto</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">File</span> <span class="n">storagePhotos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">Environment</span><span class="o">.</span><span class="na">getExternalStoragePublicDirectory</span><span class="o">(</span><span class="n">Environment</span><span class="o">.</span><span class="na">DIRECTORY_PICTURES</span><span class="o">),</span> <span class="s2">&quot;ExampleCamera&quot;</span><span class="o">)</span>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(!</span><span class="n">storagePhotos</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="o">(!</span><span class="n">storagePhotos</span><span class="o">.</span><span class="na">mkdirs</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s2">&quot;Error al crear directorio&quot;</span><span class="o">)</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="k">new</span> <span class="nf">File</span><span class="o">(</span><span class="n">storagePhotos</span><span class="o">.</span><span class="na">getPath</span><span class="o">()</span> <span class="o">+</span> <span class="n">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="s2">&quot;${name + new Date().format(&quot;</span><span class="n">ddMMyyyy_HHmmss</span><span class="s2">&quot;)}.jpg&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Manipular el resultado de la cámara</h2>
+
+<p>Cuando se captura la foto, una vez que termina se maneja el resultado con el método onActivityResult(…), donde se verifica el estatus de la captura de la foto, ya sea que se culminó o cancelado, ante lo cual se muestra un mensaje emergente haciendo uso de los <strong>Toast</strong>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="nd">@Override</span>
+</span><span class='line'><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onActivityResult</span><span class="o">(</span><span class="kt">int</span> <span class="n">requestCode</span><span class="o">,</span> <span class="kt">int</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">super</span><span class="o">.</span><span class="na">onActivityResult</span><span class="o">(</span><span class="n">requestCode</span><span class="o">,</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">data</span><span class="o">)</span>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">requestCode</span> <span class="o">==</span> <span class="n">CAPTURE_IMAGE</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="o">(</span><span class="n">resultCode</span> <span class="o">==</span> <span class="n">RESULT_OK</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s2">&quot;Exito al crear la foto&quot;</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">()</span>
+</span><span class='line'>      <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">resultCode</span> <span class="o">==</span> <span class="n">RESULT_CANCELED</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s2">&quot;Se cancelo la foto&quot;</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">()</span>
+</span><span class='line'>      <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s2">&quot;Error al capturar la foto&quot;</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">()</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h2>Permisos de Android</h2>
+
+<p>A la hora de manejar el hardware se debe de pedir ciertos permisos como son el escribir y leer en la memoria externa, así como usar la cámara, para esto se usa la etiqueta <code>&lt;uses-permission&gt;</code> donde se coloca que permiso es solicitado.<br/>
+<code>&lt;uses-feature android:name="android.hardware.camera" android:required="true" /&gt;</code> <br/>
+<code>&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/&gt;</code></p>
+
+<h2>Imports default groovy</h2>
+
+<p>Groovy realiza el import de los paquetes más usados, para reducir el código. <br/>
+<code>import java.lang.*</code> <br/>
+<code>import java.util.*</code> <br/>
+<code>import java.io.*</code> <br/>
+<code>import java.net.*</code> <br/>
+<code>import groovy.lang.*</code> <br/>
+<code>import groovy.util.*</code> <br/>
+<code>import java.math.BigInteger</code> <br/>
+<code>import java.math.BigDecimal</code></p>
+
+<p>Pueden encontrar el código completo <a href="https://github.com/reyes271292/camera_android"><em>aquí</em></a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Juan Francisco Reyes Silva</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-07-20T22:53:27-05:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:53 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/groovy/'>groovy</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android/" data-via="makingdevs" data-counturl="http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2016/07/19/making-android-con-groovy-otra-vez/" title="Previous Post: Making Android con Groovy(otra vez)">&laquo; Making Android con Groovy(otra vez)</a>
+      
+      
+        <a class="basic-alignment right" href="/2016/09/06/routing-con-elm/" title="Next Post: Routing con Elm">Routing con Elm &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/09/06/routing-con-elm/">Routing Con Elm</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/07/20/uso-de-camara-en-android/">Uso De Camara en Android</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/07/19/making-android-con-groovy-otra-vez/">Making Android Con Groovy(otra Vez)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/03/28/logger-logback/">Uso De Logback</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/03/24/phoenix-bootstrap/">Add Complete Bootstrap to Phoenix</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/makingdevs">@makingdevs</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'makingdevs',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/makingdevs?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - MakingDevs -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'makingdevs';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android/';
+        var disqus_url = 'http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
