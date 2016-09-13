@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog de Making Devs</title>
-    <link>http://replace-this-with-your-hugo-site.com/</link>
+    <link>http://blog.makingdevs.com/</link>
     <description>Recent content on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 10 Sep 2016 11:22:01 -0500</lastBuildDate>
-    <atom:link href="http://replace-this-with-your-hugo-site.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.makingdevs.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Routing en Elm</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/09/10/routing-en-elm</link>
+      <link>http://blog.makingdevs.com/2016/09/10/routing-en-elm</link>
       <pubDate>Sat, 10 Sep 2016 11:22:01 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/09/10/routing-en-elm</guid>
+      <guid>http://blog.makingdevs.com/2016/09/10/routing-en-elm</guid>
       <description>
 
 &lt;p&gt;La URL es un bit interesante de nuestra applicación, nos permite regresar a un estado, o compartir ese estado con alguien más; y en Elm, el Routing, es la segunda cosa más importante que deberías conocer después del propio lenguaje. Así que empecemos.&lt;/p&gt;
@@ -79,10 +79,10 @@
     
     <item>
       <title>Uso de camara en android</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/07/20/uso-de-camara-en-android</link>
+      <link>http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android</link>
       <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/07/20/uso-de-camara-en-android</guid>
+      <guid>http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android</guid>
       <description>
 
 &lt;p&gt;Android se enfoca al desarrollo móvil, como es de esperarse cuenta con las herramientas necesarias para hacer uso del hardware, en esta ocasión se mostrará cómo usar la cámara en un Activity. Adicionalmente, el ejemplo está hecho en Groovy, puedes leer más al respecto en el post anterior.&lt;/p&gt;
@@ -183,10 +183,10 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
     
     <item>
       <title>Making Android con Groovy(otra vez)</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/07/19/making-android-con-groovyotra-vez</link>
+      <link>http://blog.makingdevs.com/2016/07/19/making-android-con-groovyotra-vez</link>
       <pubDate>Tue, 19 Jul 2016 19:12:30 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/07/19/making-android-con-groovyotra-vez</guid>
+      <guid>http://blog.makingdevs.com/2016/07/19/making-android-con-groovyotra-vez</guid>
       <description>
 
 &lt;p&gt;En las vísperas de la fecha en la que escribo este post, habíamos decidido entrar más de lleno con Android dentro del equipo de desarrollo, sin embargo, la convicción fue como siempre hacerlo de forma diferente, o por lo menos algo diferente con respecto a una industria que parecía siempre hacer lo mismo con lo mismo.&lt;/p&gt;
@@ -389,10 +389,10 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
     
     <item>
       <title>Uso de logback</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/03/28/uso-de-logback</link>
+      <link>http://blog.makingdevs.com/2016/03/28/uso-de-logback</link>
       <pubDate>Mon, 28 Mar 2016 09:13:56 -0600</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/03/28/uso-de-logback</guid>
+      <guid>http://blog.makingdevs.com/2016/03/28/uso-de-logback</guid>
       <description>
 
 &lt;p&gt;En el proceso de desarrollo de software se implementan bitácoras o mejor conocidas como &lt;em&gt;loggers&lt;/em&gt; que permiten tener información de salida útil al desarrollador en cuanto al correcto flujo de la aplicación.&lt;/p&gt;
@@ -513,7 +513,7 @@ log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;
 
 &lt;p&gt;Un ejemplo de como se vería:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/logback.png&#34; alt=&#34;logback&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.makingdevs.com/images/logback.png&#34; alt=&#34;logback&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;acerca-del-patrón-de-salida&#34;&gt;Acerca del patrón de salida&lt;/h2&gt;
 
@@ -532,10 +532,10 @@ log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;
     
     <item>
       <title>Add complete bootstrap to Phoenix</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/03/24/add-complete-bootstrap-to-phoenix</link>
+      <link>http://blog.makingdevs.com/2016/03/24/add-complete-bootstrap-to-phoenix</link>
       <pubDate>Thu, 24 Mar 2016 20:08:09 -0600</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/03/24/add-complete-bootstrap-to-phoenix</guid>
+      <guid>http://blog.makingdevs.com/2016/03/24/add-complete-bootstrap-to-phoenix</guid>
       <description>&lt;p&gt;It has been a while since I make a post and this is my first post in English so be gentle with me :P&lt;/p&gt;
 
 &lt;p&gt;Since a couple of months I been working in a language called &lt;a href=&#34;http://elixir-lang.org/&#34;&gt;elixir&lt;/a&gt; and with his web framework &lt;a href=&#34;http://www.phoenixframework.org/&#34;&gt;phoenix&lt;/a&gt;, I have had a lot of fun with these elements. But sometimes I been struggling with configurations that should be easy maybe I don&amp;rsquo;t read that carefully or maybe I&amp;rsquo;m a knucklehead, but whatever the reasone is, I hope this configuration works for you and give you a little help of how configure your Javascripts third parties for your Phoenix application.&lt;/p&gt;
@@ -643,10 +643,10 @@ log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;
     
     <item>
       <title>MicroServicios con Groovy</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/03/08/microservicios-con-groovy</link>
+      <link>http://blog.makingdevs.com/2016/03/08/microservicios-con-groovy</link>
       <pubDate>Tue, 08 Mar 2016 21:38:08 -0600</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/03/08/microservicios-con-groovy</guid>
+      <guid>http://blog.makingdevs.com/2016/03/08/microservicios-con-groovy</guid>
       <description>&lt;p&gt;Si bien, existen muchas tecnologías muy completas que permiten la creación de servicios robustos, a veces me he visto en la necesidad de hacer algo pequeño. muy concreto pero mantenible, y que pueda soportar un volumen determinado. Es por esto que me he apoyado del poder que ofrece Groovy con ayuda de los &lt;a href=&#34;http://docs.groovy-lang.org/latest/html/api/groovy/servlet/GroovyServlet.html&#34;&gt;Groovlets&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;La parte que me gusta de este acercamiento es que el poder del Scripting se pasa al navegador, o en este caso, a un cliente que consume algún servicio web. Cuando usamos &lt;em&gt;Groovlets&lt;/em&gt; tenemos disponible lo sisguiente:&lt;/p&gt;
@@ -746,10 +746,10 @@ Buscar algún encabezado en particular para validar nuestra solicitud:&lt;/p&gt;
     
     <item>
       <title>Pruebas funcionales con Geb y Spock</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</link>
+      <link>http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</link>
       <pubDate>Mon, 07 Mar 2016 23:47:26 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</guid>
+      <guid>http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</guid>
       <description>
 
 &lt;p&gt;Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario funcionen correctamente; son pruebas difíciles de implementar ya que deben realizarse desde la perspectiva del usuario y muchas veces las interfaces de usuario cambian constantemente.&lt;/p&gt;
@@ -981,10 +981,10 @@ baseUrl &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style
     
     <item>
       <title>Bitacorado de pruebas en Gradle</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/01/22/bitacorado-de-pruebas-en-gradle</link>
+      <link>http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle</link>
       <pubDate>Fri, 22 Jan 2016 18:14:37 -0600</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/01/22/bitacorado-de-pruebas-en-gradle</guid>
+      <guid>http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle</guid>
       <description>&lt;p&gt;Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el &lt;a href=&#34;https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.logging.TestLoggingContainer.html&#34;&gt;TestLoggingContainer&lt;/a&gt;, del cual pude obtener este fragmento:&lt;/p&gt;
 
 &lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;apply plugin&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;&amp;#39;&lt;/span&gt;java&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;&amp;#39;&lt;/span&gt;
@@ -1011,7 +1011,7 @@ test &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 
 &lt;p&gt;En donde pongo todo los tipos de eventos del proyecto que son &lt;code&gt;events &amp;quot;started&amp;quot;, &amp;quot;passed&amp;quot;, &amp;quot;skipped&amp;quot;, &amp;quot;failed&amp;quot;&lt;/code&gt; y con ello obtengo una salida como la siguiente:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/test_logging.png&#34; alt=&#34;Screenshot 1&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.makingdevs.com/images/test_logging.png&#34; alt=&#34;Screenshot 1&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Muy útil cuando no queremos hacer bitácora manual de que pruebas se están corriendo, Gradle ya cuenta con ella.&lt;/p&gt;
 </description>
@@ -1019,10 +1019,10 @@ test &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
     
     <item>
       <title>Amazon S3 y Groovy</title>
-      <link>http://replace-this-with-your-hugo-site.com/2015/08/13/amazon-s3-y-groovy</link>
+      <link>http://blog.makingdevs.com/2015/08/13/amazon-s3-y-groovy</link>
       <pubDate>Thu, 13 Aug 2015 22:47:08 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2015/08/13/amazon-s3-y-groovy</guid>
+      <guid>http://blog.makingdevs.com/2015/08/13/amazon-s3-y-groovy</guid>
       <description>&lt;p&gt;En una de las tareas que realice recientemente, tuve la necesidad de transferir un par de archivos que obtuve de un endpoint(de la cual hablaré en otro post) hacia un Bucket de Amazon S3.&lt;/p&gt;
 
 &lt;p&gt;La solución inmediata fue usar una biblioteca que encontré para Java de nombre &lt;a href=&#34;http://www.jets3t.org/&#34;&gt;jets3t&lt;/a&gt;, la cual, provee de un conjunto de herramientas muy simple para operar con Amazon S3, Cloud Front y Google Storage.&lt;/p&gt;
@@ -1094,10 +1094,10 @@ s3Service&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style
     
     <item>
       <title>Revisión del libro - The Software Craftsman: Professionalism</title>
-      <link>http://replace-this-with-your-hugo-site.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism</link>
+      <link>http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism</link>
       <pubDate>Sun, 02 Aug 2015 18:44:42 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism</guid>
+      <guid>http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism</guid>
       <description>&lt;p&gt;Libro que al igual que &lt;a href=&#34;https://pragprog.com/the-pragmatic-programmer&#34; title=&#34;the-pragmatic-programmer&#34;&gt;&lt;em&gt;The Pragmatic Programmer: From Journeyman to Master&lt;/em&gt;&lt;/a&gt; se ganó estar en mis libros de cabecera, y se ha ganado un lugar muy especial en mi librero.&lt;/p&gt;
 
 &lt;p&gt;El escritor, y desarrollador de toda la vida &lt;a href=&#34;https://twitter.com/sandromancuso&#34; title=&#34;sandromancuso&#34;&gt;&lt;em&gt;Sandro Mancuso&lt;/em&gt;&lt;/a&gt;, plasma muy bien la idea que el tiene acerca de lo que todo desarrollador de software, y en mi opinión personal lo que debería buscar todo desarrollador, para cambiar su entorno de trabajo y ayudarnos a todos (porque estamos en el mismo barco) a cambiar la mentalidad de los clientes, de que no somos la clase de &lt;em&gt;persona/profesional&lt;/em&gt; que la mayor parte del mundo cree que somos:
@@ -1148,10 +1148,10 @@ s3Service&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style
     
     <item>
       <title>Hot deployment en Gradle</title>
-      <link>http://replace-this-with-your-hugo-site.com/2015/07/26/hot-deployment-en-gradle</link>
+      <link>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle</link>
       <pubDate>Sun, 26 Jul 2015 23:19:13 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2015/07/26/hot-deployment-en-gradle</guid>
+      <guid>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle</guid>
       <description>&lt;p&gt;Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;springloaded&#34;&gt;SpringLoaded&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Después me di cuenta que frameworks como &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;dropwizard&#34;&gt;Dropwizard&lt;/a&gt; lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré &lt;a href=&#34;http://www.cholick.com/entry/show/280&#34; title=&#34;tomcat&#34;&gt;un artículo&lt;/a&gt; en donde explica como ponerlo en acción usando propiamente &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;dropwizard&#34;&gt;Dropwizard&lt;/a&gt;. Fue un buen acercamiento, el problema es el siguiente bloque de código en configuración de gradle:
@@ -1256,10 +1256,10 @@ gretty &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
     
     <item>
       <title>Borrado batch en Grails</title>
-      <link>http://replace-this-with-your-hugo-site.com/2015/05/01/borrado-batch-en-grails</link>
+      <link>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails</link>
       <pubDate>Fri, 01 May 2015 20:58:30 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2015/05/01/borrado-batch-en-grails</guid>
+      <guid>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails</guid>
       <description>
 
 &lt;p&gt;En esta ocasión les quiero compartir la solución a un problema que tuve al borrar una colección de objetos en grails y con el GORM, si bien podría hacerlo con HQL o con SQL usando las bondades de Hibernate me gusto más el acercamiento que les quiero presentar.&lt;/p&gt;
@@ -1308,10 +1308,10 @@ gretty &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
     
     <item>
       <title>Clusterizacion con Camel</title>
-      <link>http://replace-this-with-your-hugo-site.com/2015/04/07/clusterizacion-con-camel</link>
+      <link>http://blog.makingdevs.com/2015/04/07/clusterizacion-con-camel</link>
       <pubDate>Tue, 07 Apr 2015 19:56:54 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2015/04/07/clusterizacion-con-camel</guid>
+      <guid>http://blog.makingdevs.com/2015/04/07/clusterizacion-con-camel</guid>
       <description>&lt;p&gt;Camel ofrece distintas soluciones para ser escalado o para distribuir la carga en diferentes instancias, la soluciones que ofrece dependerá de como se encuentra nuestra infraestructura ( y configuración).&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1360,7 +1360,7 @@ addShutdownHook&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; camelCo
 
 &lt;p&gt;Este es un script ejemplo el cual utiliza &lt;code&gt;FileIdempotentRepository&lt;/code&gt; utilizando un archivo ejemplo para llevar el control, si exploramos el archivo ahí se encuentra los id de los mensajes procesados.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/camel_output.png&#34; alt=&#34;Camel output&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.makingdevs.com/images/camel_output.png&#34; alt=&#34;Camel output&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Asi si hay un mensaje el cual ya se encuentra dentro de este archivo se ignora y no es procesado. En mi caso utilize JpaMessageIdRepository dentro de grails y fue muy simple utilizar este componente solo agregue la dependencia de camel sql en el buildConfig.groovy&lt;/p&gt;
 
@@ -1384,10 +1384,10 @@ beans &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&
     
     <item>
       <title>Personalizar notificaciones de correo en Jenkins</title>
-      <link>http://replace-this-with-your-hugo-site.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins</link>
+      <link>http://blog.makingdevs.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins</link>
       <pubDate>Thu, 06 Nov 2014 19:08:56 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins</guid>
+      <guid>http://blog.makingdevs.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins</guid>
       <description>&lt;p&gt;Las &lt;strong&gt;notificaciones&lt;/strong&gt; son básicas para la correcta comunicación de los involucrados de nuestros proyectos como: &lt;em&gt;Stakeholders/ Key Users / Developers / Clientes / Testers&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Por esta razón te recomiendo personalizar las notificaciones por defecto de &lt;strong&gt;Jenkins&lt;/strong&gt;.&lt;/p&gt;
@@ -1399,27 +1399,27 @@ beans &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&
 &lt;p&gt;Procedimiento:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Instalar el plugin desde la consola de administración de Jenkins. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_01.jpg&#34; alt=&#34;Screenshot 1&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Instalar el plugin desde la consola de administración de Jenkins. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_01.jpg&#34; alt=&#34;Screenshot 1&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Configurar la cuenta de correo saliente SMTP, te recomiendo que uses el autenticado.&lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_02.jpg&#34; alt=&#34;Screenshot 2&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Configurar la cuenta de correo saliente SMTP, te recomiendo que uses el autenticado.&lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_02.jpg&#34; alt=&#34;Screenshot 2&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Configurar el plugin: Email-ext con información base de los usuarios a notificar ( &lt;em&gt;Stake Holders/ Key Users / Developers / Clientes / Testers&lt;/em&gt; ) en las listas por DEFAULT de la configuración general a nivel. Esto te permitirá contar con la misma configuración para tus N tareas de despliegue. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_03.jpg&#34; alt=&#34;Screenshot 3&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Configurar el plugin: Email-ext con información base de los usuarios a notificar ( &lt;em&gt;Stake Holders/ Key Users / Developers / Clientes / Testers&lt;/em&gt; ) en las listas por DEFAULT de la configuración general a nivel. Esto te permitirá contar con la misma configuración para tus N tareas de despliegue. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_03.jpg&#34; alt=&#34;Screenshot 3&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Para personalizar el correo que se enviará, copiaremos un&lt;strong&gt;Template&lt;/strong&gt; dentro del Home de Jenkins, &lt;em&gt;static-analysis.jelly&lt;/em&gt; y asignando nombre relacionado al proyecto. Si requieres más información, consulta la &lt;a href=&#34;https://github.com/jenkinsci/email-ext-plugin/tree/master/src/main/resources/hudson/plugins/emailext/templates&#34;&gt;documentación del plugin en GitHub&lt;/a&gt;. Este template es un &lt;strong&gt;HTML el cual puedes editar su contenido&lt;/strong&gt;, incluyendo titulo del proyecto, una imagen, etc. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_04.jpg&#34; alt=&#34;Screenshot 4&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Para personalizar el correo que se enviará, copiaremos un&lt;strong&gt;Template&lt;/strong&gt; dentro del Home de Jenkins, &lt;em&gt;static-analysis.jelly&lt;/em&gt; y asignando nombre relacionado al proyecto. Si requieres más información, consulta la &lt;a href=&#34;https://github.com/jenkinsci/email-ext-plugin/tree/master/src/main/resources/hudson/plugins/emailext/templates&#34;&gt;documentación del plugin en GitHub&lt;/a&gt;. Este template es un &lt;strong&gt;HTML el cual puedes editar su contenido&lt;/strong&gt;, incluyendo titulo del proyecto, una imagen, etc. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_04.jpg&#34; alt=&#34;Screenshot 4&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Añade en una tarea de Jenkins, un paso al finalizar, usando Email notification. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_05.jpg&#34; alt=&#34;Screenshot 5&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Añade en una tarea de Jenkins, un paso al finalizar, usando Email notification. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_05.jpg&#34; alt=&#34;Screenshot 5&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Ejecuta tu tarea y verifica el correo recibido. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_06.jpg&#34; alt=&#34;Screenshot 6&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ejecuta tu tarea y verifica el correo recibido. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_06.jpg&#34; alt=&#34;Screenshot 6&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
     
     <item>
       <title>Inyección de métodos por categorías y TimeCategory</title>
-      <link>http://replace-this-with-your-hugo-site.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory</link>
+      <link>http://blog.makingdevs.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory</link>
       <pubDate>Tue, 16 Sep 2014 18:55:30 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory</guid>
+      <guid>http://blog.makingdevs.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory</guid>
       <description>
 
 &lt;h2 id=&#34;acerca-de-las-categorías&#34;&gt;Acerca de las categorías&lt;/h2&gt;

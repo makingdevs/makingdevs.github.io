@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Grails on Blog de Making Devs</title>
-    <link>http://replace-this-with-your-hugo-site.com/tags/grails/</link>
+    <link>http://blog.makingdevs.com/tags/grails/</link>
     <description>Recent content in Grails on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 01 May 2015 20:58:30 -0500</lastBuildDate>
-    <atom:link href="http://replace-this-with-your-hugo-site.com/tags/grails/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.makingdevs.com/tags/grails/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Borrado batch en Grails</title>
-      <link>http://replace-this-with-your-hugo-site.com/2015/05/01/borrado-batch-en-grails</link>
+      <link>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails</link>
       <pubDate>Fri, 01 May 2015 20:58:30 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2015/05/01/borrado-batch-en-grails</guid>
+      <guid>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails</guid>
       <description>
 
 &lt;p&gt;En esta ocasión les quiero compartir la solución a un problema que tuve al borrar una colección de objetos en grails y con el GORM, si bien podría hacerlo con HQL o con SQL usando las bondades de Hibernate me gusto más el acercamiento que les quiero presentar.&lt;/p&gt;

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Log on Blog de Making Devs</title>
-    <link>http://replace-this-with-your-hugo-site.com/tags/log/</link>
+    <link>http://blog.makingdevs.com/tags/log/</link>
     <description>Recent content in Log on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 28 Mar 2016 09:13:56 -0600</lastBuildDate>
-    <atom:link href="http://replace-this-with-your-hugo-site.com/tags/log/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.makingdevs.com/tags/log/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Uso de logback</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/03/28/uso-de-logback</link>
+      <link>http://blog.makingdevs.com/2016/03/28/uso-de-logback</link>
       <pubDate>Mon, 28 Mar 2016 09:13:56 -0600</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/03/28/uso-de-logback</guid>
+      <guid>http://blog.makingdevs.com/2016/03/28/uso-de-logback</guid>
       <description>
 
 &lt;p&gt;En el proceso de desarrollo de software se implementan bitácoras o mejor conocidas como &lt;em&gt;loggers&lt;/em&gt; que permiten tener información de salida útil al desarrollador en cuanto al correcto flujo de la aplicación.&lt;/p&gt;
@@ -135,7 +135,7 @@ log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;
 
 &lt;p&gt;Un ejemplo de como se vería:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/logback.png&#34; alt=&#34;logback&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.makingdevs.com/images/logback.png&#34; alt=&#34;logback&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;acerca-del-patrón-de-salida&#34;&gt;Acerca del patrón de salida&lt;/h2&gt;
 

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Groovy on Blog de Making Devs</title>
-    <link>http://replace-this-with-your-hugo-site.com/tags/groovy/</link>
+    <link>http://blog.makingdevs.com/tags/groovy/</link>
     <description>Recent content in Groovy on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Jul 2016 22:53:27 -0500</lastBuildDate>
-    <atom:link href="http://replace-this-with-your-hugo-site.com/tags/groovy/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.makingdevs.com/tags/groovy/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Uso de camara en android</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/07/20/uso-de-camara-en-android</link>
+      <link>http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android</link>
       <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/07/20/uso-de-camara-en-android</guid>
+      <guid>http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android</guid>
       <description>
 
 &lt;p&gt;Android se enfoca al desarrollo móvil, como es de esperarse cuenta con las herramientas necesarias para hacer uso del hardware, en esta ocasión se mostrará cómo usar la cámara en un Activity. Adicionalmente, el ejemplo está hecho en Groovy, puedes leer más al respecto en el post anterior.&lt;/p&gt;
@@ -115,10 +115,10 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
     
     <item>
       <title>Making Android con Groovy(otra vez)</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/07/19/making-android-con-groovyotra-vez</link>
+      <link>http://blog.makingdevs.com/2016/07/19/making-android-con-groovyotra-vez</link>
       <pubDate>Tue, 19 Jul 2016 19:12:30 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/07/19/making-android-con-groovyotra-vez</guid>
+      <guid>http://blog.makingdevs.com/2016/07/19/making-android-con-groovyotra-vez</guid>
       <description>
 
 &lt;p&gt;En las vísperas de la fecha en la que escribo este post, habíamos decidido entrar más de lleno con Android dentro del equipo de desarrollo, sin embargo, la convicción fue como siempre hacerlo de forma diferente, o por lo menos algo diferente con respecto a una industria que parecía siempre hacer lo mismo con lo mismo.&lt;/p&gt;
@@ -321,10 +321,10 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
     
     <item>
       <title>Uso de logback</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/03/28/uso-de-logback</link>
+      <link>http://blog.makingdevs.com/2016/03/28/uso-de-logback</link>
       <pubDate>Mon, 28 Mar 2016 09:13:56 -0600</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/03/28/uso-de-logback</guid>
+      <guid>http://blog.makingdevs.com/2016/03/28/uso-de-logback</guid>
       <description>
 
 &lt;p&gt;En el proceso de desarrollo de software se implementan bitácoras o mejor conocidas como &lt;em&gt;loggers&lt;/em&gt; que permiten tener información de salida útil al desarrollador en cuanto al correcto flujo de la aplicación.&lt;/p&gt;
@@ -445,7 +445,7 @@ log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;
 
 &lt;p&gt;Un ejemplo de como se vería:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/logback.png&#34; alt=&#34;logback&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.makingdevs.com/images/logback.png&#34; alt=&#34;logback&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;acerca-del-patrón-de-salida&#34;&gt;Acerca del patrón de salida&lt;/h2&gt;
 
@@ -464,10 +464,10 @@ log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;
     
     <item>
       <title>MicroServicios con Groovy</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/03/08/microservicios-con-groovy</link>
+      <link>http://blog.makingdevs.com/2016/03/08/microservicios-con-groovy</link>
       <pubDate>Tue, 08 Mar 2016 21:38:08 -0600</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/03/08/microservicios-con-groovy</guid>
+      <guid>http://blog.makingdevs.com/2016/03/08/microservicios-con-groovy</guid>
       <description>&lt;p&gt;Si bien, existen muchas tecnologías muy completas que permiten la creación de servicios robustos, a veces me he visto en la necesidad de hacer algo pequeño. muy concreto pero mantenible, y que pueda soportar un volumen determinado. Es por esto que me he apoyado del poder que ofrece Groovy con ayuda de los &lt;a href=&#34;http://docs.groovy-lang.org/latest/html/api/groovy/servlet/GroovyServlet.html&#34;&gt;Groovlets&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;La parte que me gusta de este acercamiento es que el poder del Scripting se pasa al navegador, o en este caso, a un cliente que consume algún servicio web. Cuando usamos &lt;em&gt;Groovlets&lt;/em&gt; tenemos disponible lo sisguiente:&lt;/p&gt;
@@ -567,10 +567,10 @@ Buscar algún encabezado en particular para validar nuestra solicitud:&lt;/p&gt;
     
     <item>
       <title>Pruebas funcionales con Geb y Spock</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</link>
+      <link>http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</link>
       <pubDate>Mon, 07 Mar 2016 23:47:26 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</guid>
+      <guid>http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</guid>
       <description>
 
 &lt;p&gt;Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario funcionen correctamente; son pruebas difíciles de implementar ya que deben realizarse desde la perspectiva del usuario y muchas veces las interfaces de usuario cambian constantemente.&lt;/p&gt;
@@ -802,10 +802,10 @@ baseUrl &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style
     
     <item>
       <title>Bitacorado de pruebas en Gradle</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/01/22/bitacorado-de-pruebas-en-gradle</link>
+      <link>http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle</link>
       <pubDate>Fri, 22 Jan 2016 18:14:37 -0600</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/01/22/bitacorado-de-pruebas-en-gradle</guid>
+      <guid>http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle</guid>
       <description>&lt;p&gt;Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el &lt;a href=&#34;https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.logging.TestLoggingContainer.html&#34;&gt;TestLoggingContainer&lt;/a&gt;, del cual pude obtener este fragmento:&lt;/p&gt;
 
 &lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;apply plugin&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;&amp;#39;&lt;/span&gt;java&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;&amp;#39;&lt;/span&gt;
@@ -832,7 +832,7 @@ test &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 
 &lt;p&gt;En donde pongo todo los tipos de eventos del proyecto que son &lt;code&gt;events &amp;quot;started&amp;quot;, &amp;quot;passed&amp;quot;, &amp;quot;skipped&amp;quot;, &amp;quot;failed&amp;quot;&lt;/code&gt; y con ello obtengo una salida como la siguiente:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/test_logging.png&#34; alt=&#34;Screenshot 1&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.makingdevs.com/images/test_logging.png&#34; alt=&#34;Screenshot 1&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Muy útil cuando no queremos hacer bitácora manual de que pruebas se están corriendo, Gradle ya cuenta con ella.&lt;/p&gt;
 </description>
@@ -840,10 +840,10 @@ test &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
     
     <item>
       <title>Hot deployment en Gradle</title>
-      <link>http://replace-this-with-your-hugo-site.com/2015/07/26/hot-deployment-en-gradle</link>
+      <link>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle</link>
       <pubDate>Sun, 26 Jul 2015 23:19:13 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2015/07/26/hot-deployment-en-gradle</guid>
+      <guid>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle</guid>
       <description>&lt;p&gt;Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;springloaded&#34;&gt;SpringLoaded&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Después me di cuenta que frameworks como &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;dropwizard&#34;&gt;Dropwizard&lt;/a&gt; lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré &lt;a href=&#34;http://www.cholick.com/entry/show/280&#34; title=&#34;tomcat&#34;&gt;un artículo&lt;/a&gt; en donde explica como ponerlo en acción usando propiamente &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;dropwizard&#34;&gt;Dropwizard&lt;/a&gt;. Fue un buen acercamiento, el problema es el siguiente bloque de código en configuración de gradle:
@@ -948,10 +948,10 @@ gretty &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
     
     <item>
       <title>Borrado batch en Grails</title>
-      <link>http://replace-this-with-your-hugo-site.com/2015/05/01/borrado-batch-en-grails</link>
+      <link>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails</link>
       <pubDate>Fri, 01 May 2015 20:58:30 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2015/05/01/borrado-batch-en-grails</guid>
+      <guid>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails</guid>
       <description>
 
 &lt;p&gt;En esta ocasión les quiero compartir la solución a un problema que tuve al borrar una colección de objetos en grails y con el GORM, si bien podría hacerlo con HQL o con SQL usando las bondades de Hibernate me gusto más el acercamiento que les quiero presentar.&lt;/p&gt;

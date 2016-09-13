@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Artesanos on Blog de Making Devs</title>
-    <link>http://replace-this-with-your-hugo-site.com/categories/artesanos/</link>
+    <link>http://blog.makingdevs.com/categories/artesanos/</link>
     <description>Recent content in Artesanos on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Aug 2015 18:44:42 -0500</lastBuildDate>
-    <atom:link href="http://replace-this-with-your-hugo-site.com/categories/artesanos/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.makingdevs.com/categories/artesanos/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Revisión del libro - The Software Craftsman: Professionalism</title>
-      <link>http://replace-this-with-your-hugo-site.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism</link>
+      <link>http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism</link>
       <pubDate>Sun, 02 Aug 2015 18:44:42 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism</guid>
+      <guid>http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism</guid>
       <description>&lt;p&gt;Libro que al igual que &lt;a href=&#34;https://pragprog.com/the-pragmatic-programmer&#34; title=&#34;the-pragmatic-programmer&#34;&gt;&lt;em&gt;The Pragmatic Programmer: From Journeyman to Master&lt;/em&gt;&lt;/a&gt; se ganó estar en mis libros de cabecera, y se ha ganado un lugar muy especial en mi librero.&lt;/p&gt;
 
 &lt;p&gt;El escritor, y desarrollador de toda la vida &lt;a href=&#34;https://twitter.com/sandromancuso&#34; title=&#34;sandromancuso&#34;&gt;&lt;em&gt;Sandro Mancuso&lt;/em&gt;&lt;/a&gt;, plasma muy bien la idea que el tiene acerca de lo que todo desarrollador de software, y en mi opinión personal lo que debería buscar todo desarrollador, para cambiar su entorno de trabajo y ayudarnos a todos (porque estamos en el mismo barco) a cambiar la mentalidad de los clientes, de que no somos la clase de &lt;em&gt;persona/profesional&lt;/em&gt; que la mayor parte del mundo cree que somos:

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Android on Blog de Making Devs</title>
-    <link>http://replace-this-with-your-hugo-site.com/tags/android/</link>
+    <link>http://blog.makingdevs.com/tags/android/</link>
     <description>Recent content in Android on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Jul 2016 22:53:27 -0500</lastBuildDate>
-    <atom:link href="http://replace-this-with-your-hugo-site.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.makingdevs.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Uso de camara en android</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/07/20/uso-de-camara-en-android</link>
+      <link>http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android</link>
       <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/07/20/uso-de-camara-en-android</guid>
+      <guid>http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android</guid>
       <description>
 
 &lt;p&gt;Android se enfoca al desarrollo móvil, como es de esperarse cuenta con las herramientas necesarias para hacer uso del hardware, en esta ocasión se mostrará cómo usar la cámara en un Activity. Adicionalmente, el ejemplo está hecho en Groovy, puedes leer más al respecto en el post anterior.&lt;/p&gt;
@@ -115,10 +115,10 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
     
     <item>
       <title>Making Android con Groovy(otra vez)</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/07/19/making-android-con-groovyotra-vez</link>
+      <link>http://blog.makingdevs.com/2016/07/19/making-android-con-groovyotra-vez</link>
       <pubDate>Tue, 19 Jul 2016 19:12:30 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/07/19/making-android-con-groovyotra-vez</guid>
+      <guid>http://blog.makingdevs.com/2016/07/19/making-android-con-groovyotra-vez</guid>
       <description>
 
 &lt;p&gt;En las vísperas de la fecha en la que escribo este post, habíamos decidido entrar más de lleno con Android dentro del equipo de desarrollo, sin embargo, la convicción fue como siempre hacerlo de forma diferente, o por lo menos algo diferente con respecto a una industria que parecía siempre hacer lo mismo con lo mismo.&lt;/p&gt;

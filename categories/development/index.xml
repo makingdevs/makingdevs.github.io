@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Development on Blog de Making Devs</title>
-    <link>http://replace-this-with-your-hugo-site.com/categories/development/</link>
+    <link>http://blog.makingdevs.com/categories/development/</link>
     <description>Recent content in Development on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 10 Sep 2016 11:22:01 -0500</lastBuildDate>
-    <atom:link href="http://replace-this-with-your-hugo-site.com/categories/development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.makingdevs.com/categories/development/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Routing en Elm</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/09/10/routing-en-elm</link>
+      <link>http://blog.makingdevs.com/2016/09/10/routing-en-elm</link>
       <pubDate>Sat, 10 Sep 2016 11:22:01 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/09/10/routing-en-elm</guid>
+      <guid>http://blog.makingdevs.com/2016/09/10/routing-en-elm</guid>
       <description>
 
 &lt;p&gt;La URL es un bit interesante de nuestra applicación, nos permite regresar a un estado, o compartir ese estado con alguien más; y en Elm, el Routing, es la segunda cosa más importante que deberías conocer después del propio lenguaje. Así que empecemos.&lt;/p&gt;
@@ -79,10 +79,10 @@
     
     <item>
       <title>Borrado batch en Grails</title>
-      <link>http://replace-this-with-your-hugo-site.com/2015/05/01/borrado-batch-en-grails</link>
+      <link>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails</link>
       <pubDate>Fri, 01 May 2015 20:58:30 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2015/05/01/borrado-batch-en-grails</guid>
+      <guid>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails</guid>
       <description>
 
 &lt;p&gt;En esta ocasión les quiero compartir la solución a un problema que tuve al borrar una colección de objetos en grails y con el GORM, si bien podría hacerlo con HQL o con SQL usando las bondades de Hibernate me gusto más el acercamiento que les quiero presentar.&lt;/p&gt;
@@ -131,10 +131,10 @@
     
     <item>
       <title>Clusterizacion con Camel</title>
-      <link>http://replace-this-with-your-hugo-site.com/2015/04/07/clusterizacion-con-camel</link>
+      <link>http://blog.makingdevs.com/2015/04/07/clusterizacion-con-camel</link>
       <pubDate>Tue, 07 Apr 2015 19:56:54 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2015/04/07/clusterizacion-con-camel</guid>
+      <guid>http://blog.makingdevs.com/2015/04/07/clusterizacion-con-camel</guid>
       <description>&lt;p&gt;Camel ofrece distintas soluciones para ser escalado o para distribuir la carga en diferentes instancias, la soluciones que ofrece dependerá de como se encuentra nuestra infraestructura ( y configuración).&lt;/p&gt;
 
 &lt;ul&gt;
@@ -183,7 +183,7 @@ addShutdownHook&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; camelCo
 
 &lt;p&gt;Este es un script ejemplo el cual utiliza &lt;code&gt;FileIdempotentRepository&lt;/code&gt; utilizando un archivo ejemplo para llevar el control, si exploramos el archivo ahí se encuentra los id de los mensajes procesados.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/camel_output.png&#34; alt=&#34;Camel output&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.makingdevs.com/images/camel_output.png&#34; alt=&#34;Camel output&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Asi si hay un mensaje el cual ya se encuentra dentro de este archivo se ignora y no es procesado. En mi caso utilize JpaMessageIdRepository dentro de grails y fue muy simple utilizar este componente solo agregue la dependencia de camel sql en el buildConfig.groovy&lt;/p&gt;
 
@@ -207,10 +207,10 @@ beans &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&
     
     <item>
       <title>Personalizar notificaciones de correo en Jenkins</title>
-      <link>http://replace-this-with-your-hugo-site.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins</link>
+      <link>http://blog.makingdevs.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins</link>
       <pubDate>Thu, 06 Nov 2014 19:08:56 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins</guid>
+      <guid>http://blog.makingdevs.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins</guid>
       <description>&lt;p&gt;Las &lt;strong&gt;notificaciones&lt;/strong&gt; son básicas para la correcta comunicación de los involucrados de nuestros proyectos como: &lt;em&gt;Stakeholders/ Key Users / Developers / Clientes / Testers&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Por esta razón te recomiendo personalizar las notificaciones por defecto de &lt;strong&gt;Jenkins&lt;/strong&gt;.&lt;/p&gt;
@@ -222,27 +222,27 @@ beans &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&
 &lt;p&gt;Procedimiento:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Instalar el plugin desde la consola de administración de Jenkins. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_01.jpg&#34; alt=&#34;Screenshot 1&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Instalar el plugin desde la consola de administración de Jenkins. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_01.jpg&#34; alt=&#34;Screenshot 1&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Configurar la cuenta de correo saliente SMTP, te recomiendo que uses el autenticado.&lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_02.jpg&#34; alt=&#34;Screenshot 2&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Configurar la cuenta de correo saliente SMTP, te recomiendo que uses el autenticado.&lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_02.jpg&#34; alt=&#34;Screenshot 2&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Configurar el plugin: Email-ext con información base de los usuarios a notificar ( &lt;em&gt;Stake Holders/ Key Users / Developers / Clientes / Testers&lt;/em&gt; ) en las listas por DEFAULT de la configuración general a nivel. Esto te permitirá contar con la misma configuración para tus N tareas de despliegue. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_03.jpg&#34; alt=&#34;Screenshot 3&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Configurar el plugin: Email-ext con información base de los usuarios a notificar ( &lt;em&gt;Stake Holders/ Key Users / Developers / Clientes / Testers&lt;/em&gt; ) en las listas por DEFAULT de la configuración general a nivel. Esto te permitirá contar con la misma configuración para tus N tareas de despliegue. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_03.jpg&#34; alt=&#34;Screenshot 3&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Para personalizar el correo que se enviará, copiaremos un&lt;strong&gt;Template&lt;/strong&gt; dentro del Home de Jenkins, &lt;em&gt;static-analysis.jelly&lt;/em&gt; y asignando nombre relacionado al proyecto. Si requieres más información, consulta la &lt;a href=&#34;https://github.com/jenkinsci/email-ext-plugin/tree/master/src/main/resources/hudson/plugins/emailext/templates&#34;&gt;documentación del plugin en GitHub&lt;/a&gt;. Este template es un &lt;strong&gt;HTML el cual puedes editar su contenido&lt;/strong&gt;, incluyendo titulo del proyecto, una imagen, etc. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_04.jpg&#34; alt=&#34;Screenshot 4&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Para personalizar el correo que se enviará, copiaremos un&lt;strong&gt;Template&lt;/strong&gt; dentro del Home de Jenkins, &lt;em&gt;static-analysis.jelly&lt;/em&gt; y asignando nombre relacionado al proyecto. Si requieres más información, consulta la &lt;a href=&#34;https://github.com/jenkinsci/email-ext-plugin/tree/master/src/main/resources/hudson/plugins/emailext/templates&#34;&gt;documentación del plugin en GitHub&lt;/a&gt;. Este template es un &lt;strong&gt;HTML el cual puedes editar su contenido&lt;/strong&gt;, incluyendo titulo del proyecto, una imagen, etc. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_04.jpg&#34; alt=&#34;Screenshot 4&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Añade en una tarea de Jenkins, un paso al finalizar, usando Email notification. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_05.jpg&#34; alt=&#34;Screenshot 5&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Añade en una tarea de Jenkins, un paso al finalizar, usando Email notification. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_05.jpg&#34; alt=&#34;Screenshot 5&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Ejecuta tu tarea y verifica el correo recibido. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_06.jpg&#34; alt=&#34;Screenshot 6&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ejecuta tu tarea y verifica el correo recibido. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_06.jpg&#34; alt=&#34;Screenshot 6&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
     
     <item>
       <title>Inyección de métodos por categorías y TimeCategory</title>
-      <link>http://replace-this-with-your-hugo-site.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory</link>
+      <link>http://blog.makingdevs.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory</link>
       <pubDate>Tue, 16 Sep 2014 18:55:30 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory</guid>
+      <guid>http://blog.makingdevs.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory</guid>
       <description>
 
 &lt;h2 id=&#34;acerca-de-las-categorías&#34;&gt;Acerca de las categorías&lt;/h2&gt;
@@ -299,10 +299,10 @@ beans &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&
     
     <item>
       <title>Lectura de correo con Apache Camel &#43; Groovy</title>
-      <link>http://replace-this-with-your-hugo-site.com/2014/08/26/lectura-de-correo-con-apache-camel-&#43;-groovy</link>
+      <link>http://blog.makingdevs.com/2014/08/26/lectura-de-correo-con-apache-camel-&#43;-groovy</link>
       <pubDate>Tue, 26 Aug 2014 18:29:26 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2014/08/26/lectura-de-correo-con-apache-camel-&#43;-groovy</guid>
+      <guid>http://blog.makingdevs.com/2014/08/26/lectura-de-correo-con-apache-camel-&#43;-groovy</guid>
       <description>
 
 &lt;p&gt;Hola a todos es un gusto contribuir al blog de makingdevs.com y mostrarles un poco de lo que es Apache Camel, para ellos hablaremos primero de su definición.&lt;/p&gt;

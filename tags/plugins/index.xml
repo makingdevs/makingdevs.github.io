@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Plugins on Blog de Making Devs</title>
-    <link>http://replace-this-with-your-hugo-site.com/tags/plugins/</link>
+    <link>http://blog.makingdevs.com/tags/plugins/</link>
     <description>Recent content in Plugins on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 26 Jul 2015 23:19:13 -0500</lastBuildDate>
-    <atom:link href="http://replace-this-with-your-hugo-site.com/tags/plugins/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.makingdevs.com/tags/plugins/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Hot deployment en Gradle</title>
-      <link>http://replace-this-with-your-hugo-site.com/2015/07/26/hot-deployment-en-gradle</link>
+      <link>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle</link>
       <pubDate>Sun, 26 Jul 2015 23:19:13 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2015/07/26/hot-deployment-en-gradle</guid>
+      <guid>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle</guid>
       <description>&lt;p&gt;Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;springloaded&#34;&gt;SpringLoaded&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Después me di cuenta que frameworks como &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;dropwizard&#34;&gt;Dropwizard&lt;/a&gt; lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré &lt;a href=&#34;http://www.cholick.com/entry/show/280&#34; title=&#34;tomcat&#34;&gt;un artículo&lt;/a&gt; en donde explica como ponerlo en acción usando propiamente &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;dropwizard&#34;&gt;Dropwizard&lt;/a&gt;. Fue un buen acercamiento, el problema es el siguiente bloque de código en configuración de gradle:

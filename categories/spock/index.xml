@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spock on Blog de Making Devs</title>
-    <link>http://replace-this-with-your-hugo-site.com/categories/spock/</link>
+    <link>http://blog.makingdevs.com/categories/spock/</link>
     <description>Recent content in Spock on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Mar 2016 23:47:26 -0500</lastBuildDate>
-    <atom:link href="http://replace-this-with-your-hugo-site.com/categories/spock/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.makingdevs.com/categories/spock/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Pruebas funcionales con Geb y Spock</title>
-      <link>http://replace-this-with-your-hugo-site.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</link>
+      <link>http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</link>
       <pubDate>Mon, 07 Mar 2016 23:47:26 -0500</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</guid>
+      <guid>http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</guid>
       <description>
 
 &lt;p&gt;Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario funcionen correctamente; son pruebas difíciles de implementar ya que deben realizarse desde la perspectiva del usuario y muchas veces las interfaces de usuario cambian constantemente.&lt;/p&gt;
