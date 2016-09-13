@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Continuous Integration on Blog de Making Devs</title>
+    <link>http://replace-this-with-your-hugo-site.com/categories/continuous-integration/</link>
+    <description>Recent content in Continuous Integration on Blog de Making Devs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 06 Nov 2014 19:08:56 -0500</lastBuildDate>
+    <atom:link href="http://replace-this-with-your-hugo-site.com/categories/continuous-integration/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Personalizar notificaciones de correo en Jenkins</title>
+      <link>http://replace-this-with-your-hugo-site.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins</link>
+      <pubDate>Thu, 06 Nov 2014 19:08:56 -0500</pubDate>
+      
+      <guid>http://replace-this-with-your-hugo-site.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins</guid>
+      <description>&lt;p&gt;Las &lt;strong&gt;notificaciones&lt;/strong&gt; son básicas para la correcta comunicación de los involucrados de nuestros proyectos como: &lt;em&gt;Stakeholders/ Key Users / Developers / Clientes / Testers&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Por esta razón te recomiendo personalizar las notificaciones por defecto de &lt;strong&gt;Jenkins&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Objetivo: Informar los despliegues desde Jenkins por correo, usando el &lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Email-ext+plugin&#34;&gt;plugin: Email-ext&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Procedimiento:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Instalar el plugin desde la consola de administración de Jenkins. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_01.jpg&#34; alt=&#34;Screenshot 1&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Configurar la cuenta de correo saliente SMTP, te recomiendo que uses el autenticado.&lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_02.jpg&#34; alt=&#34;Screenshot 2&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Configurar el plugin: Email-ext con información base de los usuarios a notificar ( &lt;em&gt;Stake Holders/ Key Users / Developers / Clientes / Testers&lt;/em&gt; ) en las listas por DEFAULT de la configuración general a nivel. Esto te permitirá contar con la misma configuración para tus N tareas de despliegue. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_03.jpg&#34; alt=&#34;Screenshot 3&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Para personalizar el correo que se enviará, copiaremos un&lt;strong&gt;Template&lt;/strong&gt; dentro del Home de Jenkins, &lt;em&gt;static-analysis.jelly&lt;/em&gt; y asignando nombre relacionado al proyecto. Si requieres más información, consulta la &lt;a href=&#34;https://github.com/jenkinsci/email-ext-plugin/tree/master/src/main/resources/hudson/plugins/emailext/templates&#34;&gt;documentación del plugin en GitHub&lt;/a&gt;. Este template es un &lt;strong&gt;HTML el cual puedes editar su contenido&lt;/strong&gt;, incluyendo titulo del proyecto, una imagen, etc. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_04.jpg&#34; alt=&#34;Screenshot 4&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Añade en una tarea de Jenkins, un paso al finalizar, usando Email notification. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_05.jpg&#34; alt=&#34;Screenshot 5&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Ejecuta tu tarea y verifica el correo recibido. &lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/IC-Jenkins-PlugIn-Email-Ext_06.jpg&#34; alt=&#34;Screenshot 6&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

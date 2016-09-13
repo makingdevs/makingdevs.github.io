@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Phoenix on Blog de Making Devs</title>
+    <link>http://replace-this-with-your-hugo-site.com/categories/phoenix/</link>
+    <description>Recent content in Phoenix on Blog de Making Devs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Mar 2016 20:08:09 -0600</lastBuildDate>
+    <atom:link href="http://replace-this-with-your-hugo-site.com/categories/phoenix/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Add complete bootstrap to Phoenix</title>
+      <link>http://replace-this-with-your-hugo-site.com/2016/03/24/add-complete-bootstrap-to-phoenix</link>
+      <pubDate>Thu, 24 Mar 2016 20:08:09 -0600</pubDate>
+      
+      <guid>http://replace-this-with-your-hugo-site.com/2016/03/24/add-complete-bootstrap-to-phoenix</guid>
+      <description>&lt;p&gt;It has been a while since I make a post and this is my first post in English so be gentle with me :P&lt;/p&gt;
+
+&lt;p&gt;Since a couple of months I been working in a language called &lt;a href=&#34;http://elixir-lang.org/&#34;&gt;elixir&lt;/a&gt; and with his web framework &lt;a href=&#34;http://www.phoenixframework.org/&#34;&gt;phoenix&lt;/a&gt;, I have had a lot of fun with these elements. But sometimes I been struggling with configurations that should be easy maybe I don&amp;rsquo;t read that carefully or maybe I&amp;rsquo;m a knucklehead, but whatever the reasone is, I hope this configuration works for you and give you a little help of how configure your Javascripts third parties for your Phoenix application.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;When you create a new application with phoenix you will notice (when you start the server) that actually &lt;code&gt;phoenix&lt;/code&gt; have &lt;a href=&#34;http://getbootstrap.com/&#34;&gt;bootstrap&lt;/a&gt; but that is not true at all, if you want to add a &lt;code&gt;dropdown&lt;/code&gt; or something more sophisticated like a &lt;code&gt;dialog&lt;/code&gt; or a &lt;code&gt;carousel&lt;/code&gt; you will find that there is no &lt;code&gt;javascript&lt;/code&gt; and the only thing that you have is the &lt;code&gt;stylesheet&lt;/code&gt; so in order to add the complete &lt;code&gt;bootstrap&lt;/code&gt; you need a couple steps before.&lt;/p&gt;
+
+&lt;p&gt;Well let&amp;rsquo;s get started with this thing:&lt;/p&gt;
+
+&lt;p&gt;In order to manage all the libraries that you need to work with it is recommended to install &lt;a href=&#34;http://bower.io/&#34;&gt;bower&lt;/a&gt;. Actually &lt;code&gt;phoenix&lt;/code&gt; in his &lt;a href=&#34;http://www.phoenixframework.org/docs/static-assets&#34;&gt;Static Assets&lt;/a&gt; page encourage you to do it.&lt;/p&gt;
+
+&lt;p&gt;So we are going to follow this path and add bootstrap with &lt;code&gt;bower&lt;/code&gt; but first we are going to create the &lt;code&gt;bower.json&lt;/code&gt; file for storing our dependencies:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;bower init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then we are going to create a file named &lt;code&gt;.bowerrc&lt;/code&gt; with this file we are going to tell to &lt;code&gt;bower&lt;/code&gt; where are going to need to put all the &lt;code&gt;javascripts&lt;/code&gt; that we need it from now on. In this file we are going to put the next instruction:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;{
+  &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;directory&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;web/static/vendor&amp;quot;&lt;/span&gt;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now is the time to install &lt;code&gt;bootstrap&lt;/code&gt; and for that we need to run the following instruction in your shell:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;bower install -S bootstrap
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now that we have &lt;code&gt;bootstrap&lt;/code&gt; if you check your &lt;code&gt;vendor&lt;/code&gt; directory you will see that there is not only &lt;code&gt;bootstrap&lt;/code&gt;, it is also &lt;code&gt;jquery&lt;/code&gt; (because is a dependency for &lt;code&gt;bootstrap&lt;/code&gt;), if have not heard of &lt;code&gt;bower&lt;/code&gt; before I recommend you to look for other proyects it will save you a lot of time and space in your repository.&lt;/p&gt;
+
+&lt;p&gt;Well at this moment, if you run your &lt;code&gt;phoenix.server&lt;/code&gt; you will find a couple of errors, so lets fix that:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Let&amp;rsquo;s remove the &lt;code&gt;bootstrap css&lt;/code&gt; that &lt;code&gt;phoenix&lt;/code&gt; ships with. For this open your &lt;code&gt;web/static/css/app.css&lt;/code&gt; and remove the first 6 lines of code of the file.&lt;/li&gt;
+&lt;li&gt;Then open your &lt;code&gt;brunch-config.js&lt;/code&gt; and in the &lt;code&gt;conventions&lt;/code&gt; section add the following:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;   conventions&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+     assets&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #BB6688&#34;&gt;/^(web\/static\/assets)/&lt;/span&gt;,
+     ignored&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; [
+       &lt;span style=&#34;color: #BB6688&#34;&gt;/^(web\/static\/vendor\/bootstrap\/)(?!.*min.(js|css)$)/&lt;/span&gt;,
+       &lt;span style=&#34;color: #BB6688&#34;&gt;/^(web\/static\/vendor\/jquery\/)(?!.*min.js)/&lt;/span&gt;
+     ]
+   }
+   
+&lt;/pre&gt;&lt;/div&gt;
+
+3. After that you will need to load &lt;code&gt;jquery&lt;/code&gt; and &lt;code&gt;bootstrap&lt;/code&gt; in order, i.e. First &lt;code&gt;jquery&lt;/code&gt; and then &lt;code&gt;bootstrap&lt;/code&gt;. This is because &lt;code&gt;brunch&lt;/code&gt; will merge all js in alphabetical order and we require that &lt;code&gt;jquery&lt;/code&gt; loads first. For this we move to the &lt;code&gt;joinTo&lt;/code&gt; in the &lt;code&gt;files&lt;/code&gt; section and add the next lines:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;   files&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+     javascripts&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+       joinTo&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;js/app.js&amp;quot;&lt;/span&gt;,
+       order&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+         before&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; [
+           &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;web/static/vendor/jquery/dist/jquery.min.js&amp;quot;&lt;/span&gt;,
+           &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;web/static/vendor/bootstrap/dist/js/bootstrap.js&amp;quot;&lt;/span&gt;
+         ]
+       }
+     },
+   ... more code ...
+   
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After this you can open the main layout of your application and put the next code:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;div&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class=&amp;quot;dropdown&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;button&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class=&amp;quot;btn btn-default dropdown-toggle&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;type=&amp;quot;button&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;id=&amp;quot;dropdownMenu1&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;data-toggle=&amp;quot;dropdown&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;aria-haspopup=&amp;quot;true&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;aria-expanded=&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;
+    Dropdown
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;span&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class=&amp;quot;caret&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;ul&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class=&amp;quot;dropdown-menu&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;aria-labelledby=&amp;quot;dropdownMenu1&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href=&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;Action&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href=&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;Another action&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href=&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;Something else here&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;li&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;role=&amp;quot;separator&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class=&amp;quot;divider&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href=&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;Separated link&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And this is going to work as expected. Now you can make use of everything that &lt;code&gt;boostrap&lt;/code&gt; have.&lt;/p&gt;
+
+&lt;p&gt;Oh! I forgot for copying the fonts and icons that &lt;code&gt;bootstrap&lt;/code&gt; have you need to use a tool called &lt;code&gt;assetsmanager-brunch&lt;/code&gt; this is for manage assets that are not minify or uglify like images or fonts. For this we need to do:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install &lt;code&gt;assetsmanager-brunch&lt;/code&gt; with &lt;code&gt;npm&lt;/code&gt; help. Run the following &lt;code&gt;npm install --save assetsmanager-brunch&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Then in the &lt;code&gt;plugins&lt;/code&gt; section add the following code:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;   assetsmanager&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+       copyTo&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+         &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;web/static/vendor/bootstrap/dist/fonts&amp;#39;&lt;/span&gt;]
+       }
+   }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That&amp;rsquo;s all folks! At least for this post I hope you enjoy and Good Luck, Have Fun!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

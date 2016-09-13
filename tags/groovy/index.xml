@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Groovy on Blog de Making Devs</title>
+    <link>http://replace-this-with-your-hugo-site.com/tags/groovy/</link>
+    <description>Recent content in Groovy on Blog de Making Devs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Jul 2016 22:53:27 -0500</lastBuildDate>
+    <atom:link href="http://replace-this-with-your-hugo-site.com/tags/groovy/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Uso de camara en android</title>
+      <link>http://replace-this-with-your-hugo-site.com/2016/07/20/uso-de-camara-en-android</link>
+      <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
+      
+      <guid>http://replace-this-with-your-hugo-site.com/2016/07/20/uso-de-camara-en-android</guid>
+      <description>
+
+&lt;p&gt;Android se enfoca al desarrollo móvil, como es de esperarse cuenta con las herramientas necesarias para hacer uso del hardware, en esta ocasión se mostrará cómo usar la cámara en un Activity. Adicionalmente, el ejemplo está hecho en Groovy, puedes leer más al respecto en el post anterior.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&#34;intent-en-android&#34;&gt;Intent en android&lt;/h2&gt;
+
+&lt;p&gt;Para poder hacer uso de la cámara se realiza mediante intent, que son el mecanismo por el cual se comunica la aplicación en tiempo de ejecución con otros componentes, así como lanzar eventos, se cuenta con dos tipos los cuales son:
+&lt;strong&gt;Intento implícito&lt;/strong&gt;
+Se puede iniciar una actividad en otra aplicación en el dispositivo
+&lt;strong&gt;Intento explicito&lt;/strong&gt;
+Se especifica la clase de la actividad a empezar para que el sistema operativo la inicie&lt;/p&gt;
+
+&lt;h2 id=&#34;acceso-a-la-cámara&#34;&gt;Acceso a la cámara&lt;/h2&gt;
+
+&lt;p&gt;Android cuenta con la clase &lt;strong&gt;MediaStore&lt;/strong&gt;, esta se encarga de proveer los medios de comunicación, el que nos interesa es &lt;strong&gt;ACTION_IMAGE_CAPTURE&lt;/strong&gt;, este en el intent con el cual podemos hacer uso de la cámara.
+El siguiente metodo muestra como usar la camara nativa de Android, la clase que se encarga de usarlo es &lt;strong&gt;ExampleCamera&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;	&lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;launchCamera&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+		Intent camera &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; Intent&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;MediaStore&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;ACTION_IMAGE_CAPTURE&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;camera&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;resolveActivity&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;getPackageManager&lt;span style=&#34;color: #666666&#34;&gt;()))&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+			&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;try&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+				filePhoto &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; createPhoto&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;IMG_&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+				&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;catch&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;IOException ex&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+					Log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;d&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;TAG&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Error ${ex.message}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+				&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+				&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;filePhoto&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+					camera&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;putExtra&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;MediaStore&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;EXTRA_OUTPUT&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Uri&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;fromFile&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;filePhoto&lt;span style=&#34;color: #666666&#34;&gt;))&lt;/span&gt;
+					startActivityForResult&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;camera&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; CAPTURE_IMAGE&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+			&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+		&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+	&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;almacenamiento-externo&#34;&gt;Almacenamiento externo&lt;/h2&gt;
+
+&lt;p&gt;Al capturar una foto, esta debe ser almacenada para poder ser usada posteriormente, Android provee una unidad principal para ello, la cual puede ser su almacenamiento interno o una memoria SD.&lt;/p&gt;
+
+&lt;p&gt;Para acceder a ese directorio, Android cuenta con una clase llamada &lt;strong&gt;Environment&lt;/strong&gt;, el método que regresa el directorio de almacenamiento común/externo es &lt;strong&gt;getExternalStoragePublicDirectory(…)&lt;/strong&gt;, el tipo de archivo son imágenes por lo cual el parámetro para este caso será &lt;strong&gt;Environment.DIRECTORY_PICTURES&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;El método &lt;strong&gt;createPhoto(&amp;hellip;)&lt;/strong&gt; se encarga de crear un directorio denominado &lt;strong&gt;ExampleCamera&lt;/strong&gt; dentro de &lt;strong&gt;PICTURES&lt;/strong&gt;, además de generar el archivo para cada foto, un dato interesante es que no se realizó el import de la clase &lt;strong&gt;File&lt;/strong&gt;, la razón es que al usar &lt;strong&gt;groovy&lt;/strong&gt;, ciertos paquetes vienen incluidos por default.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;	File &lt;span style=&#34;color: #00A000&#34;&gt;createPhoto&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;String name&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+		File storagePhotos &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; File&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Environment&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getExternalStoragePublicDirectory&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Environment&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;DIRECTORY_PICTURES&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;),&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;ExampleCamera&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(!&lt;/span&gt;storagePhotos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;exists&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+			&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(!&lt;/span&gt;storagePhotos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;mkdirs&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+				Log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;d&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;TAG&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Error al crear directorio&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+			&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+		&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;File&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;storagePhotos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getPath&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; File&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;separator&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;${name + new Date().format(&amp;quot;&lt;/span&gt;ddMMyyyy_HHmmss&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;)}.jpg&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+	&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;manipular-el-resultado-de-la-cámara&#34;&gt;Manipular el resultado de la cámara&lt;/h2&gt;
+
+&lt;p&gt;Cuando se captura la foto, una vez que termina se maneja el resultado con el método onActivityResult(…), donde se verifica el estatus de la captura de la foto, ya sea que se culminó o cancelado, ante lo cual se muestra un mensaje emergente haciendo uso de los &lt;strong&gt;Toast&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;	&lt;span style=&#34;color: #AA22FF&#34;&gt;@Override&lt;/span&gt;
+	&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;protected&lt;/span&gt; &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;onActivityResult&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;int&lt;/span&gt; requestCode&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;int&lt;/span&gt; resultCode&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Intent data&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;super&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;onActivityResult&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;requestCode&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; resultCode&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; data&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;requestCode &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; CAPTURE_IMAGE&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+			&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;resultCode &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; RESULT_OK&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+				Toast&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makeText&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;getApplicationContext&lt;span style=&#34;color: #666666&#34;&gt;(),&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Exito al crear la foto&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Toast&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;LENGTH_SHORT&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;show&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+			&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;resultCode &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; RESULT_CANCELED&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+				Toast&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makeText&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Se cancelo la foto&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Toast&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;LENGTH_LONG&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;show&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+			&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+				Toast&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makeText&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Error al capturar la foto&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Toast&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;LENGTH_LONG&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;show&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+			&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+		&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+	&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;permisos-de-android&#34;&gt;Permisos de Android&lt;/h2&gt;
+
+&lt;p&gt;A la hora de manejar el hardware se debe de pedir ciertos permisos como son el escribir y leer en la memoria externa, así como usar la cámara, para esto se usa la etiqueta &lt;code&gt;&amp;lt;uses-permission&amp;gt;&lt;/code&gt; donde se coloca que permiso es solicitado.
+&lt;code&gt;&amp;lt;uses-feature android:name=&amp;quot;android.hardware.camera&amp;quot; android:required=&amp;quot;true&amp;quot; /&amp;gt;&lt;/code&gt;
+&lt;code&gt;&amp;lt;uses-permission android:name=&amp;quot;android.permission.WRITE_EXTERNAL_STORAGE&amp;quot;/&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;imports-default-groovy&#34;&gt;Imports default groovy&lt;/h2&gt;
+
+&lt;p&gt;Groovy realiza el import de los paquetes más usados, para reducir el código.
+&lt;code&gt;import java.lang.*&lt;/code&gt;
+&lt;code&gt;import java.util.*&lt;/code&gt;
+&lt;code&gt;import java.io.*&lt;/code&gt;
+&lt;code&gt;import java.net.*&lt;/code&gt;
+&lt;code&gt;import groovy.lang.*&lt;/code&gt;
+&lt;code&gt;import groovy.util.*&lt;/code&gt;
+&lt;code&gt;import java.math.BigInteger&lt;/code&gt;
+&lt;code&gt;import java.math.BigDecimal&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Pueden encontrar el código completo &lt;a href=&#34;https://github.com/reyes271292/camera_android&#34;&gt;&lt;em&gt;aquí&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Making Android con Groovy(otra vez)</title>
+      <link>http://replace-this-with-your-hugo-site.com/2016/07/19/making-android-con-groovyotra-vez</link>
+      <pubDate>Tue, 19 Jul 2016 19:12:30 -0500</pubDate>
+      
+      <guid>http://replace-this-with-your-hugo-site.com/2016/07/19/making-android-con-groovyotra-vez</guid>
+      <description>
+
+&lt;p&gt;En las vísperas de la fecha en la que escribo este post, habíamos decidido entrar más de lleno con Android dentro del equipo de desarrollo, sin embargo, la convicción fue como siempre hacerlo de forma diferente, o por lo menos algo diferente con respecto a una industria que parecía siempre hacer lo mismo con lo mismo.&lt;/p&gt;
+
+&lt;p&gt;Es por ello que me gustaría escribirles al respecto de la experiencia que tuvimos usando Groovy en un proyecto Android, sé de antemano que la atención y los reflectores se encuentran en otros lenguajes, sin embargo, a nosotros nos ayudo muchísimo la  la experiencia que teníamos con el lenguaje pero usándolo en otro contexto muy distinto, y aunque no escribiremos todo lo que hicimos en este post, si les comentaremos en algunos más que fue lo que hicimos y como nos beneficiamos.&lt;/p&gt;
+
+&lt;p&gt;Explicarles como agregamos el plugin de Groovy dentro de un proyecto Android está de más, pueden consultarlo directamente en su &lt;a href=&#34;https://github.com/groovy/groovy-android-gradle-plugin&#34;&gt;repositorio de GitHub&lt;/a&gt;. Lo que me gustaría mencionar es que ya está en una versión estable y confiable como para usarse.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&#34;la-estructura-de-un-proyecto&#34;&gt;La estructura de un proyecto&lt;/h2&gt;
+
+&lt;p&gt;Al igual que un proyecto Android(Java), hay mucha similaridad integrando Groovy:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-plain&#34;&gt;▾ app/
+  ▾ src/
+    ▾ main/
+      ▾ groovy/com/makingdevs/mybarista/
+        ▾ common/
+            CamaraUtil.groovy
+            ImageUtil.groovy
+            LocationUtil.groovy
+            SingleFragmentActivity.groovy
+            WithFragment.groovy
+        ▾ database/
+        ▾ model/
+          ▸ command/
+          ▸ repository/
+            Comment.groovy
+            GPSLocation.groovy
+            S3Asset.groovy
+            User.groovy
+        ▾ network/
+          ▾ impl/
+              RetrofitTemplate.groovy
+            FoursquareRestOperations.groovy
+            S3AssetRestOperations.groovy
+            UserRestOperations.groovy
+        ▾ service/
+            CommentManager.groovy
+            CommentManagerImpl.groovy
+            FoursquareManager.groovy
+            FoursquareManagerImpl.groovy
+            S3assetManager.groovy
+            S3assetManagerImpl.groovy
+        ▾ ui/
+          ▾ activity/
+              PrincipalActivity.groovy
+          ▾ adapter/
+              CommentAdapter.groovy
+              UserAdapter.groovy
+          ▾ fragment/
+              CameraFragment.groovy
+              CommentsFragment.groovy
+        ▾ view/
+            CustomFontTextView.groovy
+      ▸ res/
+    app.iml
+    proguard-rules.pro
+▾ fastlane/
+    Appfile
+    Fastfile
+  android_app.iml
+  Gemfile
+  Gemfile.lock
+  gradle.properties
+  gradlew*
+  gradlew.bat
+  local.properties
+  README.md
+  settings.gradle
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;los-modelos&#34;&gt;Los modelos&lt;/h2&gt;
+
+&lt;p&gt;La ventaja de los POGOS de Groovy se siente al declarar o instanciar algún objeto de dominio:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;groovy.transform.CompileStatic&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF&#34;&gt;@CompileStatic&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;User&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    String id
+    String username
+    String token
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ahora instanciamos nuestra clase en cualquier parte:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;User &lt;span style=&#34;color: #00A000&#34;&gt;getUserSession&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Context context&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    SharedPreferences session &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; context&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getSharedPreferences&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;UserSession&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;Context&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;MODE_PRIVATE&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    String username &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; session&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getString&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;);&lt;/span&gt;
+    String token &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; session&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getString&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;token&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    String id &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; session&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getString&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;User&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;username:&lt;/span&gt;username&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;token:&lt;/span&gt;token&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;id:&lt;/span&gt;id&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;La nota &lt;strong&gt;importante&lt;/strong&gt; aquí es la forma de la instanciación y que no hay palabra reservada &lt;code&gt;return&lt;/code&gt;, al igual que la declaración del método como &lt;code&gt;public&lt;/code&gt; no es necesaria. Además de que puedes llamar de forma abreviada a sus atributos.&lt;/p&gt;
+
+&lt;h2 id=&#34;staticcompile&#34;&gt;&lt;code&gt;@StaticCompile&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Groovy es un lenguaje de tipado dinámico opcional&lt;/strong&gt;, lo cuál significa que podemos beneficiarnos de ciertos elementos del lenguaje y estar seguros de que compilará correctamente; esta anotación hace al compilador mas estricto, con la ventaja de optimizar el código de byte dando como resultado una mejor ejecución. Los desarrolladores recomiendan el uso intenso de esta anotación en todas las clases dentro del proyecto Android:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;android.content.Context&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;android.content.Intent&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;android.support.v4.app.Fragment&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;com.makingdevs.app.common.SingleFragmentActivity&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;com.makingdevs.app.ui.fragment.RegistrationFragment&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;groovy.transform.CompileStatic&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF&#34;&gt;@CompileStatic&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;RegistrationActivity&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;extends&lt;/span&gt; SingleFragmentActivity&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; Intent &lt;span style=&#34;color: #00A000&#34;&gt;newIntentWithContext&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Context context&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt;
+        Intent intent &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; Intent&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;context&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; RegistrationActivity&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+        intent
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;@Override&lt;/span&gt;
+    Fragment &lt;span style=&#34;color: #00A000&#34;&gt;createFragment&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;RegistrationFragment&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Realmente este es un tema que se puede extender un poco más, pero iniciando con esto es suficiente.&lt;/p&gt;
+
+&lt;h2 id=&#34;los-closures&#34;&gt;Los closures&lt;/h2&gt;
+
+&lt;p&gt;Para quién ya ha programado en Groovy conocerá que los closures son un elemento fundamental, para quiénes no, podrán compararlos con las lambdas de Java 8 o simplemente como lo que son: closures.&lt;/p&gt;
+
+&lt;p&gt;La forma general del closure en Groovy es:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; p1&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;p2&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;p3&lt;span style=&#34;color: #666666&#34;&gt;...&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; body &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y creo que es de las partes de las que más podemos comentar, incluso creo que cada beneficio particular que nos da Groovy con los closures lo podremos comentar en un post por separado.&lt;/p&gt;
+
+&lt;h3 id=&#34;implementando-interfaces-con-closures&#34;&gt;Implementando interfaces con Closures&lt;/h3&gt;
+
+&lt;p&gt;El evento más solicitado dentro de una app Android es el &lt;em&gt;click&lt;/em&gt; de un componente, con un closure podemos tratarlo:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;@CompileStatic&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;SomeFragment&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;extends&lt;/span&gt; Fragment &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+
+    FloatingActionButton mButtonGoChekin
+
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// ...more code...&lt;/span&gt;
+
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;@Override&lt;/span&gt;
+    View &lt;span style=&#34;color: #00A000&#34;&gt;onCreateView&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;LayoutInflater inflater&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;
+                      &lt;span style=&#34;color: #AA22FF&#34;&gt;@Nullable&lt;/span&gt; ViewGroup container&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;@Nullable&lt;/span&gt; Bundle savedInstanceState&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+
+        mButtonGoChekin&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;FloatingActionButton&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; root&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;findViewById&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;R&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;button_go_chekin&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+        mButtonGoChekin&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;onClickListener&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+            Intent intent &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; AnotherActivity&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;newIntentWithContext&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;getContext&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt;
+            startActivity&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;intent&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ahora aquí una de las que más me gusta en conjunto con otra anotación de Groovy &lt;code&gt;@Singleton&lt;/code&gt;, de la cual hablaremos en otro post.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;@Singleton&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF&#34;&gt;@CompileStatic&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;RetrofitTemplate&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+
+    Retrofit retrofit &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; Retrofit&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Builder&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+            &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;addConverterFactory&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;GsonConverterFactory&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;create&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt;
+            &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;baseUrl&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;BuildConfig&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;API_SERVER_URL&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+            &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;build&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+
+    &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;withRetrofit&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Class operations&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Closure onSuccess&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Closure onError&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Closure action&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt;
+        CustomRestOperations restOperations &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; retrofit&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;create&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;operations&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;as&lt;/span&gt; CustomRestOperations
+        Call&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Checkin&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; model &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; action&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;restOperations&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;as&lt;/span&gt; Call&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Checkin&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; callback &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;
+                onResponse &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;onSuccess&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;
+                onFailure &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; onError
+        &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+        model&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;enqueue&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;callback &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;as&lt;/span&gt; Callback&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Checkin&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;)&lt;/span&gt;
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Podemos hacer que un mapa se comporte como la implementación de una interfaz&lt;/strong&gt;, es sólo cuestión de usar los closures correctamente. Y también podemos ejecutar closures para mandarles parámetros listos para usarse en otros contextos.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Si bien, Groovy agrega peso a las aplicaciones Android, creo que cada byte y cada línea vale todo lo que no tuvimos que codificar, la fluidez en el teclado y la productividad ganada.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Uso de logback</title>
+      <link>http://replace-this-with-your-hugo-site.com/2016/03/28/uso-de-logback</link>
+      <pubDate>Mon, 28 Mar 2016 09:13:56 -0600</pubDate>
+      
+      <guid>http://replace-this-with-your-hugo-site.com/2016/03/28/uso-de-logback</guid>
+      <description>
+
+&lt;p&gt;En el proceso de desarrollo de software se implementan bitácoras o mejor conocidas como &lt;em&gt;loggers&lt;/em&gt; que permiten tener información de salida útil al desarrollador en cuanto al correcto flujo de la aplicación.&lt;/p&gt;
+
+&lt;p&gt;Este registro se divide en secciones: Logger, Formatter y Handler.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Logger&lt;/em&gt;: Es el responsable de captar el mensaje y pasarlo al marco de registro.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Formatter&lt;/em&gt;: Su función es dar formato a la salida. toma el objeto binario y realiza la conversión a una representación de cadena&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Appender&lt;/em&gt; o &lt;em&gt;Handler&lt;/em&gt;: Se le entrega el mensaje con formato al Appender, el cual puede ser visualizado en diferentes formas como son: consola, archivo, base de datos, servicios de mensajería, escribir en un socket.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Existen ciertos niveles de logger para diferenciar el tipo de salida que queremos generar:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;Nivel&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Descripción&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;FATAL&lt;/td&gt;
+&lt;td&gt;Errores graves que causan la terminación prematura&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ERROR&lt;/td&gt;
+&lt;td&gt;Otros errores de ejecución o condiciones inesperadas&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;WARNING&lt;/td&gt;
+&lt;td&gt;Se utiliza para situaciones que podrían ser potencialmente dañinas&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;INFO&lt;/td&gt;
+&lt;td&gt;Eventos interesantes de tiempo de ejecución (inicio / apagado)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DEBUG&lt;/td&gt;
+&lt;td&gt;Información detallada sobre el flujo a través del sistema&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;TRACE&lt;/td&gt;
+&lt;td&gt;Información más detallada&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;#Logback
+Este logger pretende ser el sucesor de log4j, fue diseñado por Ceki Gülcü, fundador de log4j&amp;rsquo;s.
+Para poder usar este logger, se requiere del módulo logback.
+Una configuración del archivo gradle queda de la siguiente manera:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;groovy&amp;#39;&lt;/span&gt;
+
+repositories&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  jcenter&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+dependencies&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  compile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.codehaus.groovy:groovy-all:2.4.4&amp;#39;&lt;/span&gt;
+  compile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;ch.qos.logback:logback-classic:1.1.6&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;El archivo groovy que se estará manejando para obtener la bitácora será &lt;em&gt;logback.groovy&lt;/em&gt; el cual contiene el patrón de salida del logger además de especificar donde se mostrara dicha información.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;static&lt;/span&gt; ch&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;qos&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;logback&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;classic&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Level&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;INFO&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;static&lt;/span&gt; ch&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;qos&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;logback&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;classic&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Level&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;DEBUG&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;ch.qos.logback.classic.encoder.PatternLayoutEncoder&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;ch.qos.logback.core.ConsoleAppender&lt;/span&gt;
+
+&lt;span style=&#34;color: #00A000&#34;&gt;appender&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;CONSOLE&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; ConsoleAppender&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  encoder&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;PatternLayoutEncoder&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    pattern &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;%d{HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n&amp;quot;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+appender&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;FILE&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; FileAppender&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  file &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;example_logger.log&amp;quot;&lt;/span&gt;
+  append &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;true&lt;/span&gt;
+  encoder&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;PatternLayoutEncoder&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    pattern &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;%d{HH:mm:ss.SSS} %-5level %logger{30} %msg %n&amp;quot;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+root&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;DEBUG&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;CONSOLE&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;FILE&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ahora el archivo se crea una instancia de la clase Logger. Además de contar con el nivel del logger, respetando la configuración que se hizo en el archivo logback.groovy.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.slf4j.Logger&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.slf4j.LoggerFactory&lt;/span&gt;
+
+Logger log &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; LoggerFactory&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getLogger&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;getClass&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt;
+
+log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;debug&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;*&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;*40&lt;/span&gt;
+log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;debug&lt;/span&gt; request&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;properties&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;toString&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;error&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Error&amp;quot;&lt;/span&gt;
+log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;warn&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Warning&amp;quot;&lt;/span&gt;
+log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;info&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Info&amp;quot;&lt;/span&gt;
+log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;trace&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Trace&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Un ejemplo de como se vería:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/logback.png&#34; alt=&#34;logback&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;acerca-del-patrón-de-salida&#34;&gt;Acerca del patrón de salida&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;%d{HH:mm:ss.SSS}&lt;/code&gt; Es la hora que se realizo el proceso&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[%thread]&lt;/code&gt; Indica el thread que inicio la tarea&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%highlight(%-5level)&lt;/code&gt; Brinda el color acorde al nivel de logger que se esta usando&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%cyan(%logger{15})&lt;/code&gt; Muestra el nombre de la clase que esta tomando el logger, en color azul&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%msg&lt;/code&gt; Muestra el msn que se manda acorde al nivel que se esta llamando&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%n&lt;/code&gt; Indica el final de la línea&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pueden encontrar el código de ejemplo &lt;a href=&#34;https://github.com/reyes271292/logger_logback&#34;&gt;&lt;em&gt;aquí&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MicroServicios con Groovy</title>
+      <link>http://replace-this-with-your-hugo-site.com/2016/03/08/microservicios-con-groovy</link>
+      <pubDate>Tue, 08 Mar 2016 21:38:08 -0600</pubDate>
+      
+      <guid>http://replace-this-with-your-hugo-site.com/2016/03/08/microservicios-con-groovy</guid>
+      <description>&lt;p&gt;Si bien, existen muchas tecnologías muy completas que permiten la creación de servicios robustos, a veces me he visto en la necesidad de hacer algo pequeño. muy concreto pero mantenible, y que pueda soportar un volumen determinado. Es por esto que me he apoyado del poder que ofrece Groovy con ayuda de los &lt;a href=&#34;http://docs.groovy-lang.org/latest/html/api/groovy/servlet/GroovyServlet.html&#34;&gt;Groovlets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;La parte que me gusta de este acercamiento es que el poder del Scripting se pasa al navegador, o en este caso, a un cliente que consume algún servicio web. Cuando usamos &lt;em&gt;Groovlets&lt;/em&gt; tenemos disponible lo sisguiente:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;request&lt;/em&gt; - &lt;code&gt;HttpServletRequest&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;response&lt;/em&gt; - &lt;code&gt;HttpServletResponse&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;application&lt;/em&gt; - &lt;code&gt;ServletContext&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;session&lt;/em&gt; - &lt;code&gt;HttpSession&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;out&lt;/em&gt; - &lt;code&gt;PrintWriter&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;headers&lt;/em&gt; - &lt;code&gt;Header[]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;params&lt;/em&gt; - Un objeto tipo &lt;code&gt;Map&lt;/code&gt; que contiene los parámetros&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Ahora bien, que la configuración XML si es el caso es muy sencilla y sólo tenemos que agregar el Servlet de Groovy y hacer el mapeo.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;Groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet-class&amp;gt;&lt;/span&gt;groovy.servlet.GroovyServlet&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet-class&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet-mapping&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;Groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;*.groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;*.gdo&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet-mapping&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Nota: Que el mapeo no necesariamente es estricto con la extensión, podemos usar la que querramos.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Y aunque la implementación que muestro no sería la más &lt;em&gt;adecuada&lt;/em&gt;, sirve de ejemplo para mostrar en pocas líneas la mayoría de los elementos antes mencionado:&lt;/p&gt;
+
+&lt;p&gt;Me apoyo de un par de clases que &lt;em&gt;modelan&lt;/em&gt; un almacén de datos.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;todos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Todo&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  String description
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF&#34;&gt;@Singleton&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Only one instance&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;TodoManager&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  List&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Todo&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; todos &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[]&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Podemos jugar con el reponse directamente para decirle que cualquier respuesta sería JSON:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;todos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+response&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;contentType&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;application/json&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+Buscar algún encabezado en particular para validar nuestra solicitud:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;todos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+&lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; contentType &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; headers&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;find&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; k&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;v &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; k&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;toLowerCase&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;content-type&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}?.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;value&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;contentType &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;application/json&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt;
+  response&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;status&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; HttpServletResponse&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;SC_BAD_REQUEST&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// We return a status code 400&lt;/span&gt;
+  &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Using the json method included&lt;/span&gt;
+  json&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;status:&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Please use &amp;#39;application/json&amp;#39; header, just received ${headers} instead&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// And nothing more...&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A partir de aquí podemos jugar con el método de envío y hacer algunas acciones, aquí una muestra muy simple:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;todos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+&lt;span style=&#34;color: #00A000&#34;&gt;switch&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;request&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;toLowerCase&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()){&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Validating the method&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;get&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;
+    json&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;todos:&lt;/span&gt;TodoManager&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;instance&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;todos&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Using the instance&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;break&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;post&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;
+    Todo todo &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; Todo&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;description:&lt;/span&gt;params&lt;span style=&#34;color: #666666&#34;&gt;?.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;todo&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;?:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;No description&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    TodoManager&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;instance&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;todos&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; todo
+    response&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;status&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; HttpServletResponse&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;SC_CREATED&lt;/span&gt;
+    json&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;todo:&lt;/span&gt;todo&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;break&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;default&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;
+    response&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;status&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; HttpServletResponse&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;SC_BAD_REQUEST&lt;/span&gt;
+    json&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;status:&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Method &amp;#39;${request.method.toLowerCase()}&amp;#39; not supported&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Puedes incluir estos tres últimos fragmentos en un archivo y todo funcionará sin problemas. Aunque, nuevamente no es la forma más adecuada, muestra muy bien el potencial del simple uso del Groovlet.&lt;/p&gt;
+
+&lt;p&gt;Al final podrías usar &lt;code&gt;@Grab&lt;/code&gt; para obtener las dependencias de &lt;em&gt;Jetty&lt;/em&gt; y levantar el contenedor en el mismo archivo.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusión&lt;/strong&gt;: En un par de líneas puedes conseguir un servicio pequeño, entendible y listo para pasarse a un proyecto de Gradle que permita estructurarlo mejor para irle creciendo.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pruebas funcionales con Geb y Spock</title>
+      <link>http://replace-this-with-your-hugo-site.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</link>
+      <pubDate>Mon, 07 Mar 2016 23:47:26 -0500</pubDate>
+      
+      <guid>http://replace-this-with-your-hugo-site.com/2016/03/07/pruebas-funcionales-con-geb-y-spock</guid>
+      <description>
+
+&lt;p&gt;Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario funcionen correctamente; son pruebas difíciles de implementar ya que deben realizarse desde la perspectiva del usuario y muchas veces las interfaces de usuario cambian constantemente.&lt;/p&gt;
+
+&lt;p&gt;Geb es una herramienta para escribir pruebas funcionales con Groovy que hace uso del &lt;a href=&#34;http://www.seleniumhq.org/projects/webdriver/&#34;&gt;&lt;em&gt;WebDriver de Selenium&lt;/em&gt;&lt;/a&gt; para la automatizacion del navegador y toma varias ideas de la biblioteca jQuery para la interacción con los elementos. Utiliza el patrón de diseño &lt;a href=&#34;http://martinfowler.com/bliki/PageObject.html&#34;&gt;&lt;em&gt;Page Object&lt;/em&gt;&lt;/a&gt; para mapear los elementos de las páginas en clases que representan cada una de las vistas.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&#34;configuración-de-gradle&#34;&gt;CONFIGURACIÓN DE GRADLE&lt;/h2&gt;
+
+&lt;p&gt;A continuación se muestra la implementación de una prueba funcional integrando Geb con el framework de pruebas Spock.&lt;/p&gt;
+
+&lt;p&gt;El primer paso es obtener las dependencias de Geb,Spock y el Selenium Driver para los diferentes navegadores. Para este ejemplo voy a utilizar Gradle para la ejecución de las pruebas y la administración de las dependencias.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;build&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;gradle&lt;/span&gt;
+apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;groovy&amp;quot;&lt;/span&gt;
+
+repositories&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  jcenter&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+ext&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  drivers &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;firefox&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;chrome&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+  groovyVersion &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;2.4.4&amp;quot;&lt;/span&gt;
+  spockGroovyVersion &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;2.4&amp;quot;&lt;/span&gt;
+  gebVersion &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;0.12.1&amp;quot;&lt;/span&gt;
+  seleniumVersion &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;2.44.0&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+dependencies&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  testCompile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org.codehaus.groovy:groovy-all:${groovyVersion}&amp;quot;&lt;/span&gt;
+  testCompile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org.gebish:geb-spock:${gebVersion}&lt;/span&gt;
+&lt;span style=&#34;color: #BB4444&#34;&gt;  testCompile &amp;quot;&lt;/span&gt;org&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;spockframework&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;spock&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;core:&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;1.0-&lt;/span&gt;groovy&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;$&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;spockGroovyVersion&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;
+
+&lt;span style=&#34;color: #BB4444&#34;&gt;  drivers.each{ driver -&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BB4444&#34;&gt;    testCompile &amp;quot;&lt;/span&gt;org&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;seleniumhq&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;selenium&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;selenium&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;$&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;driver&lt;span style=&#34;color: #666666&#34;&gt;}-&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;driver:&lt;/span&gt;$&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;seleniumVersion&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;&amp;quot;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Una vez que se definen las dependencias necesarias se crean las tareas para la ejecución de las pruebas en cada navegador que compone la lista.
+Geb permite realizar capturas de pantalla en cualquier punto del flujo de la aplicación que se está probando; para especificar el directorio donde se encontrarán estas imagenes se agrega la propiedad &amp;ldquo;geb.build.reportsDir&amp;rdquo; a las propiedades del sistema.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;drivers&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;each&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; driver &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt;
+  task &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;${driver}Test&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;type:&lt;/span&gt;Test&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt;
+    reports&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+      html&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;destination&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; reporting&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;file&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;$name/tests&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+    outputs&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;upToDateWhen&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;false&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+    systemProperty &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;geb.build.reportsDir&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;reporting&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;file&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;$name/geb&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    systemProperty &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;geb.env&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; driver
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para que la automatización del navegador sea posible con Chrome es necesario descargar la versión más reciente del &lt;a href=&#34;https://sites.google.com/a/chromium.org/chromedriver/downloads&#34;&gt;&lt;em&gt;WebDriver para Chrome&lt;/em&gt;&lt;/a&gt; y definir en la propiedad del sistema el valor del directorio donde se encuentra.
+Finalmente se sobreescribe la tarea de test para que dependa de las creadas anteriormente y todas las pruebas se ejecuten al ejecutar el comando &lt;code&gt;gradle test&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;chromeTest&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  systemProperty &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;webdriver.chrome.driver&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;${System.properties[&amp;quot;&lt;/span&gt;user&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;home&amp;quot;]}/.grails/chromedriver&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+test&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  dependsOn drivers&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;collect&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; driver &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; tasks&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;${driver}Test&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  enabled &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;false&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;configuración-de-geb&#34;&gt;CONFIGURACIÓN DE GEB&lt;/h2&gt;
+
+&lt;p&gt;Antes de comenzar a escribir las pruebas es necesario crear el archivo de configuración de Geb.
+Aquí se crean las instancias del driver para Chrome y Firefox.&lt;/p&gt;
+
+&lt;p&gt;El método &lt;strong&gt;waiting&lt;/strong&gt; es útil en aplicaciones que utilizan AJAX ya que espera por un elemento el tiempo definido en la configuración, en este caso el tiempo será de 2 segundos.&lt;/p&gt;
+
+&lt;p&gt;La propiedad &lt;strong&gt;baseUrl&lt;/strong&gt; indíca la dirección de la aplicación que será probada, para este ejemplo se probará un flujo del sitio de MakingDevs.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;GebConfig&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.openqa.selenium.chrome.ChromeDriver&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.openqa.selenium.firefox.FirefoxDriver&lt;/span&gt;
+
+waiting&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  timeout &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+environments&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+
+  chrome&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    driver &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+      &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; driverInstance &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; ChromeDriver&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+      driverInstance&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;manage&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;window&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;maximize&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+      driverInstance
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+  firefox&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    driver &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+      &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; driverInstance &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; FirefoxDriver&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+      driverInstance&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;manage&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;window&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;maximize&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+      driverInstance
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+baseUrl &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;http://makingdevs.com&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;page-objects&#34;&gt;PAGE OBJECTS&lt;/h2&gt;
+
+&lt;p&gt;Como se mencionó anteriormente, para la interacción con los elementos del sitio se deben crear clases que representen cada página de la aplicación. Estas clases se deben extender de la clase &lt;strong&gt;Page&lt;/strong&gt; y en ellas deben mapearse los componentes con los que se va a interactuar dentro del closure estático &lt;strong&gt;content&lt;/strong&gt;; los componentes pueden ser referenciados haciendo uso de los selectores que proporciona Geb y que son muy parecidos a los de la biblioteca jQuery.&lt;/p&gt;
+
+&lt;p&gt;Dentro de cada clase Page puede declararse la propiedad estática &lt;strong&gt;url&lt;/strong&gt; para que el navegador apunte a esa página cuando el método &lt;strong&gt;to()&lt;/strong&gt; sea utilizado.&lt;/p&gt;
+
+&lt;p&gt;El closure estático &lt;strong&gt;at&lt;/strong&gt; ayuda a determinar si el navegador se encuentra actualmente en esa página al comprobar que un elemento de la página cumpla con una condición.&lt;/p&gt;
+
+&lt;p&gt;Vamos a probar un flujo sencillo, en el cual el usuario consulta la información de un curso, para ello se necesitarán tres clases, MakingDevsHomePage, MakingDevsCoursesPage y MakingDevsCourseInfoPage:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;package&lt;/span&gt; com&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makingdevs&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;geb.*&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;MakingDevsHomePage&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;extends&lt;/span&gt; Page&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; at &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; title &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;. : MakingDevs - Welcome : .&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; content &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    coursesButton&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;to:&lt;/span&gt; MakingDevsCoursesPage&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt; $&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;ul.nav a&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,1)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;package&lt;/span&gt; com&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makingdevs&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;geb.*&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;MakingDevsCoursesPage&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;extends&lt;/span&gt; Page&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; url &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/training&amp;quot;&lt;/span&gt;
+
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; at &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    waitFor&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; $&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;.section-main-header&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+    $&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;.section-main-header&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;text&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Nuestro entrenamiento&amp;quot;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; content &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    groovyCoursesDiv&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; $&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;.span7&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,2).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;children&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;ul&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;package&lt;/span&gt; com&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makingdevs&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;pages&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;geb.*&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;CourseInfoPage&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;extends&lt;/span&gt; Page&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; at &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; waitFor&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; $&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;i.icon-terminal&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; content &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    postTitle&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; $&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;.post-title&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;integración-con-spock&#34;&gt;INTEGRACIÓN CON SPOCK&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://spockframework.github.io/spock/docs/1.0/introduction.html&#34;&gt;&lt;em&gt;Spock&lt;/em&gt;&lt;/a&gt; es un framework de pruebas y especificación que se caracteriza por su formato &lt;em&gt;Given-When-Then&lt;/em&gt; que hace las pruebas más descriptivas.&lt;/p&gt;
+
+&lt;p&gt;Al integrar Geb con Spock es posible definir que acciones que deben ocurrir al ejecutar la prueba funcional. Por ejemplo, en la primera prueba escrita en la siguiente clase se utiliza el método &lt;strong&gt;to&lt;/strong&gt; dentro del bloque &lt;em&gt;when&lt;/em&gt; para que el navegador se dirija a la página principal del sitio, una vez ahí se da click a un vínculo y finalmente se verifica que ese vínculo lleve a la página que muestra los cursos.&lt;/p&gt;
+
+&lt;p&gt;La segunda prueba muestra algo más interesante, ya que implementa un &lt;strong&gt;Data Table&lt;/strong&gt; de Spock para agrupar un conjunto de valores de entrada y salida separados por el símbolo &lt;strong&gt;|&lt;/strong&gt;; la prueba verifica que al ir a la url declarada en MakingDevsCoursesPage se busque con el método &lt;em&gt;find&lt;/em&gt; dentro de una sección referenciada por el selector groovyCoursesDiv el vínculo con un atributo href que comience con el valor declarado en la columna &lt;em&gt;_selectorUrl&lt;/em&gt; de la tabla para después hacer click en el elemento y finalmente comparar el texto del componente asociado al selector de postTitle con el del valor en la columna &lt;em&gt;_postTitle&lt;/em&gt;.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;package&lt;/span&gt; com&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makingdevs&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;geb.spock.GebReportingSpec&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;java.lang.Void&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;as&lt;/span&gt; Should
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;com.makingdevs.pages.*&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;MakingDevsSiteFunctionalSpec&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;extends&lt;/span&gt; GebReportingSpec&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+
+  Should &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;show the available courses&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(){&lt;/span&gt;
+    &lt;span style=&#34;color: #A0A000&#34;&gt;when:&lt;/span&gt;
+      to MakingDevsHomePage
+    &lt;span style=&#34;color: #A0A000&#34;&gt;and:&lt;/span&gt;
+      coursesButton&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;click&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+
+    &lt;span style=&#34;color: #A0A000&#34;&gt;then:&lt;/span&gt;
+      at MakingDevsCoursesPage
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+  Should &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;show the course information&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(){&lt;/span&gt;
+    &lt;span style=&#34;color: #A0A000&#34;&gt;when:&lt;/span&gt;
+      to MakingDevsCoursesPage
+    &lt;span style=&#34;color: #A0A000&#34;&gt;and:&lt;/span&gt;
+      groovyCoursesDiv&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;find&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;a[href^=&amp;#39;${_selectorUrl}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;click&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+
+    &lt;span style=&#34;color: #A0A000&#34;&gt;then:&lt;/span&gt;
+      at CourseInfoPage
+      postTitle&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;text&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; _postTitle
+    &lt;span style=&#34;color: #A0A000&#34;&gt;where:&lt;/span&gt;
+    _selectorUrl                    &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt; _postTitle
+    &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/training/groovy-testing&amp;quot;&lt;/span&gt;      &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Pruebas en la JVM con Groovy&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/training/groovy-essentials&amp;quot;&lt;/span&gt;   &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;El lenguaje dinámico Groovy&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/training/grails-intermediate&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Productividad con Grails&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/training/groovy-intermediate&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Productividad con Groovy&amp;quot;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finalmente para correr las pruebas ejecutamos el comando &lt;code&gt;./gradlew firefoxTest&lt;/code&gt; para Firefox o &lt;code&gt;./gradlew chromeTest&lt;/code&gt; para chrome; la tarea &lt;code&gt;./gradlew test&lt;/code&gt; corre las pruebas en ambos navegadores.&lt;/p&gt;
+
+&lt;p&gt;Pueden encontrar el código completo &lt;a href=&#34;https://github.com/egjimenezg/FunctionalTesting&#34;&gt;&lt;em&gt;aquí&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bitacorado de pruebas en Gradle</title>
+      <link>http://replace-this-with-your-hugo-site.com/2016/01/22/bitacorado-de-pruebas-en-gradle</link>
+      <pubDate>Fri, 22 Jan 2016 18:14:37 -0600</pubDate>
+      
+      <guid>http://replace-this-with-your-hugo-site.com/2016/01/22/bitacorado-de-pruebas-en-gradle</guid>
+      <description>&lt;p&gt;Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el &lt;a href=&#34;https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.logging.TestLoggingContainer.html&#34;&gt;TestLoggingContainer&lt;/a&gt;, del cual pude obtener este fragmento:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;apply plugin&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;&amp;#39;&lt;/span&gt;java&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;&amp;#39;&lt;/span&gt;
+
+test &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  testLogging &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// set options for log level LIFECYCLE&lt;/span&gt;
+    events &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;failed&amp;quot;&lt;/span&gt;
+      exceptionFormat &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;short&amp;quot;&lt;/span&gt;
+
+      &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// set options for log level DEBUG&lt;/span&gt;
+      debug &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+        events &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;started&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;skipped&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;failed&amp;quot;&lt;/span&gt;
+          exceptionFormat &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;full&amp;quot;&lt;/span&gt;
+      &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// remove standard output/error logging from --info builds&lt;/span&gt;
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// by assigning only &amp;#39;failed&amp;#39; and &amp;#39;skipped&amp;#39; events&lt;/span&gt;
+    info&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;events&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;failed&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;skipped&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En donde pongo todo los tipos de eventos del proyecto que son &lt;code&gt;events &amp;quot;started&amp;quot;, &amp;quot;passed&amp;quot;, &amp;quot;skipped&amp;quot;, &amp;quot;failed&amp;quot;&lt;/code&gt; y con ello obtengo una salida como la siguiente:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://replace-this-with-your-hugo-site.com/images/test_logging.png&#34; alt=&#34;Screenshot 1&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Muy útil cuando no queremos hacer bitácora manual de que pruebas se están corriendo, Gradle ya cuenta con ella.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hot deployment en Gradle</title>
+      <link>http://replace-this-with-your-hugo-site.com/2015/07/26/hot-deployment-en-gradle</link>
+      <pubDate>Sun, 26 Jul 2015 23:19:13 -0500</pubDate>
+      
+      <guid>http://replace-this-with-your-hugo-site.com/2015/07/26/hot-deployment-en-gradle</guid>
+      <description>&lt;p&gt;Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;springloaded&#34;&gt;SpringLoaded&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Después me di cuenta que frameworks como &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;dropwizard&#34;&gt;Dropwizard&lt;/a&gt; lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré &lt;a href=&#34;http://www.cholick.com/entry/show/280&#34; title=&#34;tomcat&#34;&gt;un artículo&lt;/a&gt; en donde explica como ponerlo en acción usando propiamente &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;dropwizard&#34;&gt;Dropwizard&lt;/a&gt;. Fue un buen acercamiento, el problema es el siguiente bloque de código en configuración de gradle:
+&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;run &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  args &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;server&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;app.yaml&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+  jvmArgs &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;-javaagent:${new File(&amp;quot;&lt;/span&gt;$buildDir&lt;span style=&#34;color: #BB4444&#34;&gt;/agent/&lt;/span&gt;springloaded&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;$&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;springloadedVersion&lt;span style=&#34;color: #666666&#34;&gt;}.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;jar&amp;quot;).absolutePath}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;-noverify&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En donde, el atributo &lt;code&gt;jvmArgs&lt;/code&gt; es sólo aplicable a tareas del tipo &lt;code&gt;JavaExec&lt;/code&gt;, más específico, que implementan &lt;code&gt;JavaExecSpec&lt;/code&gt; o &lt;code&gt;JavaForkOptions&lt;/code&gt;. Es aquí en donde &lt;a href=&#34;https://github.com/bmuschko/gradle-tomcat-plugin&#34; title=&#34;tomcat&#34;&gt;el plugin de tomcat&lt;/a&gt; que se puede encontrar para Gradle tiene el problema, pues su tarea no lo hace.&lt;/p&gt;
+
+&lt;p&gt;La combinación se haría en conjunto con un plugin de gradle, &lt;a href=&#34;https://github.com/bluepapa32/gradle-watch-plugin&#34; title=&#34;gradle watch&#34;&gt;el watch&lt;/a&gt;, el actúa con cada cambio en la aplicación realizando las tareas que se le digan. Sin embargo, lo que encontré funcionaba para la cmbinación de SpringBooy e IntelliJ Idea, lo cual no veía mal, pero no era mi caso. De cualquier forma pongo disponible la configuración que independiente me sirvió para hacer un hot deploy usando ambos elementos:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;groovy&amp;#39;&lt;/span&gt;
+apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;spring-boot&amp;#39;&lt;/span&gt;
+apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;com.bluepapa32.watch&amp;#39;&lt;/span&gt;
+
+sourceCompatibility &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;1.8&lt;/span&gt;
+targetCompatibility &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;1.8&lt;/span&gt;
+
+ext &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  springLoadedVersion &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;1.2.1.RELEASE&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+mainClassName&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;com.makingdevs.Application&amp;#39;&lt;/span&gt;
+
+repositories &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  mavenCentral&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+  maven &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    url &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;https://code.lds.org/nexus/content/groups/main-repo&amp;quot;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+dependencies &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  compile&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org.springframework.boot:spring-boot-starter-web&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+  compile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.codehaus.groovy:groovy-all:2.4.3&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+buildscript &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  repositories &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    mavenCentral&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+    jcenter&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  dependencies &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    classpath &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org.springframework.boot:spring-boot-gradle-plugin:1.2.4.RELEASE&amp;quot;&lt;/span&gt;
+    classpath &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.springframework:springloaded:1.2.0.RELEASE&amp;#39;&lt;/span&gt;
+    classpath &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;com.bluepapa32:gradle-watch-plugin:0.1.5&amp;#39;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+jar &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  baseName &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;meerkat-mymapmanager&amp;#39;&lt;/span&gt;
+  version &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;  &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;0.1.0&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+compileGroovy &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;//enable compilation in a separate daemon process&lt;/span&gt;
+  options&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;fork&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;true&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+watch &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  groovy &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    files &lt;span style=&#34;color: #00A000&#34;&gt;files&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;src/main/groovy&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    tasks &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;compileGroovy&amp;#39;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Al final del día, lo que encontre fue &lt;a href=&#34;http://akhikhl.github.io/gretty-doc/index.html&#34; title=&#34;gretty&#34;&gt;el plugin de Gretty&lt;/a&gt;, con el que fácilmente podemos usar un contenedor de Tomcat o Jetty y tener disponible el Hot deploy, creo que tiene algunos detalles de rendimiento pero es útil. Finalmente la configuración se reduce mucho y hay varias tareas disponibles, entre ellas &lt;code&gt;appRun&lt;/code&gt;, que es la que levanta el elemento configuraco y lo dijo listo para los cambios:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Using the new mechanism to include plugins&lt;/span&gt;
+plugins &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  id &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;groovy&amp;#39;&lt;/span&gt;
+  id &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;war&amp;#39;&lt;/span&gt;
+  id &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org.akhikhl.gretty&amp;quot;&lt;/span&gt; version &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;1.2.4&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+repositories &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  mavenCentral&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+  jcenter&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+dependencies &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  compile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.codehaus.groovy:groovy-all:2.3.4&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+gretty &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// &amp;#39;jetty7&amp;#39;, &amp;#39;jetty8&amp;#39;, &amp;#39;jetty9&amp;#39;, &amp;#39;tomcat7&amp;#39;, &amp;#39;tomcat8&amp;#39;&lt;/span&gt;
+  servletContainer &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;tomcat7&amp;#39;&lt;/span&gt;
+  httpPort &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;9091&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Creo que nos servirá bien un rato para las cosas que tenemos que hcaer, por que incluso soporta SpringBoot.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Borrado batch en Grails</title>
+      <link>http://replace-this-with-your-hugo-site.com/2015/05/01/borrado-batch-en-grails</link>
+      <pubDate>Fri, 01 May 2015 20:58:30 -0500</pubDate>
+      
+      <guid>http://replace-this-with-your-hugo-site.com/2015/05/01/borrado-batch-en-grails</guid>
+      <description>
+
+&lt;p&gt;En esta ocasión les quiero compartir la solución a un problema que tuve al borrar una colección de objetos en grails y con el GORM, si bien podría hacerlo con HQL o con SQL usando las bondades de Hibernate me gusto más el acercamiento que les quiero presentar.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;La necesidad era borrar un grupo de objetos en donde el contenido de su relación estuviera vacío, ejemplifico con la estructura de unas clases:&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=domains.groovy&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;El primer acercamiento que tuve fue obtener la lista de elementos y hacer una condicional buscando los elementos vacíos, después borrar&amp;hellip;&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete1.groovy&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Una vez hecho, mejoramos intentamos mejorar el código con una búsqueda mucho más refinada y ejecutando el borrado, para ello nos apoyamos de los &lt;strong&gt;where queries&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete2.groovy&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Basado en la documentación de Grails:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Since each where method call returns a DetachedCriteria instance, you can use where queries to execute batch operations such as batch updates and deletes.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Sin embargo, este acercamiento tiene un problema, manda un error cuando se busca por las relaciones del objeto y no permite el borrado. El error: &lt;code&gt;org.springframework.dao.InvalidDataAccessResourceUsageException: Queries of type SizeEquals are not supported by this implementation&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;la-solución-que-me-gustó&#34;&gt;La solución que me gustó&lt;/h3&gt;
+
+&lt;p&gt;Usamos &lt;strong&gt;Detached Criteria&lt;/strong&gt; para resolver este problema, por que:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;No están asociados con una sesión o conexión, lo cual permite formularlos y reusarlos.&lt;/li&gt;
+&lt;li&gt;También cuenta con métodos batch: &lt;code&gt;deleteAll&lt;/code&gt;, &lt;code&gt;updateAll&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Permiten proyecciones y subqueries, que es lo que estamos buscando para resolver nuestro problema&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finalmente nuestra solución es:&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete3.groovy&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Con esto, tenemos una búsqueda refinada y el borrado de los elementos directo, inclusive el método &lt;code&gt;deleteAll&lt;/code&gt; regresa un entero con la cantidad de registros afectados.&lt;/p&gt;
+
+&lt;p&gt;Esto me fue de mucha utilidad y ojalá también lo sea para ustedes en algún momento.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

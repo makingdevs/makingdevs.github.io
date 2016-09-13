@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Artesanos on Blog de Making Devs</title>
+    <link>http://replace-this-with-your-hugo-site.com/categories/artesanos/</link>
+    <description>Recent content in Artesanos on Blog de Making Devs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Aug 2015 18:44:42 -0500</lastBuildDate>
+    <atom:link href="http://replace-this-with-your-hugo-site.com/categories/artesanos/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Revisión del libro - The Software Craftsman: Professionalism</title>
+      <link>http://replace-this-with-your-hugo-site.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism</link>
+      <pubDate>Sun, 02 Aug 2015 18:44:42 -0500</pubDate>
+      
+      <guid>http://replace-this-with-your-hugo-site.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism</guid>
+      <description>&lt;p&gt;Libro que al igual que &lt;a href=&#34;https://pragprog.com/the-pragmatic-programmer&#34; title=&#34;the-pragmatic-programmer&#34;&gt;&lt;em&gt;The Pragmatic Programmer: From Journeyman to Master&lt;/em&gt;&lt;/a&gt; se ganó estar en mis libros de cabecera, y se ha ganado un lugar muy especial en mi librero.&lt;/p&gt;
+
+&lt;p&gt;El escritor, y desarrollador de toda la vida &lt;a href=&#34;https://twitter.com/sandromancuso&#34; title=&#34;sandromancuso&#34;&gt;&lt;em&gt;Sandro Mancuso&lt;/em&gt;&lt;/a&gt;, plasma muy bien la idea que el tiene acerca de lo que todo desarrollador de software, y en mi opinión personal lo que debería buscar todo desarrollador, para cambiar su entorno de trabajo y ayudarnos a todos (porque estamos en el mismo barco) a cambiar la mentalidad de los clientes, de que no somos la clase de &lt;em&gt;persona/profesional&lt;/em&gt; que la mayor parte del mundo cree que somos:
+&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Unos micos tirando lineas de código a diestra y siniestra, y haciendo el código lo más ilegible posible para que nada ni nadie pueda entenderlo&lt;/li&gt;
+&lt;li&gt;Unos personajes que se sientan en el cuarto más oscuro del sótano de la empresa y que nadie conoce (usualmente cuentan leyendas de que terror de ellos)&lt;/li&gt;
+&lt;li&gt;Los padrinos mágicos de los clientes que hacen que se cumplan sus deseos y que en un parpadear de ojos ya lo tiene funcionando en producción y libre de defectos&lt;/li&gt;
+&lt;li&gt;Las personas que arreglan los defectos del sistema con su teclado mágico&lt;/li&gt;
+&lt;li&gt;Personas o cosas que transforman café, cerveza o en su defecto bebidas energéticas en líneas de código que pasan por una caja mágica que lo transforma en un sistema para su empresa&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Mientras más leía este libro más me iba dando cuenta de que muchas de las cosas que el plasmó las había pasado en algún momento, que otras pocas las estaba pasando y que muchas otras parecían estar a la vuelta de la esquina, como si de un libro de adivinación se tratase.&lt;/p&gt;
+
+&lt;p&gt;Me ayudó a entender la idea de lo que no es un artesano del software y de que para ser uno debes ser más que un desarrollador, que va más allá de incluso herramientas, métodos y metodologías (&lt;em&gt;Agile, Kanban, Lean, XP, TDD,&lt;/em&gt; entre otras) inclusive va mucho más allá de un lenguaje de programación, de un IDE, de un editor de textos o un manipulador de textos.&lt;/p&gt;
+
+&lt;p&gt;Un artesano va más allá de todo esto pero el que vaya más allá no quiere decir que no incluya todo lo anterior, lo más importante para un artesano de software es ser un profesional del software, para ello se basan en muchos principios que van desde ayudar a los desarrolladores a ser mejores en su día a día con técnicas de desarollo tales como TDD, XP, entre otras, pasando por enseñar a como decir que &amp;ldquo;NO&amp;rdquo; a los clientes, como levantar la mano para que nuestra voz sea escuchada, como lidiar con personas que solo ven el desarrollo de software como &amp;ldquo;un trabajo más&amp;rdquo;, que &amp;ldquo;El &lt;em&gt;cómo está hecho&lt;/em&gt; es tan importante como &lt;em&gt;el está hecho&lt;/em&gt;&amp;rdquo; (&lt;em&gt;&amp;ldquo;How it is done is as important as getting it done&amp;rdquo; - Sandro Mancuso, The Software Craftsman: Professionalism, Pragmatism&lt;/em&gt;) que la artesanía del software es un largo camino hacia la maestría, que esto es una mentalidad del desarrollador donde ellos eligen ser responsables de su carrera, constantemente aprendiendo nuevas herramientas, técnicas y constantemente mejorándose.&lt;/p&gt;
+
+&lt;p&gt;Me ayudó a comprender que hace unos años la &amp;ldquo;antigüedad&amp;rdquo; (seniority) se medía en base a cuan ilegible era su código (algo así al a cantidad de WTF por revisión de código), y cuan mal estábamos en hacer eso. Esos tiempos han cambiado y ahora es a la inversa mientras menos WTF por revisión de código existan mejor el código es.&lt;/p&gt;
+
+&lt;p&gt;Entendí también que el código legado a veces no es tan malo como suena, que también ahí existen áreas de oportunidad y que se pueden hacer cosas para ir mejorando poco a poco para que este no sea tan doloroso como todos creemos que es.&lt;/p&gt;
+
+&lt;p&gt;Otra cosa que me ayudó este libro a ver es que un desarrollador en la búsqueda de su maestría es alguien que debe evaluar sus trabajos y empresas en base a sus objetivos y principios, y que cualquier empresa que no esté alineada a sus principios y objetivos debería ser descartada en las fases de las entrevistas. Ya que en las entrevistas no solo el candidato a ser empleado es evaluado, también como buen profesional debemos evaluar a la empresa que nos está entrevistando y cuestionar las cosas que vemos (no ser altaneros o unos patanes, tener el suficiente tacto para hacer las preguntas), desde si quien está entrevistando es RH, hasta si el que está entrevistando es el desarrollador y desde esos inicios se puede ver que tan arraigadas tienen esas jerarquías.&lt;/p&gt;
+
+&lt;p&gt;Y aunque la búsqueda de un nuevo trabajo y/o la permenencia en ese trabajo prácticamente depende de 3 cosas (al menos para el autor): Autonomía, Maestría, Propósito. Y es aquí donde está lo interesante de esta parte ya que deja fuera la parte del &lt;em&gt;Dinero&lt;/em&gt; ya que el conocimiento es más valioso, y no es porque el dinero no lo sea pero el perseguir solamente el dinero te puede desviar de tus objetivos iniciales.&lt;/p&gt;
+
+&lt;p&gt;Y de lo que me di cuenta es que en México estamos del nabo, ya que mientras en muchas empresas alrededor del mundo ya están viendo a los desarrolladores como una parte fundamental de su estructura interna, y que no son los elementos fácilmente reemplazables, aquí siguen viéndonos como los meros micos sentados en una silla frente a una computadora escribiendo código, y mientras esto siga así las empresas mexicanas irán cada día más en picada porque casi ningún buen desarrollador va a querer estar trabajando con ellos. Sin embargo esta mentalidad no es solo culpa de las empresas es también culpa de nosotros como desarrolladores, porque como profesionales debemos decirles lo que está pasando ser honestos y hablar con franquesa ante ellos, como si de su contador se tratara o su abogado o su doctor, nadie confiaría en ellos si les dice que si a todo.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;Locura es hacer lo mismo una vez tras otra y esperar resultados diferentes&amp;rdquo; el cambio comienza en nosotros los desarrolladores levantando nuestras manos y cuestionando las decisiones de las personas que se encuentran arriba (hablando de empresas que cuentan con una estructura jerárquica), porque esto no es solo culpa de las empresas también es culpa de nosotros por solo acatar las decisiones de ellos sin decir nada, eso no es ni siquiera es ser profesional, eso es apatía y no es algo que debamos hacer, debemos aprender a decir que &amp;ldquo;NO&amp;rdquo; pero con bases, aportando opciones y si en ese momento no se cuenta con alguna opción decir que en ese momento están escasos de ideas pero que se pensará en algo para traerlo a la mesa y tomar en base a ello las decisiones.&lt;/p&gt;
+
+&lt;p&gt;Por último todo aspirante a ser un Artesano del Software debería tener seguir esto, &lt;a href=&#34;http://manifesto.softwarecraftsmanship.org/&#34; title=&#34;softwarecraftsmanship&#34;&gt;link original&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;Como aspirantes a Artesanos del Software estamos elevando el listón de desarrollo de software profesional practicando y ayudando a otros a aprender el oficio. A través de este trabajo hemos llegado a valorar:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;No sólo software que funciona, &lt;strong&gt;sino también software bien diseñado&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;No sólo responder al cambio, &lt;strong&gt;sino también agregar valor constantemente&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;No sólo individuos e interacciones, &lt;strong&gt;sino también una comunidad de profesionales&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;No sólo colaboración de clientes, &lt;strong&gt;sino también asociaciones productivas&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Es decir, en la búsqueda de los elementos de la izquierda, hemos encontrado indispensables los elementos de la derecha.&lt;/p&gt;
+
+&lt;p&gt;Y lo que más me agradó de este libro fue que en realidad pone sobre la mesa lo que un desarrollador debería ser (al menos en el concepto del autor), y contesta la pregunta que estoy seguro a muchos de nosotros como desarrolladores nos han hecho &lt;em&gt;¿Piensas ser un desarollador toda tu vida?&lt;/em&gt; o alguna de sus variantes, y aunque para mí la respuesta es un claro y conciso &amp;ldquo;SI&amp;rdquo; para muchos la respuesta todavía está en el aire.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
