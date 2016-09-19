@@ -21,7 +21,7 @@
     
     <meta property="og:tags" content="closure">
     
-    <meta name="generator" content="Hugo 0.16-DEV" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>Making Android con Groovy(otra vez) &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -102,7 +102,7 @@
 
 <!-- more -->
 
-<h2 id="la-estructura-de-un-proyecto:015682165e16233ffd96d04115df706b">La estructura de un proyecto</h2>
+<h2 id="la-estructura-de-un-proyecto">La estructura de un proyecto</h2>
 
 <p>Al igual que un proyecto Android(Java), hay mucha similaridad integrando Groovy:</p>
 
@@ -165,128 +165,128 @@
   settings.gradle
 </code></pre>
 
-<h2 id="los-modelos:015682165e16233ffd96d04115df706b">Los modelos</h2>
+<h2 id="los-modelos">Los modelos</h2>
 
 <p>La ventaja de los POGOS de Groovy se siente al declarar o instanciar algún objeto de dominio:</p>
 
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">groovy.transform.CompileStatic</span>
 
-import groovy.transform.CompileStatic
-
-@CompileStatic
-class User {
+<span style="color: #AA22FF">@CompileStatic</span>
+<span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">User</span> <span style="color: #666666">{</span>
     String id
     String username
     String token
-}
+<span style="color: #666666">}</span>
+</pre></div>
 
 
 <p>Ahora instanciamos nuestra clase en cualquier parte:</p>
 
-
-User getUserSession(Context context) {
-    SharedPreferences session = context.getSharedPreferences("UserSession",Context.MODE_PRIVATE)
-    String username = session.getString("username",null);
-    String token = session.getString("token",null)
-    String id = session.getString("id",null)
-    new User(username:username,token:token,id:id)
-}
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">User <span style="color: #00A000">getUserSession</span><span style="color: #666666">(</span>Context context<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+    SharedPreferences session <span style="color: #666666">=</span> context<span style="color: #666666">.</span><span style="color: #BB4444">getSharedPreferences</span><span style="color: #666666">(</span><span style="color: #BB4444">&quot;UserSession&quot;</span><span style="color: #666666">,</span>Context<span style="color: #666666">.</span><span style="color: #BB4444">MODE_PRIVATE</span><span style="color: #666666">)</span>
+    String username <span style="color: #666666">=</span> session<span style="color: #666666">.</span><span style="color: #BB4444">getString</span><span style="color: #666666">(</span><span style="color: #BB4444">&quot;username&quot;</span><span style="color: #666666">,</span><span style="color: #AA22FF; font-weight: bold">null</span><span style="color: #666666">);</span>
+    String token <span style="color: #666666">=</span> session<span style="color: #666666">.</span><span style="color: #BB4444">getString</span><span style="color: #666666">(</span><span style="color: #BB4444">&quot;token&quot;</span><span style="color: #666666">,</span><span style="color: #AA22FF; font-weight: bold">null</span><span style="color: #666666">)</span>
+    String id <span style="color: #666666">=</span> session<span style="color: #666666">.</span><span style="color: #BB4444">getString</span><span style="color: #666666">(</span><span style="color: #BB4444">&quot;id&quot;</span><span style="color: #666666">,</span><span style="color: #AA22FF; font-weight: bold">null</span><span style="color: #666666">)</span>
+    <span style="color: #AA22FF; font-weight: bold">new</span> <span style="color: #00A000">User</span><span style="color: #666666">(</span><span style="color: #A0A000">username:</span>username<span style="color: #666666">,</span><span style="color: #A0A000">token:</span>token<span style="color: #666666">,</span><span style="color: #A0A000">id:</span>id<span style="color: #666666">)</span>
+<span style="color: #666666">}</span>
+</pre></div>
 
 
 <p>La nota <strong>importante</strong> aquí es la forma de la instanciación y que no hay palabra reservada <code>return</code>, al igual que la declaración del método como <code>public</code> no es necesaria. Además de que puedes llamar de forma abreviada a sus atributos.</p>
 
-<h2 id="staticcompile:015682165e16233ffd96d04115df706b"><code>@StaticCompile</code></h2>
+<h2 id="staticcompile"><code>@StaticCompile</code></h2>
 
 <p><strong>Groovy es un lenguaje de tipado dinámico opcional</strong>, lo cuál significa que podemos beneficiarnos de ciertos elementos del lenguaje y estar seguros de que compilará correctamente; esta anotación hace al compilador mas estricto, con la ventaja de optimizar el código de byte dando como resultado una mejor ejecución. Los desarrolladores recomiendan el uso intenso de esta anotación en todas las clases dentro del proyecto Android:</p>
 
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">android.content.Context</span>
+<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">android.content.Intent</span>
+<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">android.support.v4.app.Fragment</span>
+<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">com.makingdevs.app.common.SingleFragmentActivity</span>
+<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">com.makingdevs.app.ui.fragment.RegistrationFragment</span>
+<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">groovy.transform.CompileStatic</span>
 
-import android.content.Context
-import android.content.Intent
-import android.support.v4.app.Fragment
-import com.makingdevs.app.common.SingleFragmentActivity
-import com.makingdevs.app.ui.fragment.RegistrationFragment
-import groovy.transform.CompileStatic
+<span style="color: #AA22FF">@CompileStatic</span>
+<span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">RegistrationActivity</span> <span style="color: #AA22FF; font-weight: bold">extends</span> SingleFragmentActivity<span style="color: #666666">{</span>
 
-@CompileStatic
-class RegistrationActivity extends SingleFragmentActivity{
-
-    static Intent newIntentWithContext(Context context){
-        Intent intent = new Intent(context, RegistrationActivity)
+    <span style="color: #AA22FF; font-weight: bold">static</span> Intent <span style="color: #00A000">newIntentWithContext</span><span style="color: #666666">(</span>Context context<span style="color: #666666">){</span>
+        Intent intent <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> Intent<span style="color: #666666">(</span>context<span style="color: #666666">,</span> RegistrationActivity<span style="color: #666666">)</span>
         intent
-    }
+    <span style="color: #666666">}</span>
 
-    @Override
-    Fragment createFragment() {
-        new RegistrationFragment()
-    }
-}
+    <span style="color: #AA22FF">@Override</span>
+    Fragment <span style="color: #00A000">createFragment</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+        <span style="color: #AA22FF; font-weight: bold">new</span> <span style="color: #00A000">RegistrationFragment</span><span style="color: #666666">()</span>
+    <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+</pre></div>
 
 
 <p>Realmente este es un tema que se puede extender un poco más, pero iniciando con esto es suficiente.</p>
 
-<h2 id="los-closures:015682165e16233ffd96d04115df706b">Los closures</h2>
+<h2 id="los-closures">Los closures</h2>
 
 <p>Para quién ya ha programado en Groovy conocerá que los closures son un elemento fundamental, para quiénes no, podrán compararlos con las lambdas de Java 8 o simplemente como lo que son: closures.</p>
 
 <p>La forma general del closure en Groovy es:</p>
 
-
-{ p1,p2,p3... -> body }
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">{</span> p1<span style="color: #666666">,</span>p2<span style="color: #666666">,</span>p3<span style="color: #666666">...</span> <span style="color: #666666">-&gt;</span> body <span style="color: #666666">}</span>
+</pre></div>
 
 
 <p>Y creo que es de las partes de las que más podemos comentar, incluso creo que cada beneficio particular que nos da Groovy con los closures lo podremos comentar en un post por separado.</p>
 
-<h3 id="implementando-interfaces-con-closures:015682165e16233ffd96d04115df706b">Implementando interfaces con Closures</h3>
+<h3 id="implementando-interfaces-con-closures">Implementando interfaces con Closures</h3>
 
 <p>El evento más solicitado dentro de una app Android es el <em>click</em> de un componente, con un closure podemos tratarlo:</p>
 
-<p>
-@CompileStatic
-public class SomeFragment extends Fragment {
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">@CompileStatic</span>
+<span style="color: #AA22FF; font-weight: bold">public</span> <span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">SomeFragment</span> <span style="color: #AA22FF; font-weight: bold">extends</span> Fragment <span style="color: #666666">{</span>
 
     FloatingActionButton mButtonGoChekin
 
-    // ...more code...
+    <span style="color: #008800; font-style: italic">// ...more code...</span>
 
-    @Override
-    View onCreateView(LayoutInflater inflater,
-                      @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    <span style="color: #AA22FF">@Override</span>
+    View <span style="color: #00A000">onCreateView</span><span style="color: #666666">(</span>LayoutInflater inflater<span style="color: #666666">,</span>
+                      <span style="color: #AA22FF">@Nullable</span> ViewGroup container<span style="color: #666666">,</span> <span style="color: #AA22FF">@Nullable</span> Bundle savedInstanceState<span style="color: #666666">)</span> <span style="color: #666666">{</span>
 
-        mButtonGoChekin= (FloatingActionButton) root.findViewById(R.id.button_go_chekin)
-        mButtonGoChekin.onClickListener = {
-            Intent intent = AnotherActivity.newIntentWithContext(getContext())
-            startActivity(intent)
-        }
-    }
-}
-</p>
+        mButtonGoChekin<span style="color: #666666">=</span> <span style="color: #666666">(</span>FloatingActionButton<span style="color: #666666">)</span> root<span style="color: #666666">.</span><span style="color: #BB4444">findViewById</span><span style="color: #666666">(</span>R<span style="color: #666666">.</span><span style="color: #BB4444">id</span><span style="color: #666666">.</span><span style="color: #BB4444">button_go_chekin</span><span style="color: #666666">)</span>
+        mButtonGoChekin<span style="color: #666666">.</span><span style="color: #BB4444">onClickListener</span> <span style="color: #666666">=</span> <span style="color: #666666">{</span>
+            Intent intent <span style="color: #666666">=</span> AnotherActivity<span style="color: #666666">.</span><span style="color: #BB4444">newIntentWithContext</span><span style="color: #666666">(</span>getContext<span style="color: #666666">())</span>
+            startActivity<span style="color: #666666">(</span>intent<span style="color: #666666">)</span>
+        <span style="color: #666666">}</span>
+    <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+</pre></div>
+
 
 <p>Ahora aquí una de las que más me gusta en conjunto con otra anotación de Groovy <code>@Singleton</code>, de la cual hablaremos en otro post.</p>
 
-<p>
-@Singleton
-@CompileStatic
-class RetrofitTemplate {
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">@Singleton</span>
+<span style="color: #AA22FF">@CompileStatic</span>
+<span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">RetrofitTemplate</span> <span style="color: #666666">{</span>
 
-    Retrofit retrofit = new Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BuildConfig.API_SERVER_URL)
-            .build()
+    Retrofit retrofit <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> Retrofit<span style="color: #666666">.</span><span style="color: #BB4444">Builder</span><span style="color: #666666">()</span>
+            <span style="color: #666666">.</span><span style="color: #BB4444">addConverterFactory</span><span style="color: #666666">(</span>GsonConverterFactory<span style="color: #666666">.</span><span style="color: #BB4444">create</span><span style="color: #666666">())</span>
+            <span style="color: #666666">.</span><span style="color: #BB4444">baseUrl</span><span style="color: #666666">(</span>BuildConfig<span style="color: #666666">.</span><span style="color: #BB4444">API_SERVER_URL</span><span style="color: #666666">)</span>
+            <span style="color: #666666">.</span><span style="color: #BB4444">build</span><span style="color: #666666">()</span>
 
-    def withRetrofit(Class operations, Closure onSuccess, Closure onError, Closure action){
-        CustomRestOperations restOperations = retrofit.create(operations) as CustomRestOperations
-        Call<Checkin> model = action(restOperations) as Call<Checkin>
-        def callback = [
-                onResponse :onSuccess,
-                onFailure : onError
-        ]
-        model.enqueue(callback as Callback<Checkin>)
-    }
-}
-</p>
+    <span style="color: #00BB00; font-weight: bold">def</span> <span style="color: #00A000">withRetrofit</span><span style="color: #666666">(</span>Class operations<span style="color: #666666">,</span> Closure onSuccess<span style="color: #666666">,</span> Closure onError<span style="color: #666666">,</span> Closure action<span style="color: #666666">){</span>
+        CustomRestOperations restOperations <span style="color: #666666">=</span> retrofit<span style="color: #666666">.</span><span style="color: #BB4444">create</span><span style="color: #666666">(</span>operations<span style="color: #666666">)</span> <span style="color: #AA22FF; font-weight: bold">as</span> CustomRestOperations
+        Call<span style="color: #666666">&lt;</span>Checkin<span style="color: #666666">&gt;</span> model <span style="color: #666666">=</span> action<span style="color: #666666">(</span>restOperations<span style="color: #666666">)</span> <span style="color: #AA22FF; font-weight: bold">as</span> Call<span style="color: #666666">&lt;</span>Checkin<span style="color: #666666">&gt;</span>
+        <span style="color: #00BB00; font-weight: bold">def</span> callback <span style="color: #666666">=</span> <span style="color: #666666">[</span>
+                onResponse <span style="color: #666666">:</span>onSuccess<span style="color: #666666">,</span>
+                onFailure <span style="color: #666666">:</span> onError
+        <span style="color: #666666">]</span>
+        model<span style="color: #666666">.</span><span style="color: #BB4444">enqueue</span><span style="color: #666666">(</span>callback <span style="color: #AA22FF; font-weight: bold">as</span> Callback<span style="color: #666666">&lt;</span>Checkin<span style="color: #666666">&gt;)</span>
+    <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+</pre></div>
+
 
 <p><strong>Podemos hacer que un mapa se comporte como la implementación de una interfaz</strong>, es sólo cuestión de usar los closures correctamente. Y también podemos ejecutar closures para mandarles parámetros listos para usarse en otros contextos.</p>
 
-<h2 id="conclusión:015682165e16233ffd96d04115df706b">Conclusión</h2>
+<h2 id="conclusión">Conclusión</h2>
 
 <p>Si bien, Groovy agrega peso a las aplicaciones Android, creo que cada byte y cada línea vale todo lo que no tuvimos que codificar, la fluidez en el teclado y la productividad ganada.</p>
 

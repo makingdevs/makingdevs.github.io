@@ -33,17 +33,17 @@
 
 &lt;p&gt;Ahora bien, que la configuración XML si es el caso es muy sencilla y sólo tenemos que agregar el Servlet de Groovy y hacer el mapeo.&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;Groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet-class&amp;gt;&lt;/span&gt;groovy.servlet.GroovyServlet&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet-class&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet&amp;gt;&lt;/span&gt;
 
-&lt;servlet&gt;
-  &lt;servlet-name&gt;Groovy&lt;/servlet-name&gt;
-  &lt;servlet-class&gt;groovy.servlet.GroovyServlet&lt;/servlet-class&gt;
-&lt;/servlet&gt;
-
-&lt;servlet-mapping&gt;
-  &lt;servlet-name&gt;Groovy&lt;/servlet-name&gt;
-  &lt;url-pattern&gt;*.groovy&lt;/url-pattern&gt;
-  &lt;url-pattern&gt;*.gdo&lt;/url-pattern&gt;
-&lt;/servlet-mapping&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet-mapping&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;Groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;*.groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;*.gdo&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet-mapping&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;Nota: Que el mapeo no necesariamente es estricto con la extensión, podemos usar la que querramos.&lt;/em&gt;&lt;/p&gt;
@@ -52,56 +52,57 @@
 
 &lt;p&gt;Me apoyo de un par de clases que &lt;em&gt;modelan&lt;/em&gt; un almacén de datos.&lt;/p&gt;
 
-todos.groovy
-class Todo {
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;todos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Todo&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
   String description
-}
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-@Singleton // Only one instance
-class TodoManager {
-  List&lt;Todo&gt; todos = []
-}
+&lt;span style=&#34;color: #AA22FF&#34;&gt;@Singleton&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Only one instance&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;TodoManager&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  List&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Todo&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; todos &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[]&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Podemos jugar con el reponse directamente para decirle que cualquier respuesta sería JSON:&lt;/p&gt;
 
-&lt;p&gt;
-todos.groovy
-response.contentType = &#39;application/json&#39;
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;todos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+response&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;contentType&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;application/json&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 Buscar algún encabezado en particular para validar nuestra solicitud:&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;todos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+&lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; contentType &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; headers&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;find&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; k&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;v &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; k&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;toLowerCase&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;content-type&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}?.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;value&lt;/span&gt;
 
-todos.groovy
-def contentType = headers.find { k,v -&gt; k.toLowerCase() == &#39;content-type&#39; }?.value
-
-if(contentType != &#34;application/json&#34;){
-  response.status = HttpServletResponse.SC_BAD_REQUEST // We return a status code 400
-  // Using the json method included
-  json(status:&#34;Please use &#39;application/json&#39; header, just received ${headers} instead&#34;)
-  return // And nothing more...
-}
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;contentType &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;application/json&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt;
+  response&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;status&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; HttpServletResponse&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;SC_BAD_REQUEST&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// We return a status code 400&lt;/span&gt;
+  &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Using the json method included&lt;/span&gt;
+  json&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;status:&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Please use &amp;#39;application/json&amp;#39; header, just received ${headers} instead&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// And nothing more...&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;A partir de aquí podemos jugar con el método de envío y hacer algunas acciones, aquí una muestra muy simple:&lt;/p&gt;
 
-&lt;p&gt;
-todos.groovy
-switch(request.method.toLowerCase()){ // Validating the method
-  case &#39;get&#39;:
-    json(todos:TodoManager.instance.todos) // Using the instance
-  break
-  case &#39;post&#39;:
-    Todo todo = new Todo(description:params?.todo ?: &#34;No description&#34;)
-    TodoManager.instance.todos &lt;&lt; todo
-    response.status = HttpServletResponse.SC_CREATED
-    json(todo:todo)
-  break
-  default:
-    response.status = HttpServletResponse.SC_BAD_REQUEST
-    json(status:&#34;Method &#39;${request.method.toLowerCase()}&#39; not supported&#34;)
-}
-&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;todos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+&lt;span style=&#34;color: #00A000&#34;&gt;switch&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;request&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;toLowerCase&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()){&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Validating the method&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;get&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;
+    json&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;todos:&lt;/span&gt;TodoManager&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;instance&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;todos&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Using the instance&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;break&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;post&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;
+    Todo todo &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; Todo&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;description:&lt;/span&gt;params&lt;span style=&#34;color: #666666&#34;&gt;?.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;todo&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;?:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;No description&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    TodoManager&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;instance&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;todos&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; todo
+    response&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;status&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; HttpServletResponse&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;SC_CREATED&lt;/span&gt;
+    json&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;todo:&lt;/span&gt;todo&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;break&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;default&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;
+    response&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;status&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; HttpServletResponse&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;SC_BAD_REQUEST&lt;/span&gt;
+    json&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;status:&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Method &amp;#39;${request.method.toLowerCase()}&amp;#39; not supported&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;Puedes incluir estos tres últimos fragmentos en un archivo y todo funcionará sin problemas. Aunque, nuevamente no es la forma más adecuada, muestra muy bien el potencial del simple uso del Groovlet.&lt;/p&gt;
 

@@ -17,7 +17,7 @@
     
     <meta property="og:tags" content="gradle">
     
-    <meta name="generator" content="Hugo 0.16-DEV" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>Bitacorado de pruebas en Gradle &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -90,26 +90,26 @@
 	<article>
 		<p>Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el <a href="https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.logging.TestLoggingContainer.html">TestLoggingContainer</a>, del cual pude obtener este fragmento:</p>
 
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">apply plugin<span style="color: #666666">:</span> <span style="border: 1px solid #FF0000">&#39;</span>java<span style="border: 1px solid #FF0000">&#39;</span>
 
-apply plugin: 'java'
+test <span style="color: #666666">{</span>
+  testLogging <span style="color: #666666">{</span>
+    <span style="color: #008800; font-style: italic">// set options for log level LIFECYCLE</span>
+    events <span style="color: #BB4444">&quot;failed&quot;</span>
+      exceptionFormat <span style="color: #BB4444">&quot;short&quot;</span>
 
-test {
-  testLogging {
-    // set options for log level LIFECYCLE
-    events "failed"
-      exceptionFormat "short"
+      <span style="color: #008800; font-style: italic">// set options for log level DEBUG</span>
+      debug <span style="color: #666666">{</span>
+        events <span style="color: #BB4444">&quot;started&quot;</span><span style="color: #666666">,</span> <span style="color: #BB4444">&quot;skipped&quot;</span><span style="color: #666666">,</span> <span style="color: #BB4444">&quot;failed&quot;</span>
+          exceptionFormat <span style="color: #BB4444">&quot;full&quot;</span>
+      <span style="color: #666666">}</span>
 
-      // set options for log level DEBUG
-      debug {
-        events "started", "skipped", "failed"
-          exceptionFormat "full"
-      }
-
-    // remove standard output/error logging from --info builds
-    // by assigning only 'failed' and 'skipped' events
-    info.events = ["failed", "skipped"]
-  }
-}
+    <span style="color: #008800; font-style: italic">// remove standard output/error logging from --info builds</span>
+    <span style="color: #008800; font-style: italic">// by assigning only &#39;failed&#39; and &#39;skipped&#39; events</span>
+    info<span style="color: #666666">.</span><span style="color: #BB4444">events</span> <span style="color: #666666">=</span> <span style="color: #666666">[</span><span style="color: #BB4444">&quot;failed&quot;</span><span style="color: #666666">,</span> <span style="color: #BB4444">&quot;skipped&quot;</span><span style="color: #666666">]</span>
+  <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+</pre></div>
 
 
 <p>En donde pongo todo los tipos de eventos del proyecto que son <code>events &quot;started&quot;, &quot;passed&quot;, &quot;skipped&quot;, &quot;failed&quot;</code> y con ello obtengo una salida como la siguiente:</p>
