@@ -19,7 +19,7 @@
 
 &lt;p&gt;La URL es un bit interesante de nuestra applicación, nos permite regresar a un estado, o compartir ese estado con alguien más; y en Elm, el Routing, es la segunda cosa más importante que deberías conocer después del propio lenguaje. Así que empecemos.&lt;/p&gt;
 
-&lt;h3 id=&#34;anatomía-de-una-url&#34;&gt;ANATOMÍA DE UNA URL&lt;/h3&gt;
+&lt;h3 id=&#34;anatomía-de-una-url:298460950b7ccdfaea249eb4d57a4fbe&#34;&gt;ANATOMÍA DE UNA URL&lt;/h3&gt;
 
 &lt;p&gt;Una URL es una dirección dada para un recurso único en la web y está compuesta de diferentes partes: un protocolo, un host, un nombre de dominio, opcionalmente un path y el nombre del archivo:&lt;/p&gt;
 
@@ -31,7 +31,7 @@
 
 &lt;p&gt;Teniendo esto en mente, continuemos.&lt;/p&gt;
 
-&lt;h3 id=&#34;instalando-dependencias&#34;&gt;INSTALANDO DEPENDENCIAS&lt;/h3&gt;
+&lt;h3 id=&#34;instalando-dependencias:298460950b7ccdfaea249eb4d57a4fbe&#34;&gt;INSTALANDO DEPENDENCIAS&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Vamos a necesitar esta biblioteca para controlar la navegación.&lt;/li&gt;
@@ -49,31 +49,31 @@
 &lt;li&gt;Por último necesitaremos la función &lt;code&gt;Navigation.program&lt;/code&gt; que vive dentro del módulo &lt;code&gt;Navigation&lt;/code&gt;, su tarea será tomar el &lt;code&gt;parser&lt;/code&gt; y un &lt;code&gt;record&lt;/code&gt; para poder regresarnos un programa Elm.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;empieza-configurando-la-aplicación&#34;&gt;EMPIEZA CONFIGURANDO LA APLICACIÓN&lt;/h3&gt;
+&lt;h3 id=&#34;empieza-configurando-la-aplicación:298460950b7ccdfaea249eb4d57a4fbe&#34;&gt;EMPIEZA CONFIGURANDO LA APLICACIÓN&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;Navigation.program&lt;/code&gt; nos proveé de una función &lt;code&gt;urlUpdate&lt;/code&gt; para actualizar el modelo cada que el &lt;code&gt;parser&lt;/code&gt;produzca nuevos datos.&lt;/p&gt;
 
-&lt;script src=&#34;//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=1-routing-with.elm&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js&#34;&gt;&lt;/script&gt;
 
-&lt;h3 id=&#34;define-las-rutas&#34;&gt;DEFINE LAS RUTAS.&lt;/h3&gt;
+&lt;h3 id=&#34;define-las-rutas:298460950b7ccdfaea249eb4d57a4fbe&#34;&gt;DEFINE LAS RUTAS.&lt;/h3&gt;
 
 &lt;p&gt;Es importante mencionar que el orden de los matchers importa, para más detalle sobre ello revisa la &lt;a href=&#34;http://package.elm-lang.org/packages/evancz/url-parser/latest/&#34;&gt;documentación&lt;/a&gt;&lt;/p&gt;
 
-&lt;script src=&#34;//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=2-routes.elm&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js&#34;&gt;&lt;/script&gt;
 
-&lt;h3 id=&#34;así-es-como-funciona-y-se-implementa&#34;&gt;ASÍ ES COMO FUNCIONA&amp;hellip; Y SE IMPLEMENTA.&lt;/h3&gt;
+&lt;h3 id=&#34;así-es-como-funciona-y-se-implementa:298460950b7ccdfaea249eb4d57a4fbe&#34;&gt;ASÍ ES COMO FUNCIONA&amp;hellip; Y SE IMPLEMENTA.&lt;/h3&gt;
 
 &lt;p&gt;Cuando queremos acceder a un documento en particular de un servidor web, escribimos una &lt;code&gt;URL&lt;/code&gt; en la location bar, y un par de cosas suceden: primeramente la URL es partida en sus diferentes partes. Es entonces cuando la biblioteca &lt;code&gt;Navigation&lt;/code&gt; nos genera un record &lt;code&gt;Navigation.Location&lt;/code&gt; con dos partes de ella: el Path y los Parámetros, e inmediatamente manda llamar al &lt;code&gt;parser&lt;/code&gt; quien será el responsable de transformar esa &lt;code&gt;URL&lt;/code&gt; de tipo &lt;code&gt;String&lt;/code&gt; en datos útiles.&lt;/p&gt;
 
-&lt;script src=&#34;//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=3-parser.elm&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js&#34;&gt;&lt;/script&gt;
 
 &lt;p&gt;Es entonces cuando este record es tomado por una función llamada &lt;code&gt;hashParser&lt;/code&gt; que enviará el &lt;code&gt;string&lt;/code&gt; resultante a la función &lt;code&gt;Navigation.makeParser&lt;/code&gt;que vive dentro de &lt;code&gt;parser&lt;/code&gt;, y así mismo se incluirán como párametro las rutas que ya hemos definido anteriormente:&lt;/p&gt;
 
-&lt;script src=&#34;//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=4-navigation-location.elm&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js&#34;&gt;&lt;/script&gt;
 
 &lt;p&gt;Finalmente el &lt;code&gt;parser&lt;/code&gt; regresa un resultado, si es &lt;code&gt;OK&lt;/code&gt; nos devolerá la ruta que hace match y definiremos la acción correspondiente, de lo contrario caeremos en el &lt;code&gt;error&lt;/code&gt;.&lt;/p&gt;
 
-&lt;script src=&#34;//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=5-url-update.elm&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;script src=&#34;//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -91,15 +91,15 @@
 
 &lt;p&gt;La necesidad era borrar un grupo de objetos en donde el contenido de su relación estuviera vacío, ejemplifico con la estructura de unas clases:&lt;/p&gt;
 
-&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=domains.groovy&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js&#34;&gt;&lt;/script&gt;
 
 &lt;p&gt;El primer acercamiento que tuve fue obtener la lista de elementos y hacer una condicional buscando los elementos vacíos, después borrar&amp;hellip;&lt;/p&gt;
 
-&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete1.groovy&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js&#34;&gt;&lt;/script&gt;
 
 &lt;p&gt;Una vez hecho, mejoramos intentamos mejorar el código con una búsqueda mucho más refinada y ejecutando el borrado, para ello nos apoyamos de los &lt;strong&gt;where queries&lt;/strong&gt;:&lt;/p&gt;
 
-&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete2.groovy&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js&#34;&gt;&lt;/script&gt;
 
 &lt;p&gt;Basado en la documentación de Grails:&lt;/p&gt;
 
@@ -109,7 +109,7 @@
 
 &lt;p&gt;Sin embargo, este acercamiento tiene un problema, manda un error cuando se busca por las relaciones del objeto y no permite el borrado. El error: &lt;code&gt;org.springframework.dao.InvalidDataAccessResourceUsageException: Queries of type SizeEquals are not supported by this implementation&lt;/code&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;la-solución-que-me-gustó&#34;&gt;La solución que me gustó&lt;/h3&gt;
+&lt;h3 id=&#34;la-solución-que-me-gustó:e9e6169eb5bad18820f609521078ca60&#34;&gt;La solución que me gustó&lt;/h3&gt;
 
 &lt;p&gt;Usamos &lt;strong&gt;Detached Criteria&lt;/strong&gt; para resolver este problema, por que:&lt;/p&gt;
 
@@ -121,7 +121,7 @@
 
 &lt;p&gt;Finalmente nuestra solución es:&lt;/p&gt;
 
-&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete3.groovy&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js&#34;&gt;&lt;/script&gt;
 
 &lt;p&gt;Con esto, tenemos una búsqueda refinada y el borrado de los elementos directo, inclusive el método &lt;code&gt;deleteAll&lt;/code&gt; regresa un entero con la cantidad de registros afectados.&lt;/p&gt;
 
@@ -156,29 +156,30 @@
 &lt;li&gt;JpaMessageIdRepository&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;@Grab&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;group&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.slf4j&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; module&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;slf4j-api&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; version&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;1.7.10&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF&#34;&gt;@Grab&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;group&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.apache.camel&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; module&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;camel-core&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; version&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;2.12.0&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF&#34;&gt;@Grab&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;group&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.apache.camel&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; module&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;camel-mail&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; version&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;2.12.0&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
 
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.apache.camel.impl.DefaultCamelContext&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.apache.camel.builder.RouteBuilder&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.apache.camel.processor.idempotent.FileIdempotentRepository&lt;/span&gt;
 
-&lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; camelContext &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; DefaultCamelContext&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-camelContext&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;addRoutes&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; RouteBuilder&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;configure&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-    from&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;imaps://imap.gmail.com?username=jorge@makingdevs.com&amp;quot;&lt;/span&gt;
-      &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&amp;amp;password=m4k1ngd3vs&amp;quot;&lt;/span&gt;
-      &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&amp;amp;consumer.delay=6000&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;idempotentConsumer&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt; header&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Message-ID&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;),&lt;/span&gt;
-      FileIdempotentRepository&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;fileIdempotentRepository&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;
-        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;File&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;idempotentRepository.txt&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)))&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;to&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;log:groovymail?showAll=true&amp;amp;multiline=true&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;})&lt;/span&gt;
+@Grab(group=&#39;org.slf4j&#39;, module=&#39;slf4j-api&#39;, version=&#39;1.7.10&#39;)
+@Grab(group=&#39;org.apache.camel&#39;, module=&#39;camel-core&#39;, version=&#39;2.12.0&#39;)
+@Grab(group=&#39;org.apache.camel&#39;, module=&#39;camel-mail&#39;, version=&#39;2.12.0&#39;)
 
-camelContext&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;start&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-addShutdownHook&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; camelContext&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;stop&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;synchronized&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;wait&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+import org.apache.camel.impl.DefaultCamelContext
+import org.apache.camel.builder.RouteBuilder
+import org.apache.camel.processor.idempotent.FileIdempotentRepository
+
+def camelContext = new DefaultCamelContext()
+camelContext.addRoutes(new RouteBuilder() {
+  def void configure() {
+    from(&#34;imaps://imap.gmail.com?username=jorge@makingdevs.com&#34;
+      + &#34;&amp;password=m4k1ngd3vs&#34;
+      + &#34;&amp;consumer.delay=6000&#34;)
+    .idempotentConsumer( header(&#34;Message-ID&#34;),
+      FileIdempotentRepository.fileIdempotentRepository(
+        new File(&#34;idempotentRepository.txt&#34;)))
+    .to(&#34;log:groovymail?showAll=true&amp;multiline=true&#34;) } })
+
+camelContext.start()
+addShutdownHook{ camelContext.stop() }
+synchronized(this){ this.wait() }
 
 
 &lt;p&gt;Este es un script ejemplo el cual utiliza &lt;code&gt;FileIdempotentRepository&lt;/code&gt; utilizando un archivo ejemplo para llevar el control, si exploramos el archivo ahí se encuentra los id de los mensajes procesados.&lt;/p&gt;
@@ -187,19 +188,19 @@ addShutdownHook&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; camelCo
 
 &lt;p&gt;Asi si hay un mensaje el cual ya se encuentra dentro de este archivo se ignora y no es procesado. En mi caso utilize JpaMessageIdRepository dentro de grails y fue muy simple utilizar este componente solo agregue la dependencia de camel sql en el buildConfig.groovy&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;runtime &lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;&amp;#39;&lt;/span&gt;org&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;apache&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;camel&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;camel&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;sql:&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;2.13.0&lt;/span&gt;&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;’&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+runtime &#39;org.apache.camel:camel-sql:2.13.0’
 &lt;/p&gt;
 
 &lt;p&gt;y agregue el bean en resources.groovy&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.apache.camel.processor.idempotent.jdbc.JdbcMessageIdRepository&lt;/span&gt;
+&lt;p&gt;
+import org.apache.camel.processor.idempotent.jdbc.JdbcMessageIdRepository
 
-beans &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  messageIdRepository&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;JdbcMessageIdRepository&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;ref&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;dataSource&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;),&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;jdbcProcessorName&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+beans = {
+  messageIdRepository(JdbcMessageIdRepository,ref(&#39;dataSource&#39;),&#39;jdbcProcessorName&#39;)
+}
+&lt;/p&gt;
 
 &lt;p&gt;y por ultimo agregue el &lt;em&gt;idempotentComponent&lt;/em&gt;.&lt;/p&gt;
 </description>
@@ -245,7 +246,7 @@ beans &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&
       <guid>http://blog.makingdevs.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory</guid>
       <description>
 
-&lt;h2 id=&#34;acerca-de-las-categorías&#34;&gt;Acerca de las categorías&lt;/h2&gt;
+&lt;h2 id=&#34;acerca-de-las-categorías:e62c0560695f1f5c3ac7c5a60edd4eb3&#34;&gt;Acerca de las categorías&lt;/h2&gt;
 
 &lt;p&gt;En Groovy se pueden inyectar métodos de algunas formas, uno de ellos es a través del uso de categorías, la cual nos da inyección temporal y controlada de dichos elementos. Para hacerlo las clases que son categorías deben de cumplir con cierta estructura:&lt;/p&gt;
 
@@ -258,40 +259,40 @@ beans &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&
 
 &lt;p&gt;Un ejemplo podría ser el siguiente:&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;NameUtil&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;prettify&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;String name&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt;
-            name&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;trim&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;split&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;grep&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; it&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}*.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;capitalize&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;join&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
-        &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-    use NameUtil&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-        println &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;  josé   juan    reyes    zuñiga   &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;prettify&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+    class NameUtil{
+        static prettify(String name){
+            name.trim().split(&#39; &#39;).grep { it.size() }*.capitalize().join(&#39; &#39;)
+        }
+    }
+
+    use NameUtil, {
+        println &#34;  josé   juan    reyes    zuñiga   &#34;.prettify()
+    }
 
 
 &lt;p&gt;Adicionalmente, podemos crear dicha inyección de métodos con ayuda de la anotación &lt;code&gt;@Category&lt;/code&gt;, que prácticamente nos facilita a que cualquier clase pueda ser usada como categoría, pues no necesariamente los métodos tiene que ser estáticos y el contexto del argumento para la inyección es el objeto &lt;code&gt;this&lt;/code&gt; en donde se esté intentando usar.&lt;/p&gt;
 
-&lt;h2 id=&#34;uso-de-groovytime&#34;&gt;Uso de GroovyTime&lt;/h2&gt;
+&lt;h2 id=&#34;uso-de-groovytime:e62c0560695f1f5c3ac7c5a60edd4eb3&#34;&gt;Uso de GroovyTime&lt;/h2&gt;
 
 &lt;p&gt;La clase &lt;code&gt;TimeCategory&lt;/code&gt; es una clase que tiene una serie de métodos de conveniencia para el manejo del tiempo, formando así un DSL, con el que podemos operar. Y con ayuda de la clase &lt;code&gt;Duration&lt;/code&gt; complementamos algunas operaciones que se pueden realizar en el contexto de los objetos que estemos usando.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;groovy.time.TimeCategory&lt;/span&gt;
 
-    &lt;span style=&#34;color: #00A000&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt; TimeCategory &lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-        println &lt;span style=&#34;color: #666666&#34;&gt;2.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;hours&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;ago&lt;/span&gt;
-        println &lt;span style=&#34;color: #666666&#34;&gt;30.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;minutes&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// TimeDuration&lt;/span&gt;
-        println &lt;span style=&#34;color: #666666&#34;&gt;30.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;minutes&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;from&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;now&lt;/span&gt;
-        println &lt;span style=&#34;color: #666666&#34;&gt;40.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;minutes&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;30.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;minutes&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;from&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;now&lt;/span&gt;
-        println &lt;span style=&#34;color: #666666&#34;&gt;30.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;minutes&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;ago&lt;/span&gt;
+    import groovy.time.TimeCategory
 
-        &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; today &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; Date&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-        println today &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;3.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;years&lt;/span&gt;
-        println today &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;4.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;weeks&lt;/span&gt;
-        println today &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;90.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;minutes&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+    use ( TimeCategory ) {
+        println 2.hours.ago
+        println 30.minutes.from // TimeDuration
+        println 30.minutes.from.now
+        println 40.minutes + 30.minutes.from.now
+        println 30.minutes.ago
+
+        def today = new Date()
+        println today - 3.years
+        println today + 4.weeks
+        println today + 90.minutes
+    }
+
 
 &lt;p&gt;Para que consideres el conjunto de operaciones que tienes disponibles te recomendamos visitar la documentación de &lt;a href=&#34;http://groovy.codehaus.org/api/groovy/time/TimeCategory.html&#34;&gt;TimeCategory&lt;/a&gt; y &lt;a href=&#34;http://groovy.codehaus.org/api/groovy/time/Duration.html&#34;&gt;Duration&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -314,33 +315,33 @@ beans &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&
 
 &lt;p&gt;Pero si son curiosos ustedes se preguntaran &lt;strong&gt;¿Que es un endPoint?&lt;/strong&gt;. Un endpoint es la interface a través de la cual los sistemas externos pueden enviar y recibir mensajes, permitiendo así la integración de sistemas en Camel. La función de un endpoint es crear productores y consumidores, lo que nos permite usar este endpoint como to y from dentro de una ruta Camel. Asi se denota un endpoint URIs siguiendo el siguiente formato: &lt;strong&gt;[componente]:[contexto]?[opciones]&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;producers-y-consumers&#34;&gt;Producers y Consumers&lt;/h3&gt;
+&lt;h3 id=&#34;producers-y-consumers:5e76dbb3a6d52d4a33ab189790c5621d&#34;&gt;Producers y Consumers&lt;/h3&gt;
 
 &lt;p&gt;Un productor es el encargado de proveer los mensajes, siendo el puente de comunicación con el sistema externo, no procesa la información solo provee el mensaje, en este ejemplo el correo es el productor. Un consumidor es el encargado de recibir el mensaje que el productor obtiene y así procesar el mensaje o inclusive partir dicho mensaje para que sea procesado por otro consumidor. Bueno después de una pequeña introducción a Camel les muestro mi script en la cual hago lectura del correo filtro los mensajes por su subject y los arrojo a un log y no solo puede ser un log gracias a camel este puede ser un bean, FTP, intancia de amazon, un archivo, &lt;a href=&#34;http://camel.apache.org/components.html&#34;&gt;casi cualquier cosa&lt;/a&gt;. Nota necesitamos las dependencias de camel core y camel mail para el siguiente ejemplo:&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;@Grab&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;group&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.apache.camel&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; module&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;camel-core&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; version&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;1.6.0&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF&#34;&gt;@Grab&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;group&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.apache.camel&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; module&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;camel-mail&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; version&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;1.6.0&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
 
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.apache.camel.impl.DefaultCamelContext&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.apache.camel.builder.RouteBuilder&lt;/span&gt;
+@Grab(group=&#39;org.apache.camel&#39;, module=&#39;camel-core&#39;, version=&#39;1.6.0&#39;)
+@Grab(group=&#39;org.apache.camel&#39;, module=&#39;camel-mail&#39;, version=&#39;1.6.0&#39;)
 
-&lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; camelContext &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; DefaultCamelContext&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-camelContext&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;addRoutes&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; RouteBuilder&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;configure&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-    from&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;imaps://imap.gmail.com?username=user&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&amp;amp;password=password&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&amp;amp;deleteProcessedMessages=false&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&amp;amp;processOnlyUnseenMessages=true&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&amp;amp;consumer.delay=6000&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;filter&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;it&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;in&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;headers&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;subject&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;contains&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;camel&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)}&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;to&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;log:groovymail?showAll=true&amp;amp;multiline=true&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
-  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;})&lt;/span&gt;
-camelContext&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;start&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+import org.apache.camel.impl.DefaultCamelContext
+import org.apache.camel.builder.RouteBuilder
 
-addShutdownHook&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; camelContext&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;stop&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;synchronized&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;wait&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+def camelContext = new DefaultCamelContext()
+camelContext.addRoutes(new RouteBuilder() {
+  def void configure() {
+    from(&#34;imaps://imap.gmail.com?username=user&#34;
+    + &#34;&amp;password=password&#34;
+    + &#34;&amp;deleteProcessedMessages=false&#34;
+    + &#34;&amp;processOnlyUnseenMessages=true&#34;
+    + &#34;&amp;consumer.delay=6000&#34;)
+    .filter {it.in.headers.subject.contains(&#39;camel&#39;)}
+    .to(&#34;log:groovymail?showAll=true&amp;multiline=true&#34;)
+  }
+})
+camelContext.start()
+
+addShutdownHook{ camelContext.stop() }
+synchronized(this){ this.wait() }
 
 
 &lt;p&gt;Notaran que al final del script hay una declaración &lt;code&gt;camelContext.start()&lt;/code&gt;. El &lt;em&gt;CamelContext&lt;/em&gt; representa una sola base de reglas de enrutamiento Camel. Se utiliza el CamelContext de una manera similar al ApplicationContext. Y asi tenemos un pequeño ejemplo de lectura de correo con ayuda de Camel.&lt;/p&gt;

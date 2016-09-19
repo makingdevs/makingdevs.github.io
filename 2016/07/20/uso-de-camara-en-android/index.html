@@ -21,7 +21,7 @@
     
     <meta property="og:tags" content="closure">
     
-    <meta name="generator" content="Hugo 0.16" />
+    <meta name="generator" content="Hugo 0.16-DEV" />
     <title>Uso de camara en android &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -98,7 +98,7 @@
 
 <!-- more -->
 
-<h2 id="intent-en-android">Intent en android</h2>
+<h2 id="intent-en-android:de7cbc5e1d2a0adc68e66aa70b0c9d8f">Intent en android</h2>
 
 <p>Para poder hacer uso de la cámara se realiza mediante intent, que son el mecanismo por el cual se comunica la aplicación en tiempo de ejecución con otros componentes, así como lanzar eventos, se cuenta con dos tipos los cuales son:
 <strong>Intento implícito</strong>
@@ -106,29 +106,29 @@ Se puede iniciar una actividad en otra aplicación en el dispositivo
 <strong>Intento explicito</strong>
 Se especifica la clase de la actividad a empezar para que el sistema operativo la inicie</p>
 
-<h2 id="acceso-a-la-cámara">Acceso a la cámara</h2>
+<h2 id="acceso-a-la-cámara:de7cbc5e1d2a0adc68e66aa70b0c9d8f">Acceso a la cámara</h2>
 
 <p>Android cuenta con la clase <strong>MediaStore</strong>, esta se encarga de proveer los medios de comunicación, el que nos interesa es <strong>ACTION_IMAGE_CAPTURE</strong>, este en el intent con el cual podemos hacer uso de la cámara.
 El siguiente metodo muestra como usar la camara nativa de Android, la clase que se encarga de usarlo es <strong>ExampleCamera</strong>.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">	<span style="color: #00BB00; font-weight: bold">void</span> <span style="color: #00A000">launchCamera</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
-		Intent camera <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> Intent<span style="color: #666666">(</span>MediaStore<span style="color: #666666">.</span><span style="color: #BB4444">ACTION_IMAGE_CAPTURE</span><span style="color: #666666">)</span>
-		<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">(</span>camera<span style="color: #666666">.</span><span style="color: #BB4444">resolveActivity</span><span style="color: #666666">(</span>getPackageManager<span style="color: #666666">()))</span> <span style="color: #666666">{</span>
-			<span style="color: #AA22FF; font-weight: bold">try</span> <span style="color: #666666">{</span>
-				filePhoto <span style="color: #666666">=</span> createPhoto<span style="color: #666666">(</span><span style="color: #BB4444">&quot;IMG_&quot;</span><span style="color: #666666">)</span>
-				<span style="color: #666666">}</span> <span style="color: #AA22FF; font-weight: bold">catch</span> <span style="color: #666666">(</span>IOException ex<span style="color: #666666">)</span> <span style="color: #666666">{</span>
-					Log<span style="color: #666666">.</span><span style="color: #BB4444">d</span><span style="color: #666666">(</span>TAG<span style="color: #666666">,</span> <span style="color: #BB4444">&quot;Error ${ex.message}&quot;</span><span style="color: #666666">)</span>
-				<span style="color: #666666">}</span>
-				<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">(</span>filePhoto<span style="color: #666666">)</span> <span style="color: #666666">{</span>
-					camera<span style="color: #666666">.</span><span style="color: #BB4444">putExtra</span><span style="color: #666666">(</span>MediaStore<span style="color: #666666">.</span><span style="color: #BB4444">EXTRA_OUTPUT</span><span style="color: #666666">,</span> Uri<span style="color: #666666">.</span><span style="color: #BB4444">fromFile</span><span style="color: #666666">(</span>filePhoto<span style="color: #666666">))</span>
-					startActivityForResult<span style="color: #666666">(</span>camera<span style="color: #666666">,</span> CAPTURE_IMAGE<span style="color: #666666">)</span>
-			<span style="color: #666666">}</span>
-		<span style="color: #666666">}</span>
-	<span style="color: #666666">}</span>
-</pre></div>
+
+	void launchCamera() {
+		Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+		if (camera.resolveActivity(getPackageManager())) {
+			try {
+				filePhoto = createPhoto("IMG_")
+				} catch (IOException ex) {
+					Log.d(TAG, "Error ${ex.message}")
+				}
+				if (filePhoto) {
+					camera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(filePhoto))
+					startActivityForResult(camera, CAPTURE_IMAGE)
+			}
+		}
+	}
 
 
-<h2 id="almacenamiento-externo">Almacenamiento externo</h2>
+<h2 id="almacenamiento-externo:de7cbc5e1d2a0adc68e66aa70b0c9d8f">Almacenamiento externo</h2>
 
 <p>Al capturar una foto, esta debe ser almacenada para poder ser usada posteriormente, Android provee una unidad principal para ello, la cual puede ser su almacenamiento interno o una memoria SD.</p>
 
@@ -136,45 +136,45 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
 
 <p>El método <strong>createPhoto(&hellip;)</strong> se encarga de crear un directorio denominado <strong>ExampleCamera</strong> dentro de <strong>PICTURES</strong>, además de generar el archivo para cada foto, un dato interesante es que no se realizó el import de la clase <strong>File</strong>, la razón es que al usar <strong>groovy</strong>, ciertos paquetes vienen incluidos por default.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">	File <span style="color: #00A000">createPhoto</span><span style="color: #666666">(</span>String name<span style="color: #666666">)</span> <span style="color: #666666">{</span>
-		File storagePhotos <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> File<span style="color: #666666">(</span>Environment<span style="color: #666666">.</span><span style="color: #BB4444">getExternalStoragePublicDirectory</span><span style="color: #666666">(</span>Environment<span style="color: #666666">.</span><span style="color: #BB4444">DIRECTORY_PICTURES</span><span style="color: #666666">),</span> <span style="color: #BB4444">&quot;ExampleCamera&quot;</span><span style="color: #666666">)</span>
-		<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">(!</span>storagePhotos<span style="color: #666666">.</span><span style="color: #BB4444">exists</span><span style="color: #666666">())</span> <span style="color: #666666">{</span>
-			<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">(!</span>storagePhotos<span style="color: #666666">.</span><span style="color: #BB4444">mkdirs</span><span style="color: #666666">())</span> <span style="color: #666666">{</span>
-				Log<span style="color: #666666">.</span><span style="color: #BB4444">d</span><span style="color: #666666">(</span>TAG<span style="color: #666666">,</span> <span style="color: #BB4444">&quot;Error al crear directorio&quot;</span><span style="color: #666666">)</span>
-			<span style="color: #666666">}</span>
-		<span style="color: #666666">}</span>
-		<span style="color: #AA22FF; font-weight: bold">new</span> <span style="color: #00A000">File</span><span style="color: #666666">(</span>storagePhotos<span style="color: #666666">.</span><span style="color: #BB4444">getPath</span><span style="color: #666666">()</span> <span style="color: #666666">+</span> File<span style="color: #666666">.</span><span style="color: #BB4444">separator</span> <span style="color: #666666">+</span> <span style="color: #BB4444">&quot;${name + new Date().format(&quot;</span>ddMMyyyy_HHmmss<span style="color: #BB4444">&quot;)}.jpg&quot;</span><span style="color: #666666">)</span>
-	<span style="color: #666666">}</span>
-</pre></div>
+
+	File createPhoto(String name) {
+		File storagePhotos = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "ExampleCamera")
+		if (!storagePhotos.exists()) {
+			if (!storagePhotos.mkdirs()) {
+				Log.d(TAG, "Error al crear directorio")
+			}
+		}
+		new File(storagePhotos.getPath() + File.separator + "${name + new Date().format("ddMMyyyy_HHmmss")}.jpg")
+	}
 
 
-<h2 id="manipular-el-resultado-de-la-cámara">Manipular el resultado de la cámara</h2>
+<h2 id="manipular-el-resultado-de-la-cámara:de7cbc5e1d2a0adc68e66aa70b0c9d8f">Manipular el resultado de la cámara</h2>
 
 <p>Cuando se captura la foto, una vez que termina se maneja el resultado con el método onActivityResult(…), donde se verifica el estatus de la captura de la foto, ya sea que se culminó o cancelado, ante lo cual se muestra un mensaje emergente haciendo uso de los <strong>Toast</strong>.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">	<span style="color: #AA22FF">@Override</span>
-	<span style="color: #AA22FF; font-weight: bold">protected</span> <span style="color: #00BB00; font-weight: bold">void</span> <span style="color: #00A000">onActivityResult</span><span style="color: #666666">(</span><span style="color: #00BB00; font-weight: bold">int</span> requestCode<span style="color: #666666">,</span> <span style="color: #00BB00; font-weight: bold">int</span> resultCode<span style="color: #666666">,</span> Intent data<span style="color: #666666">)</span> <span style="color: #666666">{</span>
-		<span style="color: #AA22FF; font-weight: bold">super</span><span style="color: #666666">.</span><span style="color: #BB4444">onActivityResult</span><span style="color: #666666">(</span>requestCode<span style="color: #666666">,</span> resultCode<span style="color: #666666">,</span> data<span style="color: #666666">)</span>
-		<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">(</span>requestCode <span style="color: #666666">==</span> CAPTURE_IMAGE<span style="color: #666666">)</span> <span style="color: #666666">{</span>
-			<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">(</span>resultCode <span style="color: #666666">==</span> RESULT_OK<span style="color: #666666">)</span> <span style="color: #666666">{</span>
-				Toast<span style="color: #666666">.</span><span style="color: #BB4444">makeText</span><span style="color: #666666">(</span>getApplicationContext<span style="color: #666666">(),</span> <span style="color: #BB4444">&quot;Exito al crear la foto&quot;</span><span style="color: #666666">,</span> Toast<span style="color: #666666">.</span><span style="color: #BB4444">LENGTH_SHORT</span><span style="color: #666666">).</span><span style="color: #BB4444">show</span><span style="color: #666666">()</span>
-			<span style="color: #666666">}</span> <span style="color: #AA22FF; font-weight: bold">else</span> <span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">(</span>resultCode <span style="color: #666666">==</span> RESULT_CANCELED<span style="color: #666666">)</span> <span style="color: #666666">{</span>
-				Toast<span style="color: #666666">.</span><span style="color: #BB4444">makeText</span><span style="color: #666666">(</span><span style="color: #AA22FF; font-weight: bold">this</span><span style="color: #666666">,</span> <span style="color: #BB4444">&quot;Se cancelo la foto&quot;</span><span style="color: #666666">,</span> Toast<span style="color: #666666">.</span><span style="color: #BB4444">LENGTH_LONG</span><span style="color: #666666">).</span><span style="color: #BB4444">show</span><span style="color: #666666">()</span>
-			<span style="color: #666666">}</span> <span style="color: #AA22FF; font-weight: bold">else</span> <span style="color: #666666">{</span>
-				Toast<span style="color: #666666">.</span><span style="color: #BB4444">makeText</span><span style="color: #666666">(</span><span style="color: #AA22FF; font-weight: bold">this</span><span style="color: #666666">,</span> <span style="color: #BB4444">&quot;Error al capturar la foto&quot;</span><span style="color: #666666">,</span> Toast<span style="color: #666666">.</span><span style="color: #BB4444">LENGTH_LONG</span><span style="color: #666666">).</span><span style="color: #BB4444">show</span><span style="color: #666666">()</span>
-			<span style="color: #666666">}</span>
-		<span style="color: #666666">}</span>
-	<span style="color: #666666">}</span>
-</pre></div>
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data)
+		if (requestCode == CAPTURE_IMAGE) {
+			if (resultCode == RESULT_OK) {
+				Toast.makeText(getApplicationContext(), "Exito al crear la foto", Toast.LENGTH_SHORT).show()
+			} else if (resultCode == RESULT_CANCELED) {
+				Toast.makeText(this, "Se cancelo la foto", Toast.LENGTH_LONG).show()
+			} else {
+				Toast.makeText(this, "Error al capturar la foto", Toast.LENGTH_LONG).show()
+			}
+		}
+	}
 
 
-<h2 id="permisos-de-android">Permisos de Android</h2>
+<h2 id="permisos-de-android:de7cbc5e1d2a0adc68e66aa70b0c9d8f">Permisos de Android</h2>
 
 <p>A la hora de manejar el hardware se debe de pedir ciertos permisos como son el escribir y leer en la memoria externa, así como usar la cámara, para esto se usa la etiqueta <code>&lt;uses-permission&gt;</code> donde se coloca que permiso es solicitado.
 <code>&lt;uses-feature android:name=&quot;android.hardware.camera&quot; android:required=&quot;true&quot; /&gt;</code>
 <code>&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</code></p>
 
-<h2 id="imports-default-groovy">Imports default groovy</h2>
+<h2 id="imports-default-groovy:de7cbc5e1d2a0adc68e66aa70b0c9d8f">Imports default groovy</h2>
 
 <p>Groovy realiza el import de los paquetes más usados, para reducir el código.
 <code>import java.lang.*</code>

@@ -19,7 +19,7 @@
     
     <meta property="og:tags" content="gorm">
     
-    <meta name="generator" content="Hugo 0.16" />
+    <meta name="generator" content="Hugo 0.16-DEV" />
     <title>Borrado batch en Grails &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -98,15 +98,15 @@
 
 <p>La necesidad era borrar un grupo de objetos en donde el contenido de su relación estuviera vacío, ejemplifico con la estructura de unas clases:</p>
 
-<script src="//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=domains.groovy"></script>
+<script src="//gist.github.com/neodevelop/54953d90cc778b71548a.js"></script>
 
 <p>El primer acercamiento que tuve fue obtener la lista de elementos y hacer una condicional buscando los elementos vacíos, después borrar&hellip;</p>
 
-<script src="//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete1.groovy"></script>
+<script src="//gist.github.com/neodevelop/54953d90cc778b71548a.js"></script>
 
 <p>Una vez hecho, mejoramos intentamos mejorar el código con una búsqueda mucho más refinada y ejecutando el borrado, para ello nos apoyamos de los <strong>where queries</strong>:</p>
 
-<script src="//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete2.groovy"></script>
+<script src="//gist.github.com/neodevelop/54953d90cc778b71548a.js"></script>
 
 <p>Basado en la documentación de Grails:</p>
 
@@ -116,7 +116,7 @@
 
 <p>Sin embargo, este acercamiento tiene un problema, manda un error cuando se busca por las relaciones del objeto y no permite el borrado. El error: <code>org.springframework.dao.InvalidDataAccessResourceUsageException: Queries of type SizeEquals are not supported by this implementation</code></p>
 
-<h3 id="la-solución-que-me-gustó">La solución que me gustó</h3>
+<h3 id="la-solución-que-me-gustó:e9e6169eb5bad18820f609521078ca60">La solución que me gustó</h3>
 
 <p>Usamos <strong>Detached Criteria</strong> para resolver este problema, por que:</p>
 
@@ -128,7 +128,7 @@
 
 <p>Finalmente nuestra solución es:</p>
 
-<script src="//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete3.groovy"></script>
+<script src="//gist.github.com/neodevelop/54953d90cc778b71548a.js"></script>
 
 <p>Con esto, tenemos una búsqueda refinada y el borrado de los elementos directo, inclusive el método <code>deleteAll</code> regresa un entero con la cantidad de registros afectados.</p>
 

@@ -13,7 +13,7 @@
     <meta property="og:url" content="http://blog.makingdevs.com/2015/08/13/amazon-s3-y-groovy">
     <meta property="og:site_name" content="Blog de Making Devs">
     
-    <meta name="generator" content="Hugo 0.16" />
+    <meta name="generator" content="Hugo 0.16-DEV" />
     <title>Amazon S3 y Groovy &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -92,52 +92,53 @@
 
 <!-- more -->
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">@Grapes</span><span style="color: #666666">(</span>
-    <span style="color: #AA22FF">@Grab</span><span style="color: #666666">(</span>group<span style="color: #666666">=</span><span style="color: #BB4444">&#39;net.java.dev.jets3t&#39;</span><span style="color: #666666">,</span> module<span style="color: #666666">=</span><span style="color: #BB4444">&#39;jets3t&#39;</span><span style="color: #666666">,</span> version<span style="color: #666666">=</span><span style="color: #BB4444">&#39;0.9.3&#39;</span><span style="color: #666666">)</span>
-<span style="color: #666666">)</span>
 
-<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.jets3t.service.security.*</span>
-<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.jets3t.service.*</span>
-<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.jets3t.service.impl.rest.httpclient.*</span>
-<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.jets3t.service.model.*</span>
-<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.jets3t.service.acl.*</span>
+@Grapes(
+    @Grab(group='net.java.dev.jets3t', module='jets3t', version='0.9.3')
+)
 
-String awsAccessKey <span style="color: #666666">=</span> <span style="color: #BB4444">&quot;YOURAWSACCESSKEY&quot;</span>
-String awsSecretKey <span style="color: #666666">=</span> <span style="color: #BB4444">&quot;YOURAWSSECRETKEY&quot;</span>
+import org.jets3t.service.security.*
+import org.jets3t.service.*
+import org.jets3t.service.impl.rest.httpclient.*
+import org.jets3t.service.model.*
+import org.jets3t.service.acl.*
 
-AWSCredentials awsCredentials <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> AWSCredentials<span style="color: #666666">(</span>awsAccessKey<span style="color: #666666">,</span> awsSecretKey<span style="color: #666666">)</span>
-S3Service s3Service <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> RestS3Service<span style="color: #666666">(</span>awsCredentials<span style="color: #666666">)</span>
+String awsAccessKey = "YOURAWSACCESSKEY"
+String awsSecretKey = "YOURAWSSECRETKEY"
 
-S3Bucket<span style="color: #666666">[]</span> myBuckets <span style="color: #666666">=</span> s3Service<span style="color: #666666">.</span><span style="color: #BB4444">listAllBuckets</span><span style="color: #666666">()</span>
-</pre></div>
+AWSCredentials awsCredentials = new AWSCredentials(awsAccessKey, awsSecretKey)
+S3Service s3Service = new RestS3Service(awsCredentials)
+
+S3Bucket[] myBuckets = s3Service.listAllBuckets()
 
 
 <p>Despúes, una vez con todos los buckets, podemos listar los archivos contenidos dentro de bucket muy particular.</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">String bucletName <span style="color: #666666">=</span> <span style="color: #BB4444">&quot;makingdevs-bucket&quot;</span>
 
-bucket <span style="color: #666666">=</span> myBuckets<span style="color: #666666">.</span><span style="color: #BB4444">find</span> <span style="color: #666666">{</span> it<span style="color: #666666">.</span><span style="color: #BB4444">name</span><span style="color: #666666">==</span>bucketName <span style="color: #666666">}</span>
+String bucletName = "makingdevs-bucket"
 
-s3Objects <span style="color: #666666">=</span> s3Service<span style="color: #666666">.</span><span style="color: #BB4444">listObjects</span><span style="color: #666666">(</span>bucket<span style="color: #666666">)</span>
-</pre></div>
-</p>
+bucket = myBuckets.find { it.name==bucketName }
+
+s3Objects = s3Service.listObjects(bucket)
+
 
 <p>Finalmente, podemos subir un archivo específico hacia el bucket que deseamos.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">file <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> File<span style="color: #666666">(</span><span style="color: #BB4444">&quot;/some/file/in/your/filesystem.ext&quot;</span><span style="color: #666666">)</span>
 
-S3Object s3Object <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> S3Object<span style="color: #666666">()</span>
-s3Object<span style="color: #666666">.</span><span style="color: #BB4444">with</span> <span style="color: #666666">{</span>
-  setAcl AccessControlList<span style="color: #666666">.</span><span style="color: #BB4444">REST_CANNED_PUBLIC_READ</span>
-  setContentLength file<span style="color: #666666">.</span><span style="color: #BB4444">length</span><span style="color: #666666">()</span>
-  setContentType file<span style="color: #666666">.</span><span style="color: #BB4444">toURL</span><span style="color: #666666">().</span><span style="color: #BB4444">openConnection</span><span style="color: #666666">().</span><span style="color: #BB4444">contentType</span>
+
+file = new File("/some/file/in/your/filesystem.ext")
+
+S3Object s3Object = new S3Object()
+s3Object.with {
+  setAcl AccessControlList.REST_CANNED_PUBLIC_READ
+  setContentLength file.length()
+  setContentType file.toURL().openConnection().contentType
   setDataInputFile file
-  setKey file<span style="color: #666666">.</span><span style="color: #BB4444">name</span>
-  setBucketName bucket<span style="color: #666666">.</span><span style="color: #BB4444">getName</span><span style="color: #666666">()</span> <span style="color: #008800; font-style: italic">// we use our previous bucket</span>
-<span style="color: #666666">}</span>
+  setKey file.name
+  setBucketName bucket.getName() // we use our previous bucket
+}
 
-s3Service<span style="color: #666666">.</span><span style="color: #BB4444">putObject</span> bucket<span style="color: #666666">,</span> s3Object
-</pre></div>
+s3Service.putObject bucket, s3Object
 
 
 <p>Una vez que llamamos al servicio <code>s3Service</code> el archivo queda colocado en el bucket. Y finalmente si deseamos borrarlo podemos usar <code>s3Service.deleteObject s3Bucket, s3Object.key</code>, en donde sólo mandamos el objeto del bucket y el <em>key</em> del objeto que deseamos borrar.</p>

@@ -19,7 +19,7 @@
     
     <meta property="og:tags" content="functional programming">
     
-    <meta name="generator" content="Hugo 0.16" />
+    <meta name="generator" content="Hugo 0.16-DEV" />
     <title>Routing en Elm &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -94,7 +94,7 @@
 
 <p>La URL es un bit interesante de nuestra applicación, nos permite regresar a un estado, o compartir ese estado con alguien más; y en Elm, el Routing, es la segunda cosa más importante que deberías conocer después del propio lenguaje. Así que empecemos.</p>
 
-<h3 id="anatomía-de-una-url">ANATOMÍA DE UNA URL</h3>
+<h3 id="anatomía-de-una-url:298460950b7ccdfaea249eb4d57a4fbe">ANATOMÍA DE UNA URL</h3>
 
 <p>Una URL es una dirección dada para un recurso único en la web y está compuesta de diferentes partes: un protocolo, un host, un nombre de dominio, opcionalmente un path y el nombre del archivo:</p>
 
@@ -106,7 +106,7 @@
 
 <p>Teniendo esto en mente, continuemos.</p>
 
-<h3 id="instalando-dependencias">INSTALANDO DEPENDENCIAS</h3>
+<h3 id="instalando-dependencias:298460950b7ccdfaea249eb4d57a4fbe">INSTALANDO DEPENDENCIAS</h3>
 
 <ul>
 <li>Vamos a necesitar esta biblioteca para controlar la navegación.</li>
@@ -124,31 +124,31 @@
 <li>Por último necesitaremos la función <code>Navigation.program</code> que vive dentro del módulo <code>Navigation</code>, su tarea será tomar el <code>parser</code> y un <code>record</code> para poder regresarnos un programa Elm.</li>
 </ul>
 
-<h3 id="empieza-configurando-la-aplicación">EMPIEZA CONFIGURANDO LA APLICACIÓN</h3>
+<h3 id="empieza-configurando-la-aplicación:298460950b7ccdfaea249eb4d57a4fbe">EMPIEZA CONFIGURANDO LA APLICACIÓN</h3>
 
 <p><code>Navigation.program</code> nos proveé de una función <code>urlUpdate</code> para actualizar el modelo cada que el <code>parser</code>produzca nuevos datos.</p>
 
-<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=1-routing-with.elm"></script>
+<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js"></script>
 
-<h3 id="define-las-rutas">DEFINE LAS RUTAS.</h3>
+<h3 id="define-las-rutas:298460950b7ccdfaea249eb4d57a4fbe">DEFINE LAS RUTAS.</h3>
 
 <p>Es importante mencionar que el orden de los matchers importa, para más detalle sobre ello revisa la <a href="http://package.elm-lang.org/packages/evancz/url-parser/latest/">documentación</a></p>
 
-<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=2-routes.elm"></script>
+<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js"></script>
 
-<h3 id="así-es-como-funciona-y-se-implementa">ASÍ ES COMO FUNCIONA&hellip; Y SE IMPLEMENTA.</h3>
+<h3 id="así-es-como-funciona-y-se-implementa:298460950b7ccdfaea249eb4d57a4fbe">ASÍ ES COMO FUNCIONA&hellip; Y SE IMPLEMENTA.</h3>
 
 <p>Cuando queremos acceder a un documento en particular de un servidor web, escribimos una <code>URL</code> en la location bar, y un par de cosas suceden: primeramente la URL es partida en sus diferentes partes. Es entonces cuando la biblioteca <code>Navigation</code> nos genera un record <code>Navigation.Location</code> con dos partes de ella: el Path y los Parámetros, e inmediatamente manda llamar al <code>parser</code> quien será el responsable de transformar esa <code>URL</code> de tipo <code>String</code> en datos útiles.</p>
 
-<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=3-parser.elm"></script>
+<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js"></script>
 
 <p>Es entonces cuando este record es tomado por una función llamada <code>hashParser</code> que enviará el <code>string</code> resultante a la función <code>Navigation.makeParser</code>que vive dentro de <code>parser</code>, y así mismo se incluirán como párametro las rutas que ya hemos definido anteriormente:</p>
 
-<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=4-navigation-location.elm"></script>
+<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js"></script>
 
 <p>Finalmente el <code>parser</code> regresa un resultado, si es <code>OK</code> nos devolerá la ruta que hace match y definiremos la acción correspondiente, de lo contrario caeremos en el <code>error</code>.</p>
 
-<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=5-url-update.elm"></script>
+<p><script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js"></script></p>
 
 	</article>
 </main>
