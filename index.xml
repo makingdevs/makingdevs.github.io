@@ -6,27 +6,8 @@
     <description>Recent content on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Sep 2016 21:28:37 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 10 Sep 2016 11:22:01 -0500</lastBuildDate>
     <atom:link href="http://blog.makingdevs.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>test_dos</title>
-      <link>http://blog.makingdevs.com/2016/09/18/test_dos</link>
-      <pubDate>Sun, 18 Sep 2016 21:28:37 -0500</pubDate>
-      
-      <guid>http://blog.makingdevs.com/2016/09/18/test_dos</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>prueba</title>
-      <link>http://blog.makingdevs.com/2016/09/18/prueba</link>
-      <pubDate>Sun, 18 Sep 2016 20:44:17 -0500</pubDate>
-      
-      <guid>http://blog.makingdevs.com/2016/09/18/prueba</guid>
-      <description>&lt;p&gt;Este es un fichero de prueba&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>Routing en Elm</title>
@@ -1399,6 +1380,98 @@ beans = {
 &lt;/p&gt;
 
 &lt;p&gt;y por ultimo agregue el &lt;em&gt;idempotentComponent&lt;/em&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Personalizar notificaciones de correo en Jenkins</title>
+      <link>http://blog.makingdevs.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins</link>
+      <pubDate>Thu, 06 Nov 2014 19:08:56 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins</guid>
+      <description>&lt;p&gt;Las &lt;strong&gt;notificaciones&lt;/strong&gt; son básicas para la correcta comunicación de los involucrados de nuestros proyectos como: &lt;em&gt;Stakeholders/ Key Users / Developers / Clientes / Testers&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Por esta razón te recomiendo personalizar las notificaciones por defecto de &lt;strong&gt;Jenkins&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Objetivo: Informar los despliegues desde Jenkins por correo, usando el &lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Email-ext+plugin&#34;&gt;plugin: Email-ext&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Procedimiento:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Instalar el plugin desde la consola de administración de Jenkins. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_01.jpg&#34; alt=&#34;Screenshot 1&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Configurar la cuenta de correo saliente SMTP, te recomiendo que uses el autenticado.&lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_02.jpg&#34; alt=&#34;Screenshot 2&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Configurar el plugin: Email-ext con información base de los usuarios a notificar ( &lt;em&gt;Stake Holders/ Key Users / Developers / Clientes / Testers&lt;/em&gt; ) en las listas por DEFAULT de la configuración general a nivel. Esto te permitirá contar con la misma configuración para tus N tareas de despliegue. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_03.jpg&#34; alt=&#34;Screenshot 3&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Para personalizar el correo que se enviará, copiaremos un&lt;strong&gt;Template&lt;/strong&gt; dentro del Home de Jenkins, &lt;em&gt;static-analysis.jelly&lt;/em&gt; y asignando nombre relacionado al proyecto. Si requieres más información, consulta la &lt;a href=&#34;https://github.com/jenkinsci/email-ext-plugin/tree/master/src/main/resources/hudson/plugins/emailext/templates&#34;&gt;documentación del plugin en GitHub&lt;/a&gt;. Este template es un &lt;strong&gt;HTML el cual puedes editar su contenido&lt;/strong&gt;, incluyendo titulo del proyecto, una imagen, etc. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_04.jpg&#34; alt=&#34;Screenshot 4&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Añade en una tarea de Jenkins, un paso al finalizar, usando Email notification. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_05.jpg&#34; alt=&#34;Screenshot 5&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Ejecuta tu tarea y verifica el correo recibido. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_06.jpg&#34; alt=&#34;Screenshot 6&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Inyección de métodos por categorías y TimeCategory</title>
+      <link>http://blog.makingdevs.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory</link>
+      <pubDate>Tue, 16 Sep 2014 18:55:30 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory</guid>
+      <description>
+
+&lt;h2 id=&#34;acerca-de-las-categorías:e62c0560695f1f5c3ac7c5a60edd4eb3&#34;&gt;Acerca de las categorías&lt;/h2&gt;
+
+&lt;p&gt;En Groovy se pueden inyectar métodos de algunas formas, uno de ellos es a través del uso de categorías, la cual nos da inyección temporal y controlada de dichos elementos. Para hacerlo las clases que son categorías deben de cumplir con cierta estructura:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Los métodos de la clase deben ser definidos como estáticos&lt;/li&gt;
+&lt;li&gt;El primer argumento de dicho método define el tipo sobre el cual se inyectarían los nuevos métodos&lt;/li&gt;
+&lt;li&gt;Deben de ser usados dentro del alcance de un closure con ayuda de la palabra reservada &lt;code&gt;use&lt;/code&gt;
+&lt;!-- more --&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Un ejemplo podría ser el siguiente:&lt;/p&gt;
+
+
+    class NameUtil{
+        static prettify(String name){
+            name.trim().split(&#39; &#39;).grep { it.size() }*.capitalize().join(&#39; &#39;)
+        }
+    }
+
+    use NameUtil, {
+        println &#34;  josé   juan    reyes    zuñiga   &#34;.prettify()
+    }
+
+
+&lt;p&gt;Adicionalmente, podemos crear dicha inyección de métodos con ayuda de la anotación &lt;code&gt;@Category&lt;/code&gt;, que prácticamente nos facilita a que cualquier clase pueda ser usada como categoría, pues no necesariamente los métodos tiene que ser estáticos y el contexto del argumento para la inyección es el objeto &lt;code&gt;this&lt;/code&gt; en donde se esté intentando usar.&lt;/p&gt;
+
+&lt;h2 id=&#34;uso-de-groovytime:e62c0560695f1f5c3ac7c5a60edd4eb3&#34;&gt;Uso de GroovyTime&lt;/h2&gt;
+
+&lt;p&gt;La clase &lt;code&gt;TimeCategory&lt;/code&gt; es una clase que tiene una serie de métodos de conveniencia para el manejo del tiempo, formando así un DSL, con el que podemos operar. Y con ayuda de la clase &lt;code&gt;Duration&lt;/code&gt; complementamos algunas operaciones que se pueden realizar en el contexto de los objetos que estemos usando.&lt;/p&gt;
+
+
+    import groovy.time.TimeCategory
+
+    use ( TimeCategory ) {
+        println 2.hours.ago
+        println 30.minutes.from // TimeDuration
+        println 30.minutes.from.now
+        println 40.minutes + 30.minutes.from.now
+        println 30.minutes.ago
+
+        def today = new Date()
+        println today - 3.years
+        println today + 4.weeks
+        println today + 90.minutes
+    }
+
+
+&lt;p&gt;Para que consideres el conjunto de operaciones que tienes disponibles te recomendamos visitar la documentación de &lt;a href=&#34;http://groovy.codehaus.org/api/groovy/time/TimeCategory.html&#34;&gt;TimeCategory&lt;/a&gt; y &lt;a href=&#34;http://groovy.codehaus.org/api/groovy/time/Duration.html&#34;&gt;Duration&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
