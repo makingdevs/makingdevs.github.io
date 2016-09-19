@@ -6,18 +6,8 @@
     <description>Recent content in Posts on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Sep 2016 08:51:47 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 10 Sep 2016 11:22:01 -0500</lastBuildDate>
     <atom:link href="http://blog.makingdevs.com/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>test del Lunes :)</title>
-      <link>http://blog.makingdevs.com/2016/09/19/test-del-lunes-</link>
-      <pubDate>Mon, 19 Sep 2016 08:51:47 -0500</pubDate>
-      
-      <guid>http://blog.makingdevs.com/2016/09/19/test-del-lunes-</guid>
-      <description>&lt;p&gt;Esta es una prueba segunda del blog de MakingDevs.&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>Routing en Elm</title>
@@ -1421,6 +1411,66 @@ beans &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&
 
 &lt;li&gt;&lt;p&gt;Ejecuta tu tarea y verifica el correo recibido. &lt;img src=&#34;http://blog.makingdevs.com/images/IC-Jenkins-PlugIn-Email-Ext_06.jpg&#34; alt=&#34;Screenshot 6&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Inyección de métodos por categorías y TimeCategory</title>
+      <link>http://blog.makingdevs.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory</link>
+      <pubDate>Tue, 16 Sep 2014 18:55:30 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory</guid>
+      <description>
+
+&lt;h2 id=&#34;acerca-de-las-categorías&#34;&gt;Acerca de las categorías&lt;/h2&gt;
+
+&lt;p&gt;En Groovy se pueden inyectar métodos de algunas formas, uno de ellos es a través del uso de categorías, la cual nos da inyección temporal y controlada de dichos elementos. Para hacerlo las clases que son categorías deben de cumplir con cierta estructura:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Los métodos de la clase deben ser definidos como estáticos&lt;/li&gt;
+&lt;li&gt;El primer argumento de dicho método define el tipo sobre el cual se inyectarían los nuevos métodos&lt;/li&gt;
+&lt;li&gt;Deben de ser usados dentro del alcance de un closure con ayuda de la palabra reservada &lt;code&gt;use&lt;/code&gt;
+&lt;!-- more --&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Un ejemplo podría ser el siguiente:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;NameUtil&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;prettify&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;String name&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt;
+            name&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;trim&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;split&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;grep&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; it&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}*.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;capitalize&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;join&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+    use NameUtil&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+        println &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;  josé   juan    reyes    zuñiga   &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;prettify&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Adicionalmente, podemos crear dicha inyección de métodos con ayuda de la anotación &lt;code&gt;@Category&lt;/code&gt;, que prácticamente nos facilita a que cualquier clase pueda ser usada como categoría, pues no necesariamente los métodos tiene que ser estáticos y el contexto del argumento para la inyección es el objeto &lt;code&gt;this&lt;/code&gt; en donde se esté intentando usar.&lt;/p&gt;
+
+&lt;h2 id=&#34;uso-de-groovytime&#34;&gt;Uso de GroovyTime&lt;/h2&gt;
+
+&lt;p&gt;La clase &lt;code&gt;TimeCategory&lt;/code&gt; es una clase que tiene una serie de métodos de conveniencia para el manejo del tiempo, formando así un DSL, con el que podemos operar. Y con ayuda de la clase &lt;code&gt;Duration&lt;/code&gt; complementamos algunas operaciones que se pueden realizar en el contexto de los objetos que estemos usando.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;groovy.time.TimeCategory&lt;/span&gt;
+
+    &lt;span style=&#34;color: #00A000&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt; TimeCategory &lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+        println &lt;span style=&#34;color: #666666&#34;&gt;2.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;hours&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;ago&lt;/span&gt;
+        println &lt;span style=&#34;color: #666666&#34;&gt;30.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;minutes&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// TimeDuration&lt;/span&gt;
+        println &lt;span style=&#34;color: #666666&#34;&gt;30.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;minutes&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;from&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;now&lt;/span&gt;
+        println &lt;span style=&#34;color: #666666&#34;&gt;40.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;minutes&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;30.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;minutes&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;from&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;now&lt;/span&gt;
+        println &lt;span style=&#34;color: #666666&#34;&gt;30.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;minutes&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;ago&lt;/span&gt;
+
+        &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; today &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; Date&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+        println today &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;3.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;years&lt;/span&gt;
+        println today &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;4.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;weeks&lt;/span&gt;
+        println today &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;90.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;minutes&lt;/span&gt;
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Para que consideres el conjunto de operaciones que tienes disponibles te recomendamos visitar la documentación de &lt;a href=&#34;http://groovy.codehaus.org/api/groovy/time/TimeCategory.html&#34;&gt;TimeCategory&lt;/a&gt; y &lt;a href=&#34;http://groovy.codehaus.org/api/groovy/time/Duration.html&#34;&gt;Duration&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
