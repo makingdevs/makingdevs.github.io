@@ -85,6 +85,39 @@
 	<div class="panel panel-default">
 	<div class="panel-header">
 		<h3>
+			<a href="http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle">Hot deployment en Gradle</a>
+			<br>
+			<small>
+				26 July 2015
+			</small>
+		</h3>
+	</div>
+	<div class="panel-body">
+		Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre SpringLoaded. Después me di cuenta que frameworks como Dropwizard lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré un artículo en donde explica como ponerlo en acción usando propiamente Dropwizard.
+		
+			... <a href="http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle">Read More</a>
+		
+	</div>
+	<div class="panel-footer">
+		
+		<small class="text-muted">
+			
+			
+				<a href="http://blog.makingdevs.com/tags/groovy"><span class="label label-success">groovy</span></a>
+			
+				<a href="http://blog.makingdevs.com/tags/gradle"><span class="label label-success">gradle</span></a>
+			
+				<a href="http://blog.makingdevs.com/tags/plugins"><span class="label label-success">plugins</span></a>
+			
+		</small>
+		
+	</div>
+</div>
+
+
+	<div class="panel panel-default">
+	<div class="panel-header">
+		<h3>
 			<a href="http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails">Borrado batch en Grails</a>
 			<br>
 			<small>
@@ -151,28 +184,6 @@
 		Las notificaciones son básicas para la correcta comunicación de los involucrados de nuestros proyectos como: Stakeholders/ Key Users / Developers / Clientes / Testers. Por esta razón te recomiendo personalizar las notificaciones por defecto de Jenkins. Objetivo: Informar los despliegues desde Jenkins por correo, usando el plugin: Email-ext Procedimiento: Instalar el plugin desde la consola de administración de Jenkins. Configurar la cuenta de correo saliente SMTP, te recomiendo que uses el autenticado.
 		
 			... <a href="http://blog.makingdevs.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins">Read More</a>
-		
-	</div>
-	<div class="panel-footer">
-		
-	</div>
-</div>
-
-
-	<div class="panel panel-default">
-	<div class="panel-header">
-		<h3>
-			<a href="http://blog.makingdevs.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory">Inyección de métodos por categorías y TimeCategory</a>
-			<br>
-			<small>
-				16 September 2014
-			</small>
-		</h3>
-	</div>
-	<div class="panel-body">
-		Acerca de las categorías En Groovy se pueden inyectar métodos de algunas formas, uno de ellos es a través del uso de categorías, la cual nos da inyección temporal y controlada de dichos elementos. Para hacerlo las clases que son categorías deben de cumplir con cierta estructura: Los métodos de la clase deben ser definidos como estáticos El primer argumento de dicho método define el tipo sobre el cual se inyectarían los nuevos métodos Deben de ser usados dentro del alcance de un closure con ayuda de la palabra reservada use Un ejemplo podría ser el siguiente: class NameUtil{ static prettify(String name){ name.trim().split(' ').grep { it.size() }*.capitalize().join(' ') } } use NameUtil, { println " josé juan reyes zuñiga ".prettify() } Adicionalmente, podemos crear dicha inyección de métodos con ayuda de la anotación @Category, que prácticamente nos facilita a que cualquier clase pueda ser usada como categoría, pues no necesariamente los métodos tiene que ser estáticos y el contexto del argumento para la inyección es el objeto this en donde se esté intentando usar.
-		
-			... <a href="http://blog.makingdevs.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory">Read More</a>
 		
 	</div>
 	<div class="panel-footer">
