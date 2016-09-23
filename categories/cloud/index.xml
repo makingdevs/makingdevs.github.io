@@ -23,52 +23,53 @@
 
 &lt;!-- more --&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;@Grapes&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;
-    &lt;span style=&#34;color: #AA22FF&#34;&gt;@Grab&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;group&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;net.java.dev.jets3t&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; module&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;jets3t&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; version&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;0.9.3&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
 
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.jets3t.service.security.*&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.jets3t.service.*&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.jets3t.service.impl.rest.httpclient.*&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.jets3t.service.model.*&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.jets3t.service.acl.*&lt;/span&gt;
+@Grapes(
+    @Grab(group=&#39;net.java.dev.jets3t&#39;, module=&#39;jets3t&#39;, version=&#39;0.9.3&#39;)
+)
 
-String awsAccessKey &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;YOURAWSACCESSKEY&amp;quot;&lt;/span&gt;
-String awsSecretKey &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;YOURAWSSECRETKEY&amp;quot;&lt;/span&gt;
+import org.jets3t.service.security.*
+import org.jets3t.service.*
+import org.jets3t.service.impl.rest.httpclient.*
+import org.jets3t.service.model.*
+import org.jets3t.service.acl.*
 
-AWSCredentials awsCredentials &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; AWSCredentials&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;awsAccessKey&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; awsSecretKey&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
-S3Service s3Service &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; RestS3Service&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;awsCredentials&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+String awsAccessKey = &#34;YOURAWSACCESSKEY&#34;
+String awsSecretKey = &#34;YOURAWSSECRETKEY&#34;
 
-S3Bucket&lt;span style=&#34;color: #666666&#34;&gt;[]&lt;/span&gt; myBuckets &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; s3Service&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;listAllBuckets&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+AWSCredentials awsCredentials = new AWSCredentials(awsAccessKey, awsSecretKey)
+S3Service s3Service = new RestS3Service(awsCredentials)
+
+S3Bucket[] myBuckets = s3Service.listAllBuckets()
 
 
 &lt;p&gt;Despúes, una vez con todos los buckets, podemos listar los archivos contenidos dentro de bucket muy particular.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;String bucletName &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;makingdevs-bucket&amp;quot;&lt;/span&gt;
 
-bucket &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; myBuckets&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;find&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; it&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt;bucketName &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+String bucletName = &#34;makingdevs-bucket&#34;
 
-s3Objects &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; s3Service&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;listObjects&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;bucket&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+bucket = myBuckets.find { it.name==bucketName }
+
+s3Objects = s3Service.listObjects(bucket)
+
 
 &lt;p&gt;Finalmente, podemos subir un archivo específico hacia el bucket que deseamos.&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;file &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; File&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/some/file/in/your/filesystem.ext&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
 
-S3Object s3Object &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; S3Object&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-s3Object&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  setAcl AccessControlList&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;REST_CANNED_PUBLIC_READ&lt;/span&gt;
-  setContentLength file&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-  setContentType file&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;toURL&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;openConnection&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;contentType&lt;/span&gt;
+
+file = new File(&#34;/some/file/in/your/filesystem.ext&#34;)
+
+S3Object s3Object = new S3Object()
+s3Object.with {
+  setAcl AccessControlList.REST_CANNED_PUBLIC_READ
+  setContentLength file.length()
+  setContentType file.toURL().openConnection().contentType
   setDataInputFile file
-  setKey file&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;name&lt;/span&gt;
-  setBucketName bucket&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getName&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// we use our previous bucket&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  setKey file.name
+  setBucketName bucket.getName() // we use our previous bucket
+}
 
-s3Service&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;putObject&lt;/span&gt; bucket&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; s3Object
-&lt;/pre&gt;&lt;/div&gt;
+s3Service.putObject bucket, s3Object
 
 
 &lt;p&gt;Una vez que llamamos al servicio &lt;code&gt;s3Service&lt;/code&gt; el archivo queda colocado en el bucket. Y finalmente si deseamos borrarlo podemos usar &lt;code&gt;s3Service.deleteObject s3Bucket, s3Object.key&lt;/code&gt;, en donde sólo mandamos el objeto del bucket y el &lt;em&gt;key&lt;/em&gt; del objeto que deseamos borrar.&lt;/p&gt;

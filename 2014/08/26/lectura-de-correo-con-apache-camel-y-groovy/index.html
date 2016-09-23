@@ -80,9 +80,15 @@
 
 <main>
 	<header>
-		<h1>Lectura de correo con Apache Camel y Groovy</h1>
-	</header>
+		<h1 align=center>Lectura de correo con Apache Camel y Groovy</h1>
+    
+     <section class="author">
+       <p align=center> <b>Redactado por: Jorge Acosta Lemus</b></p>
+     </section>
+    
 
+  </header>
+  </br>
 	<article>
 		
 
@@ -99,29 +105,29 @@
 
 <p>Un productor es el encargado de proveer los mensajes, siendo el puente de comunicación con el sistema externo, no procesa la información solo provee el mensaje, en este ejemplo el correo es el productor. Un consumidor es el encargado de recibir el mensaje que el productor obtiene y así procesar el mensaje o inclusive partir dicho mensaje para que sea procesado por otro consumidor. Bueno después de una pequeña introducción a Camel les muestro mi script en la cual hago lectura del correo filtro los mensajes por su subject y los arrojo a un log y no solo puede ser un log gracias a camel este puede ser un bean, FTP, intancia de amazon, un archivo, <a href="http://camel.apache.org/components.html">casi cualquier cosa</a>. Nota necesitamos las dependencias de camel core y camel mail para el siguiente ejemplo:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">@Grab</span><span style="color: #666666">(</span>group<span style="color: #666666">=</span><span style="color: #BB4444">&#39;org.apache.camel&#39;</span><span style="color: #666666">,</span> module<span style="color: #666666">=</span><span style="color: #BB4444">&#39;camel-core&#39;</span><span style="color: #666666">,</span> version<span style="color: #666666">=</span><span style="color: #BB4444">&#39;1.6.0&#39;</span><span style="color: #666666">)</span>
-<span style="color: #AA22FF">@Grab</span><span style="color: #666666">(</span>group<span style="color: #666666">=</span><span style="color: #BB4444">&#39;org.apache.camel&#39;</span><span style="color: #666666">,</span> module<span style="color: #666666">=</span><span style="color: #BB4444">&#39;camel-mail&#39;</span><span style="color: #666666">,</span> version<span style="color: #666666">=</span><span style="color: #BB4444">&#39;1.6.0&#39;</span><span style="color: #666666">)</span>
 
-<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.apache.camel.impl.DefaultCamelContext</span>
-<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.apache.camel.builder.RouteBuilder</span>
+@Grab(group='org.apache.camel', module='camel-core', version='1.6.0')
+@Grab(group='org.apache.camel', module='camel-mail', version='1.6.0')
 
-<span style="color: #00BB00; font-weight: bold">def</span> camelContext <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> DefaultCamelContext<span style="color: #666666">()</span>
-camelContext<span style="color: #666666">.</span><span style="color: #BB4444">addRoutes</span><span style="color: #666666">(</span><span style="color: #AA22FF; font-weight: bold">new</span> RouteBuilder<span style="color: #666666">()</span> <span style="color: #666666">{</span>
-  <span style="color: #00BB00; font-weight: bold">def</span> <span style="color: #00BB00; font-weight: bold">void</span> <span style="color: #00A000">configure</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
-    from<span style="color: #666666">(</span><span style="color: #BB4444">&quot;imaps://imap.gmail.com?username=user&quot;</span>
-    <span style="color: #666666">+</span> <span style="color: #BB4444">&quot;&amp;password=password&quot;</span>
-    <span style="color: #666666">+</span> <span style="color: #BB4444">&quot;&amp;deleteProcessedMessages=false&quot;</span>
-    <span style="color: #666666">+</span> <span style="color: #BB4444">&quot;&amp;processOnlyUnseenMessages=true&quot;</span>
-    <span style="color: #666666">+</span> <span style="color: #BB4444">&quot;&amp;consumer.delay=6000&quot;</span><span style="color: #666666">)</span>
-    <span style="color: #666666">.</span><span style="color: #BB4444">filter</span> <span style="color: #666666">{</span>it<span style="color: #666666">.</span><span style="color: #BB4444">in</span><span style="color: #666666">.</span><span style="color: #BB4444">headers</span><span style="color: #666666">.</span><span style="color: #BB4444">subject</span><span style="color: #666666">.</span><span style="color: #BB4444">contains</span><span style="color: #666666">(</span><span style="color: #BB4444">&#39;camel&#39;</span><span style="color: #666666">)}</span>
-    <span style="color: #666666">.</span><span style="color: #BB4444">to</span><span style="color: #666666">(</span><span style="color: #BB4444">&quot;log:groovymail?showAll=true&amp;multiline=true&quot;</span><span style="color: #666666">)</span>
-  <span style="color: #666666">}</span>
-<span style="color: #666666">})</span>
-camelContext<span style="color: #666666">.</span><span style="color: #BB4444">start</span><span style="color: #666666">()</span>
+import org.apache.camel.impl.DefaultCamelContext
+import org.apache.camel.builder.RouteBuilder
 
-addShutdownHook<span style="color: #666666">{</span> camelContext<span style="color: #666666">.</span><span style="color: #BB4444">stop</span><span style="color: #666666">()</span> <span style="color: #666666">}</span>
-<span style="color: #AA22FF; font-weight: bold">synchronized</span><span style="color: #666666">(</span><span style="color: #AA22FF; font-weight: bold">this</span><span style="color: #666666">){</span> <span style="color: #AA22FF; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #BB4444">wait</span><span style="color: #666666">()</span> <span style="color: #666666">}</span>
-</pre></div>
+def camelContext = new DefaultCamelContext()
+camelContext.addRoutes(new RouteBuilder() {
+  def void configure() {
+    from("imaps://imap.gmail.com?username=user"
+    + "&password=password"
+    + "&deleteProcessedMessages=false"
+    + "&processOnlyUnseenMessages=true"
+    + "&consumer.delay=6000")
+    .filter {it.in.headers.subject.contains('camel')}
+    .to("log:groovymail?showAll=true&multiline=true")
+  }
+})
+camelContext.start()
+
+addShutdownHook{ camelContext.stop() }
+synchronized(this){ this.wait() }
 
 
 <p>Notaran que al final del script hay una declaración <code>camelContext.start()</code>. El <em>CamelContext</em> representa una sola base de reglas de enrutamiento Camel. Se utiliza el CamelContext de una manera similar al ApplicationContext. Y asi tenemos un pequeño ejemplo de lectura de correo con ayuda de Camel.</p>
