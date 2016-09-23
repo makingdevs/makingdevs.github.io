@@ -85,6 +85,70 @@
 	<div class="panel panel-default">
 	<div class="panel-header">
 		<h3>
+			<a href="http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock">Pruebas funcionales con Geb y Spock</a>
+			<br>
+			<small>
+				7 March 2016
+			</small>
+		</h3>
+	</div>
+	<div class="panel-body">
+		Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario funcionen correctamente; son pruebas difíciles de implementar ya que deben realizarse desde la perspectiva del usuario y muchas veces las interfaces de usuario cambian constantemente. Geb es una herramienta para escribir pruebas funcionales con Groovy que hace uso del WebDriver de Selenium para la automatizacion del navegador y toma varias ideas de la biblioteca jQuery para la interacción con los elementos.
+		
+			... <a href="http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock">Read More</a>
+		
+	</div>
+	<div class="panel-footer">
+		
+		<small class="text-muted">
+			
+			
+				<a href="http://blog.makingdevs.com/tags/groovy"><span class="label label-success">groovy</span></a>
+			
+				<a href="http://blog.makingdevs.com/tags/testing"><span class="label label-success">testing</span></a>
+			
+				<a href="http://blog.makingdevs.com/tags/spock"><span class="label label-success">spock</span></a>
+			
+				<a href="http://blog.makingdevs.com/tags/geb"><span class="label label-success">geb</span></a>
+			
+		</small>
+		
+	</div>
+</div>
+
+
+	<div class="panel panel-default">
+	<div class="panel-header">
+		<h3>
+			<a href="http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle">Bitacorado de pruebas en Gradle</a>
+			<br>
+			<small>
+				22 January 2016
+			</small>
+		</h3>
+	</div>
+	<div class="panel-body">
+		Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el TestLoggingContainer, del cual pude obtener este fragmento: apply plugin: 'java' test { testLogging { // set options for log level LIFECYCLE events "failed" exceptionFormat "short" // set options for log level DEBUG debug { events "started", "skipped", "failed" exceptionFormat "full" } // remove standard output/error logging from --info builds // by assigning only 'failed' and 'skipped' events info.events = ["failed", "skipped"] } } En donde pongo todo los tipos de eventos del proyecto que son events &quot;started&quot;, &quot;passed&quot;, &quot;skipped&quot;, &quot;failed&quot; y con ello obtengo una salida como la siguiente: Muy útil cuando no queremos hacer bitácora manual de que pruebas se están corriendo, Gradle ya cuenta con ella.
+		
+	</div>
+	<div class="panel-footer">
+		
+		<small class="text-muted">
+			
+			
+				<a href="http://blog.makingdevs.com/tags/groovy"><span class="label label-success">groovy</span></a>
+			
+				<a href="http://blog.makingdevs.com/tags/gradle"><span class="label label-success">gradle</span></a>
+			
+		</small>
+		
+	</div>
+</div>
+
+
+	<div class="panel panel-default">
+	<div class="panel-header">
+		<h3>
 			<a href="http://blog.makingdevs.com/2015/08/13/amazon-s3-y-groovy">Amazon S3 y Groovy</a>
 			<br>
 			<small>
@@ -130,72 +194,6 @@
 				<a href="http://blog.makingdevs.com/tags/revisi%C3%B3n"><span class="label label-success">revisión</span></a>
 			
 				<a href="http://blog.makingdevs.com/tags/libro"><span class="label label-success">libro</span></a>
-			
-		</small>
-		
-	</div>
-</div>
-
-
-	<div class="panel panel-default">
-	<div class="panel-header">
-		<h3>
-			<a href="http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle">Hot deployment en Gradle</a>
-			<br>
-			<small>
-				26 July 2015
-			</small>
-		</h3>
-	</div>
-	<div class="panel-body">
-		Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre SpringLoaded. Después me di cuenta que frameworks como Dropwizard lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré un artículo en donde explica como ponerlo en acción usando propiamente Dropwizard.
-		
-			... <a href="http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle">Read More</a>
-		
-	</div>
-	<div class="panel-footer">
-		
-		<small class="text-muted">
-			
-			
-				<a href="http://blog.makingdevs.com/tags/groovy"><span class="label label-success">groovy</span></a>
-			
-				<a href="http://blog.makingdevs.com/tags/gradle"><span class="label label-success">gradle</span></a>
-			
-				<a href="http://blog.makingdevs.com/tags/plugins"><span class="label label-success">plugins</span></a>
-			
-		</small>
-		
-	</div>
-</div>
-
-
-	<div class="panel panel-default">
-	<div class="panel-header">
-		<h3>
-			<a href="http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails">Borrado batch en Grails</a>
-			<br>
-			<small>
-				1 May 2015
-			</small>
-		</h3>
-	</div>
-	<div class="panel-body">
-		En esta ocasión les quiero compartir la solución a un problema que tuve al borrar una colección de objetos en grails y con el GORM, si bien podría hacerlo con HQL o con SQL usando las bondades de Hibernate me gusto más el acercamiento que les quiero presentar. La necesidad era borrar un grupo de objetos en donde el contenido de su relación estuviera vacío, ejemplifico con la estructura de unas clases: El primer acercamiento que tuve fue obtener la lista de elementos y hacer una condicional buscando los elementos vacíos, después borrar&hellip; Una vez hecho, mejoramos intentamos mejorar el código con una búsqueda mucho más refinada y ejecutando el borrado, para ello nos apoyamos de los where queries: Basado en la documentación de Grails: Since each where method call returns a DetachedCriteria instance, you can use where queries to execute batch operations such as batch updates and deletes.
-		
-			... <a href="http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails">Read More</a>
-		
-	</div>
-	<div class="panel-footer">
-		
-		<small class="text-muted">
-			
-			
-				<a href="http://blog.makingdevs.com/tags/groovy"><span class="label label-success">groovy</span></a>
-			
-				<a href="http://blog.makingdevs.com/tags/grails"><span class="label label-success">grails</span></a>
-			
-				<a href="http://blog.makingdevs.com/tags/gorm"><span class="label label-success">gorm</span></a>
 			
 		</small>
 		

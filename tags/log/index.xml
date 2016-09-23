@@ -79,59 +79,59 @@ Este logger pretende ser el sucesor de log4j, fue diseñado por Ceki Gülcü, fu
 Para poder usar este logger, se requiere del módulo logback.
 Una configuración del archivo gradle queda de la siguiente manera:&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;groovy&amp;#39;&lt;/span&gt;
 
-repositories&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  jcenter&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+apply plugin:&#39;groovy&#39;
 
-dependencies&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  compile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.codehaus.groovy:groovy-all:2.4.4&amp;#39;&lt;/span&gt;
-  compile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;ch.qos.logback:logback-classic:1.1.6&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+repositories{
+  jcenter()
+}
+
+dependencies{
+  compile &#39;org.codehaus.groovy:groovy-all:2.4.4&#39;
+  compile &#39;ch.qos.logback:logback-classic:1.1.6&#39;
+}
 
 
 &lt;p&gt;El archivo groovy que se estará manejando para obtener la bitácora será &lt;em&gt;logback.groovy&lt;/em&gt; el cual contiene el patrón de salida del logger además de especificar donde se mostrara dicha información.&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;static&lt;/span&gt; ch&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;qos&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;logback&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;classic&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Level&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;INFO&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;static&lt;/span&gt; ch&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;qos&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;logback&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;classic&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Level&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;DEBUG&lt;/span&gt;
 
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;ch.qos.logback.classic.encoder.PatternLayoutEncoder&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;ch.qos.logback.core.ConsoleAppender&lt;/span&gt;
+import static ch.qos.logback.classic.Level.INFO
+import static ch.qos.logback.classic.Level.DEBUG
 
-&lt;span style=&#34;color: #00A000&#34;&gt;appender&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;CONSOLE&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; ConsoleAppender&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  encoder&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;PatternLayoutEncoder&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-    pattern &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;%d{HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n&amp;quot;&lt;/span&gt;
-  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+import ch.qos.logback.classic.encoder.PatternLayoutEncoder
+import ch.qos.logback.core.ConsoleAppender
 
-appender&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;FILE&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; FileAppender&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  file &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;example_logger.log&amp;quot;&lt;/span&gt;
-  append &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;true&lt;/span&gt;
-  encoder&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;PatternLayoutEncoder&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-    pattern &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;%d{HH:mm:ss.SSS} %-5level %logger{30} %msg %n&amp;quot;&lt;/span&gt;
-  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-root&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;DEBUG&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;CONSOLE&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;FILE&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+appender(&#34;CONSOLE&#34;, ConsoleAppender) {
+  encoder(PatternLayoutEncoder) {
+    pattern = &#34;%d{HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n&#34;
+  }
+}
+
+appender(&#34;FILE&#34;, FileAppender) {
+  file = &#34;example_logger.log&#34;
+  append = true
+  encoder(PatternLayoutEncoder) {
+    pattern = &#34;%d{HH:mm:ss.SSS} %-5level %logger{30} %msg %n&#34;
+  }
+}
+root(DEBUG, [&#34;CONSOLE&#34;,&#34;FILE&#34;])
 
 
 &lt;p&gt;Ahora el archivo se crea una instancia de la clase Logger. Además de contar con el nivel del logger, respetando la configuración que se hizo en el archivo logback.groovy.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.slf4j.Logger&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.slf4j.LoggerFactory&lt;/span&gt;
 
-Logger log &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; LoggerFactory&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getLogger&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;getClass&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt;
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
-log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;debug&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;*&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;*40&lt;/span&gt;
-log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;debug&lt;/span&gt; request&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;properties&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;toString&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;error&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Error&amp;quot;&lt;/span&gt;
-log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;warn&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Warning&amp;quot;&lt;/span&gt;
-log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;info&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Info&amp;quot;&lt;/span&gt;
-log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;trace&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Trace&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+Logger log = LoggerFactory.getLogger(getClass())
+
+log.debug &#34;*&#34;*40
+log.debug request.properties.toString()
+log.error &#34;Error&#34;
+log.warn &#34;Warning&#34;
+log.info &#34;Info&#34;
+log.trace &#34;Trace&#34;
+
 
 &lt;p&gt;Un ejemplo de como se vería:&lt;/p&gt;
 

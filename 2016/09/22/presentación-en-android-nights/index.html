@@ -4,17 +4,25 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <meta name="description" content="">
-    <meta property="og:title" content="Clusterizacion con Camel">
+    <meta property="og:title" content="Presentación en Android Nights">
     
     <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-04-07">
+    <meta property="article:published_time" content="2016-09-22">
     
     <meta property="og:description" content="">
-    <meta property="og:url" content="http://blog.makingdevs.com/2015/04/07/clusterizacion-con-camel">
+    <meta property="og:url" content="http://blog.makingdevs.com/2016/09/22/presentaci%C3%B3n-en-android-nights">
     <meta property="og:site_name" content="Blog de Making Devs">
     
+    <meta property="og:tags" content="groovy">
+    
+    <meta property="og:tags" content="testing">
+    
+    <meta property="og:tags" content="spock">
+    
+    <meta property="og:tags" content="geb">
+    
     <meta name="generator" content="Hugo 0.16" />
-    <title>Clusterizacion con Camel &middot; Blog de Making Devs</title>
+    <title>Presentación en Android Nights &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
     
@@ -80,84 +88,30 @@
 
 <main>
 	<header>
-		<h1 align=center>Clusterizacion con Camel</h1>
+		<h1 align=center>Presentación en Android Nights</h1>
     
      <section class="author">
-       <p align=center> <b>Redactado por: Jorge Acosta Lemus</b></p>
+       <p align=center> <b>Redactado por: José Juan Reyes Zuñiga(neodevelop)</b></p>
      </section>
     
 
   </header>
   </br>
 	<article>
-		<p>Camel ofrece distintas soluciones para ser escalado o para distribuir la carga en diferentes instancias, la soluciones que ofrece dependerá de como se encuentra nuestra infraestructura ( y configuración).</p>
+		<p>El pasado 18 de Agosto de 2016 tuvimos la oportunidad de presentar un conjunto de ideas en la <a href="http://www.seleniumhq.org/projects/webdriver/">Activity #15</a>, creando una aplicación con el lenguaje Groovy como herramienta principal. Lo importante de esta presentación fue el conjunto de técnicas que ocupamos con ayuda del lenguaje dinámico Groovy combinando lo que mucha gente ya conoce en Java pero de una forma divertida, inclusivo descubrimos algunos patrones que en iOS son más naturales.</p>
 
-<ul>
-<li>Misma JVM y CamelContext</li>
-<li>Misma JVM pero diferente CamelContext</li>
-<li>Diferente JVM y CamelContext
-<!-- more --></li>
-</ul>
+<p>Sin embargo, contamos con la habilidad de @karlosins, quién nos ayudó a crear una facilitación gráfica que describe mucho mejor lo que yo podría escribir, así que les dejo la ilustración y la presentación.</p>
 
-<p>El problema que me vi envuelto fue de estas tres, la ultima, el clusterizar camel que se encontraban en diferentes JVM y CamelContext. Y en particular tuve un problema de mensajes duplicados. Para esto camel ofrece ciertas soluciones, un componente llamado <strong>Idempotent Consumer</strong>. El Idempotent Consumer pertenece a los patrones de EIP se usa para filtrar los mensajes duplicados. Este modelo se implementa utilizando la clase IdempotentConsumer. Este utiliza una expresión para calcular una cadena de mensaje ID único para un intercambio de mensajes, este ID puede ser consultado en la IdempotentRepository para ver si se ha visto antes, si se tiene no es tomado para ser procesado, en cambio si no se tiene, entonces el mensaje se procesa y la ID se añade al repositorio.</p>
+<p><img src="/images/page-1.jpg" alt="Page 1" />
+<img src="/images/page-2.jpg" alt="Page 2" /></p>
 
-<p>Hay varios tipos de IdempotentRepository:</p>
+<hr/>
 
-<ul>
-<li>MemoryIdempotentRepository</li>
-<li>FileIdempotentRepository</li>
-<li>HazelcastIdempotentRepository (Available as of Camel 2.8)</li>
-<li>JdbcMessageIdRepository (Available as of Camel 2.7)</li>
-<li>JpaMessageIdRepository</li>
-</ul>
+<iframe width="752" height="459" src="http://android.makingdevs.com/#/1" frameborder="0" allowfullscreen></iframe>
 
+<p><a href="http://android.makingdevs.com/#/1">Original de la presentación</a></p>
 
-
-@Grab(group='org.slf4j', module='slf4j-api', version='1.7.10')
-@Grab(group='org.apache.camel', module='camel-core', version='2.12.0')
-@Grab(group='org.apache.camel', module='camel-mail', version='2.12.0')
-
-import org.apache.camel.impl.DefaultCamelContext
-import org.apache.camel.builder.RouteBuilder
-import org.apache.camel.processor.idempotent.FileIdempotentRepository
-
-def camelContext = new DefaultCamelContext()
-camelContext.addRoutes(new RouteBuilder() {
-  def void configure() {
-    from("imaps://imap.gmail.com?username=jorge@makingdevs.com"
-      + "&password=m4k1ngd3vs"
-      + "&consumer.delay=6000")
-    .idempotentConsumer( header("Message-ID"),
-      FileIdempotentRepository.fileIdempotentRepository(
-        new File("idempotentRepository.txt")))
-    .to("log:groovymail?showAll=true&multiline=true") } })
-
-camelContext.start()
-addShutdownHook{ camelContext.stop() }
-synchronized(this){ this.wait() }
-
-
-<p>Este es un script ejemplo el cual utiliza <code>FileIdempotentRepository</code> utilizando un archivo ejemplo para llevar el control, si exploramos el archivo ahí se encuentra los id de los mensajes procesados.</p>
-
-<p><img src="/images/camel_output.png" alt="Camel output" /></p>
-
-<p>Asi si hay un mensaje el cual ya se encuentra dentro de este archivo se ignora y no es procesado. En mi caso utilize JpaMessageIdRepository dentro de grails y fue muy simple utilizar este componente solo agregue la dependencia de camel sql en el buildConfig.groovy</p>
-
-
-runtime 'org.apache.camel:camel-sql:2.13.0’
-
-
-<p>y agregue el bean en resources.groovy</p>
-
-
-import org.apache.camel.processor.idempotent.jdbc.JdbcMessageIdRepository
-
-beans = {
-  messageIdRepository(JdbcMessageIdRepository,ref('dataSource'),'jdbcProcessorName')
-}
-
-
-<p>y por ultimo agregue el <em>idempotentComponent</em>.</p>
+<p><a href="http://barist.coffee">barist.coffee en Google Play</a></p>
 
 	</article>
 </main>
@@ -170,9 +124,9 @@ beans = {
   <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'makingdevs';
-    var disqus_identifier = 'http:\/\/blog.makingdevs.com\/2015\/04\/07\/clusterizacion-con-camel';
-    var disqus_title = 'Clusterizacion con Camel';
-    var disqus_url = 'http:\/\/blog.makingdevs.com\/2015\/04\/07\/clusterizacion-con-camel';
+    var disqus_identifier = 'http:\/\/blog.makingdevs.com\/2016\/09\/22\/presentaci%C3%B3n-en-android-nights';
+    var disqus_title = 'Presentación en Android Nights';
+    var disqus_url = 'http:\/\/blog.makingdevs.com\/2016\/09\/22\/presentaci%C3%B3n-en-android-nights';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

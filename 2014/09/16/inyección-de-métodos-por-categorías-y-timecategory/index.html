@@ -80,9 +80,15 @@
 
 <main>
 	<header>
-		<h1>Inyección de métodos por categorías y TimeCategory</h1>
-	</header>
+		<h1 align=center>Inyección de métodos por categorías y TimeCategory</h1>
+    
+     <section class="author">
+       <p align=center> <b>Redactado por: José Juan Reyes Zuñiga</b></p>
+     </section>
+    
 
+  </header>
+  </br>
 	<article>
 		
 
@@ -99,16 +105,16 @@
 
 <p>Un ejemplo podría ser el siguiente:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">    <span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">NameUtil</span><span style="color: #666666">{</span>
-        <span style="color: #AA22FF; font-weight: bold">static</span> <span style="color: #00A000">prettify</span><span style="color: #666666">(</span>String name<span style="color: #666666">){</span>
-            name<span style="color: #666666">.</span><span style="color: #BB4444">trim</span><span style="color: #666666">().</span><span style="color: #BB4444">split</span><span style="color: #666666">(</span><span style="color: #BB4444">&#39; &#39;</span><span style="color: #666666">).</span><span style="color: #BB4444">grep</span> <span style="color: #666666">{</span> it<span style="color: #666666">.</span><span style="color: #BB4444">size</span><span style="color: #666666">()</span> <span style="color: #666666">}*.</span><span style="color: #BB4444">capitalize</span><span style="color: #666666">().</span><span style="color: #BB4444">join</span><span style="color: #666666">(</span><span style="color: #BB4444">&#39; &#39;</span><span style="color: #666666">)</span>
-        <span style="color: #666666">}</span>
-    <span style="color: #666666">}</span>
 
-    use NameUtil<span style="color: #666666">,</span> <span style="color: #666666">{</span>
-        println <span style="color: #BB4444">&quot;  josé   juan    reyes    zuñiga   &quot;</span><span style="color: #666666">.</span><span style="color: #BB4444">prettify</span><span style="color: #666666">()</span>
-    <span style="color: #666666">}</span>
-</pre></div>
+    class NameUtil{
+        static prettify(String name){
+            name.trim().split(' ').grep { it.size() }*.capitalize().join(' ')
+        }
+    }
+
+    use NameUtil, {
+        println "  josé   juan    reyes    zuñiga   ".prettify()
+    }
 
 
 <p>Adicionalmente, podemos crear dicha inyección de métodos con ayuda de la anotación <code>@Category</code>, que prácticamente nos facilita a que cualquier clase pueda ser usada como categoría, pues no necesariamente los métodos tiene que ser estáticos y el contexto del argumento para la inyección es el objeto <code>this</code> en donde se esté intentando usar.</p>
@@ -117,22 +123,22 @@
 
 <p>La clase <code>TimeCategory</code> es una clase que tiene una serie de métodos de conveniencia para el manejo del tiempo, formando así un DSL, con el que podemos operar. Y con ayuda de la clase <code>Duration</code> complementamos algunas operaciones que se pueden realizar en el contexto de los objetos que estemos usando.</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">    <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">groovy.time.TimeCategory</span>
 
-    <span style="color: #00A000">use</span> <span style="color: #666666">(</span> TimeCategory <span style="color: #666666">)</span> <span style="color: #666666">{</span>
-        println <span style="color: #666666">2.</span><span style="color: #BB4444">hours</span><span style="color: #666666">.</span><span style="color: #BB4444">ago</span>
-        println <span style="color: #666666">30.</span><span style="color: #BB4444">minutes</span><span style="color: #666666">.</span><span style="color: #BB4444">from</span> <span style="color: #008800; font-style: italic">// TimeDuration</span>
-        println <span style="color: #666666">30.</span><span style="color: #BB4444">minutes</span><span style="color: #666666">.</span><span style="color: #BB4444">from</span><span style="color: #666666">.</span><span style="color: #BB4444">now</span>
-        println <span style="color: #666666">40.</span><span style="color: #BB4444">minutes</span> <span style="color: #666666">+</span> <span style="color: #666666">30.</span><span style="color: #BB4444">minutes</span><span style="color: #666666">.</span><span style="color: #BB4444">from</span><span style="color: #666666">.</span><span style="color: #BB4444">now</span>
-        println <span style="color: #666666">30.</span><span style="color: #BB4444">minutes</span><span style="color: #666666">.</span><span style="color: #BB4444">ago</span>
+    import groovy.time.TimeCategory
 
-        <span style="color: #00BB00; font-weight: bold">def</span> today <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> Date<span style="color: #666666">()</span>
-        println today <span style="color: #666666">-</span> <span style="color: #666666">3.</span><span style="color: #BB4444">years</span>
-        println today <span style="color: #666666">+</span> <span style="color: #666666">4.</span><span style="color: #BB4444">weeks</span>
-        println today <span style="color: #666666">+</span> <span style="color: #666666">90.</span><span style="color: #BB4444">minutes</span>
-    <span style="color: #666666">}</span>
-</pre></div>
-</p>
+    use ( TimeCategory ) {
+        println 2.hours.ago
+        println 30.minutes.from // TimeDuration
+        println 30.minutes.from.now
+        println 40.minutes + 30.minutes.from.now
+        println 30.minutes.ago
+
+        def today = new Date()
+        println today - 3.years
+        println today + 4.weeks
+        println today + 90.minutes
+    }
+
 
 <p>Para que consideres el conjunto de operaciones que tienes disponibles te recomendamos visitar la documentación de <a href="http://groovy.codehaus.org/api/groovy/time/TimeCategory.html">TimeCategory</a> y <a href="http://groovy.codehaus.org/api/groovy/time/Duration.html">Duration</a></p>
 
