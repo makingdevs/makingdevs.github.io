@@ -1,13 +1,232 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Blog de Making Devs</title>
-    <link>http://blog.makingdevs.com/post/</link>
-    <description>Recent content in Posts on Blog de Making Devs</description>
+    <title>Post-rsses on Blog de Making Devs</title>
+    <link>http://blog.makingdevs.com/post/index.xml</link>
+    <description>Recent content in Post-rsses on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Sep 2016 15:06:05 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 30 Nov 2016 16:46:05 -0600</lastBuildDate>
     <atom:link href="http://blog.makingdevs.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Capistrano para despliegues de apps Rails</title>
+      <link>http://blog.makingdevs.com/2016/11/30/capistrano-para-despliegues-de-apps-rails</link>
+      <pubDate>Wed, 30 Nov 2016 16:46:05 -0600</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/11/30/capistrano-para-despliegues-de-apps-rails</guid>
+      <description>
+
+&lt;p&gt;Hace tiempo que estabamos haciendo una aplicación &lt;em&gt;Rails&lt;/em&gt;, me di a la tarear de investigar el tema obviado que es la forma en como se hace un despliegue lo más ordenado posible. Inclusive le pregunte al gran maestro @chillicoder al respecto, y efectivamente, mis sospechas eran correctas tenía que usar Capistrano(aunque chilli parece usar otra cosa), incluída la recomendación del maestro.&lt;/p&gt;
+
+&lt;p&gt;Obviaré las partes de las instalaciones de las gemas y me enfocaré en el problema que tuve que resolver: un par de ambientes a instalar para una API hecha en Rails.&lt;/p&gt;
+
+&lt;p&gt;Para ser honesto me sorprendió lo estructurado en que se puede hacer un despliegue con Capistrano, incluso me gusto mucho que la recomendación siempre era la misma, dando pie a una buena forma de hacer dicho deploy.&lt;/p&gt;
+
+&lt;h2 id=&#34;el-archivo-config-deploy-rb&#34;&gt;El archivo &lt;em&gt;config/deploy.rb&lt;/em&gt;&lt;/h2&gt;
+
+&lt;p&gt;Cuando instalas Capistrano, viene consigo un archivo &lt;em&gt;deploy.rb&lt;/em&gt; en donde puse lo siguiente:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# config valid only for current version of Capistrano&lt;/span&gt;
+lock &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;3.6.1&amp;#39;&lt;/span&gt;
+
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:application&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;barista&amp;#39;&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:repo_url&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;git@github.com:makingdevs/MyBarista.git&amp;#39;&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:rbenv_ruby&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;2.2.3&amp;#39;&lt;/span&gt;
+
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:repo_tree&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;ruby_app&amp;#39;&lt;/span&gt;
+
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:puma_user&lt;/span&gt;, fetch(&lt;span style=&#34;color: #B8860B&#34;&gt;:user&lt;/span&gt;)
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:linked_dirs&lt;/span&gt;, fetch(&lt;span style=&#34;color: #B8860B&#34;&gt;:linked_dirs&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;[]&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;push(&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;log&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;tmp/pids&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;tmp/cache&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;tmp/sockets&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;vendor/bundle&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;public/system&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;public/uploads&amp;#39;&lt;/span&gt;)
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:linked_files&lt;/span&gt;, fetch(&lt;span style=&#34;color: #B8860B&#34;&gt;:linked_files&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;[]&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;push(&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;config/database.yml&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;config/secrets.yml&amp;#39;&lt;/span&gt;)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Aquí hay varias cosas que me gustaria comentar:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;:repo_tree&lt;/code&gt; te ayuda a desplegar una carpeta interna del directorio base del repo, que es nuestro caso&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:linked_dirs&lt;/code&gt; ayuda a crear enlances simbólicos de ciertos directorios que necesitarías&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:linked_file&lt;/code&gt; excelente forma de hacer enlaces simbólicos de archivos que contienen la configuración externa, si no quieres usar variables de ambiente o sistema.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Adicional a esto, en el mismo archivo tuve que eliminar algunas tareas y crear algunas para el manejo de puma:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Rake&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;deploy:assets:precompile&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;].&lt;/span&gt;clear_actions
+&lt;span style=&#34;color: #880000&#34;&gt;Rake&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;deploy:assets:backup_manifest&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;].&lt;/span&gt;clear_actions
+
+namespace &lt;span style=&#34;color: #B8860B&#34;&gt;:puma&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+  desc &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Create Directories for Puma Pids and Socket&amp;#39;&lt;/span&gt;
+  task &lt;span style=&#34;color: #B8860B&#34;&gt;:make_dirs&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+    on roles(&lt;span style=&#34;color: #B8860B&#34;&gt;:app&lt;/span&gt;) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      execute &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;mkdir &lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;shared_path&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;/tmp/sockets -p&amp;quot;&lt;/span&gt;
+      execute &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;mkdir &lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;shared_path&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;/tmp/pids -p&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+
+  before &lt;span style=&#34;color: #B8860B&#34;&gt;:start&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:make_dirs&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+
+namespace &lt;span style=&#34;color: #B8860B&#34;&gt;:deploy&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+  desc &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Make sure local git is in sync with remote.&amp;quot;&lt;/span&gt;
+  task &lt;span style=&#34;color: #B8860B&#34;&gt;:check_revision&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+    on roles(&lt;span style=&#34;color: #B8860B&#34;&gt;:app&lt;/span&gt;) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;unless&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;`git rev-parse HEAD`&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;`git rev-parse origin/master`&lt;/span&gt;
+        &lt;span style=&#34;color: #AA22FF&#34;&gt;puts&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;WARNING: HEAD is not the same as origin/master&amp;quot;&lt;/span&gt;
+        &lt;span style=&#34;color: #AA22FF&#34;&gt;puts&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Run `git push` to sync changes.&amp;quot;&lt;/span&gt;
+        &lt;span style=&#34;color: #AA22FF&#34;&gt;exit&lt;/span&gt;
+      &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+
+  desc &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Initial Deploy&amp;#39;&lt;/span&gt;
+  task &lt;span style=&#34;color: #B8860B&#34;&gt;:initial&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+    on roles(&lt;span style=&#34;color: #B8860B&#34;&gt;:app&lt;/span&gt;) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      before &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;deploy:restart&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;puma:start&amp;#39;&lt;/span&gt;
+      invoke &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;deploy&amp;#39;&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+
+  desc &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Restart application&amp;#39;&lt;/span&gt;
+  task &lt;span style=&#34;color: #B8860B&#34;&gt;:restart&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+    on roles(&lt;span style=&#34;color: #B8860B&#34;&gt;:app&lt;/span&gt;), &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;in&lt;/span&gt;: &lt;span style=&#34;color: #B8860B&#34;&gt;:sequence&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;wait&lt;/span&gt;: &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      invoke &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;puma:restart&amp;#39;&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+
+  before &lt;span style=&#34;color: #B8860B&#34;&gt;:starting&lt;/span&gt;,     &lt;span style=&#34;color: #B8860B&#34;&gt;:check_revision&lt;/span&gt;
+  after  &lt;span style=&#34;color: #B8860B&#34;&gt;:finishing&lt;/span&gt;,    &lt;span style=&#34;color: #B8860B&#34;&gt;:cleanup&lt;/span&gt;
+  after  &lt;span style=&#34;color: #B8860B&#34;&gt;:finishing&lt;/span&gt;,    &lt;span style=&#34;color: #B8860B&#34;&gt;:restart&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;los-archivos-de-ambientes&#34;&gt;Los archivos de ambientes&lt;/h2&gt;
+
+&lt;p&gt;Dentro del directorio &lt;em&gt;config/deploy/&lt;/em&gt; existen un par de archivos que nos ayudan a definir elementos particulares de la instalación por cada ambiente, lo único que yo hice fue habilitar la máquina a través de autenticación de llave pública con el servidor de despliegue para que se pudieran comunicar por ssh. Y mis archivos quedaron así:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;set &lt;span style=&#34;color: #B8860B&#34;&gt;:stage&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:production&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:puma_bind&lt;/span&gt;, &lt;span style=&#34;color: #008000&#34;&gt;%w(tcp://0.0.0.0:3000)&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:branch&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;production&amp;#39;&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:deploy_to&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/var/www/&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;fetch(&lt;span style=&#34;color: #B8860B&#34;&gt;:application&lt;/span&gt;)&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;/production&amp;quot;&lt;/span&gt;
+
+server &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;powerful.makingdevs.com&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;user&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;centos-user&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;roles&lt;/span&gt;: &lt;span style=&#34;color: #008000&#34;&gt;%w{app web}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;set &lt;span style=&#34;color: #B8860B&#34;&gt;:stage&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:stage&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:puma_bind&lt;/span&gt;, &lt;span style=&#34;color: #008000&#34;&gt;%w(tcp://0.0.0.0:3001)&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:branch&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;stage&amp;#39;&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:deploy_to&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/var/www/&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;fetch(&lt;span style=&#34;color: #B8860B&#34;&gt;:application&lt;/span&gt;)&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;/stage&amp;quot;&lt;/span&gt;
+
+server &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;powerful.makingdevs.com&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;user&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;centos-user&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;roles&lt;/span&gt;: &lt;span style=&#34;color: #008000&#34;&gt;%w{app web}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En donde puedo definir incluso el branch del repo que quiero desplegar, el puerto de puma donde quiero levantar y que no colisionen entre sí, y un directorio basado en el ambiente.&lt;/p&gt;
+
+&lt;p&gt;Me gusta mucho el control que tiene Capistrano para revertir una versión, pues lo ordena de tal forma que guarda algunos respaldos de versiones desplegadas anteriormente listas para resintalarlse en caso de que algo salga mal.&lt;/p&gt;
+
+&lt;p&gt;Capistrano hace todo, la transferencia de archivos, el ordenamiento, la instalación de puma y de las gemas de la app, incluso del propio runtime de Ruby, la creación de enlaces simbólicos, la descarga de cambios del repo, etc.&lt;/p&gt;
+
+&lt;p&gt;Capistrano es la herramienta.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>FizzBuzz</title>
+      <link>http://blog.makingdevs.com/2016/11/05/fizzbuzz</link>
+      <pubDate>Sat, 05 Nov 2016 19:35:08 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/11/05/fizzbuzz</guid>
+      <description>&lt;p&gt;Before we pass to how we can make a &lt;em&gt;FizzBuzz&lt;/em&gt; game, we need to know something more basic about &lt;code&gt;Elixir&lt;/code&gt;. Today we are going to learn something called &lt;em&gt;Anonymous Function&lt;/em&gt; (a.k.a Lambda Expression)&lt;/p&gt;
+
+&lt;p&gt;An &lt;em&gt;Anonymous Function&lt;/em&gt; is a function without a name and is usually used for applying some sort of transformation to the arguments passed.&lt;/p&gt;
+
+&lt;p&gt;According to &lt;em&gt;Wikipedia&lt;/em&gt; an &lt;em&gt;Anonymous Function&lt;/em&gt; is:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A function definition that is not bound to an identifier. &lt;a href=&#34;https://en.wikipedia.org/wiki/Anonymous_function&#34;&gt;Anonymous functions&lt;/a&gt; are often&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Arguments being passed to higher-order functions, or&lt;/li&gt;
+&lt;li&gt;Used for constructing the result of a higher-order function that needs to return a function.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So, in &lt;code&gt;elixir&lt;/code&gt; the way that we can create an &lt;em&gt;Anonymous Function&lt;/em&gt; is with the &lt;code&gt;fn&lt;/code&gt; keyword:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fn&lt;/span&gt;
+  argument &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; body
+  argument &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; body
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;An easy example of an &lt;em&gt;Anonymous Function&lt;/em&gt; is a multiplication of a number by 5.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;iex(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; times_5 &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fn&lt;/span&gt;(a) &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; a &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#Function&amp;lt;6.52032458/1 in :erl_eval.expr/5&amp;gt;&lt;/span&gt;
+iex(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; times_5&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;(&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;)
+&lt;span style=&#34;color: #666666&#34;&gt;15&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The line (&lt;code&gt;times_5 = fn(a) -&amp;gt; a * 5 end&lt;/code&gt;) creates a function that takes one parameter and the implementation of the function is after the &lt;code&gt;-&amp;gt;&lt;/code&gt; and is terminated by the &lt;code&gt;end&lt;/code&gt; keyword.&lt;/p&gt;
+
+&lt;p&gt;And the other line is the execution of the function using a dot &lt;code&gt;.&lt;/code&gt; between the variable(let&amp;rsquo;s call it that way) and the parenthesis.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Keep in mind a variable assigned inside a function does not affect its surrounding environment.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So given this explanation we can make a little game called &lt;code&gt;FizzBuzz&lt;/code&gt;. If you never heard about it this is a brief description:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Any number divisible by three is replaced by the word Fizz&lt;/li&gt;
+&lt;li&gt;Any number divisible by five is replaced by  the word Buzz.&lt;/li&gt;
+&lt;li&gt;Any number divisible by both become FizzBuzz.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For example&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;With our example we are going to make use of the &lt;em&gt;Anonymous Functions&lt;/em&gt; that we already explain above.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;iex(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; fizz_buzz &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fn&lt;/span&gt;
+...(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;   &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color: #AA22FF&#34;&gt;_&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;FizzBuzz&amp;quot;&lt;/span&gt;
+...(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;   &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color: #AA22FF&#34;&gt;_&lt;/span&gt;, &lt;span style=&#34;color: #AA22FF&#34;&gt;_&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;
+...(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;   &lt;span style=&#34;color: #AA22FF&#34;&gt;_&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color: #AA22FF&#34;&gt;_&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;
+...(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;   &lt;span style=&#34;color: #AA22FF&#34;&gt;_&lt;/span&gt;, &lt;span style=&#34;color: #AA22FF&#34;&gt;_&lt;/span&gt;, c &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; c
+...(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#Function&amp;lt;18.52032458/3 in :erl_eval.expr/5&amp;gt;&lt;/span&gt;
+iex(&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; number_to_eval &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fn&lt;/span&gt;
+...(&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;   n &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; fizz_buzz&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;(rem(n, &lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;), rem(n, &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;), n)
+...(&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#Function&amp;lt;6.52032458/1 in :erl_eval.expr/5&amp;gt;&lt;/span&gt;
+iex(&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;1..16&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Enum&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;to_list &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Enum&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;map(number_to_eval)
+[&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;7&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;8&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;11&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;13&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;14&lt;/span&gt;,
+ &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;FizzBuzz&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;16&lt;/span&gt;]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;number_to_eval&lt;/code&gt; is an &lt;em&gt;Anonymous Function&lt;/em&gt; that wrap the implementation of another &lt;em&gt;Anonymous Function&lt;/em&gt; &lt;code&gt;fizz_buzz&lt;/code&gt;. &lt;code&gt;number_to_eval&lt;/code&gt; is going to take one argument and pass the remnant of that number divided by &lt;code&gt;3&lt;/code&gt; and &lt;code&gt;5&lt;/code&gt; and the number itself to the &lt;code&gt;fizz_buzz&lt;/code&gt; function. In the &lt;code&gt;fizz_buzz&lt;/code&gt; function we are going to make use of the patter match.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If the remnant by &lt;code&gt;3&lt;/code&gt; and &lt;code&gt;5&lt;/code&gt;is &lt;code&gt;0&lt;/code&gt; we are going to return &lt;code&gt;FizzBuzz&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;If the remnant by &lt;code&gt;3&lt;/code&gt; is &lt;code&gt;0&lt;/code&gt; we are going to return &lt;code&gt;Fizz&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;If the remnant by &lt;code&gt;5&lt;/code&gt; is &lt;code&gt;0&lt;/code&gt; we are going to return &lt;code&gt;Buzz&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;If doesn&amp;rsquo;t match to any of above we are going to return the same number.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And in the next lines we are going to eval sixteen numbers.&lt;/p&gt;
+
+&lt;p&gt;In this example we can make a good use for &lt;em&gt;Anonymous Functions&lt;/em&gt; and how we can apply on a &lt;code&gt;Enum.map&lt;/code&gt; module. This is brief and of course you can make a good use of it in another situations but is a little beyond the scope of this post.&lt;/p&gt;
+
+&lt;p&gt;So I hope you enjoy this can help you to make something else and for me that&amp;rsquo;s all. Good Luck, Have Fun and GG!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Presentación en Android Nights</title>
@@ -46,47 +265,47 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Project table
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defmodule&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Project&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto.Schema&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto.Changeset&lt;/span&gt;
 
-defmodule EctoTransactions.Project do
-  use Ecto.Schema
-  import Ecto.Changeset
-
-  schema &#34;projects&#34; do
-    field :name
-    has_many :tasks, EctoTransactions.Task
+  schema &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;projects&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+    field &lt;span style=&#34;color: #B8860B&#34;&gt;:name&lt;/span&gt;
+    has_many &lt;span style=&#34;color: #B8860B&#34;&gt;:tasks&lt;/span&gt;, &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Task&lt;/span&gt;
 
     timestamps
-  end
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
 
-  def changeset(struct, params \\ %{}) do
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;def&lt;/span&gt; changeset(struct, params \\ %{}) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
     struct
-    |&gt; cast(params, [:name])
-    |&gt; validate_required([:name])
-  end
+    &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; cast(params, [&lt;span style=&#34;color: #B8860B&#34;&gt;:name&lt;/span&gt;])
+    &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; validate_required([&lt;span style=&#34;color: #B8860B&#34;&gt;:name&lt;/span&gt;])
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
 
-end
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Task table
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defmodule&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Task&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto.Schema&lt;/span&gt;
 
-defmodule EctoTransactions.Task do
-  use Ecto.Schema
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto.Changeset&lt;/span&gt;
 
-  import Ecto.Changeset
-
-  schema &#34;tasks&#34; do
-    field :description
-    belongs_to :project, EctoTransactions.Project
+  schema &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;tasks&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+    field &lt;span style=&#34;color: #B8860B&#34;&gt;:description&lt;/span&gt;
+    belongs_to &lt;span style=&#34;color: #B8860B&#34;&gt;:project&lt;/span&gt;, &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Project&lt;/span&gt;
 
     timestamps
-  end
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
 
-  def changeset(struct, params \\ %{}) do
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;def&lt;/span&gt; changeset(struct, params \\ %{}) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
     struct
-    |&gt; cast(params, [:description, :project_id])
-    |&gt; validate_required([:description, :project_id])
-  end
-end
+    &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; cast(params, [&lt;span style=&#34;color: #B8860B&#34;&gt;:description&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:project_id&lt;/span&gt;])
+    &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; validate_required([&lt;span style=&#34;color: #B8860B&#34;&gt;:description&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:project_id&lt;/span&gt;])
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -96,128 +315,128 @@ end
 
 &lt;p&gt;So we are going to create a module for handling this&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defmodule&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.App&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
 
-  defmodule EctoTransactions.App do
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;alias&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Repo&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;alias&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Project&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;alias&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Task&lt;/span&gt;
 
-    import Ecto
-    alias EctoTransactions.Repo
-    alias EctoTransactions.Project
-    alias EctoTransactions.Task
-
-    # creating project and task
-    def create_project_with_task(project_params, task_params) do
-      Repo.transaction(fn -&gt;
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# creating project and task&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;def&lt;/span&gt; create_project_with_task(project_params, task_params) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      &lt;span style=&#34;color: #0000FF&#34;&gt;Repo&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;transaction(&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt;
         project_params
-        |&gt; create_project_with_params
-        |&gt; add_task_to_project(task_params)
-      end)
-    end
+        &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; create_project_with_params
+        &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; add_task_to_project(task_params)
+      &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;)
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
 
-    # creating project
-    defp create_project_with_params(project_params) do
-      %Project{}
-      |&gt; Project.changeset(project_params)
-      |&gt; Repo.insert
-    end
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# creating project&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defp&lt;/span&gt; create_project_with_params(project_params) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      %&lt;span style=&#34;color: #0000FF&#34;&gt;Project&lt;/span&gt;{}
+      &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Project&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;changeset(project_params)
+      &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Repo&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;insert
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
 
-    # adding a task to a valid project
-    defp add_task_to_project({:ok, project}, task_params) do
-      changeset = project
-                  |&gt; build_assoc(:tasks)
-                  |&gt; Task.changeset(task_params)
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# adding a task to a valid project&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defp&lt;/span&gt; add_task_to_project({&lt;span style=&#34;color: #B8860B&#34;&gt;:ok&lt;/span&gt;, project}, task_params) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      changeset &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; project
+                  &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; build_assoc(&lt;span style=&#34;color: #B8860B&#34;&gt;:tasks&lt;/span&gt;)
+                  &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;changeset(task_params)
 
-      case Repo.insert(changeset) do
-        {:ok, _task} -&gt; project
-        {:error, changeset} -&gt; Repo.rollback(:task) # Rollback transaction for invalid task data
-      end
-    end
-    defp add_task_to_project({:error, _changeset}, _task_params),
-    do: Repo.rollback(:project) # Rollback transaction for invalid project data
+      &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Repo&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;insert(changeset) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+        {&lt;span style=&#34;color: #B8860B&#34;&gt;:ok&lt;/span&gt;, _task} &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; project
+        {&lt;span style=&#34;color: #B8860B&#34;&gt;:error&lt;/span&gt;, changeset} &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Repo&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;rollback(&lt;span style=&#34;color: #B8860B&#34;&gt;:task&lt;/span&gt;) &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Rollback transaction for invalid task data&lt;/span&gt;
+      &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defp&lt;/span&gt; add_task_to_project({&lt;span style=&#34;color: #B8860B&#34;&gt;:error&lt;/span&gt;, _changeset}, _task_params),
+    &lt;span style=&#34;color: #B8860B&#34;&gt;do&lt;/span&gt;: &lt;span style=&#34;color: #0000FF&#34;&gt;Repo&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;rollback(&lt;span style=&#34;color: #B8860B&#34;&gt;:project&lt;/span&gt;) &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Rollback transaction for invalid project data&lt;/span&gt;
 
-  end
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;So if we use &lt;code&gt;iex -S mix&lt;/code&gt; and passing some args to this we can obtain the following results&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Passing good options
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;iex(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; project_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;}
+%{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;}
+iex(&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; task_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Should create task for example&amp;quot;&lt;/span&gt;}
+%{&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Should create task for example&amp;quot;&lt;/span&gt;}
+iex(&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.App&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;create_project_with_task(project_params, task_params)
 
-iex(1)&gt; project_params = %{name: &#34;Explain ecto transactions&#34;}
-%{name: &#34;Explain ecto transactions&#34;}
-iex(2)&gt; task_params = %{description: &#34;Should create task for example&#34;}
-%{description: &#34;Should create task for example&#34;}
-iex(3)&gt; EctoTransactions.App.create_project_with_task(project_params, task_params)
-
-22:28:59.905 [debug] QUERY OK db=0.2ms queue=0.1ms
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;59.905&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.2&lt;/span&gt;ms queue&lt;span style=&#34;color: #666666&#34;&gt;=0.1&lt;/span&gt;ms
 begin []
 
-22:28:59.917 [debug] QUERY OK db=0.9ms
-INSERT INTO &#34;projects&#34; (&#34;name&#34;,&#34;inserted_at&#34;,&#34;updated_at&#34;) VALUES ($1,$2,$3) RETURNING &#34;id&#34; [&#34;Explain ecto transactions&#34;, {{2016, 9, 21}, {3, 28, 59, 0}}, {{2016, 9, 21}, {3, 28, 59, 0}}]
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;59.917&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.9&lt;/span&gt;ms
+&lt;span style=&#34;color: #0000FF&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;INTO&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;projects&amp;quot;&lt;/span&gt; (&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;inserted_at&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;updated_at&amp;quot;&lt;/span&gt;) &lt;span style=&#34;color: #0000FF&#34;&gt;VALUES&lt;/span&gt; (&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;) &lt;span style=&#34;color: #0000FF&#34;&gt;RETURNING&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;id&amp;quot;&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;, {{&lt;span style=&#34;color: #666666&#34;&gt;2016&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;21&lt;/span&gt;}, {&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;59&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;}}, {{&lt;span style=&#34;color: #666666&#34;&gt;2016&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;21&lt;/span&gt;}, {&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;59&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;}}]
 
-22:28:59.921 [debug] QUERY OK db=3.1ms
-INSERT INTO &#34;tasks&#34; (&#34;description&#34;,&#34;project_id&#34;,&#34;inserted_at&#34;,&#34;updated_at&#34;) VALUES ($1,$2,$3,$4) RETURNING &#34;id&#34; [&#34;Should create task for example&#34;, 1, {{2016, 9, 21}, {3, 28, 59, 0}}, {{2016, 9, 21}, {3, 28, 59, 0}}]
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;59.921&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=3.1&lt;/span&gt;ms
+&lt;span style=&#34;color: #0000FF&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;INTO&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;tasks&amp;quot;&lt;/span&gt; (&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;description&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;project_id&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;inserted_at&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;updated_at&amp;quot;&lt;/span&gt;) &lt;span style=&#34;color: #0000FF&#34;&gt;VALUES&lt;/span&gt; (&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;4&lt;/span&gt;) &lt;span style=&#34;color: #0000FF&#34;&gt;RETURNING&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;id&amp;quot;&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Should create task for example&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;, {{&lt;span style=&#34;color: #666666&#34;&gt;2016&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;21&lt;/span&gt;}, {&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;59&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;}}, {{&lt;span style=&#34;color: #666666&#34;&gt;2016&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;21&lt;/span&gt;}, {&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;59&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;}}]
 
-22:28:59.922 [debug] QUERY OK db=0.3ms
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;59.922&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.3&lt;/span&gt;ms
 commit []
-{:ok,
- %EctoTransactions.Project{__meta__: #Ecto.Schema.Metadata&lt;:loaded, &#34;projects&#34;&gt;,
-  id: 1, inserted_at: #Ecto.DateTime&lt;2016-09-21 03:28:59&gt;,
-  name: &#34;Explain ecto transactions&#34;,
-  tasks: #Ecto.Association.NotLoaded&lt;association :tasks is not loaded&gt;,
-  updated_at: #Ecto.DateTime&lt;2016-09-21 03:28:59&gt;}}
+{&lt;span style=&#34;color: #B8860B&#34;&gt;:ok&lt;/span&gt;,
+ %&lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Project&lt;/span&gt;{&lt;span style=&#34;color: #B8860B&#34;&gt;__meta__&lt;/span&gt;: &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#Ecto.Schema.Metadata&amp;lt;:loaded, &amp;quot;projects&amp;quot;&amp;gt;,&lt;/span&gt;
+  &lt;span style=&#34;color: #B8860B&#34;&gt;id&lt;/span&gt;: &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;inserted_at&lt;/span&gt;: &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#Ecto.DateTime&amp;lt;2016-09-21 03:28:59&amp;gt;,&lt;/span&gt;
+  &lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;,
+  &lt;span style=&#34;color: #B8860B&#34;&gt;tasks&lt;/span&gt;: &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#Ecto.Association.NotLoaded&amp;lt;association :tasks is not loaded&amp;gt;,&lt;/span&gt;
+  &lt;span style=&#34;color: #B8860B&#34;&gt;updated_at&lt;/span&gt;: &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#Ecto.DateTime&amp;lt;2016-09-21 03:28:59&amp;gt;}}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 
-
-ecto_simple&gt; select * from projects; select * from tasks;
-+------+---------------------------+---------------------+---------------------+
-|   id | name                      | inserted_at         | updated_at          |
-|------+---------------------------+---------------------+---------------------|
-|    1 | Explain ecto transactions | 2016-09-21 03:28:59 | 2016-09-21 03:28:59 |
-+------+---------------------------+---------------------+---------------------+
-SELECT 1
-+------+--------------------------------+--------------+---------------------+---------------------+
-|   id | description                    |   project_id | inserted_at         | updated_at          |
-|------+--------------------------------+--------------+---------------------+---------------------|
-|    1 | Should create task for example |            1 | 2016-09-21 03:28:59 | 2016-09-21 03:28:59 |
-+------+--------------------------------+--------------+---------------------+---------------------+
-SELECT 1
-Time: 0.003s
-
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;ecto_simple&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;from&lt;/span&gt; projects; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;from&lt;/span&gt; tasks;
+&lt;span style=&#34;color: #888888&#34;&gt;+------+---------------------------+---------------------+---------------------+&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;|   id | name                      | inserted_at         | updated_at          |&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;|------+---------------------------+---------------------+---------------------|&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;|    1 | Explain ecto transactions | 2016-09-21 03:28:59 | 2016-09-21 03:28:59 |&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;+------+---------------------------+---------------------+---------------------+&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;SELECT 1&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;+------+--------------------------------+--------------+---------------------+---------------------+&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;|   id | description                    |   project_id | inserted_at         | updated_at          |&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;|------+--------------------------------+--------------+---------------------+---------------------|&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;|    1 | Should create task for example |            1 | 2016-09-21 03:28:59 | 2016-09-21 03:28:59 |&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;+------+--------------------------------+--------------+---------------------+---------------------+&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;SELECT 1&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;Time: 0.003s&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
 
 &lt;p&gt;And for bad data we can obtain next results:&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;iex(&lt;span style=&#34;color: #666666&#34;&gt;4&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; project_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;}
+%{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;}
+iex(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; task_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: &lt;span style=&#34;color: #880000&#34;&gt;nil&lt;/span&gt;}
+%{&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: &lt;span style=&#34;color: #880000&#34;&gt;nil&lt;/span&gt;}
+iex(&lt;span style=&#34;color: #666666&#34;&gt;6&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.App&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;create_project_with_task(project_params, task_params)
 
-iex(4)&gt; project_params = %{name: 1}
-%{name: 1}
-iex(5)&gt; task_params = %{description: nil}
-%{description: nil}
-iex(6)&gt; EctoTransactions.App.create_project_with_task(project_params, task_params)
-
-22:49:25.863 [debug] QUERY OK db=0.2ms
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;25.863&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.2&lt;/span&gt;ms
 begin []
 
-22:49:25.865 [debug] QUERY OK db=0.2ms
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;25.865&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.2&lt;/span&gt;ms
 rollback []
-{:error, :project}
+{&lt;span style=&#34;color: #B8860B&#34;&gt;:error&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:project&lt;/span&gt;}
 
-iex(7)&gt; project_params = %{name: &#34;Explain ecto transactions&#34;}
-%{name: &#34;Explain ecto transactions&#34;}
-iex(8)&gt; EctoTransactions.App.create_project_with_task(project_params, task_params)
+iex(&lt;span style=&#34;color: #666666&#34;&gt;7&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; project_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;}
+%{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;}
+iex(&lt;span style=&#34;color: #666666&#34;&gt;8&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.App&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;create_project_with_task(project_params, task_params)
 
-22:49:53.345 [debug] QUERY OK db=0.3ms queue=0.1ms
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;53.345&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.3&lt;/span&gt;ms queue&lt;span style=&#34;color: #666666&#34;&gt;=0.1&lt;/span&gt;ms
 begin []
 
-22:49:53.346 [debug] QUERY OK db=1.2ms
-INSERT INTO &#34;projects&#34; (&#34;name&#34;,&#34;inserted_at&#34;,&#34;updated_at&#34;) VALUES ($1,$2,$3) RETURNING &#34;id&#34; [&#34;Explain ecto transactions&#34;, {{2016, 9, 21}, {3, 49, 53, 0}}, {{2016, 9, 21}, {3, 49, 53, 0}}]
-#Ecto.Changeset&lt;action: :insert, changes: %{},
- errors: [description: {&#34;can&#39;t be blank&#34;, []}], data: #EctoTransactions.Task&lt;&gt;,
- valid?: false&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;53.346&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=1.2&lt;/span&gt;ms
+&lt;span style=&#34;color: #0000FF&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;INTO&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;projects&amp;quot;&lt;/span&gt; (&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;inserted_at&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;updated_at&amp;quot;&lt;/span&gt;) &lt;span style=&#34;color: #0000FF&#34;&gt;VALUES&lt;/span&gt; (&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;) &lt;span style=&#34;color: #0000FF&#34;&gt;RETURNING&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;id&amp;quot;&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;, {{&lt;span style=&#34;color: #666666&#34;&gt;2016&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;21&lt;/span&gt;}, {&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;53&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;}}, {{&lt;span style=&#34;color: #666666&#34;&gt;2016&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;21&lt;/span&gt;}, {&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;53&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;}}]
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#Ecto.Changeset&amp;lt;action: :insert, changes: %{},&lt;/span&gt;
+ &lt;span style=&#34;color: #B8860B&#34;&gt;errors&lt;/span&gt;: [&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: {&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;can&amp;#39;t be blank&amp;quot;&lt;/span&gt;, []}], &lt;span style=&#34;color: #B8860B&#34;&gt;data&lt;/span&gt;: &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#EctoTransactions.Task&amp;lt;&amp;gt;,&lt;/span&gt;
+ &lt;span style=&#34;color: #B8860B&#34;&gt;valid?&lt;/span&gt;: &lt;span style=&#34;color: #880000&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
 
-22:49:53.348 [debug] QUERY OK db=0.2ms
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;53.348&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.2&lt;/span&gt;ms
 rollback []
-{:error, :task}
-iex(9)&gt;
+{&lt;span style=&#34;color: #B8860B&#34;&gt;:error&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:task&lt;/span&gt;}
+iex(&lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;If you read with attention you will see two tupples &lt;code&gt;{:error, :project}&lt;/code&gt; and &lt;code&gt;{:error, :task}&lt;/code&gt; with this you can make the assumptions that you want, of course you could say a lot more and instead of returning tupples you return other things with more sense for example change &lt;code&gt;:project&lt;/code&gt; or &lt;code&gt;:task&lt;/code&gt; for his respective &lt;code&gt;changeset&lt;/code&gt; and you should see other things.&lt;/p&gt;
@@ -321,21 +540,21 @@ Se especifica la clase de la actividad a empezar para que el sistema operativo l
 &lt;p&gt;Android cuenta con la clase &lt;strong&gt;MediaStore&lt;/strong&gt;, esta se encarga de proveer los medios de comunicación, el que nos interesa es &lt;strong&gt;ACTION_IMAGE_CAPTURE&lt;/strong&gt;, este en el intent con el cual podemos hacer uso de la cámara.
 El siguiente metodo muestra como usar la camara nativa de Android, la clase que se encarga de usarlo es &lt;strong&gt;ExampleCamera&lt;/strong&gt;.&lt;/p&gt;
 
-
-	void launchCamera() {
-		Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-		if (camera.resolveActivity(getPackageManager())) {
-			try {
-				filePhoto = createPhoto(&#34;IMG_&#34;)
-				} catch (IOException ex) {
-					Log.d(TAG, &#34;Error ${ex.message}&#34;)
-				}
-				if (filePhoto) {
-					camera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(filePhoto))
-					startActivityForResult(camera, CAPTURE_IMAGE)
-			}
-		}
-	}
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;	&lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;launchCamera&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+		Intent camera &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; Intent&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;MediaStore&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;ACTION_IMAGE_CAPTURE&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;camera&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;resolveActivity&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;getPackageManager&lt;span style=&#34;color: #666666&#34;&gt;()))&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+			&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;try&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+				filePhoto &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; createPhoto&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;IMG_&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+				&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;catch&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;IOException ex&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+					Log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;d&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;TAG&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Error ${ex.message}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+				&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+				&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;filePhoto&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+					camera&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;putExtra&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;MediaStore&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;EXTRA_OUTPUT&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Uri&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;fromFile&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;filePhoto&lt;span style=&#34;color: #666666&#34;&gt;))&lt;/span&gt;
+					startActivityForResult&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;camera&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; CAPTURE_IMAGE&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+			&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+		&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+	&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2 id=&#34;almacenamiento-externo&#34;&gt;Almacenamiento externo&lt;/h2&gt;
@@ -346,36 +565,36 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
 
 &lt;p&gt;El método &lt;strong&gt;createPhoto(&amp;hellip;)&lt;/strong&gt; se encarga de crear un directorio denominado &lt;strong&gt;ExampleCamera&lt;/strong&gt; dentro de &lt;strong&gt;PICTURES&lt;/strong&gt;, además de generar el archivo para cada foto, un dato interesante es que no se realizó el import de la clase &lt;strong&gt;File&lt;/strong&gt;, la razón es que al usar &lt;strong&gt;groovy&lt;/strong&gt;, ciertos paquetes vienen incluidos por default.&lt;/p&gt;
 
-
-	File createPhoto(String name) {
-		File storagePhotos = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), &#34;ExampleCamera&#34;)
-		if (!storagePhotos.exists()) {
-			if (!storagePhotos.mkdirs()) {
-				Log.d(TAG, &#34;Error al crear directorio&#34;)
-			}
-		}
-		new File(storagePhotos.getPath() + File.separator + &#34;${name + new Date().format(&#34;ddMMyyyy_HHmmss&#34;)}.jpg&#34;)
-	}
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;	File &lt;span style=&#34;color: #00A000&#34;&gt;createPhoto&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;String name&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+		File storagePhotos &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; File&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Environment&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getExternalStoragePublicDirectory&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Environment&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;DIRECTORY_PICTURES&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;),&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;ExampleCamera&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(!&lt;/span&gt;storagePhotos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;exists&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+			&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(!&lt;/span&gt;storagePhotos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;mkdirs&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+				Log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;d&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;TAG&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Error al crear directorio&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+			&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+		&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;File&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;storagePhotos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getPath&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; File&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;separator&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;${name + new Date().format(&amp;quot;&lt;/span&gt;ddMMyyyy_HHmmss&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;)}.jpg&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+	&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2 id=&#34;manipular-el-resultado-de-la-cámara&#34;&gt;Manipular el resultado de la cámara&lt;/h2&gt;
 
 &lt;p&gt;Cuando se captura la foto, una vez que termina se maneja el resultado con el método onActivityResult(…), donde se verifica el estatus de la captura de la foto, ya sea que se culminó o cancelado, ante lo cual se muestra un mensaje emergente haciendo uso de los &lt;strong&gt;Toast&lt;/strong&gt;.&lt;/p&gt;
 
-
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data)
-		if (requestCode == CAPTURE_IMAGE) {
-			if (resultCode == RESULT_OK) {
-				Toast.makeText(getApplicationContext(), &#34;Exito al crear la foto&#34;, Toast.LENGTH_SHORT).show()
-			} else if (resultCode == RESULT_CANCELED) {
-				Toast.makeText(this, &#34;Se cancelo la foto&#34;, Toast.LENGTH_LONG).show()
-			} else {
-				Toast.makeText(this, &#34;Error al capturar la foto&#34;, Toast.LENGTH_LONG).show()
-			}
-		}
-	}
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;	&lt;span style=&#34;color: #AA22FF&#34;&gt;@Override&lt;/span&gt;
+	&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;protected&lt;/span&gt; &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;onActivityResult&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;int&lt;/span&gt; requestCode&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;int&lt;/span&gt; resultCode&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Intent data&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;super&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;onActivityResult&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;requestCode&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; resultCode&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; data&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;requestCode &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; CAPTURE_IMAGE&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+			&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;resultCode &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; RESULT_OK&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+				Toast&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makeText&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;getApplicationContext&lt;span style=&#34;color: #666666&#34;&gt;(),&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Exito al crear la foto&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Toast&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;LENGTH_SHORT&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;show&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+			&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;resultCode &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; RESULT_CANCELED&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+				Toast&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makeText&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Se cancelo la foto&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Toast&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;LENGTH_LONG&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;show&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+			&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+				Toast&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makeText&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Error al capturar la foto&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Toast&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;LENGTH_LONG&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;show&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+			&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+		&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+	&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2 id=&#34;permisos-de-android&#34;&gt;Permisos de Android&lt;/h2&gt;
@@ -483,27 +702,27 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
 
 &lt;p&gt;La ventaja de los POGOS de Groovy se siente al declarar o instanciar algún objeto de dominio:&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;groovy.transform.CompileStatic&lt;/span&gt;
 
-import groovy.transform.CompileStatic
-
-@CompileStatic
-class User {
+&lt;span style=&#34;color: #AA22FF&#34;&gt;@CompileStatic&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;User&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
     String id
     String username
     String token
-}
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Ahora instanciamos nuestra clase en cualquier parte:&lt;/p&gt;
 
-
-User getUserSession(Context context) {
-    SharedPreferences session = context.getSharedPreferences(&#34;UserSession&#34;,Context.MODE_PRIVATE)
-    String username = session.getString(&#34;username&#34;,null);
-    String token = session.getString(&#34;token&#34;,null)
-    String id = session.getString(&#34;id&#34;,null)
-    new User(username:username,token:token,id:id)
-}
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;User &lt;span style=&#34;color: #00A000&#34;&gt;getUserSession&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Context context&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    SharedPreferences session &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; context&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getSharedPreferences&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;UserSession&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;Context&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;MODE_PRIVATE&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    String username &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; session&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getString&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;);&lt;/span&gt;
+    String token &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; session&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getString&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;token&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    String id &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; session&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getString&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;User&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;username:&lt;/span&gt;username&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;token:&lt;/span&gt;token&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;id:&lt;/span&gt;id&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;La nota &lt;strong&gt;importante&lt;/strong&gt; aquí es la forma de la instanciación y que no hay palabra reservada &lt;code&gt;return&lt;/code&gt;, al igual que la declaración del método como &lt;code&gt;public&lt;/code&gt; no es necesaria. Además de que puedes llamar de forma abreviada a sus atributos.&lt;/p&gt;
@@ -512,27 +731,27 @@ User getUserSession(Context context) {
 
 &lt;p&gt;&lt;strong&gt;Groovy es un lenguaje de tipado dinámico opcional&lt;/strong&gt;, lo cuál significa que podemos beneficiarnos de ciertos elementos del lenguaje y estar seguros de que compilará correctamente; esta anotación hace al compilador mas estricto, con la ventaja de optimizar el código de byte dando como resultado una mejor ejecución. Los desarrolladores recomiendan el uso intenso de esta anotación en todas las clases dentro del proyecto Android:&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;android.content.Context&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;android.content.Intent&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;android.support.v4.app.Fragment&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;com.makingdevs.app.common.SingleFragmentActivity&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;com.makingdevs.app.ui.fragment.RegistrationFragment&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;groovy.transform.CompileStatic&lt;/span&gt;
 
-import android.content.Context
-import android.content.Intent
-import android.support.v4.app.Fragment
-import com.makingdevs.app.common.SingleFragmentActivity
-import com.makingdevs.app.ui.fragment.RegistrationFragment
-import groovy.transform.CompileStatic
+&lt;span style=&#34;color: #AA22FF&#34;&gt;@CompileStatic&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;RegistrationActivity&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;extends&lt;/span&gt; SingleFragmentActivity&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 
-@CompileStatic
-class RegistrationActivity extends SingleFragmentActivity{
-
-    static Intent newIntentWithContext(Context context){
-        Intent intent = new Intent(context, RegistrationActivity)
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; Intent &lt;span style=&#34;color: #00A000&#34;&gt;newIntentWithContext&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Context context&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt;
+        Intent intent &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; Intent&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;context&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; RegistrationActivity&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
         intent
-    }
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-    @Override
-    Fragment createFragment() {
-        new RegistrationFragment()
-    }
-}
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;@Override&lt;/span&gt;
+    Fragment &lt;span style=&#34;color: #00A000&#34;&gt;createFragment&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;RegistrationFragment&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Realmente este es un tema que se puede extender un poco más, pero iniciando con esto es suficiente.&lt;/p&gt;
@@ -543,8 +762,8 @@ class RegistrationActivity extends SingleFragmentActivity{
 
 &lt;p&gt;La forma general del closure en Groovy es:&lt;/p&gt;
 
-
-{ p1,p2,p3... -&gt; body }
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; p1&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;p2&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;p3&lt;span style=&#34;color: #666666&#34;&gt;...&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; body &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Y creo que es de las partes de las que más podemos comentar, incluso creo que cada beneficio particular que nos da Groovy con los closures lo podremos comentar en un post por separado.&lt;/p&gt;
@@ -553,49 +772,49 @@ class RegistrationActivity extends SingleFragmentActivity{
 
 &lt;p&gt;El evento más solicitado dentro de una app Android es el &lt;em&gt;click&lt;/em&gt; de un componente, con un closure podemos tratarlo:&lt;/p&gt;
 
-
-@CompileStatic
-public class SomeFragment extends Fragment {
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;@CompileStatic&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;SomeFragment&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;extends&lt;/span&gt; Fragment &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 
     FloatingActionButton mButtonGoChekin
 
-    // ...more code...
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// ...more code...&lt;/span&gt;
 
-    @Override
-    View onCreateView(LayoutInflater inflater,
-                      @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;@Override&lt;/span&gt;
+    View &lt;span style=&#34;color: #00A000&#34;&gt;onCreateView&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;LayoutInflater inflater&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;
+                      &lt;span style=&#34;color: #AA22FF&#34;&gt;@Nullable&lt;/span&gt; ViewGroup container&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;@Nullable&lt;/span&gt; Bundle savedInstanceState&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 
-        mButtonGoChekin= (FloatingActionButton) root.findViewById(R.id.button_go_chekin)
-        mButtonGoChekin.onClickListener = {
-            Intent intent = AnotherActivity.newIntentWithContext(getContext())
-            startActivity(intent)
-        }
-    }
-}
+        mButtonGoChekin&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;FloatingActionButton&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; root&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;findViewById&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;R&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;button_go_chekin&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+        mButtonGoChekin&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;onClickListener&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+            Intent intent &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; AnotherActivity&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;newIntentWithContext&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;getContext&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt;
+            startActivity&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;intent&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Ahora aquí una de las que más me gusta en conjunto con otra anotación de Groovy &lt;code&gt;@Singleton&lt;/code&gt;, de la cual hablaremos en otro post.&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;@Singleton&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF&#34;&gt;@CompileStatic&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;RetrofitTemplate&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 
-@Singleton
-@CompileStatic
-class RetrofitTemplate {
+    Retrofit retrofit &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; Retrofit&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Builder&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+            &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;addConverterFactory&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;GsonConverterFactory&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;create&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt;
+            &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;baseUrl&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;BuildConfig&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;API_SERVER_URL&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+            &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;build&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
 
-    Retrofit retrofit = new Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BuildConfig.API_SERVER_URL)
-            .build()
-
-    def withRetrofit(Class operations, Closure onSuccess, Closure onError, Closure action){
-        CustomRestOperations restOperations = retrofit.create(operations) as CustomRestOperations
-        Call&lt;Checkin&gt; model = action(restOperations) as Call&lt;Checkin&gt;
-        def callback = [
-                onResponse :onSuccess,
-                onFailure : onError
-        ]
-        model.enqueue(callback as Callback&lt;Checkin&gt;)
-    }
-}
+    &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;withRetrofit&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Class operations&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Closure onSuccess&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Closure onError&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Closure action&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt;
+        CustomRestOperations restOperations &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; retrofit&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;create&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;operations&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;as&lt;/span&gt; CustomRestOperations
+        Call&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Checkin&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; model &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; action&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;restOperations&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;as&lt;/span&gt; Call&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Checkin&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; callback &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;
+                onResponse &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;onSuccess&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;
+                onFailure &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; onError
+        &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+        model&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;enqueue&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;callback &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;as&lt;/span&gt; Callback&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Checkin&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;)&lt;/span&gt;
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Podemos hacer que un mapa se comporte como la implementación de una interfaz&lt;/strong&gt;, es sólo cuestión de usar los closures correctamente. Y también podemos ejecutar closures para mandarles parámetros listos para usarse en otros contextos.&lt;/p&gt;
@@ -676,59 +895,59 @@ Este logger pretende ser el sucesor de log4j, fue diseñado por Ceki Gülcü, fu
 Para poder usar este logger, se requiere del módulo logback.
 Una configuración del archivo gradle queda de la siguiente manera:&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;groovy&amp;#39;&lt;/span&gt;
 
-apply plugin:&#39;groovy&#39;
+repositories&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  jcenter&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-repositories{
-  jcenter()
-}
-
-dependencies{
-  compile &#39;org.codehaus.groovy:groovy-all:2.4.4&#39;
-  compile &#39;ch.qos.logback:logback-classic:1.1.6&#39;
-}
+dependencies&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  compile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.codehaus.groovy:groovy-all:2.4.4&amp;#39;&lt;/span&gt;
+  compile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;ch.qos.logback:logback-classic:1.1.6&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;El archivo groovy que se estará manejando para obtener la bitácora será &lt;em&gt;logback.groovy&lt;/em&gt; el cual contiene el patrón de salida del logger además de especificar donde se mostrara dicha información.&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;static&lt;/span&gt; ch&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;qos&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;logback&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;classic&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Level&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;INFO&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;static&lt;/span&gt; ch&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;qos&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;logback&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;classic&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Level&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;DEBUG&lt;/span&gt;
 
-import static ch.qos.logback.classic.Level.INFO
-import static ch.qos.logback.classic.Level.DEBUG
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;ch.qos.logback.classic.encoder.PatternLayoutEncoder&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;ch.qos.logback.core.ConsoleAppender&lt;/span&gt;
 
-import ch.qos.logback.classic.encoder.PatternLayoutEncoder
-import ch.qos.logback.core.ConsoleAppender
+&lt;span style=&#34;color: #00A000&#34;&gt;appender&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;CONSOLE&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; ConsoleAppender&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  encoder&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;PatternLayoutEncoder&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    pattern &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;%d{HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n&amp;quot;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-appender(&#34;CONSOLE&#34;, ConsoleAppender) {
-  encoder(PatternLayoutEncoder) {
-    pattern = &#34;%d{HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n&#34;
-  }
-}
-
-appender(&#34;FILE&#34;, FileAppender) {
-  file = &#34;example_logger.log&#34;
-  append = true
-  encoder(PatternLayoutEncoder) {
-    pattern = &#34;%d{HH:mm:ss.SSS} %-5level %logger{30} %msg %n&#34;
-  }
-}
-root(DEBUG, [&#34;CONSOLE&#34;,&#34;FILE&#34;])
+appender&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;FILE&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; FileAppender&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  file &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;example_logger.log&amp;quot;&lt;/span&gt;
+  append &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;true&lt;/span&gt;
+  encoder&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;PatternLayoutEncoder&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    pattern &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;%d{HH:mm:ss.SSS} %-5level %logger{30} %msg %n&amp;quot;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+root&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;DEBUG&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;CONSOLE&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;FILE&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Ahora el archivo se crea una instancia de la clase Logger. Además de contar con el nivel del logger, respetando la configuración que se hizo en el archivo logback.groovy.&lt;/p&gt;
 
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.slf4j.Logger&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.slf4j.LoggerFactory&lt;/span&gt;
 
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+Logger log &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; LoggerFactory&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getLogger&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;getClass&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt;
 
-Logger log = LoggerFactory.getLogger(getClass())
-
-log.debug &#34;*&#34;*40
-log.debug request.properties.toString()
-log.error &#34;Error&#34;
-log.warn &#34;Warning&#34;
-log.info &#34;Info&#34;
-log.trace &#34;Trace&#34;
-
+log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;debug&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;*&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;*40&lt;/span&gt;
+log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;debug&lt;/span&gt; request&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;properties&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;toString&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;error&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Error&amp;quot;&lt;/span&gt;
+log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;warn&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Warning&amp;quot;&lt;/span&gt;
+log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;info&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Info&amp;quot;&lt;/span&gt;
+log&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;trace&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Trace&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Un ejemplo de como se vería:&lt;/p&gt;
 
@@ -774,10 +993,10 @@ log.trace &#34;Trace&#34;
 
 &lt;p&gt;Then we are going to create a file named &lt;code&gt;.bowerrc&lt;/code&gt; with this file we are going to tell to &lt;code&gt;bower&lt;/code&gt; where are going to need to put all the &lt;code&gt;javascripts&lt;/code&gt; that we need it from now on. In this file we are going to put the next instruction:&lt;/p&gt;
 
-
-{
-  &#34;directory&#34;: &#34;web/static/vendor&#34;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;{
+  &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;directory&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;web/static/vendor&amp;quot;&lt;/span&gt;
 }
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now is the time to install &lt;code&gt;bootstrap&lt;/code&gt; and for that we need to run the following instruction in your shell:&lt;/p&gt;
@@ -794,47 +1013,49 @@ log.trace &#34;Trace&#34;
 &lt;li&gt;Then open your &lt;code&gt;brunch-config.js&lt;/code&gt; and in the &lt;code&gt;conventions&lt;/code&gt; section add the following:&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;
-   conventions: {
-     assets: /^(web\/static\/assets)/,
-     ignored: [
-       /^(web\/static\/vendor\/bootstrap\/)(?!.*min.(js|css)$)/,
-       /^(web\/static\/vendor\/jquery\/)(?!.*min.js)/
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;   conventions&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+     assets&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #BB6688&#34;&gt;/^(web\/static\/assets)/&lt;/span&gt;,
+     ignored&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; [
+       &lt;span style=&#34;color: #BB6688&#34;&gt;/^(web\/static\/vendor\/bootstrap\/)(?!.*min.(js|css)$)/&lt;/span&gt;,
+       &lt;span style=&#34;color: #BB6688&#34;&gt;/^(web\/static\/vendor\/jquery\/)(?!.*min.js)/&lt;/span&gt;
      ]
    }
    
+&lt;/pre&gt;&lt;/div&gt;
+
 3. After that you will need to load &lt;code&gt;jquery&lt;/code&gt; and &lt;code&gt;bootstrap&lt;/code&gt; in order, i.e. First &lt;code&gt;jquery&lt;/code&gt; and then &lt;code&gt;bootstrap&lt;/code&gt;. This is because &lt;code&gt;brunch&lt;/code&gt; will merge all js in alphabetical order and we require that &lt;code&gt;jquery&lt;/code&gt; loads first. For this we move to the &lt;code&gt;joinTo&lt;/code&gt; in the &lt;code&gt;files&lt;/code&gt; section and add the next lines:&lt;/p&gt;
 
-
-   files: {
-     javascripts: {
-       joinTo: &#34;js/app.js&#34;,
-       order: {
-         before: [
-           &#34;web/static/vendor/jquery/dist/jquery.min.js&#34;,
-           &#34;web/static/vendor/bootstrap/dist/js/bootstrap.js&#34;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;   files&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+     javascripts&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+       joinTo&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;js/app.js&amp;quot;&lt;/span&gt;,
+       order&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+         before&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; [
+           &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;web/static/vendor/jquery/dist/jquery.min.js&amp;quot;&lt;/span&gt;,
+           &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;web/static/vendor/bootstrap/dist/js/bootstrap.js&amp;quot;&lt;/span&gt;
          ]
        }
      },
    ... more code ...
    
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;After this you can open the main layout of your application and put the next code:&lt;/p&gt;
 
-
-&lt;div class=&#34;dropdown&#34;&gt;
-  &lt;button class=&#34;btn btn-default dropdown-toggle&#34; type=&#34;button&#34; id=&#34;dropdownMenu1&#34; data-toggle=&#34;dropdown&#34; aria-haspopup=&#34;true&#34; aria-expanded=&#34;true&#34;&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;dropdown&amp;quot;&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;btn btn-default dropdown-toggle&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;button&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;dropdownMenu1&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;data-toggle&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;dropdown&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;aria-haspopup&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;true&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;aria-expanded&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&amp;gt;
     Dropdown
-    &lt;span class=&#34;caret&#34;&gt;&lt;/span&gt;
-  &lt;/button&gt;
-  &lt;ul class=&#34;dropdown-menu&#34; aria-labelledby=&#34;dropdownMenu1&#34;&gt;
-    &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-    &lt;li role=&#34;separator&#34; class=&#34;divider&#34;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
+    &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;span&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;caret&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;span&lt;/span&gt;&amp;gt;
+  &amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;button&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;ul&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;dropdown-menu&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;aria-labelledby&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;dropdownMenu1&amp;quot;&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&amp;gt;Action&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&amp;gt;Another action&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&amp;gt;Something else here&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;role&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;separator&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;divider&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&amp;gt;Separated link&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;
+  &amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;ul&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;And this is going to work as expected. Now you can make use of everything that &lt;code&gt;boostrap&lt;/code&gt; have.&lt;/p&gt;
@@ -846,13 +1067,13 @@ log.trace &#34;Trace&#34;
 &lt;li&gt;Then in the &lt;code&gt;plugins&lt;/code&gt; section add the following code:&lt;/li&gt;
 &lt;/ol&gt;
 
-
-   assetsmanager: {
-       copyTo: {
-         &#39;/&#39; : [&#39;web/static/vendor/bootstrap/dist/fonts&#39;]
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;   assetsmanager&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+       copyTo&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+         &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;web/static/vendor/bootstrap/dist/fonts&amp;#39;&lt;/span&gt;]
        }
    }
-
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
 
 &lt;p&gt;That&amp;rsquo;s all folks! At least for this post I hope you enjoy and Good Luck, Have Fun!&lt;/p&gt;
 </description>
@@ -882,17 +1103,17 @@ log.trace &#34;Trace&#34;
 
 &lt;p&gt;Ahora bien, que la configuración XML si es el caso es muy sencilla y sólo tenemos que agregar el Servlet de Groovy y hacer el mapeo.&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;Groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet-class&amp;gt;&lt;/span&gt;groovy.servlet.GroovyServlet&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet-class&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet&amp;gt;&lt;/span&gt;
 
-&lt;servlet&gt;
-  &lt;servlet-name&gt;Groovy&lt;/servlet-name&gt;
-  &lt;servlet-class&gt;groovy.servlet.GroovyServlet&lt;/servlet-class&gt;
-&lt;/servlet&gt;
-
-&lt;servlet-mapping&gt;
-  &lt;servlet-name&gt;Groovy&lt;/servlet-name&gt;
-  &lt;url-pattern&gt;*.groovy&lt;/url-pattern&gt;
-  &lt;url-pattern&gt;*.gdo&lt;/url-pattern&gt;
-&lt;/servlet-mapping&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet-mapping&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;Groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;*.groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;*.gdo&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/servlet-mapping&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;Nota: Que el mapeo no necesariamente es estricto con la extensión, podemos usar la que querramos.&lt;/em&gt;&lt;/p&gt;
@@ -901,55 +1122,56 @@ log.trace &#34;Trace&#34;
 
 &lt;p&gt;Me apoyo de un par de clases que &lt;em&gt;modelan&lt;/em&gt; un almacén de datos.&lt;/p&gt;
 
-todos.groovy
-class Todo {
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;todos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Todo&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
   String description
-}
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-@Singleton // Only one instance
-class TodoManager {
-  List&lt;Todo&gt; todos = []
-}
+&lt;span style=&#34;color: #AA22FF&#34;&gt;@Singleton&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Only one instance&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;TodoManager&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  List&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Todo&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; todos &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[]&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Podemos jugar con el reponse directamente para decirle que cualquier respuesta sería JSON:&lt;/p&gt;
 
-&lt;p&gt;
-todos.groovy
-response.contentType = &#39;application/json&#39;
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;todos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+response&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;contentType&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;application/json&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 Buscar algún encabezado en particular para validar nuestra solicitud:&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;todos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+&lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; contentType &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; headers&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;find&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; k&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;v &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; k&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;toLowerCase&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;content-type&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}?.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;value&lt;/span&gt;
 
-todos.groovy
-def contentType = headers.find { k,v -&gt; k.toLowerCase() == &#39;content-type&#39; }?.value
-
-if(contentType != &#34;application/json&#34;){
-  response.status = HttpServletResponse.SC_BAD_REQUEST // We return a status code 400
-  // Using the json method included
-  json(status:&#34;Please use &#39;application/json&#39; header, just received ${headers} instead&#34;)
-  return // And nothing more...
-}
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;contentType &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;application/json&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt;
+  response&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;status&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; HttpServletResponse&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;SC_BAD_REQUEST&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// We return a status code 400&lt;/span&gt;
+  &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Using the json method included&lt;/span&gt;
+  json&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;status:&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Please use &amp;#39;application/json&amp;#39; header, just received ${headers} instead&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// And nothing more...&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;A partir de aquí podemos jugar con el método de envío y hacer algunas acciones, aquí una muestra muy simple:&lt;/p&gt;
 
-
-todos.groovy
-switch(request.method.toLowerCase()){ // Validating the method
-  case &#39;get&#39;:
-    json(todos:TodoManager.instance.todos) // Using the instance
-  break
-  case &#39;post&#39;:
-    Todo todo = new Todo(description:params?.todo ?: &#34;No description&#34;)
-    TodoManager.instance.todos &lt;&lt; todo
-    response.status = HttpServletResponse.SC_CREATED
-    json(todo:todo)
-  break
-  default:
-    response.status = HttpServletResponse.SC_BAD_REQUEST
-    json(status:&#34;Method &#39;${request.method.toLowerCase()}&#39; not supported&#34;)
-}
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;todos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+&lt;span style=&#34;color: #00A000&#34;&gt;switch&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;request&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;toLowerCase&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()){&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Validating the method&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;get&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;
+    json&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;todos:&lt;/span&gt;TodoManager&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;instance&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;todos&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Using the instance&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;break&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;post&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;
+    Todo todo &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; Todo&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;description:&lt;/span&gt;params&lt;span style=&#34;color: #666666&#34;&gt;?.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;todo&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;?:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;No description&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    TodoManager&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;instance&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;todos&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; todo
+    response&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;status&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; HttpServletResponse&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;SC_CREATED&lt;/span&gt;
+    json&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;todo:&lt;/span&gt;todo&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;break&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;default&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;
+    response&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;status&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; HttpServletResponse&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;SC_BAD_REQUEST&lt;/span&gt;
+    json&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;status:&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Method &amp;#39;${request.method.toLowerCase()}&amp;#39; not supported&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Puedes incluir estos tres últimos fragmentos en un archivo y todo funcionará sin problemas. Aunque, nuevamente no es la forma más adecuada, muestra muy bien el potencial del simple uso del Groovlet.&lt;/p&gt;
@@ -980,63 +1202,63 @@ switch(request.method.toLowerCase()){ // Validating the method
 
 &lt;p&gt;El primer paso es obtener las dependencias de Geb,Spock y el Selenium Driver para los diferentes navegadores. Para este ejemplo voy a utilizar Gradle para la ejecución de las pruebas y la administración de las dependencias.&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;build&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;gradle&lt;/span&gt;
+apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;groovy&amp;quot;&lt;/span&gt;
 
-build.gradle
-apply plugin:&#34;groovy&#34;
+repositories&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  jcenter&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-repositories{
-  jcenter()
-}
+ext&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  drivers &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;firefox&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;chrome&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+  groovyVersion &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;2.4.4&amp;quot;&lt;/span&gt;
+  spockGroovyVersion &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;2.4&amp;quot;&lt;/span&gt;
+  gebVersion &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;0.12.1&amp;quot;&lt;/span&gt;
+  seleniumVersion &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;2.44.0&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-ext{
-  drivers = [&#34;firefox&#34;,&#34;chrome&#34;]
-  groovyVersion = &#34;2.4.4&#34;
-  spockGroovyVersion = &#34;2.4&#34;
-  gebVersion = &#34;0.12.1&#34;
-  seleniumVersion = &#34;2.44.0&#34;
-}
+dependencies&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  testCompile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org.codehaus.groovy:groovy-all:${groovyVersion}&amp;quot;&lt;/span&gt;
+  testCompile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org.gebish:geb-spock:${gebVersion}&lt;/span&gt;
+&lt;span style=&#34;color: #BB4444&#34;&gt;  testCompile &amp;quot;&lt;/span&gt;org&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;spockframework&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;spock&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;core:&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;1.0-&lt;/span&gt;groovy&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;$&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;spockGroovyVersion&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;
 
-dependencies{
-  testCompile &#34;org.codehaus.groovy:groovy-all:${groovyVersion}&#34;
-  testCompile &#34;org.gebish:geb-spock:${gebVersion}
-  testCompile &#34;org.spockframework:spock-core:1.0-groovy-${spockGroovyVersion}&#34;
-
-  drivers.each{ driver -&gt;
-    testCompile &#34;org.seleniumhq.selenium:selenium-${driver}-driver:${seleniumVersion}&#34;
-  }
-}
+&lt;span style=&#34;color: #BB4444&#34;&gt;  drivers.each{ driver -&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BB4444&#34;&gt;    testCompile &amp;quot;&lt;/span&gt;org&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;seleniumhq&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;selenium&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;selenium&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;$&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;driver&lt;span style=&#34;color: #666666&#34;&gt;}-&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;driver:&lt;/span&gt;$&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;seleniumVersion&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;&amp;quot;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Una vez que se definen las dependencias necesarias se crean las tareas para la ejecución de las pruebas en cada navegador que compone la lista.
 Geb permite realizar capturas de pantalla en cualquier punto del flujo de la aplicación que se está probando; para especificar el directorio donde se encontrarán estas imagenes se agrega la propiedad &amp;ldquo;geb.build.reportsDir&amp;rdquo; a las propiedades del sistema.&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;drivers&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;each&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; driver &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt;
+  task &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;${driver}Test&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;type:&lt;/span&gt;Test&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt;
+    reports&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+      html&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;destination&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; reporting&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;file&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;$name/tests&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-drivers.each{ driver -&gt;
-  task &#34;${driver}Test&#34;(type:Test){
-    reports{
-      html.destination = reporting.file(&#34;$name/tests&#34;)
-    }
+    outputs&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;upToDateWhen&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;false&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-    outputs.upToDateWhen{ false }
-
-    systemProperty &#34;geb.build.reportsDir&#34;,reporting.file(&#34;$name/geb&#34;)
-    systemProperty &#34;geb.env&#34;, driver
-  }
-}
+    systemProperty &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;geb.build.reportsDir&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;reporting&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;file&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;$name/geb&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    systemProperty &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;geb.env&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; driver
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Para que la automatización del navegador sea posible con Chrome es necesario descargar la versión más reciente del &lt;a href=&#34;https://sites.google.com/a/chromium.org/chromedriver/downloads&#34;&gt;&lt;em&gt;WebDriver para Chrome&lt;/em&gt;&lt;/a&gt; y definir en la propiedad del sistema el valor del directorio donde se encuentra.
 Finalmente se sobreescribe la tarea de test para que dependa de las creadas anteriormente y todas las pruebas se ejecuten al ejecutar el comando &lt;code&gt;gradle test&lt;/code&gt;.&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;chromeTest&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  systemProperty &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;webdriver.chrome.driver&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;${System.properties[&amp;quot;&lt;/span&gt;user&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;home&amp;quot;]}/.grails/chromedriver&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-chromeTest{
-  systemProperty &#34;webdriver.chrome.driver&#34;,&#34;${System.properties[&#34;user.home&#34;]}/.grails/chromedriver&#34;
-}
-
-test{
-  dependsOn drivers.collect{ driver -&gt; tasks[&#34;${driver}Test&#34;] }
-  enabled = false
-}
+test&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  dependsOn drivers&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;collect&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; driver &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; tasks&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;${driver}Test&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  enabled &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;false&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2 id=&#34;configuración-de-geb&#34;&gt;CONFIGURACIÓN DE GEB&lt;/h2&gt;
@@ -1048,38 +1270,36 @@ Aquí se crean las instancias del driver para Chrome y Firefox.&lt;/p&gt;
 
 &lt;p&gt;La propiedad &lt;strong&gt;baseUrl&lt;/strong&gt; indíca la dirección de la aplicación que será probada, para este ejemplo se probará un flujo del sitio de MakingDevs.&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;GebConfig&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;groovy&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.openqa.selenium.chrome.ChromeDriver&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.openqa.selenium.firefox.FirefoxDriver&lt;/span&gt;
 
+waiting&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  timeout &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-GebConfig.groovy
-import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.firefox.FirefoxDriver
+environments&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 
-waiting{
-  timeout = 2
-}
-
-environments{
-
-  chrome{
-    driver = {
-      def driverInstance = new ChromeDriver()
-      driverInstance.manage().window().maximize()
+  chrome&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    driver &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+      &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; driverInstance &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; ChromeDriver&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+      driverInstance&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;manage&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;window&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;maximize&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
       driverInstance
-    }
-  }
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-  firefox{
-    driver = {
-      def driverInstance = new FirefoxDriver()
-      driverInstance.manage().window().maximize()
+  firefox&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    driver &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+      &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;def&lt;/span&gt; driverInstance &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; FirefoxDriver&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+      driverInstance&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;manage&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;window&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;maximize&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
       driverInstance
-    }
-  }
+    &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-}
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-baseUrl = &#34;http://makingdevs.com&#34;
-
+baseUrl &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;http://makingdevs.com&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2 id=&#34;page-objects&#34;&gt;PAGE OBJECTS&lt;/h2&gt;
@@ -1092,56 +1312,56 @@ baseUrl = &#34;http://makingdevs.com&#34;
 
 &lt;p&gt;Vamos a probar un flujo sencillo, en el cual el usuario consulta la información de un curso, para ello se necesitarán tres clases, MakingDevsHomePage, MakingDevsCoursesPage y MakingDevsCourseInfoPage:&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;package&lt;/span&gt; com&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makingdevs&lt;/span&gt;
 
-package com.makingdevs
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;geb.*&lt;/span&gt;
 
-import geb.*
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;MakingDevsHomePage&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;extends&lt;/span&gt; Page&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 
-class MakingDevsHomePage extends Page{
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; at &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; title &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;. : MakingDevs - Welcome : .&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-  static at = { title == &#34;. : MakingDevs - Welcome : .&#34; }
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; content &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    coursesButton&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #A0A000&#34;&gt;to:&lt;/span&gt; MakingDevsCoursesPage&lt;span style=&#34;color: #666666&#34;&gt;){&lt;/span&gt; $&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;ul.nav a&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,1)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-  static content = {
-    coursesButton(to: MakingDevsCoursesPage){ $(&#34;ul.nav a&#34;,1) }
-  }
-
-}
-
-
-
-package com.makingdevs
-
-import geb.*
-
-class MakingDevsCoursesPage extends Page{
-
-  static url = &#34;/training&#34;
-
-  static at = {
-    waitFor{ $(&#34;.section-main-header&#34;) }
-    $(&#34;.section-main-header&#34;).text() == &#34;Nuestro entrenamiento&#34;
-  }
-
-  static content = {
-    groovyCoursesDiv{ $(&#34;.span7&#34;,2).children(&#34;ul&#34;) }
-  }
-
-}
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;package&lt;/span&gt; com&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makingdevs&lt;/span&gt;
 
-package com.makingdevs.pages
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;geb.*&lt;/span&gt;
 
-import geb.*
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;MakingDevsCoursesPage&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;extends&lt;/span&gt; Page&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 
-class CourseInfoPage extends Page{
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; url &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/training&amp;quot;&lt;/span&gt;
 
-  static at = { waitFor{ $(&#34;i.icon-terminal&#34;) } }
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; at &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    waitFor&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; $&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;.section-main-header&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+    $&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;.section-main-header&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;text&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Nuestro entrenamiento&amp;quot;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-  static content = {
-    postTitle{ $(&#34;.post-title&#34;) }
-  }
-}
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; content &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    groovyCoursesDiv&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; $&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;.span7&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,2).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;children&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;ul&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;package&lt;/span&gt; com&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makingdevs&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;pages&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;geb.*&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;CourseInfoPage&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;extends&lt;/span&gt; Page&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; at &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; waitFor&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; $&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;i.icon-terminal&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;static&lt;/span&gt; content &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    postTitle&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; $&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;.post-title&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2 id=&#34;integración-con-spock&#34;&gt;INTEGRACIÓN CON SPOCK&lt;/h2&gt;
@@ -1152,43 +1372,43 @@ class CourseInfoPage extends Page{
 
 &lt;p&gt;La segunda prueba muestra algo más interesante, ya que implementa un &lt;strong&gt;Data Table&lt;/strong&gt; de Spock para agrupar un conjunto de valores de entrada y salida separados por el símbolo &lt;strong&gt;|&lt;/strong&gt;; la prueba verifica que al ir a la url declarada en MakingDevsCoursesPage se busque con el método &lt;em&gt;find&lt;/em&gt; dentro de una sección referenciada por el selector groovyCoursesDiv el vínculo con un atributo href que comience con el valor declarado en la columna &lt;em&gt;_selectorUrl&lt;/em&gt; de la tabla para después hacer click en el elemento y finalmente comparar el texto del componente asociado al selector de postTitle con el del valor en la columna &lt;em&gt;_postTitle&lt;/em&gt;.&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;package&lt;/span&gt; com&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;makingdevs&lt;/span&gt;
 
-package com.makingdevs
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;geb.spock.GebReportingSpec&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;java.lang.Void&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;as&lt;/span&gt; Should
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;com.makingdevs.pages.*&lt;/span&gt;
 
-import geb.spock.GebReportingSpec
-import java.lang.Void as Should
-import com.makingdevs.pages.*
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;MakingDevsSiteFunctionalSpec&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;extends&lt;/span&gt; GebReportingSpec&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 
-class MakingDevsSiteFunctionalSpec extends GebReportingSpec{
-
-  Should &#34;show the available courses&#34;(){
-    when:
+  Should &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;show the available courses&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(){&lt;/span&gt;
+    &lt;span style=&#34;color: #A0A000&#34;&gt;when:&lt;/span&gt;
       to MakingDevsHomePage
-    and:
-      coursesButton.click()
+    &lt;span style=&#34;color: #A0A000&#34;&gt;and:&lt;/span&gt;
+      coursesButton&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;click&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
 
-    then:
+    &lt;span style=&#34;color: #A0A000&#34;&gt;then:&lt;/span&gt;
       at MakingDevsCoursesPage
-  }
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-  Should &#34;show the course information&#34;(){
-    when:
+  Should &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;show the course information&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(){&lt;/span&gt;
+    &lt;span style=&#34;color: #A0A000&#34;&gt;when:&lt;/span&gt;
       to MakingDevsCoursesPage
-    and:
-      groovyCoursesDiv.find(&#34;a[href^=&#39;${_selectorUrl}&#34;).click()
+    &lt;span style=&#34;color: #A0A000&#34;&gt;and:&lt;/span&gt;
+      groovyCoursesDiv&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;find&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;a[href^=&amp;#39;${_selectorUrl}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;click&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
 
-    then:
+    &lt;span style=&#34;color: #A0A000&#34;&gt;then:&lt;/span&gt;
       at CourseInfoPage
-      postTitle.text() == _postTitle
-    where:
-    _selectorUrl                    | _postTitle
-    &#34;/training/groovy-testing&#34;      | &#34;Pruebas en la JVM con Groovy&#34;
-    &#34;/training/groovy-essentials&#34;   | &#34;El lenguaje dinámico Groovy&#34;
-    &#34;/training/grails-intermediate&#34; | &#34;Productividad con Grails&#34;
-    &#34;/training/groovy-intermediate&#34; | &#34;Productividad con Groovy&#34;
-  }
+      postTitle&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;text&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; _postTitle
+    &lt;span style=&#34;color: #A0A000&#34;&gt;where:&lt;/span&gt;
+    _selectorUrl                    &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt; _postTitle
+    &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/training/groovy-testing&amp;quot;&lt;/span&gt;      &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Pruebas en la JVM con Groovy&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/training/groovy-essentials&amp;quot;&lt;/span&gt;   &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;El lenguaje dinámico Groovy&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/training/grails-intermediate&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Productividad con Grails&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/training/groovy-intermediate&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Productividad con Groovy&amp;quot;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-}
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Finalmente para correr las pruebas ejecutamos el comando &lt;code&gt;./gradlew firefoxTest&lt;/code&gt; para Firefox o &lt;code&gt;./gradlew chromeTest&lt;/code&gt; para chrome; la tarea &lt;code&gt;./gradlew test&lt;/code&gt; corre las pruebas en ambos navegadores.&lt;/p&gt;
@@ -1205,26 +1425,26 @@ class MakingDevsSiteFunctionalSpec extends GebReportingSpec{
       <guid>http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle</guid>
       <description>&lt;p&gt;Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el &lt;a href=&#34;https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.logging.TestLoggingContainer.html&#34;&gt;TestLoggingContainer&lt;/a&gt;, del cual pude obtener este fragmento:&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;apply plugin&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;&amp;#39;&lt;/span&gt;java&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;&amp;#39;&lt;/span&gt;
 
-apply plugin: &#39;java&#39;
+test &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  testLogging &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// set options for log level LIFECYCLE&lt;/span&gt;
+    events &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;failed&amp;quot;&lt;/span&gt;
+      exceptionFormat &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;short&amp;quot;&lt;/span&gt;
 
-test {
-  testLogging {
-    // set options for log level LIFECYCLE
-    events &#34;failed&#34;
-      exceptionFormat &#34;short&#34;
+      &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// set options for log level DEBUG&lt;/span&gt;
+      debug &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+        events &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;started&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;skipped&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;failed&amp;quot;&lt;/span&gt;
+          exceptionFormat &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;full&amp;quot;&lt;/span&gt;
+      &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-      // set options for log level DEBUG
-      debug {
-        events &#34;started&#34;, &#34;skipped&#34;, &#34;failed&#34;
-          exceptionFormat &#34;full&#34;
-      }
-
-    // remove standard output/error logging from --info builds
-    // by assigning only &#39;failed&#39; and &#39;skipped&#39; events
-    info.events = [&#34;failed&#34;, &#34;skipped&#34;]
-  }
-}
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// remove standard output/error logging from --info builds&lt;/span&gt;
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// by assigning only &amp;#39;failed&amp;#39; and &amp;#39;skipped&amp;#39; events&lt;/span&gt;
+    info&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;events&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;failed&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;skipped&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;En donde pongo todo los tipos de eventos del proyecto que son &lt;code&gt;events &amp;quot;started&amp;quot;, &amp;quot;passed&amp;quot;, &amp;quot;skipped&amp;quot;, &amp;quot;failed&amp;quot;&lt;/code&gt; y con ello obtengo una salida como la siguiente:&lt;/p&gt;
@@ -1249,53 +1469,52 @@ test {
 
 &lt;!-- more --&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;@Grapes&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;@Grab&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;group&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;net.java.dev.jets3t&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; module&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;jets3t&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; version&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;0.9.3&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
 
-@Grapes(
-    @Grab(group=&#39;net.java.dev.jets3t&#39;, module=&#39;jets3t&#39;, version=&#39;0.9.3&#39;)
-)
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.jets3t.service.security.*&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.jets3t.service.*&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.jets3t.service.impl.rest.httpclient.*&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.jets3t.service.model.*&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;org.jets3t.service.acl.*&lt;/span&gt;
 
-import org.jets3t.service.security.*
-import org.jets3t.service.*
-import org.jets3t.service.impl.rest.httpclient.*
-import org.jets3t.service.model.*
-import org.jets3t.service.acl.*
+String awsAccessKey &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;YOURAWSACCESSKEY&amp;quot;&lt;/span&gt;
+String awsSecretKey &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;YOURAWSSECRETKEY&amp;quot;&lt;/span&gt;
 
-String awsAccessKey = &#34;YOURAWSACCESSKEY&#34;
-String awsSecretKey = &#34;YOURAWSSECRETKEY&#34;
+AWSCredentials awsCredentials &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; AWSCredentials&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;awsAccessKey&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; awsSecretKey&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+S3Service s3Service &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; RestS3Service&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;awsCredentials&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
 
-AWSCredentials awsCredentials = new AWSCredentials(awsAccessKey, awsSecretKey)
-S3Service s3Service = new RestS3Service(awsCredentials)
-
-S3Bucket[] myBuckets = s3Service.listAllBuckets()
+S3Bucket&lt;span style=&#34;color: #666666&#34;&gt;[]&lt;/span&gt; myBuckets &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; s3Service&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;listAllBuckets&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Despúes, una vez con todos los buckets, podemos listar los archivos contenidos dentro de bucket muy particular.&lt;/p&gt;
 
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;String bucletName &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;makingdevs-bucket&amp;quot;&lt;/span&gt;
 
-String bucletName = &#34;makingdevs-bucket&#34;
+bucket &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; myBuckets&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;find&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; it&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt;bucketName &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-bucket = myBuckets.find { it.name==bucketName }
-
-s3Objects = s3Service.listObjects(bucket)
-
+s3Objects &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; s3Service&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;listObjects&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;bucket&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Finalmente, podemos subir un archivo específico hacia el bucket que deseamos.&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;file &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; File&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/some/file/in/your/filesystem.ext&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
 
-
-file = new File(&#34;/some/file/in/your/filesystem.ext&#34;)
-
-S3Object s3Object = new S3Object()
-s3Object.with {
-  setAcl AccessControlList.REST_CANNED_PUBLIC_READ
-  setContentLength file.length()
-  setContentType file.toURL().openConnection().contentType
+S3Object s3Object &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; S3Object&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+s3Object&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  setAcl AccessControlList&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;REST_CANNED_PUBLIC_READ&lt;/span&gt;
+  setContentLength file&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+  setContentType file&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;toURL&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;openConnection&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;contentType&lt;/span&gt;
   setDataInputFile file
-  setKey file.name
-  setBucketName bucket.getName() // we use our previous bucket
-}
+  setKey file&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;name&lt;/span&gt;
+  setBucketName bucket&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getName&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// we use our previous bucket&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-s3Service.putObject bucket, s3Object
+s3Service&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;putObject&lt;/span&gt; bucket&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; s3Object
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Una vez que llamamos al servicio &lt;code&gt;s3Service&lt;/code&gt; el archivo queda colocado en el bucket. Y finalmente si deseamos borrarlo podemos usar &lt;code&gt;s3Service.deleteObject s3Bucket, s3Object.key&lt;/code&gt;, en donde sólo mandamos el objeto del bucket y el &lt;em&gt;key&lt;/em&gt; del objeto que deseamos borrar.&lt;/p&gt;
@@ -1376,229 +1595,100 @@ s3Service.putObject bucket, s3Object
 &lt;p&gt;Después me di cuenta que frameworks como &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;dropwizard&#34;&gt;Dropwizard&lt;/a&gt; lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré &lt;a href=&#34;http://www.cholick.com/entry/show/280&#34; title=&#34;tomcat&#34;&gt;un artículo&lt;/a&gt; en donde explica como ponerlo en acción usando propiamente &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;dropwizard&#34;&gt;Dropwizard&lt;/a&gt;. Fue un buen acercamiento, el problema es el siguiente bloque de código en configuración de gradle:
 &lt;!-- more --&gt;&lt;/p&gt;
 
-
-run {
-  args = [&#39;server&#39;, &#39;app.yaml&#39;]
-  jvmArgs = [&#34;-javaagent:${new File(&#34;$buildDir/agent/springloaded-${springloadedVersion}.jar&#34;).absolutePath}&#34;, &#39;-noverify&#39;]
-}
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;run &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  args &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;server&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;app.yaml&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+  jvmArgs &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;-javaagent:${new File(&amp;quot;&lt;/span&gt;$buildDir&lt;span style=&#34;color: #BB4444&#34;&gt;/agent/&lt;/span&gt;springloaded&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;$&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;springloadedVersion&lt;span style=&#34;color: #666666&#34;&gt;}.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;jar&amp;quot;).absolutePath}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;-noverify&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;En donde, el atributo &lt;code&gt;jvmArgs&lt;/code&gt; es sólo aplicable a tareas del tipo &lt;code&gt;JavaExec&lt;/code&gt;, más específico, que implementan &lt;code&gt;JavaExecSpec&lt;/code&gt; o &lt;code&gt;JavaForkOptions&lt;/code&gt;. Es aquí en donde &lt;a href=&#34;https://github.com/bmuschko/gradle-tomcat-plugin&#34; title=&#34;tomcat&#34;&gt;el plugin de tomcat&lt;/a&gt; que se puede encontrar para Gradle tiene el problema, pues su tarea no lo hace.&lt;/p&gt;
 
 &lt;p&gt;La combinación se haría en conjunto con un plugin de gradle, &lt;a href=&#34;https://github.com/bluepapa32/gradle-watch-plugin&#34; title=&#34;gradle watch&#34;&gt;el watch&lt;/a&gt;, el actúa con cada cambio en la aplicación realizando las tareas que se le digan. Sin embargo, lo que encontré funcionaba para la cmbinación de SpringBooy e IntelliJ Idea, lo cual no veía mal, pero no era mi caso. De cualquier forma pongo disponible la configuración que independiente me sirvió para hacer un hot deploy usando ambos elementos:&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;groovy&amp;#39;&lt;/span&gt;
+apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;spring-boot&amp;#39;&lt;/span&gt;
+apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;com.bluepapa32.watch&amp;#39;&lt;/span&gt;
 
-apply plugin: &#39;groovy&#39;
-apply plugin: &#39;spring-boot&#39;
-apply plugin: &#39;com.bluepapa32.watch&#39;
+sourceCompatibility &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;1.8&lt;/span&gt;
+targetCompatibility &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;1.8&lt;/span&gt;
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+ext &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  springLoadedVersion &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;1.2.1.RELEASE&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-ext {
-  springLoadedVersion = &#39;1.2.1.RELEASE&#39;
-}
+mainClassName&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;com.makingdevs.Application&amp;#39;&lt;/span&gt;
 
-mainClassName=&#39;com.makingdevs.Application&#39;
+repositories &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  mavenCentral&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+  maven &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    url &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;https://code.lds.org/nexus/content/groups/main-repo&amp;quot;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-repositories {
-  mavenCentral()
-  maven {
-    url &#34;https://code.lds.org/nexus/content/groups/main-repo&#34;
-  }
-}
+dependencies &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  compile&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org.springframework.boot:spring-boot-starter-web&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+  compile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.codehaus.groovy:groovy-all:2.4.3&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-dependencies {
-  compile(&#34;org.springframework.boot:spring-boot-starter-web&#34;)
-  compile &#39;org.codehaus.groovy:groovy-all:2.4.3&#39;
-}
+buildscript &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  repositories &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    mavenCentral&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+    jcenter&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+  dependencies &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    classpath &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org.springframework.boot:spring-boot-gradle-plugin:1.2.4.RELEASE&amp;quot;&lt;/span&gt;
+    classpath &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.springframework:springloaded:1.2.0.RELEASE&amp;#39;&lt;/span&gt;
+    classpath &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;com.bluepapa32:gradle-watch-plugin:0.1.5&amp;#39;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-buildscript {
-  repositories {
-    mavenCentral()
-    jcenter()
-  }
-  dependencies {
-    classpath &#34;org.springframework.boot:spring-boot-gradle-plugin:1.2.4.RELEASE&#34;
-    classpath &#39;org.springframework:springloaded:1.2.0.RELEASE&#39;
-    classpath &#39;com.bluepapa32:gradle-watch-plugin:0.1.5&#39;
-  }
-}
+jar &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  baseName &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;meerkat-mymapmanager&amp;#39;&lt;/span&gt;
+  version &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;  &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;0.1.0&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-jar {
-  baseName = &#39;meerkat-mymapmanager&#39;
-  version =  &#39;0.1.0&#39;
-}
+compileGroovy &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;//enable compilation in a separate daemon process&lt;/span&gt;
+  options&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;fork&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;true&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-compileGroovy {
-  //enable compilation in a separate daemon process
-  options.fork = true
-}
-
-watch {
-  groovy {
-    files files(&#39;src/main/groovy&#39;)
-    tasks &#39;compileGroovy&#39;
-  }
-}
+watch &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  groovy &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    files &lt;span style=&#34;color: #00A000&#34;&gt;files&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;src/main/groovy&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+    tasks &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;compileGroovy&amp;#39;&lt;/span&gt;
+  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Al final del día, lo que encontre fue &lt;a href=&#34;http://akhikhl.github.io/gretty-doc/index.html&#34; title=&#34;gretty&#34;&gt;el plugin de Gretty&lt;/a&gt;, con el que fácilmente podemos usar un contenedor de Tomcat o Jetty y tener disponible el Hot deploy, creo que tiene algunos detalles de rendimiento pero es útil. Finalmente la configuración se reduce mucho y hay varias tareas disponibles, entre ellas &lt;code&gt;appRun&lt;/code&gt;, que es la que levanta el elemento configuraco y lo dijo listo para los cambios:&lt;/p&gt;
 
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Using the new mechanism to include plugins&lt;/span&gt;
+plugins &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  id &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;groovy&amp;#39;&lt;/span&gt;
+  id &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;war&amp;#39;&lt;/span&gt;
+  id &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org.akhikhl.gretty&amp;quot;&lt;/span&gt; version &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;1.2.4&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-// Using the new mechanism to include plugins
-plugins {
-  id &#39;groovy&#39;
-  id &#39;war&#39;
-  id &#34;org.akhikhl.gretty&#34; version &#34;1.2.4&#34;
-}
+repositories &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  mavenCentral&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+  jcenter&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-repositories {
-  mavenCentral()
-  jcenter()
-}
+dependencies &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  compile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.codehaus.groovy:groovy-all:2.3.4&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 
-dependencies {
-  compile &#39;org.codehaus.groovy:groovy-all:2.3.4&#39;
-}
-
-gretty {
-  // &#39;jetty7&#39;, &#39;jetty8&#39;, &#39;jetty9&#39;, &#39;tomcat7&#39;, &#39;tomcat8&#39;
-  servletContainer = &#39;tomcat7&#39;
-  httpPort = 9091
-}
-
+gretty &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+  &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// &amp;#39;jetty7&amp;#39;, &amp;#39;jetty8&amp;#39;, &amp;#39;jetty9&amp;#39;, &amp;#39;tomcat7&amp;#39;, &amp;#39;tomcat8&amp;#39;&lt;/span&gt;
+  servletContainer &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;tomcat7&amp;#39;&lt;/span&gt;
+  httpPort &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;9091&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Creo que nos servirá bien un rato para las cosas que tenemos que hcaer, por que incluso soporta SpringBoot.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Borrado batch en Grails</title>
-      <link>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails</link>
-      <pubDate>Fri, 01 May 2015 20:58:30 -0500</pubDate>
-      
-      <guid>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails</guid>
-      <description>
-
-&lt;p&gt;En esta ocasión les quiero compartir la solución a un problema que tuve al borrar una colección de objetos en grails y con el GORM, si bien podría hacerlo con HQL o con SQL usando las bondades de Hibernate me gusto más el acercamiento que les quiero presentar.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;La necesidad era borrar un grupo de objetos en donde el contenido de su relación estuviera vacío, ejemplifico con la estructura de unas clases:&lt;/p&gt;
-
-&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=domains.groovy&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;El primer acercamiento que tuve fue obtener la lista de elementos y hacer una condicional buscando los elementos vacíos, después borrar&amp;hellip;&lt;/p&gt;
-
-&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete1.groovy&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;Una vez hecho, mejoramos intentamos mejorar el código con una búsqueda mucho más refinada y ejecutando el borrado, para ello nos apoyamos de los &lt;strong&gt;where queries&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete2.groovy&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;Basado en la documentación de Grails:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Since each where method call returns a DetachedCriteria instance, you can use where queries to execute batch operations such as batch updates and deletes.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Sin embargo, este acercamiento tiene un problema, manda un error cuando se busca por las relaciones del objeto y no permite el borrado. El error: &lt;code&gt;org.springframework.dao.InvalidDataAccessResourceUsageException: Queries of type SizeEquals are not supported by this implementation&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;la-solución-que-me-gustó&#34;&gt;La solución que me gustó&lt;/h3&gt;
-
-&lt;p&gt;Usamos &lt;strong&gt;Detached Criteria&lt;/strong&gt; para resolver este problema, por que:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;No están asociados con una sesión o conexión, lo cual permite formularlos y reusarlos.&lt;/li&gt;
-&lt;li&gt;También cuenta con métodos batch: &lt;code&gt;deleteAll&lt;/code&gt;, &lt;code&gt;updateAll&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Permiten proyecciones y subqueries, que es lo que estamos buscando para resolver nuestro problema&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Finalmente nuestra solución es:&lt;/p&gt;
-
-&lt;script src=&#34;//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete3.groovy&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;Con esto, tenemos una búsqueda refinada y el borrado de los elementos directo, inclusive el método &lt;code&gt;deleteAll&lt;/code&gt; regresa un entero con la cantidad de registros afectados.&lt;/p&gt;
-
-&lt;p&gt;Esto me fue de mucha utilidad y ojalá también lo sea para ustedes en algún momento.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Clusterizacion con Camel</title>
-      <link>http://blog.makingdevs.com/2015/04/07/clusterizacion-con-camel</link>
-      <pubDate>Tue, 07 Apr 2015 19:56:54 -0500</pubDate>
-      
-      <guid>http://blog.makingdevs.com/2015/04/07/clusterizacion-con-camel</guid>
-      <description>&lt;p&gt;Camel ofrece distintas soluciones para ser escalado o para distribuir la carga en diferentes instancias, la soluciones que ofrece dependerá de como se encuentra nuestra infraestructura ( y configuración).&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Misma JVM y CamelContext&lt;/li&gt;
-&lt;li&gt;Misma JVM pero diferente CamelContext&lt;/li&gt;
-&lt;li&gt;Diferente JVM y CamelContext
-&lt;!-- more --&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;El problema que me vi envuelto fue de estas tres, la ultima, el clusterizar camel que se encontraban en diferentes JVM y CamelContext. Y en particular tuve un problema de mensajes duplicados. Para esto camel ofrece ciertas soluciones, un componente llamado &lt;strong&gt;Idempotent Consumer&lt;/strong&gt;. El Idempotent Consumer pertenece a los patrones de EIP se usa para filtrar los mensajes duplicados. Este modelo se implementa utilizando la clase IdempotentConsumer. Este utiliza una expresión para calcular una cadena de mensaje ID único para un intercambio de mensajes, este ID puede ser consultado en la IdempotentRepository para ver si se ha visto antes, si se tiene no es tomado para ser procesado, en cambio si no se tiene, entonces el mensaje se procesa y la ID se añade al repositorio.&lt;/p&gt;
-
-&lt;p&gt;Hay varios tipos de IdempotentRepository:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;MemoryIdempotentRepository&lt;/li&gt;
-&lt;li&gt;FileIdempotentRepository&lt;/li&gt;
-&lt;li&gt;HazelcastIdempotentRepository (Available as of Camel 2.8)&lt;/li&gt;
-&lt;li&gt;JdbcMessageIdRepository (Available as of Camel 2.7)&lt;/li&gt;
-&lt;li&gt;JpaMessageIdRepository&lt;/li&gt;
-&lt;/ul&gt;
-
-
-
-@Grab(group=&#39;org.slf4j&#39;, module=&#39;slf4j-api&#39;, version=&#39;1.7.10&#39;)
-@Grab(group=&#39;org.apache.camel&#39;, module=&#39;camel-core&#39;, version=&#39;2.12.0&#39;)
-@Grab(group=&#39;org.apache.camel&#39;, module=&#39;camel-mail&#39;, version=&#39;2.12.0&#39;)
-
-import org.apache.camel.impl.DefaultCamelContext
-import org.apache.camel.builder.RouteBuilder
-import org.apache.camel.processor.idempotent.FileIdempotentRepository
-
-def camelContext = new DefaultCamelContext()
-camelContext.addRoutes(new RouteBuilder() {
-  def void configure() {
-    from(&#34;imaps://imap.gmail.com?username=jorge@makingdevs.com&#34;
-      + &#34;&amp;password=m4k1ngd3vs&#34;
-      + &#34;&amp;consumer.delay=6000&#34;)
-    .idempotentConsumer( header(&#34;Message-ID&#34;),
-      FileIdempotentRepository.fileIdempotentRepository(
-        new File(&#34;idempotentRepository.txt&#34;)))
-    .to(&#34;log:groovymail?showAll=true&amp;multiline=true&#34;) } })
-
-camelContext.start()
-addShutdownHook{ camelContext.stop() }
-synchronized(this){ this.wait() }
-
-
-&lt;p&gt;Este es un script ejemplo el cual utiliza &lt;code&gt;FileIdempotentRepository&lt;/code&gt; utilizando un archivo ejemplo para llevar el control, si exploramos el archivo ahí se encuentra los id de los mensajes procesados.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.makingdevs.com/images/camel_output.png&#34; alt=&#34;Camel output&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Asi si hay un mensaje el cual ya se encuentra dentro de este archivo se ignora y no es procesado. En mi caso utilize JpaMessageIdRepository dentro de grails y fue muy simple utilizar este componente solo agregue la dependencia de camel sql en el buildConfig.groovy&lt;/p&gt;
-
-
-runtime &#39;org.apache.camel:camel-sql:2.13.0’
-
-
-&lt;p&gt;y agregue el bean en resources.groovy&lt;/p&gt;
-
-
-import org.apache.camel.processor.idempotent.jdbc.JdbcMessageIdRepository
-
-beans = {
-  messageIdRepository(JdbcMessageIdRepository,ref(&#39;dataSource&#39;),&#39;jdbcProcessorName&#39;)
-}
-
-
-&lt;p&gt;y por ultimo agregue el &lt;em&gt;idempotentComponent&lt;/em&gt;.&lt;/p&gt;
 </description>
     </item>
     

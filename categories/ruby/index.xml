@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog de Making Devs</title>
+    <link>http://blog.makingdevs.com/categories/ruby/index.xml</link>
+    <description>Recent content on Blog de Making Devs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.makingdevs.com/categories/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Capistrano para despliegues de apps Rails</title>
+      <link>http://blog.makingdevs.com/2016/11/30/capistrano-para-despliegues-de-apps-rails</link>
+      <pubDate>Wed, 30 Nov 2016 16:46:05 -0600</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/11/30/capistrano-para-despliegues-de-apps-rails</guid>
+      <description>
+
+&lt;p&gt;Hace tiempo que estabamos haciendo una aplicación &lt;em&gt;Rails&lt;/em&gt;, me di a la tarear de investigar el tema obviado que es la forma en como se hace un despliegue lo más ordenado posible. Inclusive le pregunte al gran maestro @chillicoder al respecto, y efectivamente, mis sospechas eran correctas tenía que usar Capistrano(aunque chilli parece usar otra cosa), incluída la recomendación del maestro.&lt;/p&gt;
+
+&lt;p&gt;Obviaré las partes de las instalaciones de las gemas y me enfocaré en el problema que tuve que resolver: un par de ambientes a instalar para una API hecha en Rails.&lt;/p&gt;
+
+&lt;p&gt;Para ser honesto me sorprendió lo estructurado en que se puede hacer un despliegue con Capistrano, incluso me gusto mucho que la recomendación siempre era la misma, dando pie a una buena forma de hacer dicho deploy.&lt;/p&gt;
+
+&lt;h2 id=&#34;el-archivo-config-deploy-rb&#34;&gt;El archivo &lt;em&gt;config/deploy.rb&lt;/em&gt;&lt;/h2&gt;
+
+&lt;p&gt;Cuando instalas Capistrano, viene consigo un archivo &lt;em&gt;deploy.rb&lt;/em&gt; en donde puse lo siguiente:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# config valid only for current version of Capistrano&lt;/span&gt;
+lock &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;3.6.1&amp;#39;&lt;/span&gt;
+
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:application&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;barista&amp;#39;&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:repo_url&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;git@github.com:makingdevs/MyBarista.git&amp;#39;&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:rbenv_ruby&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;2.2.3&amp;#39;&lt;/span&gt;
+
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:repo_tree&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;ruby_app&amp;#39;&lt;/span&gt;
+
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:puma_user&lt;/span&gt;, fetch(&lt;span style=&#34;color: #B8860B&#34;&gt;:user&lt;/span&gt;)
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:linked_dirs&lt;/span&gt;, fetch(&lt;span style=&#34;color: #B8860B&#34;&gt;:linked_dirs&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;[]&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;push(&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;log&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;tmp/pids&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;tmp/cache&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;tmp/sockets&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;vendor/bundle&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;public/system&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;public/uploads&amp;#39;&lt;/span&gt;)
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:linked_files&lt;/span&gt;, fetch(&lt;span style=&#34;color: #B8860B&#34;&gt;:linked_files&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;[]&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;push(&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;config/database.yml&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;config/secrets.yml&amp;#39;&lt;/span&gt;)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Aquí hay varias cosas que me gustaria comentar:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;:repo_tree&lt;/code&gt; te ayuda a desplegar una carpeta interna del directorio base del repo, que es nuestro caso&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:linked_dirs&lt;/code&gt; ayuda a crear enlances simbólicos de ciertos directorios que necesitarías&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:linked_file&lt;/code&gt; excelente forma de hacer enlaces simbólicos de archivos que contienen la configuración externa, si no quieres usar variables de ambiente o sistema.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Adicional a esto, en el mismo archivo tuve que eliminar algunas tareas y crear algunas para el manejo de puma:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Rake&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;deploy:assets:precompile&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;].&lt;/span&gt;clear_actions
+&lt;span style=&#34;color: #880000&#34;&gt;Rake&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;deploy:assets:backup_manifest&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;].&lt;/span&gt;clear_actions
+
+namespace &lt;span style=&#34;color: #B8860B&#34;&gt;:puma&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+  desc &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Create Directories for Puma Pids and Socket&amp;#39;&lt;/span&gt;
+  task &lt;span style=&#34;color: #B8860B&#34;&gt;:make_dirs&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+    on roles(&lt;span style=&#34;color: #B8860B&#34;&gt;:app&lt;/span&gt;) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      execute &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;mkdir &lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;shared_path&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;/tmp/sockets -p&amp;quot;&lt;/span&gt;
+      execute &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;mkdir &lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;shared_path&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;/tmp/pids -p&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+
+  before &lt;span style=&#34;color: #B8860B&#34;&gt;:start&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:make_dirs&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+
+namespace &lt;span style=&#34;color: #B8860B&#34;&gt;:deploy&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+  desc &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Make sure local git is in sync with remote.&amp;quot;&lt;/span&gt;
+  task &lt;span style=&#34;color: #B8860B&#34;&gt;:check_revision&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+    on roles(&lt;span style=&#34;color: #B8860B&#34;&gt;:app&lt;/span&gt;) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;unless&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;`git rev-parse HEAD`&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;`git rev-parse origin/master`&lt;/span&gt;
+        &lt;span style=&#34;color: #AA22FF&#34;&gt;puts&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;WARNING: HEAD is not the same as origin/master&amp;quot;&lt;/span&gt;
+        &lt;span style=&#34;color: #AA22FF&#34;&gt;puts&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Run `git push` to sync changes.&amp;quot;&lt;/span&gt;
+        &lt;span style=&#34;color: #AA22FF&#34;&gt;exit&lt;/span&gt;
+      &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+
+  desc &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Initial Deploy&amp;#39;&lt;/span&gt;
+  task &lt;span style=&#34;color: #B8860B&#34;&gt;:initial&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+    on roles(&lt;span style=&#34;color: #B8860B&#34;&gt;:app&lt;/span&gt;) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      before &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;deploy:restart&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;puma:start&amp;#39;&lt;/span&gt;
+      invoke &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;deploy&amp;#39;&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+
+  desc &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Restart application&amp;#39;&lt;/span&gt;
+  task &lt;span style=&#34;color: #B8860B&#34;&gt;:restart&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+    on roles(&lt;span style=&#34;color: #B8860B&#34;&gt;:app&lt;/span&gt;), &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;in&lt;/span&gt;: &lt;span style=&#34;color: #B8860B&#34;&gt;:sequence&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;wait&lt;/span&gt;: &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      invoke &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;puma:restart&amp;#39;&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+
+  before &lt;span style=&#34;color: #B8860B&#34;&gt;:starting&lt;/span&gt;,     &lt;span style=&#34;color: #B8860B&#34;&gt;:check_revision&lt;/span&gt;
+  after  &lt;span style=&#34;color: #B8860B&#34;&gt;:finishing&lt;/span&gt;,    &lt;span style=&#34;color: #B8860B&#34;&gt;:cleanup&lt;/span&gt;
+  after  &lt;span style=&#34;color: #B8860B&#34;&gt;:finishing&lt;/span&gt;,    &lt;span style=&#34;color: #B8860B&#34;&gt;:restart&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;los-archivos-de-ambientes&#34;&gt;Los archivos de ambientes&lt;/h2&gt;
+
+&lt;p&gt;Dentro del directorio &lt;em&gt;config/deploy/&lt;/em&gt; existen un par de archivos que nos ayudan a definir elementos particulares de la instalación por cada ambiente, lo único que yo hice fue habilitar la máquina a través de autenticación de llave pública con el servidor de despliegue para que se pudieran comunicar por ssh. Y mis archivos quedaron así:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;set &lt;span style=&#34;color: #B8860B&#34;&gt;:stage&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:production&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:puma_bind&lt;/span&gt;, &lt;span style=&#34;color: #008000&#34;&gt;%w(tcp://0.0.0.0:3000)&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:branch&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;production&amp;#39;&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:deploy_to&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/var/www/&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;fetch(&lt;span style=&#34;color: #B8860B&#34;&gt;:application&lt;/span&gt;)&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;/production&amp;quot;&lt;/span&gt;
+
+server &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;powerful.makingdevs.com&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;user&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;centos-user&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;roles&lt;/span&gt;: &lt;span style=&#34;color: #008000&#34;&gt;%w{app web}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;set &lt;span style=&#34;color: #B8860B&#34;&gt;:stage&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:stage&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:puma_bind&lt;/span&gt;, &lt;span style=&#34;color: #008000&#34;&gt;%w(tcp://0.0.0.0:3001)&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:branch&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;stage&amp;#39;&lt;/span&gt;
+set &lt;span style=&#34;color: #B8860B&#34;&gt;:deploy_to&lt;/span&gt;, &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;/var/www/&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;#{&lt;/span&gt;fetch(&lt;span style=&#34;color: #B8860B&#34;&gt;:application&lt;/span&gt;)&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;/stage&amp;quot;&lt;/span&gt;
+
+server &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;powerful.makingdevs.com&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;user&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;centos-user&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;roles&lt;/span&gt;: &lt;span style=&#34;color: #008000&#34;&gt;%w{app web}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En donde puedo definir incluso el branch del repo que quiero desplegar, el puerto de puma donde quiero levantar y que no colisionen entre sí, y un directorio basado en el ambiente.&lt;/p&gt;
+
+&lt;p&gt;Me gusta mucho el control que tiene Capistrano para revertir una versión, pues lo ordena de tal forma que guarda algunos respaldos de versiones desplegadas anteriormente listas para resintalarlse en caso de que algo salga mal.&lt;/p&gt;
+
+&lt;p&gt;Capistrano hace todo, la transferencia de archivos, el ordenamiento, la instalación de puma y de las gemas de la app, incluso del propio runtime de Ruby, la creación de enlaces simbólicos, la descarga de cambios del repo, etc.&lt;/p&gt;
+
+&lt;p&gt;Capistrano es la herramienta.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

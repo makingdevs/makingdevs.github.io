@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ecto on Blog de Making Devs</title>
-    <link>http://blog.makingdevs.com/tags/ecto/</link>
-    <description>Recent content in Ecto on Blog de Making Devs</description>
+    <title>Blog de Making Devs</title>
+    <link>http://blog.makingdevs.com/tags/ecto/index.xml</link>
+    <description>Recent content on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Sep 2016 19:35:08 -0500</lastBuildDate>
     <atom:link href="http://blog.makingdevs.com/tags/ecto/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -23,47 +22,47 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Project table
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defmodule&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Project&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto.Schema&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto.Changeset&lt;/span&gt;
 
-defmodule EctoTransactions.Project do
-  use Ecto.Schema
-  import Ecto.Changeset
-
-  schema &#34;projects&#34; do
-    field :name
-    has_many :tasks, EctoTransactions.Task
+  schema &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;projects&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+    field &lt;span style=&#34;color: #B8860B&#34;&gt;:name&lt;/span&gt;
+    has_many &lt;span style=&#34;color: #B8860B&#34;&gt;:tasks&lt;/span&gt;, &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Task&lt;/span&gt;
 
     timestamps
-  end
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
 
-  def changeset(struct, params \\ %{}) do
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;def&lt;/span&gt; changeset(struct, params \\ %{}) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
     struct
-    |&gt; cast(params, [:name])
-    |&gt; validate_required([:name])
-  end
+    &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; cast(params, [&lt;span style=&#34;color: #B8860B&#34;&gt;:name&lt;/span&gt;])
+    &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; validate_required([&lt;span style=&#34;color: #B8860B&#34;&gt;:name&lt;/span&gt;])
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
 
-end
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Task table
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defmodule&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Task&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto.Schema&lt;/span&gt;
 
-defmodule EctoTransactions.Task do
-  use Ecto.Schema
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto.Changeset&lt;/span&gt;
 
-  import Ecto.Changeset
-
-  schema &#34;tasks&#34; do
-    field :description
-    belongs_to :project, EctoTransactions.Project
+  schema &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;tasks&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+    field &lt;span style=&#34;color: #B8860B&#34;&gt;:description&lt;/span&gt;
+    belongs_to &lt;span style=&#34;color: #B8860B&#34;&gt;:project&lt;/span&gt;, &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Project&lt;/span&gt;
 
     timestamps
-  end
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
 
-  def changeset(struct, params \\ %{}) do
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;def&lt;/span&gt; changeset(struct, params \\ %{}) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
     struct
-    |&gt; cast(params, [:description, :project_id])
-    |&gt; validate_required([:description, :project_id])
-  end
-end
+    &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; cast(params, [&lt;span style=&#34;color: #B8860B&#34;&gt;:description&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:project_id&lt;/span&gt;])
+    &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; validate_required([&lt;span style=&#34;color: #B8860B&#34;&gt;:description&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:project_id&lt;/span&gt;])
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -73,128 +72,128 @@ end
 
 &lt;p&gt;So we are going to create a module for handling this&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defmodule&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.App&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
 
-  defmodule EctoTransactions.App do
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;alias&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Repo&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;alias&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Project&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;alias&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Task&lt;/span&gt;
 
-    import Ecto
-    alias EctoTransactions.Repo
-    alias EctoTransactions.Project
-    alias EctoTransactions.Task
-
-    # creating project and task
-    def create_project_with_task(project_params, task_params) do
-      Repo.transaction(fn -&gt;
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# creating project and task&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;def&lt;/span&gt; create_project_with_task(project_params, task_params) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      &lt;span style=&#34;color: #0000FF&#34;&gt;Repo&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;transaction(&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt;
         project_params
-        |&gt; create_project_with_params
-        |&gt; add_task_to_project(task_params)
-      end)
-    end
+        &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; create_project_with_params
+        &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; add_task_to_project(task_params)
+      &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;)
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
 
-    # creating project
-    defp create_project_with_params(project_params) do
-      %Project{}
-      |&gt; Project.changeset(project_params)
-      |&gt; Repo.insert
-    end
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# creating project&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defp&lt;/span&gt; create_project_with_params(project_params) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      %&lt;span style=&#34;color: #0000FF&#34;&gt;Project&lt;/span&gt;{}
+      &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Project&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;changeset(project_params)
+      &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Repo&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;insert
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
 
-    # adding a task to a valid project
-    defp add_task_to_project({:ok, project}, task_params) do
-      changeset = project
-                  |&gt; build_assoc(:tasks)
-                  |&gt; Task.changeset(task_params)
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# adding a task to a valid project&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defp&lt;/span&gt; add_task_to_project({&lt;span style=&#34;color: #B8860B&#34;&gt;:ok&lt;/span&gt;, project}, task_params) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+      changeset &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; project
+                  &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; build_assoc(&lt;span style=&#34;color: #B8860B&#34;&gt;:tasks&lt;/span&gt;)
+                  &lt;span style=&#34;color: #666666&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;changeset(task_params)
 
-      case Repo.insert(changeset) do
-        {:ok, _task} -&gt; project
-        {:error, changeset} -&gt; Repo.rollback(:task) # Rollback transaction for invalid task data
-      end
-    end
-    defp add_task_to_project({:error, _changeset}, _task_params),
-    do: Repo.rollback(:project) # Rollback transaction for invalid project data
+      &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Repo&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;insert(changeset) &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+        {&lt;span style=&#34;color: #B8860B&#34;&gt;:ok&lt;/span&gt;, _task} &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; project
+        {&lt;span style=&#34;color: #B8860B&#34;&gt;:error&lt;/span&gt;, changeset} &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Repo&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;rollback(&lt;span style=&#34;color: #B8860B&#34;&gt;:task&lt;/span&gt;) &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Rollback transaction for invalid task data&lt;/span&gt;
+      &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defp&lt;/span&gt; add_task_to_project({&lt;span style=&#34;color: #B8860B&#34;&gt;:error&lt;/span&gt;, _changeset}, _task_params),
+    &lt;span style=&#34;color: #B8860B&#34;&gt;do&lt;/span&gt;: &lt;span style=&#34;color: #0000FF&#34;&gt;Repo&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;rollback(&lt;span style=&#34;color: #B8860B&#34;&gt;:project&lt;/span&gt;) &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Rollback transaction for invalid project data&lt;/span&gt;
 
-  end
+  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;So if we use &lt;code&gt;iex -S mix&lt;/code&gt; and passing some args to this we can obtain the following results&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Passing good options
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;iex(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; project_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;}
+%{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;}
+iex(&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; task_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Should create task for example&amp;quot;&lt;/span&gt;}
+%{&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Should create task for example&amp;quot;&lt;/span&gt;}
+iex(&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.App&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;create_project_with_task(project_params, task_params)
 
-iex(1)&gt; project_params = %{name: &#34;Explain ecto transactions&#34;}
-%{name: &#34;Explain ecto transactions&#34;}
-iex(2)&gt; task_params = %{description: &#34;Should create task for example&#34;}
-%{description: &#34;Should create task for example&#34;}
-iex(3)&gt; EctoTransactions.App.create_project_with_task(project_params, task_params)
-
-22:28:59.905 [debug] QUERY OK db=0.2ms queue=0.1ms
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;59.905&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.2&lt;/span&gt;ms queue&lt;span style=&#34;color: #666666&#34;&gt;=0.1&lt;/span&gt;ms
 begin []
 
-22:28:59.917 [debug] QUERY OK db=0.9ms
-INSERT INTO &#34;projects&#34; (&#34;name&#34;,&#34;inserted_at&#34;,&#34;updated_at&#34;) VALUES ($1,$2,$3) RETURNING &#34;id&#34; [&#34;Explain ecto transactions&#34;, {{2016, 9, 21}, {3, 28, 59, 0}}, {{2016, 9, 21}, {3, 28, 59, 0}}]
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;59.917&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.9&lt;/span&gt;ms
+&lt;span style=&#34;color: #0000FF&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;INTO&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;projects&amp;quot;&lt;/span&gt; (&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;inserted_at&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;updated_at&amp;quot;&lt;/span&gt;) &lt;span style=&#34;color: #0000FF&#34;&gt;VALUES&lt;/span&gt; (&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;) &lt;span style=&#34;color: #0000FF&#34;&gt;RETURNING&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;id&amp;quot;&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;, {{&lt;span style=&#34;color: #666666&#34;&gt;2016&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;21&lt;/span&gt;}, {&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;59&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;}}, {{&lt;span style=&#34;color: #666666&#34;&gt;2016&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;21&lt;/span&gt;}, {&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;59&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;}}]
 
-22:28:59.921 [debug] QUERY OK db=3.1ms
-INSERT INTO &#34;tasks&#34; (&#34;description&#34;,&#34;project_id&#34;,&#34;inserted_at&#34;,&#34;updated_at&#34;) VALUES ($1,$2,$3,$4) RETURNING &#34;id&#34; [&#34;Should create task for example&#34;, 1, {{2016, 9, 21}, {3, 28, 59, 0}}, {{2016, 9, 21}, {3, 28, 59, 0}}]
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;59.921&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=3.1&lt;/span&gt;ms
+&lt;span style=&#34;color: #0000FF&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;INTO&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;tasks&amp;quot;&lt;/span&gt; (&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;description&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;project_id&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;inserted_at&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;updated_at&amp;quot;&lt;/span&gt;) &lt;span style=&#34;color: #0000FF&#34;&gt;VALUES&lt;/span&gt; (&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;4&lt;/span&gt;) &lt;span style=&#34;color: #0000FF&#34;&gt;RETURNING&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;id&amp;quot;&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Should create task for example&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;, {{&lt;span style=&#34;color: #666666&#34;&gt;2016&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;21&lt;/span&gt;}, {&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;59&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;}}, {{&lt;span style=&#34;color: #666666&#34;&gt;2016&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;21&lt;/span&gt;}, {&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;59&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;}}]
 
-22:28:59.922 [debug] QUERY OK db=0.3ms
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;28&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;59.922&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.3&lt;/span&gt;ms
 commit []
-{:ok,
- %EctoTransactions.Project{__meta__: #Ecto.Schema.Metadata&lt;:loaded, &#34;projects&#34;&gt;,
-  id: 1, inserted_at: #Ecto.DateTime&lt;2016-09-21 03:28:59&gt;,
-  name: &#34;Explain ecto transactions&#34;,
-  tasks: #Ecto.Association.NotLoaded&lt;association :tasks is not loaded&gt;,
-  updated_at: #Ecto.DateTime&lt;2016-09-21 03:28:59&gt;}}
+{&lt;span style=&#34;color: #B8860B&#34;&gt;:ok&lt;/span&gt;,
+ %&lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Project&lt;/span&gt;{&lt;span style=&#34;color: #B8860B&#34;&gt;__meta__&lt;/span&gt;: &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#Ecto.Schema.Metadata&amp;lt;:loaded, &amp;quot;projects&amp;quot;&amp;gt;,&lt;/span&gt;
+  &lt;span style=&#34;color: #B8860B&#34;&gt;id&lt;/span&gt;: &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;inserted_at&lt;/span&gt;: &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#Ecto.DateTime&amp;lt;2016-09-21 03:28:59&amp;gt;,&lt;/span&gt;
+  &lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;,
+  &lt;span style=&#34;color: #B8860B&#34;&gt;tasks&lt;/span&gt;: &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#Ecto.Association.NotLoaded&amp;lt;association :tasks is not loaded&amp;gt;,&lt;/span&gt;
+  &lt;span style=&#34;color: #B8860B&#34;&gt;updated_at&lt;/span&gt;: &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#Ecto.DateTime&amp;lt;2016-09-21 03:28:59&amp;gt;}}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 
-
-ecto_simple&gt; select * from projects; select * from tasks;
-+------+---------------------------+---------------------+---------------------+
-|   id | name                      | inserted_at         | updated_at          |
-|------+---------------------------+---------------------+---------------------|
-|    1 | Explain ecto transactions | 2016-09-21 03:28:59 | 2016-09-21 03:28:59 |
-+------+---------------------------+---------------------+---------------------+
-SELECT 1
-+------+--------------------------------+--------------+---------------------+---------------------+
-|   id | description                    |   project_id | inserted_at         | updated_at          |
-|------+--------------------------------+--------------+---------------------+---------------------|
-|    1 | Should create task for example |            1 | 2016-09-21 03:28:59 | 2016-09-21 03:28:59 |
-+------+--------------------------------+--------------+---------------------+---------------------+
-SELECT 1
-Time: 0.003s
-
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;ecto_simple&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;from&lt;/span&gt; projects; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;from&lt;/span&gt; tasks;
+&lt;span style=&#34;color: #888888&#34;&gt;+------+---------------------------+---------------------+---------------------+&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;|   id | name                      | inserted_at         | updated_at          |&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;|------+---------------------------+---------------------+---------------------|&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;|    1 | Explain ecto transactions | 2016-09-21 03:28:59 | 2016-09-21 03:28:59 |&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;+------+---------------------------+---------------------+---------------------+&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;SELECT 1&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;+------+--------------------------------+--------------+---------------------+---------------------+&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;|   id | description                    |   project_id | inserted_at         | updated_at          |&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;|------+--------------------------------+--------------+---------------------+---------------------|&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;|    1 | Should create task for example |            1 | 2016-09-21 03:28:59 | 2016-09-21 03:28:59 |&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;+------+--------------------------------+--------------+---------------------+---------------------+&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;SELECT 1&lt;/span&gt;
+&lt;span style=&#34;color: #888888&#34;&gt;Time: 0.003s&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
 
 &lt;p&gt;And for bad data we can obtain next results:&lt;/p&gt;
 
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;iex(&lt;span style=&#34;color: #666666&#34;&gt;4&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; project_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;}
+%{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;}
+iex(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; task_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: &lt;span style=&#34;color: #880000&#34;&gt;nil&lt;/span&gt;}
+%{&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: &lt;span style=&#34;color: #880000&#34;&gt;nil&lt;/span&gt;}
+iex(&lt;span style=&#34;color: #666666&#34;&gt;6&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.App&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;create_project_with_task(project_params, task_params)
 
-iex(4)&gt; project_params = %{name: 1}
-%{name: 1}
-iex(5)&gt; task_params = %{description: nil}
-%{description: nil}
-iex(6)&gt; EctoTransactions.App.create_project_with_task(project_params, task_params)
-
-22:49:25.863 [debug] QUERY OK db=0.2ms
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;25.863&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.2&lt;/span&gt;ms
 begin []
 
-22:49:25.865 [debug] QUERY OK db=0.2ms
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;25.865&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.2&lt;/span&gt;ms
 rollback []
-{:error, :project}
+{&lt;span style=&#34;color: #B8860B&#34;&gt;:error&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:project&lt;/span&gt;}
 
-iex(7)&gt; project_params = %{name: &#34;Explain ecto transactions&#34;}
-%{name: &#34;Explain ecto transactions&#34;}
-iex(8)&gt; EctoTransactions.App.create_project_with_task(project_params, task_params)
+iex(&lt;span style=&#34;color: #666666&#34;&gt;7&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; project_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;}
+%{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;}
+iex(&lt;span style=&#34;color: #666666&#34;&gt;8&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.App&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;create_project_with_task(project_params, task_params)
 
-22:49:53.345 [debug] QUERY OK db=0.3ms queue=0.1ms
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;53.345&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.3&lt;/span&gt;ms queue&lt;span style=&#34;color: #666666&#34;&gt;=0.1&lt;/span&gt;ms
 begin []
 
-22:49:53.346 [debug] QUERY OK db=1.2ms
-INSERT INTO &#34;projects&#34; (&#34;name&#34;,&#34;inserted_at&#34;,&#34;updated_at&#34;) VALUES ($1,$2,$3) RETURNING &#34;id&#34; [&#34;Explain ecto transactions&#34;, {{2016, 9, 21}, {3, 49, 53, 0}}, {{2016, 9, 21}, {3, 49, 53, 0}}]
-#Ecto.Changeset&lt;action: :insert, changes: %{},
- errors: [description: {&#34;can&#39;t be blank&#34;, []}], data: #EctoTransactions.Task&lt;&gt;,
- valid?: false&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;53.346&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=1.2&lt;/span&gt;ms
+&lt;span style=&#34;color: #0000FF&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;INTO&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;projects&amp;quot;&lt;/span&gt; (&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;inserted_at&amp;quot;&lt;/span&gt;,&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;updated_at&amp;quot;&lt;/span&gt;) &lt;span style=&#34;color: #0000FF&#34;&gt;VALUES&lt;/span&gt; (&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;) &lt;span style=&#34;color: #0000FF&#34;&gt;RETURNING&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;id&amp;quot;&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;, {{&lt;span style=&#34;color: #666666&#34;&gt;2016&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;21&lt;/span&gt;}, {&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;53&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;}}, {{&lt;span style=&#34;color: #666666&#34;&gt;2016&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;21&lt;/span&gt;}, {&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;53&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;}}]
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#Ecto.Changeset&amp;lt;action: :insert, changes: %{},&lt;/span&gt;
+ &lt;span style=&#34;color: #B8860B&#34;&gt;errors&lt;/span&gt;: [&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: {&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;can&amp;#39;t be blank&amp;quot;&lt;/span&gt;, []}], &lt;span style=&#34;color: #B8860B&#34;&gt;data&lt;/span&gt;: &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#EctoTransactions.Task&amp;lt;&amp;gt;,&lt;/span&gt;
+ &lt;span style=&#34;color: #B8860B&#34;&gt;valid?&lt;/span&gt;: &lt;span style=&#34;color: #880000&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
 
-22:49:53.348 [debug] QUERY OK db=0.2ms
+&lt;span style=&#34;color: #666666&#34;&gt;22&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;49&lt;/span&gt;:&lt;span style=&#34;color: #666666&#34;&gt;53.348&lt;/span&gt; [debug] &lt;span style=&#34;color: #0000FF&#34;&gt;QUERY&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;OK&lt;/span&gt; db&lt;span style=&#34;color: #666666&#34;&gt;=0.2&lt;/span&gt;ms
 rollback []
-{:error, :task}
-iex(9)&gt;
+{&lt;span style=&#34;color: #B8860B&#34;&gt;:error&lt;/span&gt;, &lt;span style=&#34;color: #B8860B&#34;&gt;:task&lt;/span&gt;}
+iex(&lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;If you read with attention you will see two tupples &lt;code&gt;{:error, :project}&lt;/code&gt; and &lt;code&gt;{:error, :task}&lt;/code&gt; with this you can make the assumptions that you want, of course you could say a lot more and instead of returning tupples you return other things with more sense for example change &lt;code&gt;:project&lt;/code&gt; or &lt;code&gt;:task&lt;/code&gt; for his respective &lt;code&gt;changeset&lt;/code&gt; and you should see other things.&lt;/p&gt;

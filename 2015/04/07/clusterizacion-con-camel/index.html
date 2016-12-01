@@ -13,7 +13,7 @@
     <meta property="og:url" content="http://blog.makingdevs.com/2015/04/07/clusterizacion-con-camel">
     <meta property="og:site_name" content="Blog de Making Devs">
     
-    <meta name="generator" content="Hugo 0.16" />
+    <meta name="generator" content="Hugo 0.17" />
     <title>Clusterizacion con Camel &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -111,30 +111,29 @@
 <li>JpaMessageIdRepository</li>
 </ul>
 
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@Grab</span><span style="color: #666666">(</span>group<span style="color: #666666">=</span><span style="color: #BB4444">&#39;org.slf4j&#39;</span><span style="color: #666666">,</span> module<span style="color: #666666">=</span><span style="color: #BB4444">&#39;slf4j-api&#39;</span><span style="color: #666666">,</span> version<span style="color: #666666">=</span><span style="color: #BB4444">&#39;1.7.10&#39;</span><span style="color: #666666">)</span>
+<span style="color: #AA22FF">@Grab</span><span style="color: #666666">(</span>group<span style="color: #666666">=</span><span style="color: #BB4444">&#39;org.apache.camel&#39;</span><span style="color: #666666">,</span> module<span style="color: #666666">=</span><span style="color: #BB4444">&#39;camel-core&#39;</span><span style="color: #666666">,</span> version<span style="color: #666666">=</span><span style="color: #BB4444">&#39;2.12.0&#39;</span><span style="color: #666666">)</span>
+<span style="color: #AA22FF">@Grab</span><span style="color: #666666">(</span>group<span style="color: #666666">=</span><span style="color: #BB4444">&#39;org.apache.camel&#39;</span><span style="color: #666666">,</span> module<span style="color: #666666">=</span><span style="color: #BB4444">&#39;camel-mail&#39;</span><span style="color: #666666">,</span> version<span style="color: #666666">=</span><span style="color: #BB4444">&#39;2.12.0&#39;</span><span style="color: #666666">)</span>
 
+<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.apache.camel.impl.DefaultCamelContext</span>
+<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.apache.camel.builder.RouteBuilder</span>
+<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.apache.camel.processor.idempotent.FileIdempotentRepository</span>
 
-@Grab(group='org.slf4j', module='slf4j-api', version='1.7.10')
-@Grab(group='org.apache.camel', module='camel-core', version='2.12.0')
-@Grab(group='org.apache.camel', module='camel-mail', version='2.12.0')
+<span style="color: #00BB00; font-weight: bold">def</span> camelContext <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> DefaultCamelContext<span style="color: #666666">()</span>
+camelContext<span style="color: #666666">.</span><span style="color: #BB4444">addRoutes</span><span style="color: #666666">(</span><span style="color: #AA22FF; font-weight: bold">new</span> RouteBuilder<span style="color: #666666">()</span> <span style="color: #666666">{</span>
+  <span style="color: #00BB00; font-weight: bold">def</span> <span style="color: #00BB00; font-weight: bold">void</span> <span style="color: #00A000">configure</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+    from<span style="color: #666666">(</span><span style="color: #BB4444">&quot;imaps://imap.gmail.com?username=jorge@makingdevs.com&quot;</span>
+      <span style="color: #666666">+</span> <span style="color: #BB4444">&quot;&amp;password=m4k1ngd3vs&quot;</span>
+      <span style="color: #666666">+</span> <span style="color: #BB4444">&quot;&amp;consumer.delay=6000&quot;</span><span style="color: #666666">)</span>
+    <span style="color: #666666">.</span><span style="color: #BB4444">idempotentConsumer</span><span style="color: #666666">(</span> header<span style="color: #666666">(</span><span style="color: #BB4444">&quot;Message-ID&quot;</span><span style="color: #666666">),</span>
+      FileIdempotentRepository<span style="color: #666666">.</span><span style="color: #BB4444">fileIdempotentRepository</span><span style="color: #666666">(</span>
+        <span style="color: #AA22FF; font-weight: bold">new</span> <span style="color: #00A000">File</span><span style="color: #666666">(</span><span style="color: #BB4444">&quot;idempotentRepository.txt&quot;</span><span style="color: #666666">)))</span>
+    <span style="color: #666666">.</span><span style="color: #BB4444">to</span><span style="color: #666666">(</span><span style="color: #BB4444">&quot;log:groovymail?showAll=true&amp;multiline=true&quot;</span><span style="color: #666666">)</span> <span style="color: #666666">}</span> <span style="color: #666666">})</span>
 
-import org.apache.camel.impl.DefaultCamelContext
-import org.apache.camel.builder.RouteBuilder
-import org.apache.camel.processor.idempotent.FileIdempotentRepository
-
-def camelContext = new DefaultCamelContext()
-camelContext.addRoutes(new RouteBuilder() {
-  def void configure() {
-    from("imaps://imap.gmail.com?username=jorge@makingdevs.com"
-      + "&password=m4k1ngd3vs"
-      + "&consumer.delay=6000")
-    .idempotentConsumer( header("Message-ID"),
-      FileIdempotentRepository.fileIdempotentRepository(
-        new File("idempotentRepository.txt")))
-    .to("log:groovymail?showAll=true&multiline=true") } })
-
-camelContext.start()
-addShutdownHook{ camelContext.stop() }
-synchronized(this){ this.wait() }
+camelContext<span style="color: #666666">.</span><span style="color: #BB4444">start</span><span style="color: #666666">()</span>
+addShutdownHook<span style="color: #666666">{</span> camelContext<span style="color: #666666">.</span><span style="color: #BB4444">stop</span><span style="color: #666666">()</span> <span style="color: #666666">}</span>
+<span style="color: #AA22FF; font-weight: bold">synchronized</span><span style="color: #666666">(</span><span style="color: #AA22FF; font-weight: bold">this</span><span style="color: #666666">){</span> <span style="color: #AA22FF; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #BB4444">wait</span><span style="color: #666666">()</span> <span style="color: #666666">}</span>
+</pre></div>
 
 
 <p>Este es un script ejemplo el cual utiliza <code>FileIdempotentRepository</code> utilizando un archivo ejemplo para llevar el control, si exploramos el archivo ahí se encuentra los id de los mensajes procesados.</p>
@@ -143,18 +142,18 @@ synchronized(this){ this.wait() }
 
 <p>Asi si hay un mensaje el cual ya se encuentra dentro de este archivo se ignora y no es procesado. En mi caso utilize JpaMessageIdRepository dentro de grails y fue muy simple utilizar este componente solo agregue la dependencia de camel sql en el buildConfig.groovy</p>
 
-
-runtime 'org.apache.camel:camel-sql:2.13.0’
-
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>runtime <span style="border: 1px solid #FF0000">&#39;</span>org<span style="color: #666666">.</span><span style="color: #BB4444">apache</span><span style="color: #666666">.</span><span style="color: #BB4444">camel</span><span style="color: #666666">:</span>camel<span style="color: #666666">-</span><span style="color: #A0A000">sql:</span><span style="color: #666666">2.13.0</span><span style="border: 1px solid #FF0000">’</span>
+</pre></div>
+</p>
 
 <p>y agregue el bean en resources.groovy</p>
 
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.apache.camel.processor.idempotent.jdbc.JdbcMessageIdRepository</span>
 
-import org.apache.camel.processor.idempotent.jdbc.JdbcMessageIdRepository
-
-beans = {
-  messageIdRepository(JdbcMessageIdRepository,ref('dataSource'),'jdbcProcessorName')
-}
+beans <span style="color: #666666">=</span> <span style="color: #666666">{</span>
+  messageIdRepository<span style="color: #666666">(</span>JdbcMessageIdRepository<span style="color: #666666">,</span>ref<span style="color: #666666">(</span><span style="color: #BB4444">&#39;dataSource&#39;</span><span style="color: #666666">),</span><span style="color: #BB4444">&#39;jdbcProcessorName&#39;</span><span style="color: #666666">)</span>
+<span style="color: #666666">}</span>
+</pre></div>
 
 
 <p>y por ultimo agregue el <em>idempotentComponent</em>.</p>

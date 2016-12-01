@@ -17,7 +17,7 @@
     
     <meta property="og:tags" content="ecto">
     
-    <meta name="generator" content="Hugo 0.16" />
+    <meta name="generator" content="Hugo 0.17" />
     <title>Ecto Transactions &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -102,47 +102,47 @@
 
 <ul>
 <li><p>Project table
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF; font-weight: bold">defmodule</span> <span style="color: #0000FF">EctoTransactions.Project</span> <span style="color: #AA22FF; font-weight: bold">do</span>
+  <span style="color: #AA22FF; font-weight: bold">use</span> <span style="color: #0000FF">Ecto.Schema</span>
+  <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF">Ecto.Changeset</span>
 
-defmodule EctoTransactions.Project do
-  use Ecto.Schema
-  import Ecto.Changeset
-
-  schema "projects" do
-    field :name
-    has_many :tasks, EctoTransactions.Task
+  schema <span style="color: #BB4444">&quot;projects&quot;</span> <span style="color: #AA22FF; font-weight: bold">do</span>
+    field <span style="color: #B8860B">:name</span>
+    has_many <span style="color: #B8860B">:tasks</span>, <span style="color: #0000FF">EctoTransactions.Task</span>
 
     timestamps
-  end
+  <span style="color: #AA22FF; font-weight: bold">end</span>
 
-  def changeset(struct, params \\ %{}) do
+  <span style="color: #AA22FF; font-weight: bold">def</span> changeset(struct, params \\ %{}) <span style="color: #AA22FF; font-weight: bold">do</span>
     struct
-    |> cast(params, [:name])
-    |> validate_required([:name])
-  end
+    <span style="color: #666666">|&gt;</span> cast(params, [<span style="color: #B8860B">:name</span>])
+    <span style="color: #666666">|&gt;</span> validate_required([<span style="color: #B8860B">:name</span>])
+  <span style="color: #AA22FF; font-weight: bold">end</span>
 
-end
+<span style="color: #AA22FF; font-weight: bold">end</span>
+</pre></div>
 </p></li>
 
 <li><p>Task table
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF; font-weight: bold">defmodule</span> <span style="color: #0000FF">EctoTransactions.Task</span> <span style="color: #AA22FF; font-weight: bold">do</span>
+  <span style="color: #AA22FF; font-weight: bold">use</span> <span style="color: #0000FF">Ecto.Schema</span>
 
-defmodule EctoTransactions.Task do
-  use Ecto.Schema
+  <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF">Ecto.Changeset</span>
 
-  import Ecto.Changeset
-
-  schema "tasks" do
-    field :description
-    belongs_to :project, EctoTransactions.Project
+  schema <span style="color: #BB4444">&quot;tasks&quot;</span> <span style="color: #AA22FF; font-weight: bold">do</span>
+    field <span style="color: #B8860B">:description</span>
+    belongs_to <span style="color: #B8860B">:project</span>, <span style="color: #0000FF">EctoTransactions.Project</span>
 
     timestamps
-  end
+  <span style="color: #AA22FF; font-weight: bold">end</span>
 
-  def changeset(struct, params \\ %{}) do
+  <span style="color: #AA22FF; font-weight: bold">def</span> changeset(struct, params \\ %{}) <span style="color: #AA22FF; font-weight: bold">do</span>
     struct
-    |> cast(params, [:description, :project_id])
-    |> validate_required([:description, :project_id])
-  end
-end
+    <span style="color: #666666">|&gt;</span> cast(params, [<span style="color: #B8860B">:description</span>, <span style="color: #B8860B">:project_id</span>])
+    <span style="color: #666666">|&gt;</span> validate_required([<span style="color: #B8860B">:description</span>, <span style="color: #B8860B">:project_id</span>])
+  <span style="color: #AA22FF; font-weight: bold">end</span>
+<span style="color: #AA22FF; font-weight: bold">end</span>
+</pre></div>
 </p></li>
 </ul>
 
@@ -152,128 +152,128 @@ end
 
 <p>So we are going to create a module for handling this</p>
 
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  <span style="color: #AA22FF; font-weight: bold">defmodule</span> <span style="color: #0000FF">EctoTransactions.App</span> <span style="color: #AA22FF; font-weight: bold">do</span>
 
-  defmodule EctoTransactions.App do
+    <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF">Ecto</span>
+    <span style="color: #AA22FF; font-weight: bold">alias</span> <span style="color: #0000FF">EctoTransactions.Repo</span>
+    <span style="color: #AA22FF; font-weight: bold">alias</span> <span style="color: #0000FF">EctoTransactions.Project</span>
+    <span style="color: #AA22FF; font-weight: bold">alias</span> <span style="color: #0000FF">EctoTransactions.Task</span>
 
-    import Ecto
-    alias EctoTransactions.Repo
-    alias EctoTransactions.Project
-    alias EctoTransactions.Task
-
-    # creating project and task
-    def create_project_with_task(project_params, task_params) do
-      Repo.transaction(fn ->
+    <span style="color: #008800; font-style: italic"># creating project and task</span>
+    <span style="color: #AA22FF; font-weight: bold">def</span> create_project_with_task(project_params, task_params) <span style="color: #AA22FF; font-weight: bold">do</span>
+      <span style="color: #0000FF">Repo</span><span style="color: #666666">.</span>transaction(<span style="color: #AA22FF; font-weight: bold">fn</span> <span style="color: #666666">-&gt;</span>
         project_params
-        |> create_project_with_params
-        |> add_task_to_project(task_params)
-      end)
-    end
+        <span style="color: #666666">|&gt;</span> create_project_with_params
+        <span style="color: #666666">|&gt;</span> add_task_to_project(task_params)
+      <span style="color: #AA22FF; font-weight: bold">end</span>)
+    <span style="color: #AA22FF; font-weight: bold">end</span>
 
-    # creating project
-    defp create_project_with_params(project_params) do
-      %Project{}
-      |> Project.changeset(project_params)
-      |> Repo.insert
-    end
+    <span style="color: #008800; font-style: italic"># creating project</span>
+    <span style="color: #AA22FF; font-weight: bold">defp</span> create_project_with_params(project_params) <span style="color: #AA22FF; font-weight: bold">do</span>
+      %<span style="color: #0000FF">Project</span>{}
+      <span style="color: #666666">|&gt;</span> <span style="color: #0000FF">Project</span><span style="color: #666666">.</span>changeset(project_params)
+      <span style="color: #666666">|&gt;</span> <span style="color: #0000FF">Repo</span><span style="color: #666666">.</span>insert
+    <span style="color: #AA22FF; font-weight: bold">end</span>
 
-    # adding a task to a valid project
-    defp add_task_to_project({:ok, project}, task_params) do
-      changeset = project
-                  |> build_assoc(:tasks)
-                  |> Task.changeset(task_params)
+    <span style="color: #008800; font-style: italic"># adding a task to a valid project</span>
+    <span style="color: #AA22FF; font-weight: bold">defp</span> add_task_to_project({<span style="color: #B8860B">:ok</span>, project}, task_params) <span style="color: #AA22FF; font-weight: bold">do</span>
+      changeset <span style="color: #666666">=</span> project
+                  <span style="color: #666666">|&gt;</span> build_assoc(<span style="color: #B8860B">:tasks</span>)
+                  <span style="color: #666666">|&gt;</span> <span style="color: #0000FF">Task</span><span style="color: #666666">.</span>changeset(task_params)
 
-      case Repo.insert(changeset) do
-        {:ok, _task} -> project
-        {:error, changeset} -> Repo.rollback(:task) # Rollback transaction for invalid task data
-      end
-    end
-    defp add_task_to_project({:error, _changeset}, _task_params),
-    do: Repo.rollback(:project) # Rollback transaction for invalid project data
+      <span style="color: #AA22FF; font-weight: bold">case</span> <span style="color: #0000FF">Repo</span><span style="color: #666666">.</span>insert(changeset) <span style="color: #AA22FF; font-weight: bold">do</span>
+        {<span style="color: #B8860B">:ok</span>, _task} <span style="color: #666666">-&gt;</span> project
+        {<span style="color: #B8860B">:error</span>, changeset} <span style="color: #666666">-&gt;</span> <span style="color: #0000FF">Repo</span><span style="color: #666666">.</span>rollback(<span style="color: #B8860B">:task</span>) <span style="color: #008800; font-style: italic"># Rollback transaction for invalid task data</span>
+      <span style="color: #AA22FF; font-weight: bold">end</span>
+    <span style="color: #AA22FF; font-weight: bold">end</span>
+    <span style="color: #AA22FF; font-weight: bold">defp</span> add_task_to_project({<span style="color: #B8860B">:error</span>, _changeset}, _task_params),
+    <span style="color: #B8860B">do</span>: <span style="color: #0000FF">Repo</span><span style="color: #666666">.</span>rollback(<span style="color: #B8860B">:project</span>) <span style="color: #008800; font-style: italic"># Rollback transaction for invalid project data</span>
 
-  end
+  <span style="color: #AA22FF; font-weight: bold">end</span>
+</pre></div>
 
 
 <p>So if we use <code>iex -S mix</code> and passing some args to this we can obtain the following results</p>
 
 <ul>
 <li>Passing good options
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>iex(<span style="color: #666666">1</span>)<span style="color: #666666">&gt;</span> project_params <span style="color: #666666">=</span> %{<span style="color: #B8860B">name</span>: <span style="color: #BB4444">&quot;Explain ecto transactions&quot;</span>}
+%{<span style="color: #B8860B">name</span>: <span style="color: #BB4444">&quot;Explain ecto transactions&quot;</span>}
+iex(<span style="color: #666666">2</span>)<span style="color: #666666">&gt;</span> task_params <span style="color: #666666">=</span> %{<span style="color: #B8860B">description</span>: <span style="color: #BB4444">&quot;Should create task for example&quot;</span>}
+%{<span style="color: #B8860B">description</span>: <span style="color: #BB4444">&quot;Should create task for example&quot;</span>}
+iex(<span style="color: #666666">3</span>)<span style="color: #666666">&gt;</span> <span style="color: #0000FF">EctoTransactions.App</span><span style="color: #666666">.</span>create_project_with_task(project_params, task_params)
 
-iex(1)> project_params = %{name: "Explain ecto transactions"}
-%{name: "Explain ecto transactions"}
-iex(2)> task_params = %{description: "Should create task for example"}
-%{description: "Should create task for example"}
-iex(3)> EctoTransactions.App.create_project_with_task(project_params, task_params)
-
-22:28:59.905 [debug] QUERY OK db=0.2ms queue=0.1ms
+<span style="color: #666666">22</span>:<span style="color: #666666">28</span>:<span style="color: #666666">59.905</span> [debug] <span style="color: #0000FF">QUERY</span> <span style="color: #0000FF">OK</span> db<span style="color: #666666">=0.2</span>ms queue<span style="color: #666666">=0.1</span>ms
 begin []
 
-22:28:59.917 [debug] QUERY OK db=0.9ms
-INSERT INTO "projects" ("name","inserted_at","updated_at") VALUES ($1,$2,$3) RETURNING "id" ["Explain ecto transactions", {{2016, 9, 21}, {3, 28, 59, 0}}, {{2016, 9, 21}, {3, 28, 59, 0}}]
+<span style="color: #666666">22</span>:<span style="color: #666666">28</span>:<span style="color: #666666">59.917</span> [debug] <span style="color: #0000FF">QUERY</span> <span style="color: #0000FF">OK</span> db<span style="color: #666666">=0.9</span>ms
+<span style="color: #0000FF">INSERT</span> <span style="color: #0000FF">INTO</span> <span style="color: #BB4444">&quot;projects&quot;</span> (<span style="color: #BB4444">&quot;name&quot;</span>,<span style="color: #BB4444">&quot;inserted_at&quot;</span>,<span style="color: #BB4444">&quot;updated_at&quot;</span>) <span style="color: #0000FF">VALUES</span> (<span style="border: 1px solid #FF0000">$</span><span style="color: #666666">1</span>,<span style="border: 1px solid #FF0000">$</span><span style="color: #666666">2</span>,<span style="border: 1px solid #FF0000">$</span><span style="color: #666666">3</span>) <span style="color: #0000FF">RETURNING</span> <span style="color: #BB4444">&quot;id&quot;</span> [<span style="color: #BB4444">&quot;Explain ecto transactions&quot;</span>, {{<span style="color: #666666">2016</span>, <span style="color: #666666">9</span>, <span style="color: #666666">21</span>}, {<span style="color: #666666">3</span>, <span style="color: #666666">28</span>, <span style="color: #666666">59</span>, <span style="color: #666666">0</span>}}, {{<span style="color: #666666">2016</span>, <span style="color: #666666">9</span>, <span style="color: #666666">21</span>}, {<span style="color: #666666">3</span>, <span style="color: #666666">28</span>, <span style="color: #666666">59</span>, <span style="color: #666666">0</span>}}]
 
-22:28:59.921 [debug] QUERY OK db=3.1ms
-INSERT INTO "tasks" ("description","project_id","inserted_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "id" ["Should create task for example", 1, {{2016, 9, 21}, {3, 28, 59, 0}}, {{2016, 9, 21}, {3, 28, 59, 0}}]
+<span style="color: #666666">22</span>:<span style="color: #666666">28</span>:<span style="color: #666666">59.921</span> [debug] <span style="color: #0000FF">QUERY</span> <span style="color: #0000FF">OK</span> db<span style="color: #666666">=3.1</span>ms
+<span style="color: #0000FF">INSERT</span> <span style="color: #0000FF">INTO</span> <span style="color: #BB4444">&quot;tasks&quot;</span> (<span style="color: #BB4444">&quot;description&quot;</span>,<span style="color: #BB4444">&quot;project_id&quot;</span>,<span style="color: #BB4444">&quot;inserted_at&quot;</span>,<span style="color: #BB4444">&quot;updated_at&quot;</span>) <span style="color: #0000FF">VALUES</span> (<span style="border: 1px solid #FF0000">$</span><span style="color: #666666">1</span>,<span style="border: 1px solid #FF0000">$</span><span style="color: #666666">2</span>,<span style="border: 1px solid #FF0000">$</span><span style="color: #666666">3</span>,<span style="border: 1px solid #FF0000">$</span><span style="color: #666666">4</span>) <span style="color: #0000FF">RETURNING</span> <span style="color: #BB4444">&quot;id&quot;</span> [<span style="color: #BB4444">&quot;Should create task for example&quot;</span>, <span style="color: #666666">1</span>, {{<span style="color: #666666">2016</span>, <span style="color: #666666">9</span>, <span style="color: #666666">21</span>}, {<span style="color: #666666">3</span>, <span style="color: #666666">28</span>, <span style="color: #666666">59</span>, <span style="color: #666666">0</span>}}, {{<span style="color: #666666">2016</span>, <span style="color: #666666">9</span>, <span style="color: #666666">21</span>}, {<span style="color: #666666">3</span>, <span style="color: #666666">28</span>, <span style="color: #666666">59</span>, <span style="color: #666666">0</span>}}]
 
-22:28:59.922 [debug] QUERY OK db=0.3ms
+<span style="color: #666666">22</span>:<span style="color: #666666">28</span>:<span style="color: #666666">59.922</span> [debug] <span style="color: #0000FF">QUERY</span> <span style="color: #0000FF">OK</span> db<span style="color: #666666">=0.3</span>ms
 commit []
-{:ok,
- %EctoTransactions.Project{__meta__: #Ecto.Schema.Metadata<:loaded, "projects">,
-  id: 1, inserted_at: #Ecto.DateTime<2016-09-21 03:28:59>,
-  name: "Explain ecto transactions",
-  tasks: #Ecto.Association.NotLoaded<association :tasks is not loaded>,
-  updated_at: #Ecto.DateTime<2016-09-21 03:28:59>}}
+{<span style="color: #B8860B">:ok</span>,
+ %<span style="color: #0000FF">EctoTransactions.Project</span>{<span style="color: #B8860B">__meta__</span>: <span style="color: #008800; font-style: italic">#Ecto.Schema.Metadata&lt;:loaded, &quot;projects&quot;&gt;,</span>
+  <span style="color: #B8860B">id</span>: <span style="color: #666666">1</span>, <span style="color: #B8860B">inserted_at</span>: <span style="color: #008800; font-style: italic">#Ecto.DateTime&lt;2016-09-21 03:28:59&gt;,</span>
+  <span style="color: #B8860B">name</span>: <span style="color: #BB4444">&quot;Explain ecto transactions&quot;</span>,
+  <span style="color: #B8860B">tasks</span>: <span style="color: #008800; font-style: italic">#Ecto.Association.NotLoaded&lt;association :tasks is not loaded&gt;,</span>
+  <span style="color: #B8860B">updated_at</span>: <span style="color: #008800; font-style: italic">#Ecto.DateTime&lt;2016-09-21 03:28:59&gt;}}</span>
+</pre></div>
 </li>
 </ul>
 
-
-ecto_simple> select * from projects; select * from tasks;
-+------+---------------------------+---------------------+---------------------+
-|   id | name                      | inserted_at         | updated_at          |
-|------+---------------------------+---------------------+---------------------|
-|    1 | Explain ecto transactions | 2016-09-21 03:28:59 | 2016-09-21 03:28:59 |
-+------+---------------------------+---------------------+---------------------+
-SELECT 1
-+------+--------------------------------+--------------+---------------------+---------------------+
-|   id | description                    |   project_id | inserted_at         | updated_at          |
-|------+--------------------------------+--------------+---------------------+---------------------|
-|    1 | Should create task for example |            1 | 2016-09-21 03:28:59 | 2016-09-21 03:28:59 |
-+------+--------------------------------+--------------+---------------------+---------------------+
-SELECT 1
-Time: 0.003s
-
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>ecto_simple<span style="color: #666666">&gt;</span> <span style="color: #AA22FF; font-weight: bold">select</span> <span style="color: #666666">*</span> <span style="color: #AA22FF; font-weight: bold">from</span> projects; <span style="color: #AA22FF; font-weight: bold">select</span> <span style="color: #666666">*</span> <span style="color: #AA22FF; font-weight: bold">from</span> tasks;
+<span style="color: #888888">+------+---------------------------+---------------------+---------------------+</span>
+<span style="color: #888888">|   id | name                      | inserted_at         | updated_at          |</span>
+<span style="color: #888888">|------+---------------------------+---------------------+---------------------|</span>
+<span style="color: #888888">|    1 | Explain ecto transactions | 2016-09-21 03:28:59 | 2016-09-21 03:28:59 |</span>
+<span style="color: #888888">+------+---------------------------+---------------------+---------------------+</span>
+<span style="color: #888888">SELECT 1</span>
+<span style="color: #888888">+------+--------------------------------+--------------+---------------------+---------------------+</span>
+<span style="color: #888888">|   id | description                    |   project_id | inserted_at         | updated_at          |</span>
+<span style="color: #888888">|------+--------------------------------+--------------+---------------------+---------------------|</span>
+<span style="color: #888888">|    1 | Should create task for example |            1 | 2016-09-21 03:28:59 | 2016-09-21 03:28:59 |</span>
+<span style="color: #888888">+------+--------------------------------+--------------+---------------------+---------------------+</span>
+<span style="color: #888888">SELECT 1</span>
+<span style="color: #888888">Time: 0.003s</span>
+</pre></div>
+</p>
 
 <p>And for bad data we can obtain next results:</p>
 
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>iex(<span style="color: #666666">4</span>)<span style="color: #666666">&gt;</span> project_params <span style="color: #666666">=</span> %{<span style="color: #B8860B">name</span>: <span style="color: #666666">1</span>}
+%{<span style="color: #B8860B">name</span>: <span style="color: #666666">1</span>}
+iex(<span style="color: #666666">5</span>)<span style="color: #666666">&gt;</span> task_params <span style="color: #666666">=</span> %{<span style="color: #B8860B">description</span>: <span style="color: #880000">nil</span>}
+%{<span style="color: #B8860B">description</span>: <span style="color: #880000">nil</span>}
+iex(<span style="color: #666666">6</span>)<span style="color: #666666">&gt;</span> <span style="color: #0000FF">EctoTransactions.App</span><span style="color: #666666">.</span>create_project_with_task(project_params, task_params)
 
-iex(4)> project_params = %{name: 1}
-%{name: 1}
-iex(5)> task_params = %{description: nil}
-%{description: nil}
-iex(6)> EctoTransactions.App.create_project_with_task(project_params, task_params)
-
-22:49:25.863 [debug] QUERY OK db=0.2ms
+<span style="color: #666666">22</span>:<span style="color: #666666">49</span>:<span style="color: #666666">25.863</span> [debug] <span style="color: #0000FF">QUERY</span> <span style="color: #0000FF">OK</span> db<span style="color: #666666">=0.2</span>ms
 begin []
 
-22:49:25.865 [debug] QUERY OK db=0.2ms
+<span style="color: #666666">22</span>:<span style="color: #666666">49</span>:<span style="color: #666666">25.865</span> [debug] <span style="color: #0000FF">QUERY</span> <span style="color: #0000FF">OK</span> db<span style="color: #666666">=0.2</span>ms
 rollback []
-{:error, :project}
+{<span style="color: #B8860B">:error</span>, <span style="color: #B8860B">:project</span>}
 
-iex(7)> project_params = %{name: "Explain ecto transactions"}
-%{name: "Explain ecto transactions"}
-iex(8)> EctoTransactions.App.create_project_with_task(project_params, task_params)
+iex(<span style="color: #666666">7</span>)<span style="color: #666666">&gt;</span> project_params <span style="color: #666666">=</span> %{<span style="color: #B8860B">name</span>: <span style="color: #BB4444">&quot;Explain ecto transactions&quot;</span>}
+%{<span style="color: #B8860B">name</span>: <span style="color: #BB4444">&quot;Explain ecto transactions&quot;</span>}
+iex(<span style="color: #666666">8</span>)<span style="color: #666666">&gt;</span> <span style="color: #0000FF">EctoTransactions.App</span><span style="color: #666666">.</span>create_project_with_task(project_params, task_params)
 
-22:49:53.345 [debug] QUERY OK db=0.3ms queue=0.1ms
+<span style="color: #666666">22</span>:<span style="color: #666666">49</span>:<span style="color: #666666">53.345</span> [debug] <span style="color: #0000FF">QUERY</span> <span style="color: #0000FF">OK</span> db<span style="color: #666666">=0.3</span>ms queue<span style="color: #666666">=0.1</span>ms
 begin []
 
-22:49:53.346 [debug] QUERY OK db=1.2ms
-INSERT INTO "projects" ("name","inserted_at","updated_at") VALUES ($1,$2,$3) RETURNING "id" ["Explain ecto transactions", {{2016, 9, 21}, {3, 49, 53, 0}}, {{2016, 9, 21}, {3, 49, 53, 0}}]
-#Ecto.Changeset<action: :insert, changes: %{},
- errors: [description: {"can't be blank", []}], data: #EctoTransactions.Task<>,
- valid?: false>
+<span style="color: #666666">22</span>:<span style="color: #666666">49</span>:<span style="color: #666666">53.346</span> [debug] <span style="color: #0000FF">QUERY</span> <span style="color: #0000FF">OK</span> db<span style="color: #666666">=1.2</span>ms
+<span style="color: #0000FF">INSERT</span> <span style="color: #0000FF">INTO</span> <span style="color: #BB4444">&quot;projects&quot;</span> (<span style="color: #BB4444">&quot;name&quot;</span>,<span style="color: #BB4444">&quot;inserted_at&quot;</span>,<span style="color: #BB4444">&quot;updated_at&quot;</span>) <span style="color: #0000FF">VALUES</span> (<span style="border: 1px solid #FF0000">$</span><span style="color: #666666">1</span>,<span style="border: 1px solid #FF0000">$</span><span style="color: #666666">2</span>,<span style="border: 1px solid #FF0000">$</span><span style="color: #666666">3</span>) <span style="color: #0000FF">RETURNING</span> <span style="color: #BB4444">&quot;id&quot;</span> [<span style="color: #BB4444">&quot;Explain ecto transactions&quot;</span>, {{<span style="color: #666666">2016</span>, <span style="color: #666666">9</span>, <span style="color: #666666">21</span>}, {<span style="color: #666666">3</span>, <span style="color: #666666">49</span>, <span style="color: #666666">53</span>, <span style="color: #666666">0</span>}}, {{<span style="color: #666666">2016</span>, <span style="color: #666666">9</span>, <span style="color: #666666">21</span>}, {<span style="color: #666666">3</span>, <span style="color: #666666">49</span>, <span style="color: #666666">53</span>, <span style="color: #666666">0</span>}}]
+<span style="color: #008800; font-style: italic">#Ecto.Changeset&lt;action: :insert, changes: %{},</span>
+ <span style="color: #B8860B">errors</span>: [<span style="color: #B8860B">description</span>: {<span style="color: #BB4444">&quot;can&#39;t be blank&quot;</span>, []}], <span style="color: #B8860B">data</span>: <span style="color: #008800; font-style: italic">#EctoTransactions.Task&lt;&gt;,</span>
+ <span style="color: #B8860B">valid?</span>: <span style="color: #880000">false</span><span style="color: #666666">&gt;</span>
 
-22:49:53.348 [debug] QUERY OK db=0.2ms
+<span style="color: #666666">22</span>:<span style="color: #666666">49</span>:<span style="color: #666666">53.348</span> [debug] <span style="color: #0000FF">QUERY</span> <span style="color: #0000FF">OK</span> db<span style="color: #666666">=0.2</span>ms
 rollback []
-{:error, :task}
-iex(9)>
+{<span style="color: #B8860B">:error</span>, <span style="color: #B8860B">:task</span>}
+iex(<span style="color: #666666">9</span>)<span style="color: #666666">&gt;</span>
+</pre></div>
 
 
 <p>If you read with attention you will see two tupples <code>{:error, :project}</code> and <code>{:error, :task}</code> with this you can make the assumptions that you want, of course you could say a lot more and instead of returning tupples you return other things with more sense for example change <code>:project</code> or <code>:task</code> for his respective <code>changeset</code> and you should see other things.</p>
