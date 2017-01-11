@@ -6,8 +6,35 @@
     <description>Recent content in Post-rsses on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Nov 2016 16:46:05 -0600</lastBuildDate>
+    <lastBuildDate>Wed, 11 Jan 2017 13:11:46 -0600</lastBuildDate>
     <atom:link href="http://blog.makingdevs.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Resolviendo la criba de Eratóstenes con Elixir</title>
+      <link>http://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir</link>
+      <pubDate>Wed, 11 Jan 2017 13:11:46 -0600</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir</guid>
+      <description>&lt;p&gt;Ya una vez más familiarizado con Elixir me dí a la tarea de resolver un problema que se encuentra documentado en la Wikipedia, la forma de obtener un conjunto de números primos y una solución es a través de la llamada (Criba de Eratótstenes)&lt;a href=&#34;https://es.wikipedia.org/wiki/Criba_de_Eratóstenes&#34;&gt;1&lt;/a&gt; descrita así:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Primer paso: listar los números naturales comprendidos entre 2 y n.&lt;/li&gt;
+&lt;li&gt;Segundo paso: Se toma el primer número no rayado ni marcado, como número primo.&lt;/li&gt;
+&lt;li&gt;Tercer paso: Se tachan todos los múltiplos del número que se acaba de indicar como primo.&lt;/li&gt;
+&lt;li&gt;Cuarto paso: Si el cuadrado del primer número que no ha sido rayado ni marcado es inferior a n, entonces se repite el segundo paso. Si no, el algoritmo termina, y todos los enteros no tachados son declarados primos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif&#34; alt=&#34;sieve&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Una vez definido el problema pude interpretar los pasos descritos en funciones de elixir, resultándome en algo como lo siguiente:&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/neodevelop/aaf941b6bc809fb0074f9b17dc0eef22.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Al final, la forma en como quedó definido fue apegado al conjunto de pasos que permitían filtrar los casos en donde el número en cuestión era primo, y es aquí en donde las expresión de las funciones me ayudó.&lt;/p&gt;
+
+&lt;p&gt;En resumen, considero que Elixir me ayuda mucho a poder aterrizar elementos o descripciones matemáticas en funciones específicas.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Capistrano para despliegues de apps Rails</title>
@@ -1581,114 +1608,6 @@ s3Service&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style
 &lt;p&gt;Es decir, en la búsqueda de los elementos de la izquierda, hemos encontrado indispensables los elementos de la derecha.&lt;/p&gt;
 
 &lt;p&gt;Y lo que más me agradó de este libro fue que en realidad pone sobre la mesa lo que un desarrollador debería ser (al menos en el concepto del autor), y contesta la pregunta que estoy seguro a muchos de nosotros como desarrolladores nos han hecho &lt;em&gt;¿Piensas ser un desarollador toda tu vida?&lt;/em&gt; o alguna de sus variantes, y aunque para mí la respuesta es un claro y conciso &amp;ldquo;SI&amp;rdquo; para muchos la respuesta todavía está en el aire.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hot deployment en Gradle</title>
-      <link>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle</link>
-      <pubDate>Sun, 26 Jul 2015 23:19:13 -0500</pubDate>
-      
-      <guid>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle</guid>
-      <description>&lt;p&gt;Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;springloaded&#34;&gt;SpringLoaded&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Después me di cuenta que frameworks como &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;dropwizard&#34;&gt;Dropwizard&lt;/a&gt; lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré &lt;a href=&#34;http://www.cholick.com/entry/show/280&#34; title=&#34;tomcat&#34;&gt;un artículo&lt;/a&gt; en donde explica como ponerlo en acción usando propiamente &lt;a href=&#34;https://github.com/spring-projects/spring-loaded&#34; title=&#34;dropwizard&#34;&gt;Dropwizard&lt;/a&gt;. Fue un buen acercamiento, el problema es el siguiente bloque de código en configuración de gradle:
-&lt;!-- more --&gt;&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;run &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  args &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;server&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;app.yaml&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
-  jvmArgs &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;-javaagent:${new File(&amp;quot;&lt;/span&gt;$buildDir&lt;span style=&#34;color: #BB4444&#34;&gt;/agent/&lt;/span&gt;springloaded&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;$&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;springloadedVersion&lt;span style=&#34;color: #666666&#34;&gt;}.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;jar&amp;quot;).absolutePath}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;-noverify&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;En donde, el atributo &lt;code&gt;jvmArgs&lt;/code&gt; es sólo aplicable a tareas del tipo &lt;code&gt;JavaExec&lt;/code&gt;, más específico, que implementan &lt;code&gt;JavaExecSpec&lt;/code&gt; o &lt;code&gt;JavaForkOptions&lt;/code&gt;. Es aquí en donde &lt;a href=&#34;https://github.com/bmuschko/gradle-tomcat-plugin&#34; title=&#34;tomcat&#34;&gt;el plugin de tomcat&lt;/a&gt; que se puede encontrar para Gradle tiene el problema, pues su tarea no lo hace.&lt;/p&gt;
-
-&lt;p&gt;La combinación se haría en conjunto con un plugin de gradle, &lt;a href=&#34;https://github.com/bluepapa32/gradle-watch-plugin&#34; title=&#34;gradle watch&#34;&gt;el watch&lt;/a&gt;, el actúa con cada cambio en la aplicación realizando las tareas que se le digan. Sin embargo, lo que encontré funcionaba para la cmbinación de SpringBooy e IntelliJ Idea, lo cual no veía mal, pero no era mi caso. De cualquier forma pongo disponible la configuración que independiente me sirvió para hacer un hot deploy usando ambos elementos:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;groovy&amp;#39;&lt;/span&gt;
-apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;spring-boot&amp;#39;&lt;/span&gt;
-apply &lt;span style=&#34;color: #A0A000&#34;&gt;plugin:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;com.bluepapa32.watch&amp;#39;&lt;/span&gt;
-
-sourceCompatibility &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;1.8&lt;/span&gt;
-targetCompatibility &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;1.8&lt;/span&gt;
-
-ext &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  springLoadedVersion &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;1.2.1.RELEASE&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-
-mainClassName&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;com.makingdevs.Application&amp;#39;&lt;/span&gt;
-
-repositories &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  mavenCentral&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-  maven &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-    url &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;https://code.lds.org/nexus/content/groups/main-repo&amp;quot;&lt;/span&gt;
-  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-
-dependencies &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  compile&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org.springframework.boot:spring-boot-starter-web&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
-  compile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.codehaus.groovy:groovy-all:2.4.3&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-
-buildscript &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  repositories &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-    mavenCentral&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-    jcenter&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-  dependencies &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-    classpath &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org.springframework.boot:spring-boot-gradle-plugin:1.2.4.RELEASE&amp;quot;&lt;/span&gt;
-    classpath &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.springframework:springloaded:1.2.0.RELEASE&amp;#39;&lt;/span&gt;
-    classpath &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;com.bluepapa32:gradle-watch-plugin:0.1.5&amp;#39;&lt;/span&gt;
-  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-
-jar &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  baseName &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;meerkat-mymapmanager&amp;#39;&lt;/span&gt;
-  version &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;  &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;0.1.0&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-
-compileGroovy &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;//enable compilation in a separate daemon process&lt;/span&gt;
-  options&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;fork&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;true&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-
-watch &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  groovy &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-    files &lt;span style=&#34;color: #00A000&#34;&gt;files&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;src/main/groovy&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
-    tasks &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;compileGroovy&amp;#39;&lt;/span&gt;
-  &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Al final del día, lo que encontre fue &lt;a href=&#34;http://akhikhl.github.io/gretty-doc/index.html&#34; title=&#34;gretty&#34;&gt;el plugin de Gretty&lt;/a&gt;, con el que fácilmente podemos usar un contenedor de Tomcat o Jetty y tener disponible el Hot deploy, creo que tiene algunos detalles de rendimiento pero es útil. Finalmente la configuración se reduce mucho y hay varias tareas disponibles, entre ellas &lt;code&gt;appRun&lt;/code&gt;, que es la que levanta el elemento configuraco y lo dijo listo para los cambios:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// Using the new mechanism to include plugins&lt;/span&gt;
-plugins &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  id &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;groovy&amp;#39;&lt;/span&gt;
-  id &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;war&amp;#39;&lt;/span&gt;
-  id &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org.akhikhl.gretty&amp;quot;&lt;/span&gt; version &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;1.2.4&amp;quot;&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-
-repositories &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  mavenCentral&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-  jcenter&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-
-dependencies &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  compile &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org.codehaus.groovy:groovy-all:2.3.4&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-
-gretty &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-  &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;// &amp;#39;jetty7&amp;#39;, &amp;#39;jetty8&amp;#39;, &amp;#39;jetty9&amp;#39;, &amp;#39;tomcat7&amp;#39;, &amp;#39;tomcat8&amp;#39;&lt;/span&gt;
-  servletContainer &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;tomcat7&amp;#39;&lt;/span&gt;
-  httpPort &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;9091&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Creo que nos servirá bien un rato para las cosas que tenemos que hcaer, por que incluso soporta SpringBoot.&lt;/p&gt;
 </description>
     </item>
     

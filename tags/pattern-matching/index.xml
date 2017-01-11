@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog de Making Devs</title>
+    <link>http://blog.makingdevs.com/tags/pattern-matching/index.xml</link>
+    <description>Recent content on Blog de Making Devs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.makingdevs.com/tags/pattern-matching/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Resolviendo la criba de Eratóstenes con Elixir</title>
+      <link>http://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir</link>
+      <pubDate>Wed, 11 Jan 2017 13:11:46 -0600</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir</guid>
+      <description>&lt;p&gt;Ya una vez más familiarizado con Elixir me dí a la tarea de resolver un problema que se encuentra documentado en la Wikipedia, la forma de obtener un conjunto de números primos y una solución es a través de la llamada (Criba de Eratótstenes)&lt;a href=&#34;https://es.wikipedia.org/wiki/Criba_de_Eratóstenes&#34;&gt;1&lt;/a&gt; descrita así:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Primer paso: listar los números naturales comprendidos entre 2 y n.&lt;/li&gt;
+&lt;li&gt;Segundo paso: Se toma el primer número no rayado ni marcado, como número primo.&lt;/li&gt;
+&lt;li&gt;Tercer paso: Se tachan todos los múltiplos del número que se acaba de indicar como primo.&lt;/li&gt;
+&lt;li&gt;Cuarto paso: Si el cuadrado del primer número que no ha sido rayado ni marcado es inferior a n, entonces se repite el segundo paso. Si no, el algoritmo termina, y todos los enteros no tachados son declarados primos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif&#34; alt=&#34;sieve&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Una vez definido el problema pude interpretar los pasos descritos en funciones de elixir, resultándome en algo como lo siguiente:&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/neodevelop/aaf941b6bc809fb0074f9b17dc0eef22.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Al final, la forma en como quedó definido fue apegado al conjunto de pasos que permitían filtrar los casos en donde el número en cuestión era primo, y es aquí en donde las expresión de las funciones me ayudó.&lt;/p&gt;
+
+&lt;p&gt;En resumen, considero que Elixir me ayuda mucho a poder aterrizar elementos o descripciones matemáticas en funciones específicas.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

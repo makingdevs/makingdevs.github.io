@@ -85,6 +85,40 @@
 	<div class="panel panel-default">
 	<div class="panel-header">
 		<h3>
+			<a href="http://blog.makingdevs.com/2016/03/28/uso-de-logback">Uso de logback</a>
+			<br>
+			<small>
+				28 March 2016
+			</small>
+		</h3>
+	</div>
+	<div class="panel-body">
+		En el proceso de desarrollo de software se implementan bitácoras o mejor conocidas como loggers que permiten tener información de salida útil al desarrollador en cuanto al correcto flujo de la aplicación.
+Este registro se divide en secciones: Logger, Formatter y Handler.
+ Logger: Es el responsable de captar el mensaje y pasarlo al marco de registro.
+ Formatter: Su función es dar formato a la salida. toma el objeto binario y realiza la conversión a una representación de cadena
+		
+			... <a href="http://blog.makingdevs.com/2016/03/28/uso-de-logback">Read More</a>
+		
+	</div>
+	<div class="panel-footer">
+		
+		<small class="text-muted">
+			
+			
+				<a href="http://blog.makingdevs.com/tags/groovy"><span class="label label-success">groovy</span></a>
+			
+				<a href="http://blog.makingdevs.com/tags/log"><span class="label label-success">log</span></a>
+			
+		</small>
+		
+	</div>
+</div>
+
+
+	<div class="panel panel-default">
+	<div class="panel-header">
+		<h3>
 			<a href="http://blog.makingdevs.com/2016/03/24/add-complete-bootstrap-to-phoenix">Add complete bootstrap to Phoenix</a>
 			<br>
 			<small>
@@ -177,38 +211,6 @@ Geb es una herramienta para escribir pruebas funcionales con Groovy que hace uso
 				<a href="http://blog.makingdevs.com/tags/spock"><span class="label label-success">spock</span></a>
 			
 				<a href="http://blog.makingdevs.com/tags/geb"><span class="label label-success">geb</span></a>
-			
-		</small>
-		
-	</div>
-</div>
-
-
-	<div class="panel panel-default">
-	<div class="panel-header">
-		<h3>
-			<a href="http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle">Bitacorado de pruebas en Gradle</a>
-			<br>
-			<small>
-				22 January 2016
-			</small>
-		</h3>
-	</div>
-	<div class="panel-body">
-		Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el TestLoggingContainer, del cual pude obtener este fragmento:
-apply plugin: &#39;java&#39; test { testLogging { // set options for log level LIFECYCLE events &quot;failed&quot; exceptionFormat &quot;short&quot; // set options for log level DEBUG debug { events &quot;started&quot;, &quot;skipped&quot;, &quot;failed&quot; exceptionFormat &quot;full&quot; } // remove standard output/error logging from --info builds // by assigning only &#39;failed&#39; and &#39;skipped&#39; events info.
-		
-			... <a href="http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle">Read More</a>
-		
-	</div>
-	<div class="panel-footer">
-		
-		<small class="text-muted">
-			
-			
-				<a href="http://blog.makingdevs.com/tags/groovy"><span class="label label-success">groovy</span></a>
-			
-				<a href="http://blog.makingdevs.com/tags/gradle"><span class="label label-success">gradle</span></a>
 			
 		</small>
 		
