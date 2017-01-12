@@ -12,7 +12,7 @@
     <meta property="og:url" content="http://blog.makingdevs.com/">
     <meta property="og:site_name" content="Blog de Making Devs">
     
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>Blog de Making Devs &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -93,10 +93,7 @@
 		</h3>
 	</div>
 	<div class="panel-body">
-		Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el TestLoggingContainer, del cual pude obtener este fragmento:
-apply plugin: &#39;java&#39; test { testLogging { // set options for log level LIFECYCLE events &quot;failed&quot; exceptionFormat &quot;short&quot; // set options for log level DEBUG debug { events &quot;started&quot;, &quot;skipped&quot;, &quot;failed&quot; exceptionFormat &quot;full&quot; } // remove standard output/error logging from --info builds // by assigning only &#39;failed&#39; and &#39;skipped&#39; events info.
-		
-			... <a href="http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle">Read More</a>
+		Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el TestLoggingContainer, del cual pude obtener este fragmento: apply plugin: &#39;java&#39; test { testLogging { // set options for log level LIFECYCLE events &quot;failed&quot; exceptionFormat &quot;short&quot; // set options for log level DEBUG debug { events &quot;started&quot;, &quot;skipped&quot;, &quot;failed&quot; exceptionFormat &quot;full&quot; } // remove standard output/error logging from --info builds // by assigning only &#39;failed&#39; and &#39;skipped&#39; events info.events = [&quot;failed&quot;, &quot;skipped&quot;] } } En donde pongo todo los tipos de eventos del proyecto que son events &quot;started&quot;, &quot;passed&quot;, &quot;skipped&quot;, &quot;failed&quot; y con ello obtengo una salida como la siguiente: Muy útil cuando no queremos hacer bitácora manual de que pruebas se están corriendo, Gradle ya cuenta con ella.
 		
 	</div>
 	<div class="panel-footer">
@@ -125,9 +122,7 @@ apply plugin: &#39;java&#39; test { testLogging { // set options for log level L
 		</h3>
 	</div>
 	<div class="panel-body">
-		En una de las tareas que realice recientemente, tuve la necesidad de transferir un par de archivos que obtuve de un endpoint(de la cual hablaré en otro post) hacia un Bucket de Amazon S3.
-La solución inmediata fue usar una biblioteca que encontré para Java de nombre jets3t, la cual, provee de un conjunto de herramientas muy simple para operar con Amazon S3, Cloud Front y Google Storage.
-El caso muy puntual que tuve que resolver fue subir un archivo y despúes borrarlo de un bucket muy particular.
+		En una de las tareas que realice recientemente, tuve la necesidad de transferir un par de archivos que obtuve de un endpoint(de la cual hablaré en otro post) hacia un Bucket de Amazon S3. La solución inmediata fue usar una biblioteca que encontré para Java de nombre jets3t, la cual, provee de un conjunto de herramientas muy simple para operar con Amazon S3, Cloud Front y Google Storage. El caso muy puntual que tuve que resolver fue subir un archivo y despúes borrarlo de un bucket muy particular.
 		
 			... <a href="http://blog.makingdevs.com/2015/08/13/amazon-s3-y-groovy">Read More</a>
 		
@@ -149,8 +144,7 @@ El caso muy puntual que tuve que resolver fue subir un archivo y despúes borrar
 		</h3>
 	</div>
 	<div class="panel-body">
-		Libro que al igual que The Pragmatic Programmer: From Journeyman to Master se ganó estar en mis libros de cabecera, y se ha ganado un lugar muy especial en mi librero.
-El escritor, y desarrollador de toda la vida Sandro Mancuso, plasma muy bien la idea que el tiene acerca de lo que todo desarrollador de software, y en mi opinión personal lo que debería buscar todo desarrollador, para cambiar su entorno de trabajo y ayudarnos a todos (porque estamos en el mismo barco) a cambiar la mentalidad de los clientes, de que no somos la clase de persona/profesional que la mayor parte del mundo cree que somos:  Unos micos tirando lineas de código a diestra y siniestra, y haciendo el código lo más ilegible posible para que nada ni nadie pueda entenderlo Unos personajes que se sientan en el cuarto más oscuro del sótano de la empresa y que nadie conoce (usualmente cuentan leyendas de que terror de ellos) Los padrinos mágicos de los clientes que hacen que se cumplan sus deseos y que en un parpadear de ojos ya lo tiene funcionando en producción y libre de defectos Las personas que arreglan los defectos del sistema con su teclado mágico Personas o cosas que transforman café, cerveza o en su defecto bebidas energéticas en líneas de código que pasan por una caja mágica que lo transforma en un sistema para su empresa  Mientras más leía este libro más me iba dando cuenta de que muchas de las cosas que el plasmó las había pasado en algún momento, que otras pocas las estaba pasando y que muchas otras parecían estar a la vuelta de la esquina, como si de un libro de adivinación se tratase.
+		Libro que al igual que The Pragmatic Programmer: From Journeyman to Master se ganó estar en mis libros de cabecera, y se ha ganado un lugar muy especial en mi librero. El escritor, y desarrollador de toda la vida Sandro Mancuso, plasma muy bien la idea que el tiene acerca de lo que todo desarrollador de software, y en mi opinión personal lo que debería buscar todo desarrollador, para cambiar su entorno de trabajo y ayudarnos a todos (porque estamos en el mismo barco) a cambiar la mentalidad de los clientes, de que no somos la clase de persona/profesional que la mayor parte del mundo cree que somos: Unos micos tirando lineas de código a diestra y siniestra, y haciendo el código lo más ilegible posible para que nada ni nadie pueda entenderlo Unos personajes que se sientan en el cuarto más oscuro del sótano de la empresa y que nadie conoce (usualmente cuentan leyendas de que terror de ellos) Los padrinos mágicos de los clientes que hacen que se cumplan sus deseos y que en un parpadear de ojos ya lo tiene funcionando en producción y libre de defectos Las personas que arreglan los defectos del sistema con su teclado mágico Personas o cosas que transforman café, cerveza o en su defecto bebidas energéticas en líneas de código que pasan por una caja mágica que lo transforma en un sistema para su empresa Mientras más leía este libro más me iba dando cuenta de que muchas de las cosas que el plasmó las había pasado en algún momento, que otras pocas las estaba pasando y que muchas otras parecían estar a la vuelta de la esquina, como si de un libro de adivinación se tratase.
 		
 			... <a href="http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism">Read More</a>
 		
@@ -183,8 +177,7 @@ El escritor, y desarrollador de toda la vida Sandro Mancuso, plasma muy bien la 
 		</h3>
 	</div>
 	<div class="panel-body">
-		Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre SpringLoaded.
-Después me di cuenta que frameworks como Dropwizard lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré un artículo en donde explica como ponerlo en acción usando propiamente Dropwizard.
+		Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre SpringLoaded. Después me di cuenta que frameworks como Dropwizard lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré un artículo en donde explica como ponerlo en acción usando propiamente Dropwizard.
 		
 			... <a href="http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle">Read More</a>
 		

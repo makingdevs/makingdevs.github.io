@@ -21,7 +21,7 @@
     
     <meta property="og:tags" content="deploy">
     
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>Capistrano para despliegues de apps Rails &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -110,7 +110,7 @@
 
 <p>Cuando instalas Capistrano, viene consigo un archivo <em>deploy.rb</em> en donde puse lo siguiente:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic"># config valid only for current version of Capistrano</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># config valid only for current version of Capistrano</span>
 lock <span style="color: #BB4444">&#39;3.6.1&#39;</span>
 
 set <span style="color: #B8860B">:application</span>, <span style="color: #BB4444">&#39;barista&#39;</span>
@@ -135,7 +135,7 @@ set <span style="color: #B8860B">:linked_files</span>, fetch(<span style="color:
 
 <p>Adicional a esto, en el mismo archivo tuve que eliminar algunas tareas y crear algunas para el manejo de puma:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #880000">Rake</span><span style="color: #666666">::</span><span style="color: #880000">Task</span><span style="color: #666666">[</span><span style="color: #BB4444">&quot;deploy:assets:precompile&quot;</span><span style="color: #666666">].</span>clear_actions
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #880000">Rake</span><span style="color: #666666">::</span><span style="color: #880000">Task</span><span style="color: #666666">[</span><span style="color: #BB4444">&quot;deploy:assets:precompile&quot;</span><span style="color: #666666">].</span>clear_actions
 <span style="color: #880000">Rake</span><span style="color: #666666">::</span><span style="color: #880000">Task</span><span style="color: #666666">[</span><span style="color: #BB4444">&quot;deploy:assets:backup_manifest&quot;</span><span style="color: #666666">].</span>clear_actions
 
 namespace <span style="color: #B8860B">:puma</span> <span style="color: #AA22FF; font-weight: bold">do</span>
@@ -188,7 +188,7 @@ namespace <span style="color: #B8860B">:deploy</span> <span style="color: #AA22F
 
 <p>Dentro del directorio <em>config/deploy/</em> existen un par de archivos que nos ayudan a definir elementos particulares de la instalación por cada ambiente, lo único que yo hice fue habilitar la máquina a través de autenticación de llave pública con el servidor de despliegue para que se pudieran comunicar por ssh. Y mis archivos quedaron así:</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>set <span style="color: #B8860B">:stage</span>, <span style="color: #B8860B">:production</span>
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">set <span style="color: #B8860B">:stage</span>, <span style="color: #B8860B">:production</span>
 set <span style="color: #B8860B">:puma_bind</span>, <span style="color: #008000">%w(tcp://0.0.0.0:3000)</span>
 set <span style="color: #B8860B">:branch</span>, <span style="color: #BB4444">&#39;production&#39;</span>
 set <span style="color: #B8860B">:deploy_to</span>, <span style="color: #BB4444">&quot;/var/www/</span><span style="color: #BB6688; font-weight: bold">#{</span>fetch(<span style="color: #B8860B">:application</span>)<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BB4444">/production&quot;</span>
@@ -197,7 +197,7 @@ server <span style="color: #BB4444">&#39;powerful.makingdevs.com&#39;</span>, <s
 </pre></div>
 </p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>set <span style="color: #B8860B">:stage</span>, <span style="color: #B8860B">:stage</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">set <span style="color: #B8860B">:stage</span>, <span style="color: #B8860B">:stage</span>
 set <span style="color: #B8860B">:puma_bind</span>, <span style="color: #008000">%w(tcp://0.0.0.0:3001)</span>
 set <span style="color: #B8860B">:branch</span>, <span style="color: #BB4444">&#39;stage&#39;</span>
 set <span style="color: #B8860B">:deploy_to</span>, <span style="color: #BB4444">&quot;/var/www/</span><span style="color: #BB6688; font-weight: bold">#{</span>fetch(<span style="color: #B8860B">:application</span>)<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BB4444">/stage&quot;</span>

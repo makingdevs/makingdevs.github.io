@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog de Making Devs</title>
-    <link>http://blog.makingdevs.com/tags/ecto/index.xml</link>
-    <description>Recent content on Blog de Making Devs</description>
+    <title>Ecto on Blog de Making Devs</title>
+    <link>http://blog.makingdevs.com/tags/ecto/</link>
+    <description>Recent content in Ecto on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Tue, 20 Sep 2016 19:35:08 -0500</lastBuildDate>
     <atom:link href="http://blog.makingdevs.com/tags/ecto/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -22,7 +23,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Project table
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defmodule&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Project&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defmodule&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Project&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
   &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto.Schema&lt;/span&gt;
   &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto.Changeset&lt;/span&gt;
 
@@ -44,7 +45,7 @@
 &lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Task table
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defmodule&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Task&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defmodule&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Task&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
   &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto.Schema&lt;/span&gt;
 
   &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto.Changeset&lt;/span&gt;
@@ -72,7 +73,7 @@
 
 &lt;p&gt;So we are going to create a module for handling this&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defmodule&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.App&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;  &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defmodule&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.App&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
 
     &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;Ecto&lt;/span&gt;
     &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;alias&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;EctoTransactions.Repo&lt;/span&gt;
@@ -117,7 +118,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;Passing good options
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;iex(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; project_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;}
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;iex(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; project_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;}
 %{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Explain ecto transactions&amp;quot;&lt;/span&gt;}
 iex(&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; task_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Should create task for example&amp;quot;&lt;/span&gt;}
 %{&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Should create task for example&amp;quot;&lt;/span&gt;}
@@ -144,7 +145,7 @@ commit []
 &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;ecto_simple&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;from&lt;/span&gt; projects; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;from&lt;/span&gt; tasks;
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;ecto_simple&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;from&lt;/span&gt; projects; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;from&lt;/span&gt; tasks;
 &lt;span style=&#34;color: #888888&#34;&gt;+------+---------------------------+---------------------+---------------------+&lt;/span&gt;
 &lt;span style=&#34;color: #888888&#34;&gt;|   id | name                      | inserted_at         | updated_at          |&lt;/span&gt;
 &lt;span style=&#34;color: #888888&#34;&gt;|------+---------------------------+---------------------+---------------------|&lt;/span&gt;
@@ -163,7 +164,7 @@ commit []
 
 &lt;p&gt;And for bad data we can obtain next results:&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;iex(&lt;span style=&#34;color: #666666&#34;&gt;4&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; project_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;}
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;iex(&lt;span style=&#34;color: #666666&#34;&gt;4&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; project_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;}
 %{&lt;span style=&#34;color: #B8860B&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;}
 iex(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; task_params &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; %{&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: &lt;span style=&#34;color: #880000&#34;&gt;nil&lt;/span&gt;}
 %{&lt;span style=&#34;color: #B8860B&#34;&gt;description&lt;/span&gt;: &lt;span style=&#34;color: #880000&#34;&gt;nil&lt;/span&gt;}

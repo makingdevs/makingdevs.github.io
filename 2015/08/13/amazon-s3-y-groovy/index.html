@@ -13,7 +13,7 @@
     <meta property="og:url" content="http://blog.makingdevs.com/2015/08/13/amazon-s3-y-groovy">
     <meta property="og:site_name" content="Blog de Making Devs">
     
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>Amazon S3 y Groovy &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -98,7 +98,7 @@
 
 <!-- more -->
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@Grapes</span><span style="color: #666666">(</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">@Grapes</span><span style="color: #666666">(</span>
     <span style="color: #AA22FF">@Grab</span><span style="color: #666666">(</span>group<span style="color: #666666">=</span><span style="color: #BB4444">&#39;net.java.dev.jets3t&#39;</span><span style="color: #666666">,</span> module<span style="color: #666666">=</span><span style="color: #BB4444">&#39;jets3t&#39;</span><span style="color: #666666">,</span> version<span style="color: #666666">=</span><span style="color: #BB4444">&#39;0.9.3&#39;</span><span style="color: #666666">)</span>
 <span style="color: #666666">)</span>
 
@@ -120,7 +120,7 @@ S3Bucket<span style="color: #666666">[]</span> myBuckets <span style="color: #66
 
 <p>Despúes, una vez con todos los buckets, podemos listar los archivos contenidos dentro de bucket muy particular.</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>String bucletName <span style="color: #666666">=</span> <span style="color: #BB4444">&quot;makingdevs-bucket&quot;</span>
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">String bucletName <span style="color: #666666">=</span> <span style="color: #BB4444">&quot;makingdevs-bucket&quot;</span>
 
 bucket <span style="color: #666666">=</span> myBuckets<span style="color: #666666">.</span><span style="color: #BB4444">find</span> <span style="color: #666666">{</span> it<span style="color: #666666">.</span><span style="color: #BB4444">name</span><span style="color: #666666">==</span>bucketName <span style="color: #666666">}</span>
 
@@ -130,7 +130,7 @@ s3Objects <span style="color: #666666">=</span> s3Service<span style="color: #66
 
 <p>Finalmente, podemos subir un archivo específico hacia el bucket que deseamos.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>file <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> File<span style="color: #666666">(</span><span style="color: #BB4444">&quot;/some/file/in/your/filesystem.ext&quot;</span><span style="color: #666666">)</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">file <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> File<span style="color: #666666">(</span><span style="color: #BB4444">&quot;/some/file/in/your/filesystem.ext&quot;</span><span style="color: #666666">)</span>
 
 S3Object s3Object <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> S3Object<span style="color: #666666">()</span>
 s3Object<span style="color: #666666">.</span><span style="color: #BB4444">with</span> <span style="color: #666666">{</span>

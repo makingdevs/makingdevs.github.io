@@ -13,7 +13,7 @@
     <meta property="og:url" content="http://blog.makingdevs.com/2014/08/19/introduccion-a-ratpack">
     <meta property="og:site_name" content="Blog de Making Devs">
     
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>Introduccion a Ratpack &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -93,7 +93,7 @@
 		<p>Es bueno estar de vuelta escribiendo, ya ha pasado bastante tiempo desde que hice un post así que vamos a ver algo que me ayudó en un curso. El día de hoy hablaremos de Ratpack y para ello primero vamos a dar una pequeña introducción de lo que es. Ratpack, como su página lo dice, es un conjunto de librerías de JAVA que facilita la rapidez, eficiencia, evolución y pruebas de aplicaciones HTTP, está construida sobre Netty y por ello posee muchos de los beneficios del motor del mismo. Ratpack se enfoca en permitir applicaciones HTTP para ser eficientes, modulares y adaptativas a los nuevos requerimientos, tecnologías y buenas pruebas sobre el tiempo. Bueno vamos a dejar de momento las definiciones y vamos a lo bonito, el código.
 <!-- more -->
 Para este post vamos a hacer uso de gvm y de lazybones, para ello procederemos a instalar <a href="http://gvmtool.net/" title="gvm">gvm</a> Una vez listo procedemos a ejecutar el siguiente comando :
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>gvm install lazybones
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">gvm install lazybones
 </pre></div>
 </p>
 
@@ -147,20 +147,20 @@ Para este post vamos a hacer uso de gvm y de lazybones, para ello procederemos a
 
 <p>El primero es un archivo de gradle (para los que no lo han manejado o conocen de él pueden revisar el siguiente <a href="http://www.gradle.org/documentation">link</a> pero a grandes rasgos gradle vendría siendo lo mismo que Maven pero con drogas XD. El segundo archivo es donde usualmente sucede la magia ya que es donde se resuelven las urls y se hace todo el show necesario. Y el tercer archivo no es más que una plantilla html que se visualiza a través del segundo archivo. Con los arvhivos que vamos a estar trabajando de momento son <strong>index.html</strong> y <strong>Ratpack.groovy</strong>. En el tag body del html dejamos lo siguiente:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>&lt;<span style="color: #008000; font-weight: bold">body</span>&gt;
-  &lt;<span style="color: #008000; font-weight: bold">section</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">h1</span>&gt;${model.title}&lt;/<span style="color: #008000; font-weight: bold">h1</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">p</span>&gt;This is the main page of your contacts&lt;/<span style="color: #008000; font-weight: bold">p</span>&gt;
-  &lt;/<span style="color: #008000; font-weight: bold">section</span>&gt;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;body&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;section&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;h1&gt;</span>${model.title}<span style="color: #008000; font-weight: bold">&lt;/h1&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;p&gt;</span>This is the main page of your contacts<span style="color: #008000; font-weight: bold">&lt;/p&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;/section&gt;</span>
 
-  &lt;<span style="color: #008000; font-weight: bold">footer</span> <span style="color: #BB4444">class</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;site-footer&quot;</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">footer</span>&gt;
-&lt;/<span style="color: #008000; font-weight: bold">body</span>&gt;
+  <span style="color: #008000; font-weight: bold">&lt;footer</span> <span style="color: #BB4444">class=&quot;site-footer&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/footer&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/body&gt;</span>
 </pre></div>
 
 
 <p>Y en el <strong>Ratpack.groovy</strong> dejamos lo siguiente:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">static</span> ratpack<span style="color: #666666">.</span><span style="color: #BB4444">groovy</span><span style="color: #666666">.</span><span style="color: #BB4444">Groovy</span><span style="color: #666666">.</span><span style="color: #BB4444">groovyTemplate</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">static</span> ratpack<span style="color: #666666">.</span><span style="color: #BB4444">groovy</span><span style="color: #666666">.</span><span style="color: #BB4444">Groovy</span><span style="color: #666666">.</span><span style="color: #BB4444">groovyTemplate</span>
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">static</span> ratpack<span style="color: #666666">.</span><span style="color: #BB4444">groovy</span><span style="color: #666666">.</span><span style="color: #BB4444">Groovy</span><span style="color: #666666">.</span><span style="color: #BB4444">ratpack</span>
 
 ratpack <span style="color: #666666">{</span>
@@ -177,26 +177,26 @@ ratpack <span style="color: #666666">{</span>
 
 <p>Recargamos la página y vemos el cambio. Ahora vamos a añadir un form para poder agregar a un elemento a la lista de contactos. Para ello agregamos un link a nuestro <em>index.html</em></p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  &lt;<span style="color: #008000; font-weight: bold">body</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">section</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">h1</span>&gt;${model.title}&lt;/<span style="color: #008000; font-weight: bold">h1</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">p</span>&gt;This is the main page of your contacts&lt;/<span style="color: #008000; font-weight: bold">p</span>&gt;
-    &lt;/<span style="color: #008000; font-weight: bold">section</span>&gt;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  <span style="color: #008000; font-weight: bold">&lt;body&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;section&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;h1&gt;</span>${model.title}<span style="color: #008000; font-weight: bold">&lt;/h1&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;p&gt;</span>This is the main page of your contacts<span style="color: #008000; font-weight: bold">&lt;/p&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/section&gt;</span>
 
-    &lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;create&quot;</span>&gt;Create contact&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #BB4444">href=&quot;create&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Create contact<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span>
 
-    &lt;<span style="color: #008000; font-weight: bold">footer</span> <span style="color: #BB4444">class</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;site-footer&quot;</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">footer</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;footer</span> <span style="color: #BB4444">class=&quot;site-footer&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/footer&gt;</span>
 
     <span style="color: #008800; font-style: italic">&lt;!-- build:js scripts/jquery.js --&gt;</span>
-    &lt;<span style="color: #008000; font-weight: bold">script</span> <span style="color: #BB4444">src</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;lib/jquery/jquery.min.js&quot;</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">script</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;script </span><span style="color: #BB4444">src=&quot;lib/jquery/jquery.min.js&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span>
     <span style="color: #008800; font-style: italic">&lt;!-- endbuild --&gt;</span>
-  &lt;/<span style="color: #008000; font-weight: bold">body</span>&gt;
+  <span style="color: #008000; font-weight: bold">&lt;/body&gt;</span>
 </pre></div>
 
 
 <p>Ahora para visualizar la nueva página le agregamos al archivo <strong>Ratpack.groovy</strong> lo siguiente :</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>get<span style="color: #666666">(</span><span style="color: #BB4444">&#39;contacts/new&#39;</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">get<span style="color: #666666">(</span><span style="color: #BB4444">&#39;contacts/new&#39;</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
   render <span style="color: #00A000">groovyTemplate</span><span style="color: #666666">(</span><span style="color: #BB4444">&quot;contacts/new.html&quot;</span><span style="color: #666666">,</span> <span style="color: #A0A000">title:</span> <span style="color: #BB4444">&quot;New contact&quot;</span><span style="color: #666666">)</span>
 <span style="color: #666666">}</span>
 </pre></div>
@@ -204,29 +204,29 @@ ratpack <span style="color: #666666">{</span>
 
 <p>Y dentro de la carpeta de templates creamos una carpeta llamada contacts y dentro de ella agregamos un archivo llamado <strong>new.html</strong></p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800">&lt;!doctype html&gt;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800">&lt;!doctype html&gt;</span>
   <span style="color: #008800; font-style: italic">&lt;!--[if lt IE 7]&gt;      &lt;html class=&quot;no-js lt-ie9 lt-ie8 lt-ie7&quot;&gt; &lt;![endif]--&gt;</span>
   <span style="color: #008800; font-style: italic">&lt;!--[if IE 7]&gt;         &lt;html class=&quot;no-js lt-ie9 lt-ie8&quot;&gt; &lt;![endif]--&gt;</span>
   <span style="color: #008800; font-style: italic">&lt;!--[if IE 8]&gt;         &lt;html class=&quot;no-js lt-ie9&quot;&gt; &lt;![endif]--&gt;</span>
-  <span style="color: #008800; font-style: italic">&lt;!--[if gt IE 8]&gt;&lt;!--&gt;</span> &lt;<span style="color: #008000; font-weight: bold">html</span> <span style="color: #BB4444">class</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;no-js&quot;</span>&gt; <span style="color: #008800; font-style: italic">&lt;!--&lt;![endif]--&gt;</span>
-  &lt;<span style="color: #008000; font-weight: bold">head</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">meta</span> <span style="color: #BB4444">charset</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;utf-8&quot;</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">meta</span> <span style="color: #BB4444">http-equiv</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;X-UA-Compatible&quot;</span> <span style="color: #BB4444">content</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;IE=edge,chrome=1&quot;</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">title</span>&gt;Ratpack: ${model.title}&lt;/<span style="color: #008000; font-weight: bold">title</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">meta</span> <span style="color: #BB4444">name</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;description&quot;</span> <span style="color: #BB4444">content</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;&quot;</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">meta</span> <span style="color: #BB4444">name</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;viewport&quot;</span> <span style="color: #BB4444">content</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;width=device-width&quot;</span>&gt;
-  &lt;/<span style="color: #008000; font-weight: bold">head</span>&gt;
+  <span style="color: #008800; font-style: italic">&lt;!--[if gt IE 8]&gt;&lt;!--&gt;</span> <span style="color: #008000; font-weight: bold">&lt;html</span> <span style="color: #BB4444">class=&quot;no-js&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span> <span style="color: #008800; font-style: italic">&lt;!--&lt;![endif]--&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;head&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;meta</span> <span style="color: #BB4444">charset=&quot;utf-8&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;meta</span> <span style="color: #BB4444">http-equiv=&quot;X-UA-Compatible&quot;</span> <span style="color: #BB4444">content=&quot;IE=edge,chrome=1&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;title&gt;</span>Ratpack: ${model.title}<span style="color: #008000; font-weight: bold">&lt;/title&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;meta</span> <span style="color: #BB4444">name=&quot;description&quot;</span> <span style="color: #BB4444">content=&quot;&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;meta</span> <span style="color: #BB4444">name=&quot;viewport&quot;</span> <span style="color: #BB4444">content=&quot;width=device-width&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;/head&gt;</span>
 
-  &lt;<span style="color: #008000; font-weight: bold">body</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">section</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">h1</span>&gt;${model.title}&lt;/<span style="color: #008000; font-weight: bold">h1</span>&gt;
-    &lt;/<span style="color: #008000; font-weight: bold">section</span>&gt;
+  <span style="color: #008000; font-weight: bold">&lt;body&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;section&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;h1&gt;</span>${model.title}<span style="color: #008000; font-weight: bold">&lt;/h1&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/section&gt;</span>
 
-    &lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;/&quot;</span>&gt;Home&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #BB4444">href=&quot;/&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Home<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span>
 
-    &lt;<span style="color: #008000; font-weight: bold">footer</span> <span style="color: #BB4444">class</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;site-footer&quot;</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">footer</span>&gt;
-  &lt;/<span style="color: #008000; font-weight: bold">body</span>&gt;
-&lt;/<span style="color: #008000; font-weight: bold">html</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;footer</span> <span style="color: #BB4444">class=&quot;site-footer&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/footer&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;/body&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/html&gt;</span>
 </pre></div>
 
 
@@ -242,50 +242,50 @@ ratpack <span style="color: #666666">{</span>
 
 <p>Para ello vamos a hacer un formulario común y silvestre en el html:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  &lt;<span style="color: #008000; font-weight: bold">body</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">section</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">h1</span>&gt;${model.title}&lt;/<span style="color: #008000; font-weight: bold">h1</span>&gt;
-    &lt;/<span style="color: #008000; font-weight: bold">section</span>&gt;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  <span style="color: #008000; font-weight: bold">&lt;body&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;section&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;h1&gt;</span>${model.title}<span style="color: #008000; font-weight: bold">&lt;/h1&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/section&gt;</span>
 
-    &lt;<span style="color: #008000; font-weight: bold">form</span> <span style="color: #BB4444">action</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;/contacts&quot;</span> <span style="color: #BB4444">method</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;post&quot;</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;name&quot;</span>/&gt;Name&lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">input</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;text&quot;</span> <span style="color: #BB4444">name</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;name&quot;</span> /&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;form</span> <span style="color: #BB4444">action=&quot;/contacts&quot;</span> <span style="color: #BB4444">method=&quot;post&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;name&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Name<span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">name=&quot;name&quot;</span> <span style="color: #008000; font-weight: bold">/&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-      &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;lastName&quot;</span>/&gt;Last name&lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">input</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;text&quot;</span> <span style="color: #BB4444">name</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;lastName&quot;</span> /&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+      <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;lastName&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Last name<span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">name=&quot;lastName&quot;</span> <span style="color: #008000; font-weight: bold">/&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-      &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;email&quot;</span>/&gt;Email&lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">input</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;text&quot;</span> <span style="color: #BB4444">name</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;email&quot;</span> /&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+      <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;email&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Email<span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">name=&quot;email&quot;</span> <span style="color: #008000; font-weight: bold">/&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-      &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;nickname&quot;</span>/&gt;Nickname&lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">input</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;text&quot;</span> <span style="color: #BB4444">name</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;nickname&quot;</span> /&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+      <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;nickname&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Nickname<span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">name=&quot;nickname&quot;</span> <span style="color: #008000; font-weight: bold">/&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-      &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;phone&quot;</span>/&gt;Phone&lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">input</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;text&quot;</span> <span style="color: #BB4444">name</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;phone&quot;</span> /&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+      <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;phone&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Phone<span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">name=&quot;phone&quot;</span> <span style="color: #008000; font-weight: bold">/&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-      &lt;<span style="color: #008000; font-weight: bold">button</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;submit&quot;</span>&gt; Create &lt;/<span style="color: #008000; font-weight: bold">button</span>&gt;
-    &lt;/<span style="color: #008000; font-weight: bold">form</span>&gt;
+      <span style="color: #008000; font-weight: bold">&lt;button</span> <span style="color: #BB4444">type=&quot;submit&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span> Create <span style="color: #008000; font-weight: bold">&lt;/button&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/form&gt;</span>
 
-    &lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;/&quot;</span>&gt;Home&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #BB4444">href=&quot;/&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Home<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span>
 
-    &lt;<span style="color: #008000; font-weight: bold">footer</span> <span style="color: #BB4444">class</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;site-footer&quot;</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">footer</span>&gt;
-  &lt;/<span style="color: #008000; font-weight: bold">body</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;footer</span> <span style="color: #BB4444">class=&quot;site-footer&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/footer&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;/body&gt;</span>
 </pre></div>
 
 
 <p>Una vez que tenemos eso lo demás es cuestión de recibirlo y procesarlo para ello hacemos uso del handler post con el path al que va a responder y vamos a agregarlo a una variable global (esto es para efectos de ejemplo no intenten esto en casa o sus trabajos XD)</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>ratpack <span style="color: #666666">{</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ratpack <span style="color: #666666">{</span>
   <span style="color: #00BB00; font-weight: bold">def</span> contacts <span style="color: #666666">=</span> <span style="color: #666666">[]</span>
 
   handlers <span style="color: #666666">{</span>
@@ -318,7 +318,7 @@ ratpack <span style="color: #666666">{</span>
 
 <p>Como podrán observar mediante el <code>context.parse(Form)</code> obtenemos los datos enviados en la petición y de esa manera podemos acceder a los datos enviados como si fuera un mapa de groovy. Al final de la petición hacemos un redirect para ver los datos que se han creado con esa petición, pero de momento esto no funciona así que vamos a agregar un nuevo handler con algo que se le llama <em>pathTokens</em> y para ello agregamos lo siguiente:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  get<span style="color: #666666">(</span><span style="color: #BB4444">&#39;contacts/:id&#39;</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  get<span style="color: #666666">(</span><span style="color: #BB4444">&#39;contacts/:id&#39;</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
     <span style="color: #00BB00; font-weight: bold">def</span> id <span style="color: #666666">=</span> pathTokens<span style="color: #666666">.</span><span style="color: #BB4444">asLong</span><span style="color: #666666">(</span><span style="color: #BB4444">&#39;id&#39;</span><span style="color: #666666">)</span>
     <span style="color: #00BB00; font-weight: bold">def</span> contact <span style="color: #666666">=</span> contacts<span style="color: #666666">.</span><span style="color: #BB4444">find</span> <span style="color: #666666">{</span>
       it<span style="color: #666666">.</span><span style="color: #BB4444">id</span> <span style="color: #666666">==</span> id
@@ -330,56 +330,56 @@ ratpack <span style="color: #666666">{</span>
 
 <p>Así mismo agregamos la página que va a visualizar los datos del contacto dentro de la carpeta <em>contacts</em>:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>&lt;<span style="color: #008000; font-weight: bold">html</span>&gt;
-  &lt;<span style="color: #008000; font-weight: bold">head</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">title</span>&gt;Ratpack: Show contact&lt;/<span style="color: #008000; font-weight: bold">title</span>&gt;
-  &lt;/<span style="color: #008000; font-weight: bold">head</span>&gt;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;html&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;head&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;title&gt;</span>Ratpack: Show contact<span style="color: #008000; font-weight: bold">&lt;/title&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;/head&gt;</span>
 
-  &lt;<span style="color: #008000; font-weight: bold">body</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">section</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">h1</span>&gt;Show contact&lt;/<span style="color: #008000; font-weight: bold">h1</span>&gt;
-    &lt;/<span style="color: #008000; font-weight: bold">section</span>&gt;
+  <span style="color: #008000; font-weight: bold">&lt;body&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;section&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;h1&gt;</span>Show contact<span style="color: #008000; font-weight: bold">&lt;/h1&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/section&gt;</span>
 
-    &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;name&quot;</span>/&gt;Name : &lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">span</span>&gt;&lt;<span style="color: #008000; font-weight: bold">strong</span>&gt; ${model.contact.name} &lt;/<span style="color: #008000; font-weight: bold">strong</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">span</span>&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;name&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Name : <span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;span&gt;&lt;strong&gt;</span> ${model.contact.name} <span style="color: #008000; font-weight: bold">&lt;/strong&gt;&lt;/span&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-      &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;lastName&quot;</span>/&gt;Last name : &lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">span</span>&gt;&lt;<span style="color: #008000; font-weight: bold">strong</span>&gt; ${model.contact.lastName} &lt;/<span style="color: #008000; font-weight: bold">strong</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">span</span>&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+      <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;lastName&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Last name : <span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;span&gt;&lt;strong&gt;</span> ${model.contact.lastName} <span style="color: #008000; font-weight: bold">&lt;/strong&gt;&lt;/span&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-      &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;email&quot;</span>/&gt;Email : &lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">span</span>&gt;&lt;<span style="color: #008000; font-weight: bold">strong</span>&gt; ${model.contact.email} &lt;/<span style="color: #008000; font-weight: bold">strong</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">span</span>&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+      <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;email&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Email : <span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;span&gt;&lt;strong&gt;</span> ${model.contact.email} <span style="color: #008000; font-weight: bold">&lt;/strong&gt;&lt;/span&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-      &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;nickname&quot;</span>/&gt;Nickname : &lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">span</span>&gt;&lt;<span style="color: #008000; font-weight: bold">strong</span>&gt; ${model.contact.nickname} &lt;/<span style="color: #008000; font-weight: bold">strong</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">span</span>&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+      <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;nickname&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Nickname : <span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;span&gt;&lt;strong&gt;</span> ${model.contact.nickname} <span style="color: #008000; font-weight: bold">&lt;/strong&gt;&lt;/span&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-      &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;phone&quot;</span>/&gt;Phone : &lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">span</span>&gt;&lt;<span style="color: #008000; font-weight: bold">strong</span>&gt; ${model.contact.phone} &lt;/<span style="color: #008000; font-weight: bold">strong</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">span</span>&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
-    &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+      <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;phone&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Phone : <span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;span&gt;&lt;strong&gt;</span> ${model.contact.phone} <span style="color: #008000; font-weight: bold">&lt;/strong&gt;&lt;/span&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-    &lt;<span style="color: #008000; font-weight: bold">ul</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">li</span>&gt; &lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;/&quot;</span>&gt;Home&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt; &lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">li</span>&gt; &lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;contacts/new&quot;</span>&gt;New contact&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt; &lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
-    &lt;/<span style="color: #008000; font-weight: bold">ul</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;ul&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;li&gt;</span> <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #BB4444">href=&quot;/&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Home<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span> <span style="color: #008000; font-weight: bold">&lt;/li&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;li&gt;</span> <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #BB4444">href=&quot;contacts/new&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>New contact<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span> <span style="color: #008000; font-weight: bold">&lt;/li&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/ul&gt;</span>
 
-  &lt;/<span style="color: #008000; font-weight: bold">body</span>&gt;
-&lt;/<span style="color: #008000; font-weight: bold">html</span>&gt;
+  <span style="color: #008000; font-weight: bold">&lt;/body&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/html&gt;</span>
 </pre></div>
 
 
 <p>Ahora vamos a visualizar nuestra lista de contactos y para ello agregaremos un nuevo <em>handler</em> y un nuevo elemento llamado <em>byMethod</em>:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  handler<span style="color: #666666">(</span><span style="color: #BB4444">&quot;contacts&quot;</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  handler<span style="color: #666666">(</span><span style="color: #BB4444">&quot;contacts&quot;</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
     byMethod <span style="color: #666666">{</span>
       get <span style="color: #666666">{</span>
         render <span style="color: #00A000">groovyTemplate</span><span style="color: #666666">(</span><span style="color: #BB4444">&quot;contacts/list.html&quot;</span><span style="color: #666666">,</span> <span style="color: #A0A000">contacts:</span> contacts<span style="color: #666666">)</span>
@@ -404,56 +404,56 @@ ratpack <span style="color: #666666">{</span>
 
 <p>Lo que hará el <em>handler</em> es manejar la url &ldquo;contacts&rdquo; y delegarla por al método por el cual se haya realizado la petición en el caso de GET visualizará la lista de contactos pero si es por POST agregará los datos del contacto y después de agregarse se visualizará la información de dicho contacto. También agregaremos un link a la lista de contactos para poder visualizar cada uno de los datos de manera individual esto es por si se tiene información extra que no se muestre en el detalle general de la lista de contactos.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>&lt;<span style="color: #008000; font-weight: bold">html</span>&gt;
-  &lt;<span style="color: #008000; font-weight: bold">head</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">title</span>&gt;Ratpack: Contact list&lt;/<span style="color: #008000; font-weight: bold">title</span>&gt;
-  &lt;/<span style="color: #008000; font-weight: bold">head</span>&gt;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;html&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;head&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;title&gt;</span>Ratpack: Contact list<span style="color: #008000; font-weight: bold">&lt;/title&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;/head&gt;</span>
 
-  &lt;<span style="color: #008000; font-weight: bold">body</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">section</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">h1</span>&gt;Contact list&lt;/<span style="color: #008000; font-weight: bold">h1</span>&gt;
-    &lt;/<span style="color: #008000; font-weight: bold">section</span>&gt;
+  <span style="color: #008000; font-weight: bold">&lt;body&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;section&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;h1&gt;</span>Contact list<span style="color: #008000; font-weight: bold">&lt;/h1&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/section&gt;</span>
 
-    &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">table</span> <span style="color: #BB4444">border</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;1&quot;</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">thead</span>&gt;
-          &lt;<span style="color: #008000; font-weight: bold">tr</span>&gt;
-            &lt;<span style="color: #008000; font-weight: bold">th</span>&gt;Name&lt;/<span style="color: #008000; font-weight: bold">th</span>&gt;
-            &lt;<span style="color: #008000; font-weight: bold">th</span>&gt;Last name&lt;/<span style="color: #008000; font-weight: bold">th</span>&gt;
-            &lt;<span style="color: #008000; font-weight: bold">th</span>&gt;Phone&lt;/<span style="color: #008000; font-weight: bold">th</span>&gt;
-            &lt;<span style="color: #008000; font-weight: bold">th</span>&gt;Email&lt;/<span style="color: #008000; font-weight: bold">th</span>&gt;
-            &lt;<span style="color: #008000; font-weight: bold">th</span>&gt;Nickname&lt;/<span style="color: #008000; font-weight: bold">th</span>&gt;
-            &lt;<span style="color: #008000; font-weight: bold">th</span>&gt;Show&lt;/<span style="color: #008000; font-weight: bold">th</span>&gt;
-          &lt;/<span style="color: #008000; font-weight: bold">tr</span>&gt;
-        &lt;/<span style="color: #008000; font-weight: bold">thead</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">tbody</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;table</span> <span style="color: #BB4444">border=&quot;1&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;thead&gt;</span>
+          <span style="color: #008000; font-weight: bold">&lt;tr&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;th&gt;</span>Name<span style="color: #008000; font-weight: bold">&lt;/th&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;th&gt;</span>Last name<span style="color: #008000; font-weight: bold">&lt;/th&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;th&gt;</span>Phone<span style="color: #008000; font-weight: bold">&lt;/th&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;th&gt;</span>Email<span style="color: #008000; font-weight: bold">&lt;/th&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;th&gt;</span>Nickname<span style="color: #008000; font-weight: bold">&lt;/th&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;th&gt;</span>Show<span style="color: #008000; font-weight: bold">&lt;/th&gt;</span>
+          <span style="color: #008000; font-weight: bold">&lt;/tr&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/thead&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;tbody&gt;</span>
           <span style="border: 1px solid #FF0000">&lt;</span>% model.contacts.each { %&gt;
-            &lt;<span style="color: #008000; font-weight: bold">tr</span>&gt;
-              &lt;<span style="color: #008000; font-weight: bold">td</span>&gt;${it.name}&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
-              &lt;<span style="color: #008000; font-weight: bold">td</span>&gt;${it.lastName}&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
-              &lt;<span style="color: #008000; font-weight: bold">td</span>&gt;${it.phone}&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
-              &lt;<span style="color: #008000; font-weight: bold">td</span>&gt;${it.email}&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
-              &lt;<span style="color: #008000; font-weight: bold">td</span>&gt;${it.nickname}&lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
-              &lt;<span style="color: #008000; font-weight: bold">td</span>&gt; &lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;/contacts/${it.id}&quot;</span>&gt;Show&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt; &lt;/<span style="color: #008000; font-weight: bold">td</span>&gt;
-            &lt;/<span style="color: #008000; font-weight: bold">tr</span>&gt;
+            <span style="color: #008000; font-weight: bold">&lt;tr&gt;</span>
+              <span style="color: #008000; font-weight: bold">&lt;td&gt;</span>${it.name}<span style="color: #008000; font-weight: bold">&lt;/td&gt;</span>
+              <span style="color: #008000; font-weight: bold">&lt;td&gt;</span>${it.lastName}<span style="color: #008000; font-weight: bold">&lt;/td&gt;</span>
+              <span style="color: #008000; font-weight: bold">&lt;td&gt;</span>${it.phone}<span style="color: #008000; font-weight: bold">&lt;/td&gt;</span>
+              <span style="color: #008000; font-weight: bold">&lt;td&gt;</span>${it.email}<span style="color: #008000; font-weight: bold">&lt;/td&gt;</span>
+              <span style="color: #008000; font-weight: bold">&lt;td&gt;</span>${it.nickname}<span style="color: #008000; font-weight: bold">&lt;/td&gt;</span>
+              <span style="color: #008000; font-weight: bold">&lt;td&gt;</span> <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #BB4444">href=&quot;/contacts/${it.id}&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Show<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span> <span style="color: #008000; font-weight: bold">&lt;/td&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;/tr&gt;</span>
           <span style="border: 1px solid #FF0000">&lt;</span>% } %&gt;
-        &lt;/<span style="color: #008000; font-weight: bold">tbody</span>&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">table</span>&gt;
-    &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+        <span style="color: #008000; font-weight: bold">&lt;/tbody&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/table&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-    &lt;<span style="color: #008000; font-weight: bold">ul</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">li</span>&gt; &lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;/&quot;</span>&gt;Home&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt; &lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">li</span>&gt; &lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;contacts/new&quot;</span>&gt;New contact&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt; &lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
-    &lt;/<span style="color: #008000; font-weight: bold">ul</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;ul&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;li&gt;</span> <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #BB4444">href=&quot;/&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Home<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span> <span style="color: #008000; font-weight: bold">&lt;/li&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;li&gt;</span> <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #BB4444">href=&quot;contacts/new&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>New contact<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span> <span style="color: #008000; font-weight: bold">&lt;/li&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/ul&gt;</span>
 
-  &lt;/<span style="color: #008000; font-weight: bold">body</span>&gt;
-&lt;/<span style="color: #008000; font-weight: bold">html</span>&gt;
+  <span style="color: #008000; font-weight: bold">&lt;/body&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/html&gt;</span>
 </pre></div>
 
 
 <p>Ya nos falta poco para poder tener un <em>CRUD</em> completo, solo nos falta eliminar y actualizar (casi nada XD). Así que para ello vamos a agregar un <em>handler</em> más y anidar un <em>byMethod</em> como lo hicimos con el POST de <em>contacts</em>. Para ello hacemos lo siguiente:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  handler<span style="color: #666666">(</span><span style="color: #BB4444">&quot;contacts/:id&quot;</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  handler<span style="color: #666666">(</span><span style="color: #BB4444">&quot;contacts/:id&quot;</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
     byMethod <span style="color: #666666">{</span>
       get <span style="color: #666666">{</span>
         <span style="color: #00BB00; font-weight: bold">def</span> id <span style="color: #666666">=</span> pathTokens<span style="color: #666666">.</span><span style="color: #BB4444">asLong</span><span style="color: #666666">(</span><span style="color: #BB4444">&#39;id&#39;</span><span style="color: #666666">)</span>
@@ -481,14 +481,14 @@ ratpack <span style="color: #666666">{</span>
 
 <p>Una vez hecho procedemos a incluir el script en la app en la lista de contactos y agregamos un archivo más que es el que se encargará de eliminar el elemento.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  &lt;<span style="color: #008000; font-weight: bold">script</span> <span style="color: #BB4444">src</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;lib/bower_components/jquery/dist/jquery.js&quot;</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">script</span>&gt;
-  &lt;<span style="color: #008000; font-weight: bold">script</span> <span style="color: #BB4444">src</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;scripts/delete.js&quot;</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">script</span>&gt;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  <span style="color: #008000; font-weight: bold">&lt;script </span><span style="color: #BB4444">src=&quot;lib/bower_components/jquery/dist/jquery.js&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;script </span><span style="color: #BB4444">src=&quot;scripts/delete.js&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span>
 </pre></div>
 
 
 <p>El código de eliminar es relativamente sencillo ya que lo que vamos a hacer es que cada elemento con la clase delete vamos a añadir el evento click y vamos a realizar la llamada al server con los datos del href.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  $(<span style="color: #AA22FF; font-weight: bold">function</span>() {
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  $(<span style="color: #AA22FF; font-weight: bold">function</span>() {
     $(<span style="color: #BB4444">&quot;.delete&quot;</span>).click(<span style="color: #AA22FF; font-weight: bold">function</span>(event) {
       event.preventDefault();
       <span style="color: #AA22FF; font-weight: bold">var</span> url <span style="color: #666666">=</span> $(event.target).attr(<span style="color: #BB4444">&#39;href&#39;</span>);
@@ -505,7 +505,7 @@ ratpack <span style="color: #666666">{</span>
 
 <p>Una vez realizado esto podremos ver como nuestros datos cambian al eliminar un elemento de la lista de contactos. Veamos ahora como editar un elemento. Para la edición vamos a hacerlo de la manera más fácil que podamos esto es agregaremos en el <em>byMethod</em> anterior el método POST, agregamos otro GET más para visualizar la pantalla de edición y actualizaremos los datos de ese elemento, para ello requerimos crear una pantalla nueva y agregarla a la navegación:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  get<span style="color: #666666">(</span><span style="color: #BB4444">&quot;contacts/:id/edit&quot;</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  get<span style="color: #666666">(</span><span style="color: #BB4444">&quot;contacts/:id/edit&quot;</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
     <span style="color: #00BB00; font-weight: bold">def</span> id <span style="color: #666666">=</span> pathTokens<span style="color: #666666">.</span><span style="color: #BB4444">asLong</span><span style="color: #666666">(</span><span style="color: #BB4444">&#39;id&#39;</span><span style="color: #666666">)</span>
     <span style="color: #00BB00; font-weight: bold">def</span> contact <span style="color: #666666">=</span> contacts<span style="color: #666666">.</span><span style="color: #BB4444">find</span> <span style="color: #666666">{</span>
       it<span style="color: #666666">.</span><span style="color: #BB4444">id</span> <span style="color: #666666">==</span> id
@@ -535,56 +535,56 @@ ratpack <span style="color: #666666">{</span>
 </pre></div>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>  <span style="color: #008800">&lt;!doctype html&gt;</span>
-  &lt;<span style="color: #008000; font-weight: bold">html</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">head</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">meta</span> <span style="color: #BB4444">charset</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;utf-8&quot;</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">meta</span> <span style="color: #BB4444">http-equiv</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;X-UA-Compatible&quot;</span> <span style="color: #BB4444">content</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;IE=edge,chrome=1&quot;</span>&gt;
-    &lt;/<span style="color: #008000; font-weight: bold">head</span>&gt;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  <span style="color: #008800">&lt;!doctype html&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;html&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;head&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;meta</span> <span style="color: #BB4444">charset=&quot;utf-8&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;meta</span> <span style="color: #BB4444">http-equiv=&quot;X-UA-Compatible&quot;</span> <span style="color: #BB4444">content=&quot;IE=edge,chrome=1&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/head&gt;</span>
 
-    &lt;<span style="color: #008000; font-weight: bold">body</span>&gt;
-      &lt;<span style="color: #008000; font-weight: bold">section</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">h1</span>&gt;${model.title}&lt;/<span style="color: #008000; font-weight: bold">h1</span>&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">section</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;body&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;section&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;h1&gt;</span>${model.title}<span style="color: #008000; font-weight: bold">&lt;/h1&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/section&gt;</span>
 
-      &lt;<span style="color: #008000; font-weight: bold">form</span> <span style="color: #BB4444">action</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;/contacts/${model.contact.id}&quot;</span> <span style="color: #BB4444">method</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;post&quot;</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-          &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;name&quot;</span>/&gt;Name&lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-          &lt;<span style="color: #008000; font-weight: bold">input</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;text&quot;</span> <span style="color: #BB4444">name</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;name&quot;</span> <span style="color: #BB4444">value</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;${model.contact.name}&quot;</span> /&gt;
-        &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+      <span style="color: #008000; font-weight: bold">&lt;form</span> <span style="color: #BB4444">action=&quot;/contacts/${model.contact.id}&quot;</span> <span style="color: #BB4444">method=&quot;post&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+          <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;name&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Name<span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+          <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">name=&quot;name&quot;</span> <span style="color: #BB4444">value=&quot;${model.contact.name}&quot;</span> <span style="color: #008000; font-weight: bold">/&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-        &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-          &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;lastName&quot;</span>/&gt;Last name&lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-          &lt;<span style="color: #008000; font-weight: bold">input</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;text&quot;</span> <span style="color: #BB4444">name</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;lastName&quot;</span> <span style="color: #BB4444">value</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;${model.contact.lastName}&quot;</span>/&gt;
-        &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+        <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+          <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;lastName&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Last name<span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+          <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">name=&quot;lastName&quot;</span> <span style="color: #BB4444">value=&quot;${model.contact.lastName}&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-        &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-          &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;email&quot;</span>/&gt;Email&lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-          &lt;<span style="color: #008000; font-weight: bold">input</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;text&quot;</span> <span style="color: #BB4444">name</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;email&quot;</span> <span style="color: #BB4444">value</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;${model.contact.email}&quot;</span>/&gt;
-        &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+        <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+          <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;email&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Email<span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+          <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">name=&quot;email&quot;</span> <span style="color: #BB4444">value=&quot;${model.contact.email}&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-        &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-          &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;nickname&quot;</span>/&gt;Nickname&lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-          &lt;<span style="color: #008000; font-weight: bold">input</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;text&quot;</span> <span style="color: #BB4444">name</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;nickname&quot;</span> <span style="color: #BB4444">value</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;${model.contact.nickname}&quot;</span>/&gt;
-        &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+        <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+          <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;nickname&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Nickname<span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+          <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">name=&quot;nickname&quot;</span> <span style="color: #BB4444">value=&quot;${model.contact.nickname}&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-        &lt;<span style="color: #008000; font-weight: bold">div</span>&gt;
-          &lt;<span style="color: #008000; font-weight: bold">label</span> <span style="color: #BB4444">for</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;phone&quot;</span>/&gt;Phone&lt;/<span style="color: #008000; font-weight: bold">label</span>&gt;
-          &lt;<span style="color: #008000; font-weight: bold">input</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;text&quot;</span> <span style="color: #BB4444">name</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;phone&quot;</span> <span style="color: #BB4444">value</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;${model.contact.phone}&quot;</span>/&gt;
-        &lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+        <span style="color: #008000; font-weight: bold">&lt;div&gt;</span>
+          <span style="color: #008000; font-weight: bold">&lt;label</span> <span style="color: #BB4444">for=&quot;phone&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>Phone<span style="color: #008000; font-weight: bold">&lt;/label&gt;</span>
+          <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #BB4444">type=&quot;text&quot;</span> <span style="color: #BB4444">name=&quot;phone&quot;</span> <span style="color: #BB4444">value=&quot;${model.contact.phone}&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 
-        &lt;<span style="color: #008000; font-weight: bold">button</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;submit&quot;</span>&gt; Update &lt;/<span style="color: #008000; font-weight: bold">button</span>&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">form</span>&gt;
+        <span style="color: #008000; font-weight: bold">&lt;button</span> <span style="color: #BB4444">type=&quot;submit&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span> Update <span style="color: #008000; font-weight: bold">&lt;/button&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/form&gt;</span>
 
-      &lt;<span style="color: #008000; font-weight: bold">ul</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">li</span>&gt; &lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;/&quot;</span>&gt;Home&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt; &lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">li</span>&gt; &lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;/contacts&quot;</span>&gt;Contact list&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt; &lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
-        &lt;<span style="color: #008000; font-weight: bold">li</span>&gt; &lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;/contacts/new&quot;</span>&gt;New contact&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt; &lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
-      &lt;/<span style="color: #008000; font-weight: bold">ul</span>&gt;
+      <span style="color: #008000; font-weight: bold">&lt;ul&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;li&gt;</span> <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #BB4444">href=&quot;/&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Home<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span> <span style="color: #008000; font-weight: bold">&lt;/li&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;li&gt;</span> <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #BB4444">href=&quot;/contacts&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Contact list<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span> <span style="color: #008000; font-weight: bold">&lt;/li&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;li&gt;</span> <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #BB4444">href=&quot;/contacts/new&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>New contact<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span> <span style="color: #008000; font-weight: bold">&lt;/li&gt;</span>
+      <span style="color: #008000; font-weight: bold">&lt;/ul&gt;</span>
 
-      &lt;<span style="color: #008000; font-weight: bold">footer</span> <span style="color: #BB4444">class</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;site-footer&quot;</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">footer</span>&gt;
-    &lt;/<span style="color: #008000; font-weight: bold">body</span>&gt;
-  &lt;/<span style="color: #008000; font-weight: bold">html</span>&gt;
+      <span style="color: #008000; font-weight: bold">&lt;footer</span> <span style="color: #BB4444">class=&quot;site-footer&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/footer&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/body&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;/html&gt;</span>
 </pre></div>
 
 

@@ -21,7 +21,7 @@
     
     <meta property="og:tags" content="closure">
     
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>Uso de camara en android &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -117,7 +117,7 @@ Se especifica la clase de la actividad a empezar para que el sistema operativo l
 <p>Android cuenta con la clase <strong>MediaStore</strong>, esta se encarga de proveer los medios de comunicación, el que nos interesa es <strong>ACTION_IMAGE_CAPTURE</strong>, este en el intent con el cual podemos hacer uso de la cámara.
 El siguiente metodo muestra como usar la camara nativa de Android, la clase que se encarga de usarlo es <strong>ExampleCamera</strong>.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>	<span style="color: #00BB00; font-weight: bold">void</span> <span style="color: #00A000">launchCamera</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">	<span style="color: #00BB00; font-weight: bold">void</span> <span style="color: #00A000">launchCamera</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
 		Intent camera <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> Intent<span style="color: #666666">(</span>MediaStore<span style="color: #666666">.</span><span style="color: #BB4444">ACTION_IMAGE_CAPTURE</span><span style="color: #666666">)</span>
 		<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">(</span>camera<span style="color: #666666">.</span><span style="color: #BB4444">resolveActivity</span><span style="color: #666666">(</span>getPackageManager<span style="color: #666666">()))</span> <span style="color: #666666">{</span>
 			<span style="color: #AA22FF; font-weight: bold">try</span> <span style="color: #666666">{</span>
@@ -142,7 +142,7 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
 
 <p>El método <strong>createPhoto(&hellip;)</strong> se encarga de crear un directorio denominado <strong>ExampleCamera</strong> dentro de <strong>PICTURES</strong>, además de generar el archivo para cada foto, un dato interesante es que no se realizó el import de la clase <strong>File</strong>, la razón es que al usar <strong>groovy</strong>, ciertos paquetes vienen incluidos por default.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>	File <span style="color: #00A000">createPhoto</span><span style="color: #666666">(</span>String name<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">	File <span style="color: #00A000">createPhoto</span><span style="color: #666666">(</span>String name<span style="color: #666666">)</span> <span style="color: #666666">{</span>
 		File storagePhotos <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">new</span> File<span style="color: #666666">(</span>Environment<span style="color: #666666">.</span><span style="color: #BB4444">getExternalStoragePublicDirectory</span><span style="color: #666666">(</span>Environment<span style="color: #666666">.</span><span style="color: #BB4444">DIRECTORY_PICTURES</span><span style="color: #666666">),</span> <span style="color: #BB4444">&quot;ExampleCamera&quot;</span><span style="color: #666666">)</span>
 		<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">(!</span>storagePhotos<span style="color: #666666">.</span><span style="color: #BB4444">exists</span><span style="color: #666666">())</span> <span style="color: #666666">{</span>
 			<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">(!</span>storagePhotos<span style="color: #666666">.</span><span style="color: #BB4444">mkdirs</span><span style="color: #666666">())</span> <span style="color: #666666">{</span>
@@ -158,7 +158,7 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
 
 <p>Cuando se captura la foto, una vez que termina se maneja el resultado con el método onActivityResult(…), donde se verifica el estatus de la captura de la foto, ya sea que se culminó o cancelado, ante lo cual se muestra un mensaje emergente haciendo uso de los <strong>Toast</strong>.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>	<span style="color: #AA22FF">@Override</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">	<span style="color: #AA22FF">@Override</span>
 	<span style="color: #AA22FF; font-weight: bold">protected</span> <span style="color: #00BB00; font-weight: bold">void</span> <span style="color: #00A000">onActivityResult</span><span style="color: #666666">(</span><span style="color: #00BB00; font-weight: bold">int</span> requestCode<span style="color: #666666">,</span> <span style="color: #00BB00; font-weight: bold">int</span> resultCode<span style="color: #666666">,</span> Intent data<span style="color: #666666">)</span> <span style="color: #666666">{</span>
 		<span style="color: #AA22FF; font-weight: bold">super</span><span style="color: #666666">.</span><span style="color: #BB4444">onActivityResult</span><span style="color: #666666">(</span>requestCode<span style="color: #666666">,</span> resultCode<span style="color: #666666">,</span> data<span style="color: #666666">)</span>
 		<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">(</span>requestCode <span style="color: #666666">==</span> CAPTURE_IMAGE<span style="color: #666666">)</span> <span style="color: #666666">{</span>

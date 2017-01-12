@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog de Making Devs</title>
-    <link>http://blog.makingdevs.com/tags/closure/index.xml</link>
-    <description>Recent content on Blog de Making Devs</description>
+    <title>Closure on Blog de Making Devs</title>
+    <link>http://blog.makingdevs.com/tags/closure/</link>
+    <description>Recent content in Closure on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 20 Jul 2016 22:53:27 -0500</lastBuildDate>
     <atom:link href="http://blog.makingdevs.com/tags/closure/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -33,7 +34,7 @@ Se especifica la clase de la actividad a empezar para que el sistema operativo l
 &lt;p&gt;Android cuenta con la clase &lt;strong&gt;MediaStore&lt;/strong&gt;, esta se encarga de proveer los medios de comunicación, el que nos interesa es &lt;strong&gt;ACTION_IMAGE_CAPTURE&lt;/strong&gt;, este en el intent con el cual podemos hacer uso de la cámara.
 El siguiente metodo muestra como usar la camara nativa de Android, la clase que se encarga de usarlo es &lt;strong&gt;ExampleCamera&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;	&lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;launchCamera&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;	&lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;launchCamera&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 		Intent camera &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; Intent&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;MediaStore&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;ACTION_IMAGE_CAPTURE&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
 		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;camera&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;resolveActivity&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;getPackageManager&lt;span style=&#34;color: #666666&#34;&gt;()))&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 			&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;try&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
@@ -58,7 +59,7 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
 
 &lt;p&gt;El método &lt;strong&gt;createPhoto(&amp;hellip;)&lt;/strong&gt; se encarga de crear un directorio denominado &lt;strong&gt;ExampleCamera&lt;/strong&gt; dentro de &lt;strong&gt;PICTURES&lt;/strong&gt;, además de generar el archivo para cada foto, un dato interesante es que no se realizó el import de la clase &lt;strong&gt;File&lt;/strong&gt;, la razón es que al usar &lt;strong&gt;groovy&lt;/strong&gt;, ciertos paquetes vienen incluidos por default.&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;	File &lt;span style=&#34;color: #00A000&#34;&gt;createPhoto&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;String name&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;	File &lt;span style=&#34;color: #00A000&#34;&gt;createPhoto&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;String name&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 		File storagePhotos &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;new&lt;/span&gt; File&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Environment&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getExternalStoragePublicDirectory&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Environment&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;DIRECTORY_PICTURES&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;),&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;ExampleCamera&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
 		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(!&lt;/span&gt;storagePhotos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;exists&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 			&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(!&lt;/span&gt;storagePhotos&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;mkdirs&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;())&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
@@ -74,7 +75,7 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
 
 &lt;p&gt;Cuando se captura la foto, una vez que termina se maneja el resultado con el método onActivityResult(…), donde se verifica el estatus de la captura de la foto, ya sea que se culminó o cancelado, ante lo cual se muestra un mensaje emergente haciendo uso de los &lt;strong&gt;Toast&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;	&lt;span style=&#34;color: #AA22FF&#34;&gt;@Override&lt;/span&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;	&lt;span style=&#34;color: #AA22FF&#34;&gt;@Override&lt;/span&gt;
 	&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;protected&lt;/span&gt; &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;onActivityResult&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;int&lt;/span&gt; requestCode&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #00BB00; font-weight: bold&#34;&gt;int&lt;/span&gt; resultCode&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; Intent data&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;super&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;onActivityResult&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;requestCode&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; resultCode&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; data&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
 		&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;requestCode &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; CAPTURE_IMAGE&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
@@ -195,7 +196,7 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
 
 &lt;p&gt;La ventaja de los POGOS de Groovy se siente al declarar o instanciar algún objeto de dominio:&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;groovy.transform.CompileStatic&lt;/span&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;groovy.transform.CompileStatic&lt;/span&gt;
 
 &lt;span style=&#34;color: #AA22FF&#34;&gt;@CompileStatic&lt;/span&gt;
 &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;User&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
@@ -208,7 +209,7 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
 
 &lt;p&gt;Ahora instanciamos nuestra clase en cualquier parte:&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;User &lt;span style=&#34;color: #00A000&#34;&gt;getUserSession&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Context context&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;User &lt;span style=&#34;color: #00A000&#34;&gt;getUserSession&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;Context context&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
     SharedPreferences session &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; context&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getSharedPreferences&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;UserSession&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;Context&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;MODE_PRIVATE&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
     String username &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; session&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getString&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;);&lt;/span&gt;
     String token &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; session&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;getString&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;token&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
@@ -224,7 +225,7 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
 
 &lt;p&gt;&lt;strong&gt;Groovy es un lenguaje de tipado dinámico opcional&lt;/strong&gt;, lo cuál significa que podemos beneficiarnos de ciertos elementos del lenguaje y estar seguros de que compilará correctamente; esta anotación hace al compilador mas estricto, con la ventaja de optimizar el código de byte dando como resultado una mejor ejecución. Los desarrolladores recomiendan el uso intenso de esta anotación en todas las clases dentro del proyecto Android:&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;android.content.Context&lt;/span&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;android.content.Context&lt;/span&gt;
 &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;android.content.Intent&lt;/span&gt;
 &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;android.support.v4.app.Fragment&lt;/span&gt;
 &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;com.makingdevs.app.common.SingleFragmentActivity&lt;/span&gt;
@@ -255,7 +256,7 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
 
 &lt;p&gt;La forma general del closure en Groovy es:&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; p1&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;p2&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;p3&lt;span style=&#34;color: #666666&#34;&gt;...&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; body &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; p1&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;p2&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt;p3&lt;span style=&#34;color: #666666&#34;&gt;...&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt; body &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -265,7 +266,7 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
 
 &lt;p&gt;El evento más solicitado dentro de una app Android es el &lt;em&gt;click&lt;/em&gt; de un componente, con un closure podemos tratarlo:&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;@CompileStatic&lt;/span&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;@CompileStatic&lt;/span&gt;
 &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;SomeFragment&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;extends&lt;/span&gt; Fragment &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 
     FloatingActionButton mButtonGoChekin
@@ -288,7 +289,7 @@ El siguiente metodo muestra como usar la camara nativa de Android, la clase que 
 
 &lt;p&gt;Ahora aquí una de las que más me gusta en conjunto con otra anotación de Groovy &lt;code&gt;@Singleton&lt;/code&gt;, de la cual hablaremos en otro post.&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;@Singleton&lt;/span&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;@Singleton&lt;/span&gt;
 &lt;span style=&#34;color: #AA22FF&#34;&gt;@CompileStatic&lt;/span&gt;
 &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;RetrofitTemplate&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
 

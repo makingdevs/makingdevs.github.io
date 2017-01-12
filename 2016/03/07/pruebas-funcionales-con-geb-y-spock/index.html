@@ -21,7 +21,7 @@
     
     <meta property="og:tags" content="geb">
     
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>Pruebas funcionales con Geb y Spock &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -112,7 +112,7 @@
 
 <p>El primer paso es obtener las dependencias de Geb,Spock y el Selenium Driver para los diferentes navegadores. Para este ejemplo voy a utilizar Gradle para la ejecución de las pruebas y la administración de las dependencias.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>build<span style="color: #666666">.</span><span style="color: #BB4444">gradle</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">build<span style="color: #666666">.</span><span style="color: #BB4444">gradle</span>
 apply <span style="color: #A0A000">plugin:</span><span style="color: #BB4444">&quot;groovy&quot;</span>
 
 repositories<span style="color: #666666">{</span>
@@ -142,7 +142,7 @@ dependencies<span style="color: #666666">{</span>
 <p>Una vez que se definen las dependencias necesarias se crean las tareas para la ejecución de las pruebas en cada navegador que compone la lista.
 Geb permite realizar capturas de pantalla en cualquier punto del flujo de la aplicación que se está probando; para especificar el directorio donde se encontrarán estas imagenes se agrega la propiedad &ldquo;geb.build.reportsDir&rdquo; a las propiedades del sistema.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>drivers<span style="color: #666666">.</span><span style="color: #BB4444">each</span><span style="color: #666666">{</span> driver <span style="color: #666666">-&gt;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">drivers<span style="color: #666666">.</span><span style="color: #BB4444">each</span><span style="color: #666666">{</span> driver <span style="color: #666666">-&gt;</span>
   task <span style="color: #BB4444">&quot;${driver}Test&quot;</span><span style="color: #666666">(</span><span style="color: #A0A000">type:</span>Test<span style="color: #666666">){</span>
     reports<span style="color: #666666">{</span>
       html<span style="color: #666666">.</span><span style="color: #BB4444">destination</span> <span style="color: #666666">=</span> reporting<span style="color: #666666">.</span><span style="color: #BB4444">file</span><span style="color: #666666">(</span><span style="color: #BB4444">&quot;$name/tests&quot;</span><span style="color: #666666">)</span>
@@ -160,7 +160,7 @@ Geb permite realizar capturas de pantalla en cualquier punto del flujo de la apl
 <p>Para que la automatización del navegador sea posible con Chrome es necesario descargar la versión más reciente del <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads"><em>WebDriver para Chrome</em></a> y definir en la propiedad del sistema el valor del directorio donde se encuentra.
 Finalmente se sobreescribe la tarea de test para que dependa de las creadas anteriormente y todas las pruebas se ejecuten al ejecutar el comando <code>gradle test</code>.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>chromeTest<span style="color: #666666">{</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">chromeTest<span style="color: #666666">{</span>
   systemProperty <span style="color: #BB4444">&quot;webdriver.chrome.driver&quot;</span><span style="color: #666666">,</span><span style="color: #BB4444">&quot;${System.properties[&quot;</span>user<span style="color: #666666">.</span><span style="color: #BB4444">home&quot;]}/.grails/chromedriver&quot;</span>
 <span style="color: #666666">}</span>
 
@@ -180,7 +180,7 @@ Aquí se crean las instancias del driver para Chrome y Firefox.</p>
 
 <p>La propiedad <strong>baseUrl</strong> indíca la dirección de la aplicación que será probada, para este ejemplo se probará un flujo del sitio de MakingDevs.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>GebConfig<span style="color: #666666">.</span><span style="color: #BB4444">groovy</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">GebConfig<span style="color: #666666">.</span><span style="color: #BB4444">groovy</span>
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.openqa.selenium.chrome.ChromeDriver</span>
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.openqa.selenium.firefox.FirefoxDriver</span>
 
@@ -222,7 +222,7 @@ baseUrl <span style="color: #666666">=</span> <span style="color: #BB4444">&quot
 
 <p>Vamos a probar un flujo sencillo, en el cual el usuario consulta la información de un curso, para ello se necesitarán tres clases, MakingDevsHomePage, MakingDevsCoursesPage y MakingDevsCourseInfoPage:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF; font-weight: bold">package</span> com<span style="color: #666666">.</span><span style="color: #BB4444">makingdevs</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">package</span> com<span style="color: #666666">.</span><span style="color: #BB4444">makingdevs</span>
 
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">geb.*</span>
 
@@ -238,7 +238,7 @@ baseUrl <span style="color: #666666">=</span> <span style="color: #BB4444">&quot
 </pre></div>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF; font-weight: bold">package</span> com<span style="color: #666666">.</span><span style="color: #BB4444">makingdevs</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">package</span> com<span style="color: #666666">.</span><span style="color: #BB4444">makingdevs</span>
 
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">geb.*</span>
 
@@ -259,7 +259,7 @@ baseUrl <span style="color: #666666">=</span> <span style="color: #BB4444">&quot
 </pre></div>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF; font-weight: bold">package</span> com<span style="color: #666666">.</span><span style="color: #BB4444">makingdevs</span><span style="color: #666666">.</span><span style="color: #BB4444">pages</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">package</span> com<span style="color: #666666">.</span><span style="color: #BB4444">makingdevs</span><span style="color: #666666">.</span><span style="color: #BB4444">pages</span>
 
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">geb.*</span>
 
@@ -282,7 +282,7 @@ baseUrl <span style="color: #666666">=</span> <span style="color: #BB4444">&quot
 
 <p>La segunda prueba muestra algo más interesante, ya que implementa un <strong>Data Table</strong> de Spock para agrupar un conjunto de valores de entrada y salida separados por el símbolo <strong>|</strong>; la prueba verifica que al ir a la url declarada en MakingDevsCoursesPage se busque con el método <em>find</em> dentro de una sección referenciada por el selector groovyCoursesDiv el vínculo con un atributo href que comience con el valor declarado en la columna <em>_selectorUrl</em> de la tabla para después hacer click en el elemento y finalmente comparar el texto del componente asociado al selector de postTitle con el del valor en la columna <em>_postTitle</em>.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF; font-weight: bold">package</span> com<span style="color: #666666">.</span><span style="color: #BB4444">makingdevs</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">package</span> com<span style="color: #666666">.</span><span style="color: #BB4444">makingdevs</span>
 
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">geb.spock.GebReportingSpec</span>
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">java.lang.Void</span> <span style="color: #AA22FF; font-weight: bold">as</span> Should

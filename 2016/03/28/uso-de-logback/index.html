@@ -17,7 +17,7 @@
     
     <meta property="og:tags" content="log">
     
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>Uso de logback &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -158,7 +158,7 @@ Este logger pretende ser el sucesor de log4j, fue diseñado por Ceki Gülcü, fu
 Para poder usar este logger, se requiere del módulo logback.
 Una configuración del archivo gradle queda de la siguiente manera:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>apply <span style="color: #A0A000">plugin:</span><span style="color: #BB4444">&#39;groovy&#39;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">apply <span style="color: #A0A000">plugin:</span><span style="color: #BB4444">&#39;groovy&#39;</span>
 
 repositories<span style="color: #666666">{</span>
   jcenter<span style="color: #666666">()</span>
@@ -173,7 +173,7 @@ dependencies<span style="color: #666666">{</span>
 
 <p>El archivo groovy que se estará manejando para obtener la bitácora será <em>logback.groovy</em> el cual contiene el patrón de salida del logger además de especificar donde se mostrara dicha información.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">static</span> ch<span style="color: #666666">.</span><span style="color: #BB4444">qos</span><span style="color: #666666">.</span><span style="color: #BB4444">logback</span><span style="color: #666666">.</span><span style="color: #BB4444">classic</span><span style="color: #666666">.</span><span style="color: #BB4444">Level</span><span style="color: #666666">.</span><span style="color: #BB4444">INFO</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">static</span> ch<span style="color: #666666">.</span><span style="color: #BB4444">qos</span><span style="color: #666666">.</span><span style="color: #BB4444">logback</span><span style="color: #666666">.</span><span style="color: #BB4444">classic</span><span style="color: #666666">.</span><span style="color: #BB4444">Level</span><span style="color: #666666">.</span><span style="color: #BB4444">INFO</span>
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">static</span> ch<span style="color: #666666">.</span><span style="color: #BB4444">qos</span><span style="color: #666666">.</span><span style="color: #BB4444">logback</span><span style="color: #666666">.</span><span style="color: #BB4444">classic</span><span style="color: #666666">.</span><span style="color: #BB4444">Level</span><span style="color: #666666">.</span><span style="color: #BB4444">DEBUG</span>
 
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">ch.qos.logback.classic.encoder.PatternLayoutEncoder</span>
@@ -198,7 +198,7 @@ root<span style="color: #666666">(</span>DEBUG<span style="color: #666666">,</sp
 
 <p>Ahora el archivo se crea una instancia de la clase Logger. Además de contar con el nivel del logger, respetando la configuración que se hizo en el archivo logback.groovy.</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.slf4j.Logger</span>
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.slf4j.Logger</span>
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.slf4j.LoggerFactory</span>
 
 Logger log <span style="color: #666666">=</span> LoggerFactory<span style="color: #666666">.</span><span style="color: #BB4444">getLogger</span><span style="color: #666666">(</span>getClass<span style="color: #666666">())</span>

@@ -13,7 +13,7 @@
     <meta property="og:url" content="http://blog.makingdevs.com/2014/08/26/lectura-de-correo-con-apache-camel-y-groovy">
     <meta property="og:site_name" content="Blog de Making Devs">
     
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>Lectura de correo con Apache Camel y Groovy &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -105,7 +105,7 @@
 
 <p>Un productor es el encargado de proveer los mensajes, siendo el puente de comunicación con el sistema externo, no procesa la información solo provee el mensaje, en este ejemplo el correo es el productor. Un consumidor es el encargado de recibir el mensaje que el productor obtiene y así procesar el mensaje o inclusive partir dicho mensaje para que sea procesado por otro consumidor. Bueno después de una pequeña introducción a Camel les muestro mi script en la cual hago lectura del correo filtro los mensajes por su subject y los arrojo a un log y no solo puede ser un log gracias a camel este puede ser un bean, FTP, intancia de amazon, un archivo, <a href="http://camel.apache.org/components.html">casi cualquier cosa</a>. Nota necesitamos las dependencias de camel core y camel mail para el siguiente ejemplo:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@Grab</span><span style="color: #666666">(</span>group<span style="color: #666666">=</span><span style="color: #BB4444">&#39;org.apache.camel&#39;</span><span style="color: #666666">,</span> module<span style="color: #666666">=</span><span style="color: #BB4444">&#39;camel-core&#39;</span><span style="color: #666666">,</span> version<span style="color: #666666">=</span><span style="color: #BB4444">&#39;1.6.0&#39;</span><span style="color: #666666">)</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF">@Grab</span><span style="color: #666666">(</span>group<span style="color: #666666">=</span><span style="color: #BB4444">&#39;org.apache.camel&#39;</span><span style="color: #666666">,</span> module<span style="color: #666666">=</span><span style="color: #BB4444">&#39;camel-core&#39;</span><span style="color: #666666">,</span> version<span style="color: #666666">=</span><span style="color: #BB4444">&#39;1.6.0&#39;</span><span style="color: #666666">)</span>
 <span style="color: #AA22FF">@Grab</span><span style="color: #666666">(</span>group<span style="color: #666666">=</span><span style="color: #BB4444">&#39;org.apache.camel&#39;</span><span style="color: #666666">,</span> module<span style="color: #666666">=</span><span style="color: #BB4444">&#39;camel-mail&#39;</span><span style="color: #666666">,</span> version<span style="color: #666666">=</span><span style="color: #BB4444">&#39;1.6.0&#39;</span><span style="color: #666666">)</span>
 
 <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">org.apache.camel.impl.DefaultCamelContext</span>

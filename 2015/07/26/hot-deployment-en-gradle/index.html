@@ -19,7 +19,7 @@
     
     <meta property="og:tags" content="plugins">
     
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>Hot deployment en Gradle &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -101,7 +101,7 @@
 <p>Después me di cuenta que frameworks como <a href="https://github.com/spring-projects/spring-loaded" title="dropwizard">Dropwizard</a> lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré <a href="http://www.cholick.com/entry/show/280" title="tomcat">un artículo</a> en donde explica como ponerlo en acción usando propiamente <a href="https://github.com/spring-projects/spring-loaded" title="dropwizard">Dropwizard</a>. Fue un buen acercamiento, el problema es el siguiente bloque de código en configuración de gradle:
 <!-- more --></p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>run <span style="color: #666666">{</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">run <span style="color: #666666">{</span>
   args <span style="color: #666666">=</span> <span style="color: #666666">[</span><span style="color: #BB4444">&#39;server&#39;</span><span style="color: #666666">,</span> <span style="color: #BB4444">&#39;app.yaml&#39;</span><span style="color: #666666">]</span>
   jvmArgs <span style="color: #666666">=</span> <span style="color: #666666">[</span><span style="color: #BB4444">&quot;-javaagent:${new File(&quot;</span>$buildDir<span style="color: #BB4444">/agent/</span>springloaded<span style="color: #666666">-</span>$<span style="color: #666666">{</span>springloadedVersion<span style="color: #666666">}.</span><span style="color: #BB4444">jar&quot;).absolutePath}&quot;</span><span style="color: #666666">,</span> <span style="color: #BB4444">&#39;-noverify&#39;</span><span style="color: #666666">]</span>
 <span style="color: #666666">}</span>
@@ -112,7 +112,7 @@
 
 <p>La combinación se haría en conjunto con un plugin de gradle, <a href="https://github.com/bluepapa32/gradle-watch-plugin" title="gradle watch">el watch</a>, el actúa con cada cambio en la aplicación realizando las tareas que se le digan. Sin embargo, lo que encontré funcionaba para la cmbinación de SpringBooy e IntelliJ Idea, lo cual no veía mal, pero no era mi caso. De cualquier forma pongo disponible la configuración que independiente me sirvió para hacer un hot deploy usando ambos elementos:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>apply <span style="color: #A0A000">plugin:</span> <span style="color: #BB4444">&#39;groovy&#39;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">apply <span style="color: #A0A000">plugin:</span> <span style="color: #BB4444">&#39;groovy&#39;</span>
 apply <span style="color: #A0A000">plugin:</span> <span style="color: #BB4444">&#39;spring-boot&#39;</span>
 apply <span style="color: #A0A000">plugin:</span> <span style="color: #BB4444">&#39;com.bluepapa32.watch&#39;</span>
 
@@ -170,7 +170,7 @@ watch <span style="color: #666666">{</span>
 
 <p>Al final del día, lo que encontre fue <a href="http://akhikhl.github.io/gretty-doc/index.html" title="gretty">el plugin de Gretty</a>, con el que fácilmente podemos usar un contenedor de Tomcat o Jetty y tener disponible el Hot deploy, creo que tiene algunos detalles de rendimiento pero es útil. Finalmente la configuración se reduce mucho y hay varias tareas disponibles, entre ellas <code>appRun</code>, que es la que levanta el elemento configuraco y lo dijo listo para los cambios:</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008800; font-style: italic">// Using the new mechanism to include plugins</span>
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">// Using the new mechanism to include plugins</span>
 plugins <span style="color: #666666">{</span>
   id <span style="color: #BB4444">&#39;groovy&#39;</span>
   id <span style="color: #BB4444">&#39;war&#39;</span>

@@ -15,7 +15,7 @@
     
     <meta property="og:tags" content="elixir">
     
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>FizzBuzz &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -109,7 +109,7 @@
 
 <p>So, in <code>elixir</code> the way that we can create an <em>Anonymous Function</em> is with the <code>fn</code> keyword:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF; font-weight: bold">fn</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">fn</span>
   argument <span style="color: #666666">-&gt;</span> body
   argument <span style="color: #666666">-&gt;</span> body
 <span style="color: #AA22FF; font-weight: bold">end</span>
@@ -118,7 +118,7 @@
 
 <p>An easy example of an <em>Anonymous Function</em> is a multiplication of a number by 5.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>iex(<span style="color: #666666">1</span>)<span style="color: #666666">&gt;</span> times_5 <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">fn</span>(a) <span style="color: #666666">-&gt;</span> a <span style="color: #666666">*</span> <span style="color: #666666">5</span> <span style="color: #AA22FF; font-weight: bold">end</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">iex(<span style="color: #666666">1</span>)<span style="color: #666666">&gt;</span> times_5 <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">fn</span>(a) <span style="color: #666666">-&gt;</span> a <span style="color: #666666">*</span> <span style="color: #666666">5</span> <span style="color: #AA22FF; font-weight: bold">end</span>
 <span style="color: #008800; font-style: italic">#Function&lt;6.52032458/1 in :erl_eval.expr/5&gt;</span>
 iex(<span style="color: #666666">1</span>)<span style="color: #666666">&gt;</span> times_5<span style="color: #666666">.</span>(<span style="color: #666666">3</span>)
 <span style="color: #666666">15</span>
@@ -147,7 +147,7 @@ iex(<span style="color: #666666">1</span>)<span style="color: #666666">&gt;</spa
 
 <p>With our example we are going to make use of the <em>Anonymous Functions</em> that we already explain above.</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>iex(<span style="color: #666666">1</span>)<span style="color: #666666">&gt;</span> fizz_buzz <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">fn</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">iex(<span style="color: #666666">1</span>)<span style="color: #666666">&gt;</span> fizz_buzz <span style="color: #666666">=</span> <span style="color: #AA22FF; font-weight: bold">fn</span>
 ...(<span style="color: #666666">1</span>)<span style="color: #666666">&gt;</span>   <span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #AA22FF">_</span> <span style="color: #666666">-&gt;</span> <span style="color: #BB4444">&quot;FizzBuzz&quot;</span>
 ...(<span style="color: #666666">1</span>)<span style="color: #666666">&gt;</span>   <span style="color: #666666">0</span>, <span style="color: #AA22FF">_</span>, <span style="color: #AA22FF">_</span> <span style="color: #666666">-&gt;</span> <span style="color: #BB4444">&quot;Fizz&quot;</span>
 ...(<span style="color: #666666">1</span>)<span style="color: #666666">&gt;</span>   <span style="color: #AA22FF">_</span>, <span style="color: #666666">0</span>, <span style="color: #AA22FF">_</span> <span style="color: #666666">-&gt;</span> <span style="color: #BB4444">&quot;Buzz&quot;</span>

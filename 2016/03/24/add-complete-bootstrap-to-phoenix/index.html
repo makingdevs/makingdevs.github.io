@@ -19,7 +19,7 @@
     
     <meta property="og:tags" content="bootstrap">
     
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>Add complete bootstrap to Phoenix &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -115,7 +115,7 @@
 
 <p>Then we are going to create a file named <code>.bowerrc</code> with this file we are going to tell to <code>bower</code> where are going to need to put all the <code>javascripts</code> that we need it from now on. In this file we are going to put the next instruction:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>{
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">{
   <span style="color: #BB4444">&quot;directory&quot;</span><span style="color: #666666">:</span> <span style="color: #BB4444">&quot;web/static/vendor&quot;</span>
 }
 </pre></div>
@@ -135,7 +135,7 @@
 <li>Then open your <code>brunch-config.js</code> and in the <code>conventions</code> section add the following:</li>
 </ol>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>   conventions<span style="color: #666666">:</span> {
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">   conventions<span style="color: #666666">:</span> {
      assets<span style="color: #666666">:</span> <span style="color: #BB6688">/^(web\/static\/assets)/</span>,
      ignored<span style="color: #666666">:</span> [
        <span style="color: #BB6688">/^(web\/static\/vendor\/bootstrap\/)(?!.*min.(js|css)$)/</span>,
@@ -147,7 +147,7 @@
 
 3. After that you will need to load <code>jquery</code> and <code>bootstrap</code> in order, i.e. First <code>jquery</code> and then <code>bootstrap</code>. This is because <code>brunch</code> will merge all js in alphabetical order and we require that <code>jquery</code> loads first. For this we move to the <code>joinTo</code> in the <code>files</code> section and add the next lines:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>   files<span style="color: #666666">:</span> {
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">   files<span style="color: #666666">:</span> {
      javascripts<span style="color: #666666">:</span> {
        joinTo<span style="color: #666666">:</span> <span style="color: #BB4444">&quot;js/app.js&quot;</span>,
        order<span style="color: #666666">:</span> {
@@ -164,19 +164,19 @@
 
 <p>After this you can open the main layout of your application and put the next code:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>&lt;<span style="color: #008000; font-weight: bold">div</span> <span style="color: #BB4444">class</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;dropdown&quot;</span>&gt;
-  &lt;<span style="color: #008000; font-weight: bold">button</span> <span style="color: #BB4444">class</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;btn btn-default dropdown-toggle&quot;</span> <span style="color: #BB4444">type</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;button&quot;</span> <span style="color: #BB4444">id</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;dropdownMenu1&quot;</span> <span style="color: #BB4444">data-toggle</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;dropdown&quot;</span> <span style="color: #BB4444">aria-haspopup</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;true&quot;</span> <span style="color: #BB4444">aria-expanded</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;true&quot;</span>&gt;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;div</span> <span style="color: #BB4444">class=&quot;dropdown&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;button</span> <span style="color: #BB4444">class=&quot;btn btn-default dropdown-toggle&quot;</span> <span style="color: #BB4444">type=&quot;button&quot;</span> <span style="color: #BB4444">id=&quot;dropdownMenu1&quot;</span> <span style="color: #BB4444">data-toggle=&quot;dropdown&quot;</span> <span style="color: #BB4444">aria-haspopup=&quot;true&quot;</span> <span style="color: #BB4444">aria-expanded=&quot;true&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
     Dropdown
-    &lt;<span style="color: #008000; font-weight: bold">span</span> <span style="color: #BB4444">class</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;caret&quot;</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">span</span>&gt;
-  &lt;/<span style="color: #008000; font-weight: bold">button</span>&gt;
-  &lt;<span style="color: #008000; font-weight: bold">ul</span> <span style="color: #BB4444">class</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;dropdown-menu&quot;</span> <span style="color: #BB4444">aria-labelledby</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;dropdownMenu1&quot;</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">li</span>&gt;&lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;#&quot;</span>&gt;Action&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">li</span>&gt;&lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;#&quot;</span>&gt;Another action&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">li</span>&gt;&lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;#&quot;</span>&gt;Something else here&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">li</span> <span style="color: #BB4444">role</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;separator&quot;</span> <span style="color: #BB4444">class</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;divider&quot;</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
-    &lt;<span style="color: #008000; font-weight: bold">li</span>&gt;&lt;<span style="color: #008000; font-weight: bold">a</span> <span style="color: #BB4444">href</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;#&quot;</span>&gt;Separated link&lt;/<span style="color: #008000; font-weight: bold">a</span>&gt;&lt;/<span style="color: #008000; font-weight: bold">li</span>&gt;
-  &lt;/<span style="color: #008000; font-weight: bold">ul</span>&gt;
-&lt;/<span style="color: #008000; font-weight: bold">div</span>&gt;
+    <span style="color: #008000; font-weight: bold">&lt;span</span> <span style="color: #BB4444">class=&quot;caret&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/span&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;/button&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;ul</span> <span style="color: #BB4444">class=&quot;dropdown-menu&quot;</span> <span style="color: #BB4444">aria-labelledby=&quot;dropdownMenu1&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;li&gt;&lt;a</span> <span style="color: #BB4444">href=&quot;#&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Action<span style="color: #008000; font-weight: bold">&lt;/a&gt;&lt;/li&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;li&gt;&lt;a</span> <span style="color: #BB4444">href=&quot;#&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Another action<span style="color: #008000; font-weight: bold">&lt;/a&gt;&lt;/li&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;li&gt;&lt;a</span> <span style="color: #BB4444">href=&quot;#&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Something else here<span style="color: #008000; font-weight: bold">&lt;/a&gt;&lt;/li&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;li</span> <span style="color: #BB4444">role=&quot;separator&quot;</span> <span style="color: #BB4444">class=&quot;divider&quot;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/li&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;li&gt;&lt;a</span> <span style="color: #BB4444">href=&quot;#&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Separated link<span style="color: #008000; font-weight: bold">&lt;/a&gt;&lt;/li&gt;</span>
+  <span style="color: #008000; font-weight: bold">&lt;/ul&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/div&gt;</span>
 </pre></div>
 
 
@@ -189,13 +189,13 @@
 <li>Then in the <code>plugins</code> section add the following code:</li>
 </ol>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>   assetsmanager<span style="color: #666666">:</span> {
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">   assetsmanager<span style="color: #666666">:</span> {
        copyTo<span style="color: #666666">:</span> {
          <span style="color: #BB4444">&#39;/&#39;</span> <span style="color: #666666">:</span> [<span style="color: #BB4444">&#39;web/static/vendor/bootstrap/dist/fonts&#39;</span>]
        }
    }
 </pre></div>
-</p>
+
 
 <p>That&rsquo;s all folks! At least for this post I hope you enjoy and Good Luck, Have Fun!</p>
 

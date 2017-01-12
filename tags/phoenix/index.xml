@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog de Making Devs</title>
-    <link>http://blog.makingdevs.com/tags/phoenix/index.xml</link>
-    <description>Recent content on Blog de Making Devs</description>
+    <title>Phoenix on Blog de Making Devs</title>
+    <link>http://blog.makingdevs.com/tags/phoenix/</link>
+    <description>Recent content in Phoenix on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Thu, 24 Mar 2016 20:08:09 -0600</lastBuildDate>
     <atom:link href="http://blog.makingdevs.com/tags/phoenix/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -33,7 +34,7 @@
 
 &lt;p&gt;Then we are going to create a file named &lt;code&gt;.bowerrc&lt;/code&gt; with this file we are going to tell to &lt;code&gt;bower&lt;/code&gt; where are going to need to put all the &lt;code&gt;javascripts&lt;/code&gt; that we need it from now on. In this file we are going to put the next instruction:&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;{
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;{
   &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;directory&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;web/static/vendor&amp;quot;&lt;/span&gt;
 }
 &lt;/pre&gt;&lt;/div&gt;
@@ -53,7 +54,7 @@
 &lt;li&gt;Then open your &lt;code&gt;brunch-config.js&lt;/code&gt; and in the &lt;code&gt;conventions&lt;/code&gt; section add the following:&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;   conventions&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;   conventions&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
      assets&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #BB6688&#34;&gt;/^(web\/static\/assets)/&lt;/span&gt;,
      ignored&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; [
        &lt;span style=&#34;color: #BB6688&#34;&gt;/^(web\/static\/vendor\/bootstrap\/)(?!.*min.(js|css)$)/&lt;/span&gt;,
@@ -65,7 +66,7 @@
 
 3. After that you will need to load &lt;code&gt;jquery&lt;/code&gt; and &lt;code&gt;bootstrap&lt;/code&gt; in order, i.e. First &lt;code&gt;jquery&lt;/code&gt; and then &lt;code&gt;bootstrap&lt;/code&gt;. This is because &lt;code&gt;brunch&lt;/code&gt; will merge all js in alphabetical order and we require that &lt;code&gt;jquery&lt;/code&gt; loads first. For this we move to the &lt;code&gt;joinTo&lt;/code&gt; in the &lt;code&gt;files&lt;/code&gt; section and add the next lines:&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;   files&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;   files&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
      javascripts&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
        joinTo&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;js/app.js&amp;quot;&lt;/span&gt;,
        order&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
@@ -82,19 +83,19 @@
 
 &lt;p&gt;After this you can open the main layout of your application and put the next code:&lt;/p&gt;
 
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;dropdown&amp;quot;&lt;/span&gt;&amp;gt;
-  &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;btn btn-default dropdown-toggle&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;button&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;dropdownMenu1&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;data-toggle&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;dropdown&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;aria-haspopup&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;true&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;aria-expanded&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&amp;gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;div&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class=&amp;quot;dropdown&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;button&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class=&amp;quot;btn btn-default dropdown-toggle&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;type=&amp;quot;button&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;id=&amp;quot;dropdownMenu1&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;data-toggle=&amp;quot;dropdown&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;aria-haspopup=&amp;quot;true&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;aria-expanded=&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;
     Dropdown
-    &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;span&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;caret&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;span&lt;/span&gt;&amp;gt;
-  &amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;button&lt;/span&gt;&amp;gt;
-  &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;ul&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;dropdown-menu&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;aria-labelledby&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;dropdownMenu1&amp;quot;&lt;/span&gt;&amp;gt;
-    &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&amp;gt;Action&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;
-    &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&amp;gt;Another action&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;
-    &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&amp;gt;Something else here&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;
-    &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;role&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;separator&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;divider&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;
-    &amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&amp;gt;Separated link&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;a&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;li&lt;/span&gt;&amp;gt;
-  &amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;ul&lt;/span&gt;&amp;gt;
-&amp;lt;/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;span&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class=&amp;quot;caret&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;ul&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class=&amp;quot;dropdown-menu&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;aria-labelledby=&amp;quot;dropdownMenu1&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href=&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;Action&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href=&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;Another action&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href=&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;Something else here&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;li&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;role=&amp;quot;separator&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;class=&amp;quot;divider&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;href=&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;gt;&lt;/span&gt;Separated link&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -107,13 +108,13 @@
 &lt;li&gt;Then in the &lt;code&gt;plugins&lt;/code&gt; section add the following code:&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;   assetsmanager&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;   assetsmanager&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
        copyTo&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
          &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;web/static/vendor/bootstrap/dist/fonts&amp;#39;&lt;/span&gt;]
        }
    }
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;That&amp;rsquo;s all folks! At least for this post I hope you enjoy and Good Luck, Have Fun!&lt;/p&gt;
 </description>

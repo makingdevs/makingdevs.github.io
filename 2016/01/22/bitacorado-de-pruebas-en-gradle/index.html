@@ -17,7 +17,7 @@
     
     <meta property="og:tags" content="gradle">
     
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.16" />
     <title>Bitacorado de pruebas en Gradle &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -96,7 +96,7 @@
 	<article>
 		<p>Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el <a href="https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.logging.TestLoggingContainer.html">TestLoggingContainer</a>, del cual pude obtener este fragmento:</p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>apply plugin<span style="color: #666666">:</span> <span style="border: 1px solid #FF0000">&#39;</span>java<span style="border: 1px solid #FF0000">&#39;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">apply plugin<span style="color: #666666">:</span> <span style="border: 1px solid #FF0000">&#39;</span>java<span style="border: 1px solid #FF0000">&#39;</span>
 
 test <span style="color: #666666">{</span>
   testLogging <span style="color: #666666">{</span>
