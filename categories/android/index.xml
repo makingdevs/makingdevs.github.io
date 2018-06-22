@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on Blog de Making Devs</title>
+    <link>http://blog.makingdevs.com/categories/android/</link>
+    <description>Recent content in Android on Blog de Making Devs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Jul 2016 22:53:27 -0500</lastBuildDate>
+    
+	<atom:link href="http://blog.makingdevs.com/categories/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Uso de camara en android</title>
+      <link>http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android/</link>
+      <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android/</guid>
+      <description>Android se enfoca al desarrollo móvil, como es de esperarse cuenta con las herramientas necesarias para hacer uso del hardware, en esta ocasión se mostrará cómo usar la cámara en un Activity. Adicionalmente, el ejemplo está hecho en Groovy, puedes leer más al respecto en el post anterior.
+Intent en android Para poder hacer uso de la cámara se realiza mediante intent, que son el mecanismo por el cual se comunica la aplicación en tiempo de ejecución con otros componentes, así como lanzar eventos, se cuenta con dos tipos los cuales son: Intento implícito Se puede iniciar una actividad en otra aplicación en el dispositivo Intento explicito Se especifica la clase de la actividad a empezar para que el sistema operativo la inicie</description>
+    </item>
+    
+    <item>
+      <title>Making Android con Groovy(otra vez)</title>
+      <link>http://blog.makingdevs.com/2016/07/19/making-android-con-groovyotra-vez/</link>
+      <pubDate>Tue, 19 Jul 2016 19:12:30 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/07/19/making-android-con-groovyotra-vez/</guid>
+      <description>En las vísperas de la fecha en la que escribo este post, habíamos decidido entrar más de lleno con Android dentro del equipo de desarrollo, sin embargo, la convicción fue como siempre hacerlo de forma diferente, o por lo menos algo diferente con respecto a una industria que parecía siempre hacer lo mismo con lo mismo.
+Es por ello que me gustaría escribirles al respecto de la experiencia que tuvimos usando Groovy en un proyecto Android, sé de antemano que la atención y los reflectores se encuentran en otros lenguajes, sin embargo, a nosotros nos ayudo muchísimo la la experiencia que teníamos con el lenguaje pero usándolo en otro contexto muy distinto, y aunque no escribiremos todo lo que hicimos en este post, si les comentaremos en algunos más que fue lo que hicimos y como nos beneficiamos.</description>
+    </item>
+    
+  </channel>
+</rss>

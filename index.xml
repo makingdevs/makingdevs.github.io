@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog de Making Devs</title>
+    <link>http://blog.makingdevs.com/</link>
+    <description>Recent content on Blog de Making Devs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 Jun 2018 16:34:54 -0500</lastBuildDate>
+    
+	<atom:link href="http://blog.makingdevs.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>¿Cómo adopté Elixir?</title>
+      <link>http://blog.makingdevs.com/2018/06/17/c%C3%B3mo-adopt%C3%A9-elixir/</link>
+      <pubDate>Sun, 17 Jun 2018 16:34:54 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2018/06/17/c%C3%B3mo-adopt%C3%A9-elixir/</guid>
+      <description>LLevo ya un par de años escuchando y haciendo Elixir, no con la intensidad que quisiera pero tampoco lo he perdido de vista; soy un programador con preferencias dinámicas opcionales, sin embargo, me gusta mucho la magia(compilador) que Haskell ofrece al programar.
+De hace ya un par de años he querido comenzar una serie de artículos basados en LISP, sin embargo, el trabajo y los compromisos empresariales no lo han permitido, creo importante que los programadores conozcan las bases de la programación funcional, no por ser mejor, si no por que permite mejorar el/los paradigmas que estés usando.</description>
+    </item>
+    
+    <item>
+      <title>Testing Vert.x with Spock</title>
+      <link>http://blog.makingdevs.com/2017/12/12/testing-vert.x-with-spock/</link>
+      <pubDate>Tue, 12 Dec 2017 16:34:54 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2017/12/12/testing-vert.x-with-spock/</guid>
+      <description>Recently I was trying to test some components in Vert.x, to make sure of the behavior of the message&amp;rsquo;s receptions, how to store correctly in the Shared Map?, is the value in the Map?, and so on&amp;hellip;
+So, Vert.x includes a testing tool, is based in JUnit, the best, it has a Runner the VertxUnitRunner.class for JUnit, and for scripts tests you can use TestSuite.create, but what is the thing, the sentence: Async async = context.</description>
+    </item>
+    
+    <item>
+      <title>Add public key to Vagrant</title>
+      <link>http://blog.makingdevs.com/2017/07/04/add-public-key-to-vagrant/</link>
+      <pubDate>Tue, 04 Jul 2017 22:06:52 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2017/07/04/add-public-key-to-vagrant/</guid>
+      <description>After copying a file to Vagrant and creating a basic file structure. We can continue with our series.
+So, in this post, we are going to talk about the following topics:
+ Assign an IP address Add your public key Access to vagrant machine without vagrant ssh  For the first point and taking the file structure previously mentioned, we modify as follow:
+Vagrant.configure(&amp;#34;2&amp;#34;) do |config| config.vm.box = &amp;#34;centos/7&amp;#34; config.vm.network &amp;#34;public_network&amp;#34;, bridge: &amp;#34;en0: Wi-Fi (AirPort)&amp;#34;, auto_config: false config.</description>
+    </item>
+    
+    <item>
+      <title>Copying files to vagrant</title>
+      <link>http://blog.makingdevs.com/2017/06/18/copying-files-to-vagrant/</link>
+      <pubDate>Sun, 18 Jun 2017 10:13:05 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2017/06/18/copying-files-to-vagrant/</guid>
+      <description>Well, one of the common things to do in Vagrant is copying files. So for achieve that task we need to prepare a file like this.
+Once we have that file, we change config.vm.box = &amp;quot;ubuntu/trusty64&amp;quot; for config.vm.box = &amp;quot;centos/7&amp;quot;. And modify it like follow:
+Vagrant.configure(&amp;#34;2&amp;#34;) do |config| config.vm.box = &amp;#34;centos/7&amp;#34; config.vm.provision &amp;#34;file&amp;#34;, source: &amp;#34;lorem_ipsum.txt&amp;#34;, destination: &amp;#34;~/lorem_ipsum.txt&amp;#34; end Alright we run the command for execute our file.
+❯ vagrant up Bringing machine &amp;#39;default&amp;#39; up with &amp;#39;virtualbox&amp;#39; provider.</description>
+    </item>
+    
+    <item>
+      <title>Creating virtual machines with Vagrant</title>
+      <link>http://blog.makingdevs.com/2017/06/01/creating-virtual-machines-with-vagrant/</link>
+      <pubDate>Thu, 01 Jun 2017 15:28:00 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2017/06/01/creating-virtual-machines-with-vagrant/</guid>
+      <description>It&amp;rsquo;s been awhile since I wrote a post, but in compensation I would make a series of post talking about deploying applications with edeliver. But for this, we need to prepare the path. So, in this first post I will talk about Vagrant and how to use to setup an environment.
+First of all, we&amp;rsquo;re going to install Vagrant and Virtual Box. We&amp;rsquo;ll download Vagrant from this link and follow the instructions(i.</description>
+    </item>
+    
+    <item>
+      <title>Resolviendo la criba de Eratóstenes con Elixir</title>
+      <link>http://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir/</link>
+      <pubDate>Wed, 11 Jan 2017 13:11:46 -0600</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir/</guid>
+      <description>Ya una vez más familiarizado con Elixir me dí a la tarea de resolver un problema que se encuentra documentado en la Wikipedia, la forma de obtener un conjunto de números primos y una solución es a través de la llamada (Criba de Eratótstenes)1 descrita así:
+ Primer paso: listar los números naturales comprendidos entre 2 y n. Segundo paso: Se toma el primer número no rayado ni marcado, como número primo.</description>
+    </item>
+    
+    <item>
+      <title>Capistrano para despliegues de apps Rails</title>
+      <link>http://blog.makingdevs.com/2016/11/30/capistrano-para-despliegues-de-apps-rails/</link>
+      <pubDate>Wed, 30 Nov 2016 16:46:05 -0600</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/11/30/capistrano-para-despliegues-de-apps-rails/</guid>
+      <description>Hace tiempo que estabamos haciendo una aplicación Rails, me di a la tarear de investigar el tema obviado que es la forma en como se hace un despliegue lo más ordenado posible. Inclusive le pregunte al gran maestro @chillicoder al respecto, y efectivamente, mis sospechas eran correctas tenía que usar Capistrano(aunque chilli parece usar otra cosa), incluída la recomendación del maestro.
+Obviaré las partes de las instalaciones de las gemas y me enfocaré en el problema que tuve que resolver: un par de ambientes a instalar para una API hecha en Rails.</description>
+    </item>
+    
+    <item>
+      <title>FizzBuzz</title>
+      <link>http://blog.makingdevs.com/2016/11/05/fizzbuzz/</link>
+      <pubDate>Sat, 05 Nov 2016 19:35:08 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/11/05/fizzbuzz/</guid>
+      <description>Before we pass to how we can make a FizzBuzz game, we need to know something more basic about Elixir. Today we are going to learn something called Anonymous Function (a.k.a Lambda Expression)
+An Anonymous Function is a function without a name and is usually used for applying some sort of transformation to the arguments passed.
+According to Wikipedia an Anonymous Function is:
+ A function definition that is not bound to an identifier.</description>
+    </item>
+    
+    <item>
+      <title>Ecto Transactions</title>
+      <link>http://blog.makingdevs.com/2016/09/20/ecto-transactions/</link>
+      <pubDate>Tue, 20 Sep 2016 19:35:08 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/09/20/ecto-transactions/</guid>
+      <description>It has been a couple of months since I wrote something and was about phoenix and bootstrap. Today I&amp;rsquo;m going to talk about elixir, ecto and how to manage transactions
+Well in this post we are going to skip ecto setup (if for some way, it was need it, please leave a comment and I will make a post for it, but I think his documentation makes a fairly good example for it)</description>
+    </item>
+    
+    <item>
+      <title>Routing en Elm</title>
+      <link>http://blog.makingdevs.com/2016/09/10/routing-en-elm/</link>
+      <pubDate>Sat, 10 Sep 2016 11:22:01 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/09/10/routing-en-elm/</guid>
+      <description>La URL es un bit interesante de nuestra applicación, nos permite regresar a un estado, o compartir ese estado con alguien más; y en Elm, el Routing, es la segunda cosa más importante que deberías conocer después del propio lenguaje. Así que empecemos.
+ANATOMÍA DE UNA URL Una URL es una dirección dada para un recurso único en la web y está compuesta de diferentes partes: un protocolo, un host, un nombre de dominio, opcionalmente un path y el nombre del archivo:</description>
+    </item>
+    
+    <item>
+      <title>Uso de camara en android</title>
+      <link>http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android/</link>
+      <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android/</guid>
+      <description>Android se enfoca al desarrollo móvil, como es de esperarse cuenta con las herramientas necesarias para hacer uso del hardware, en esta ocasión se mostrará cómo usar la cámara en un Activity. Adicionalmente, el ejemplo está hecho en Groovy, puedes leer más al respecto en el post anterior.
+Intent en android Para poder hacer uso de la cámara se realiza mediante intent, que son el mecanismo por el cual se comunica la aplicación en tiempo de ejecución con otros componentes, así como lanzar eventos, se cuenta con dos tipos los cuales son: Intento implícito Se puede iniciar una actividad en otra aplicación en el dispositivo Intento explicito Se especifica la clase de la actividad a empezar para que el sistema operativo la inicie</description>
+    </item>
+    
+    <item>
+      <title>Making Android con Groovy(otra vez)</title>
+      <link>http://blog.makingdevs.com/2016/07/19/making-android-con-groovyotra-vez/</link>
+      <pubDate>Tue, 19 Jul 2016 19:12:30 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/07/19/making-android-con-groovyotra-vez/</guid>
+      <description>En las vísperas de la fecha en la que escribo este post, habíamos decidido entrar más de lleno con Android dentro del equipo de desarrollo, sin embargo, la convicción fue como siempre hacerlo de forma diferente, o por lo menos algo diferente con respecto a una industria que parecía siempre hacer lo mismo con lo mismo.
+Es por ello que me gustaría escribirles al respecto de la experiencia que tuvimos usando Groovy en un proyecto Android, sé de antemano que la atención y los reflectores se encuentran en otros lenguajes, sin embargo, a nosotros nos ayudo muchísimo la la experiencia que teníamos con el lenguaje pero usándolo en otro contexto muy distinto, y aunque no escribiremos todo lo que hicimos en este post, si les comentaremos en algunos más que fue lo que hicimos y como nos beneficiamos.</description>
+    </item>
+    
+    <item>
+      <title>Uso de logback</title>
+      <link>http://blog.makingdevs.com/2016/03/28/uso-de-logback/</link>
+      <pubDate>Mon, 28 Mar 2016 09:13:56 -0600</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/03/28/uso-de-logback/</guid>
+      <description>En el proceso de desarrollo de software se implementan bitácoras o mejor conocidas como loggers que permiten tener información de salida útil al desarrollador en cuanto al correcto flujo de la aplicación.
+Este registro se divide en secciones: Logger, Formatter y Handler.
+ Logger: Es el responsable de captar el mensaje y pasarlo al marco de registro.
+ Formatter: Su función es dar formato a la salida. toma el objeto binario y realiza la conversión a una representación de cadena</description>
+    </item>
+    
+    <item>
+      <title>Add complete bootstrap to Phoenix</title>
+      <link>http://blog.makingdevs.com/2016/03/24/add-complete-bootstrap-to-phoenix/</link>
+      <pubDate>Thu, 24 Mar 2016 20:08:09 -0600</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/03/24/add-complete-bootstrap-to-phoenix/</guid>
+      <description>It has been a while since I make a post and this is my first post in English so be gentle with me :P
+Since a couple of months I been working in a language called elixir and with his web framework phoenix, I have had a lot of fun with these elements. But sometimes I been struggling with configurations that should be easy maybe I don&amp;rsquo;t read that carefully or maybe I&amp;rsquo;m a knucklehead, but whatever the reasone is, I hope this configuration works for you and give you a little help of how configure your Javascripts third parties for your Phoenix application.</description>
+    </item>
+    
+    <item>
+      <title>MicroServicios con Groovy</title>
+      <link>http://blog.makingdevs.com/2016/03/08/microservicios-con-groovy/</link>
+      <pubDate>Tue, 08 Mar 2016 21:38:08 -0600</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/03/08/microservicios-con-groovy/</guid>
+      <description>Si bien, existen muchas tecnologías muy completas que permiten la creación de servicios robustos, a veces me he visto en la necesidad de hacer algo pequeño. muy concreto pero mantenible, y que pueda soportar un volumen determinado. Es por esto que me he apoyado del poder que ofrece Groovy con ayuda de los Groovlets.
+La parte que me gusta de este acercamiento es que el poder del Scripting se pasa al navegador, o en este caso, a un cliente que consume algún servicio web.</description>
+    </item>
+    
+    <item>
+      <title>Pruebas funcionales con Geb y Spock</title>
+      <link>http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock/</link>
+      <pubDate>Mon, 07 Mar 2016 23:47:26 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock/</guid>
+      <description>Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario funcionen correctamente; son pruebas difíciles de implementar ya que deben realizarse desde la perspectiva del usuario y muchas veces las interfaces de usuario cambian constantemente.
+Geb es una herramienta para escribir pruebas funcionales con Groovy que hace uso del WebDriver de Selenium para la automatizacion del navegador y toma varias ideas de la biblioteca jQuery para la interacción con los elementos.</description>
+    </item>
+    
+    <item>
+      <title>Bitacorado de pruebas en Gradle</title>
+      <link>http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle/</link>
+      <pubDate>Fri, 22 Jan 2016 18:14:37 -0600</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle/</guid>
+      <description>Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el TestLoggingContainer, del cual pude obtener este fragmento:
+apply plugin: &amp;#39;java&amp;#39; test { testLogging { // set options for log level LIFECYCLE  events &amp;#34;failed&amp;#34; exceptionFormat &amp;#34;short&amp;#34; // set options for log level DEBUG  debug { events &amp;#34;started&amp;#34;, &amp;#34;skipped&amp;#34;, &amp;#34;failed&amp;#34; exceptionFormat &amp;#34;full&amp;#34; } // remove standard output/error logging from --info builds  // by assigning only &amp;#39;failed&amp;#39; and &amp;#39;skipped&amp;#39; events  info.</description>
+    </item>
+    
+    <item>
+      <title>Amazon S3 y Groovy</title>
+      <link>http://blog.makingdevs.com/2015/08/13/amazon-s3-y-groovy/</link>
+      <pubDate>Thu, 13 Aug 2015 22:47:08 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2015/08/13/amazon-s3-y-groovy/</guid>
+      <description>En una de las tareas que realice recientemente, tuve la necesidad de transferir un par de archivos que obtuve de un endpoint(de la cual hablaré en otro post) hacia un Bucket de Amazon S3.
+La solución inmediata fue usar una biblioteca que encontré para Java de nombre jets3t, la cual, provee de un conjunto de herramientas muy simple para operar con Amazon S3, Cloud Front y Google Storage.
+El caso muy puntual que tuve que resolver fue subir un archivo y despúes borrarlo de un bucket muy particular.</description>
+    </item>
+    
+    <item>
+      <title>Revisión del libro - The Software Craftsman: Professionalism</title>
+      <link>http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism/</link>
+      <pubDate>Sun, 02 Aug 2015 18:44:42 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism/</guid>
+      <description>Libro que al igual que The Pragmatic Programmer: From Journeyman to Master se ganó estar en mis libros de cabecera, y se ha ganado un lugar muy especial en mi librero.
+El escritor, y desarrollador de toda la vida Sandro Mancuso, plasma muy bien la idea que el tiene acerca de lo que todo desarrollador de software, y en mi opinión personal lo que debería buscar todo desarrollador, para cambiar su entorno de trabajo y ayudarnos a todos (porque estamos en el mismo barco) a cambiar la mentalidad de los clientes, de que no somos la clase de persona/profesional que la mayor parte del mundo cree que somos:  Unos micos tirando lineas de código a diestra y siniestra, y haciendo el código lo más ilegible posible para que nada ni nadie pueda entenderlo Unos personajes que se sientan en el cuarto más oscuro del sótano de la empresa y que nadie conoce (usualmente cuentan leyendas de que terror de ellos) Los padrinos mágicos de los clientes que hacen que se cumplan sus deseos y que en un parpadear de ojos ya lo tiene funcionando en producción y libre de defectos Las personas que arreglan los defectos del sistema con su teclado mágico Personas o cosas que transforman café, cerveza o en su defecto bebidas energéticas en líneas de código que pasan por una caja mágica que lo transforma en un sistema para su empresa  Mientras más leía este libro más me iba dando cuenta de que muchas de las cosas que el plasmó las había pasado en algún momento, que otras pocas las estaba pasando y que muchas otras parecían estar a la vuelta de la esquina, como si de un libro de adivinación se tratase.</description>
+    </item>
+    
+    <item>
+      <title>Hot deployment en Gradle</title>
+      <link>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle/</link>
+      <pubDate>Sun, 26 Jul 2015 23:19:13 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle/</guid>
+      <description>Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre SpringLoaded.
+Después me di cuenta que frameworks como Dropwizard lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré un artículo en donde explica como ponerlo en acción usando propiamente Dropwizard.</description>
+    </item>
+    
+    <item>
+      <title>Borrado batch en Grails</title>
+      <link>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails/</link>
+      <pubDate>Fri, 01 May 2015 20:58:30 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails/</guid>
+      <description>En esta ocasión les quiero compartir la solución a un problema que tuve al borrar una colección de objetos en grails y con el GORM, si bien podría hacerlo con HQL o con SQL usando las bondades de Hibernate me gusto más el acercamiento que les quiero presentar.
+La necesidad era borrar un grupo de objetos en donde el contenido de su relación estuviera vacío, ejemplifico con la estructura de unas clases:</description>
+    </item>
+    
+    <item>
+      <title>Clusterizacion con Camel</title>
+      <link>http://blog.makingdevs.com/2015/04/07/clusterizacion-con-camel/</link>
+      <pubDate>Tue, 07 Apr 2015 19:56:54 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2015/04/07/clusterizacion-con-camel/</guid>
+      <description>Camel ofrece distintas soluciones para ser escalado o para distribuir la carga en diferentes instancias, la soluciones que ofrece dependerá de como se encuentra nuestra infraestructura ( y configuración).
+ Misma JVM y CamelContext Misma JVM pero diferente CamelContext Diferente JVM y CamelContext   El problema que me vi envuelto fue de estas tres, la ultima, el clusterizar camel que se encontraban en diferentes JVM y CamelContext. Y en particular tuve un problema de mensajes duplicados.</description>
+    </item>
+    
+    <item>
+      <title>Personalizar notificaciones de correo en Jenkins</title>
+      <link>http://blog.makingdevs.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins/</link>
+      <pubDate>Thu, 06 Nov 2014 19:08:56 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins/</guid>
+      <description>Las notificaciones son básicas para la correcta comunicación de los involucrados de nuestros proyectos como: Stakeholders/ Key Users / Developers / Clientes / Testers.
+Por esta razón te recomiendo personalizar las notificaciones por defecto de Jenkins.
+Objetivo: Informar los despliegues desde Jenkins por correo, usando el plugin: Email-ext
+Procedimiento:
+ Instalar el plugin desde la consola de administración de Jenkins.  Configurar la cuenta de correo saliente SMTP, te recomiendo que uses el autenticado.</description>
+    </item>
+    
+    <item>
+      <title>Inyección de métodos por categorías y TimeCategory</title>
+      <link>http://blog.makingdevs.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory/</link>
+      <pubDate>Tue, 16 Sep 2014 18:55:30 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2014/09/16/inyecci%C3%B3n-de-m%C3%A9todos-por-categor%C3%ADas-y-timecategory/</guid>
+      <description>Acerca de las categorías En Groovy se pueden inyectar métodos de algunas formas, uno de ellos es a través del uso de categorías, la cual nos da inyección temporal y controlada de dichos elementos. Para hacerlo las clases que son categorías deben de cumplir con cierta estructura:
+ Los métodos de la clase deben ser definidos como estáticos El primer argumento de dicho método define el tipo sobre el cual se inyectarían los nuevos métodos Deben de ser usados dentro del alcance de un closure con ayuda de la palabra reservada use   Un ejemplo podría ser el siguiente:</description>
+    </item>
+    
+    <item>
+      <title>Lectura de correo con Apache Camel y Groovy</title>
+      <link>http://blog.makingdevs.com/2014/08/26/lectura-de-correo-con-apache-camel-y-groovy/</link>
+      <pubDate>Tue, 26 Aug 2014 18:29:26 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2014/08/26/lectura-de-correo-con-apache-camel-y-groovy/</guid>
+      <description>Hola a todos es un gusto contribuir al blog de makingdevs.com y mostrarles un poco de lo que es Apache Camel, para ellos hablaremos primero de su definición.
+Apache Camel es un framework de integración de código abierto, basado en Enterprise Integration Patterns (Patrones de Integración Empresarial). Camel nos permite definir las reglas de enrutamiento o mediación con ayuda de un lenguaje especifico (DSL), incluyendo un API basada en Java o mediante una configuración XML.</description>
+    </item>
+    
+    <item>
+      <title>Introduccion a Ratpack</title>
+      <link>http://blog.makingdevs.com/2014/08/19/introduccion-a-ratpack/</link>
+      <pubDate>Tue, 19 Aug 2014 00:34:28 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2014/08/19/introduccion-a-ratpack/</guid>
+      <description>Es bueno estar de vuelta escribiendo, ya ha pasado bastante tiempo desde que hice un post así que vamos a ver algo que me ayudó en un curso. El día de hoy hablaremos de Ratpack y para ello primero vamos a dar una pequeña introducción de lo que es. Ratpack, como su página lo dice, es un conjunto de librerías de JAVA que facilita la rapidez, eficiencia, evolución y pruebas de aplicaciones HTTP, está construida sobre Netty y por ello posee muchos de los beneficios del motor del mismo.</description>
+    </item>
+    
+    <item>
+      <title>Bienvenido a MakingDevs</title>
+      <link>http://blog.makingdevs.com/2014/07/29/bienvenido-a-makingdevs/</link>
+      <pubDate>Tue, 29 Jul 2014 00:21:37 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2014/07/29/bienvenido-a-makingdevs/</guid>
+      <description>Bienvenido seas a nuestro blog en MakingDevs!
+Ya hace más de un año que comenzamos con un gran reto: impulsar la carrera de los profesionales de software. ¿Para qué? Para crear grupos de desarrolladores que puedan generar productos de software de calidad, que permitan ofrecer las soluciones tecnológicas que necesitamos actualmente. Creemos que la manera en que esto puede suceder es a través de las propias personas que están dentro de este gran ambiente, a través de su esfuerzo y dedicación al construir un software, y entrar en un ciclo de aprendizaje continuo que les permita crear cada vez mejores soluciones.</description>
+    </item>
+    
+  </channel>
+</rss>

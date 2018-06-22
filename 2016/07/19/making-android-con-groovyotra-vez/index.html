@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="">
+    <meta property="og:title" content="Making Android con Groovy(otra vez)">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2016-07-19">
+    
+    <meta property="og:description" content="">
+    <meta property="og:url" content="http://blog.makingdevs.com/2016/07/19/making-android-con-groovyotra-vez/">
+    <meta property="og:site_name" content="Blog de Making Devs">
+    
+    <meta property="og:tags" content="groovy">
+    
+    <meta property="og:tags" content="android">
+    
+    <meta property="og:tags" content="mobile">
+    
+    <meta property="og:tags" content="closure">
+    
+    <meta name="generator" content="Hugo 0.43-DEV" />
+    <title>Making Android con Groovy(otra vez) &middot; Blog de Making Devs</title>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
+    
+    <link href="http://blog.makingdevs.com/index.xml" rel="alternate" type="application/rss+xml" title="Blog de Making Devs" />
+    
+    
+
+    
+    
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top visible-xs">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+				<a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+			
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				
+				
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+	<div class="row">
+		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
+	<div id="menu-content" class="vertical-align">
+		
+			<h1 class="text-center"><a href="http://blog.makingdevs.com/">Blog de Making Devs</a></h1>
+		
+		
+		
+			<small class="text-center center-block">El código que a veces olvidamos documentar.</small>
+		
+		
+		
+			<img id="profile-pic" src="http://blog.makingdevs.com//profile.jpeg" alt="My Picture" class="img-circle center-block">
+		
+		<div id="social" class="text-center">
+			
+
+			<a href="mailto:info@makingdevs.com"><i class="fa fa-envelope-o fa-2x"></i></a>
+		</div>
+		<div id="links" class="text-center">
+			
+			
+		</div>
+	</div>
+</div>
+
+		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
+			<div class="row">
+				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
+
+<main>
+
+  <header>
+    <h1 align=center>Making Android con Groovy(otra vez)</h1>
+    
+    <section class="author">
+      <p align=center> <b>Redactado por: José Juan Reyes Zuñiga</b></p>
+    </section>
+    
+  </header>
+  </br>
+
+	<article>
+		
+
+<p>En las vísperas de la fecha en la que escribo este post, habíamos decidido entrar más de lleno con Android dentro del equipo de desarrollo, sin embargo, la convicción fue como siempre hacerlo de forma diferente, o por lo menos algo diferente con respecto a una industria que parecía siempre hacer lo mismo con lo mismo.</p>
+
+<p>Es por ello que me gustaría escribirles al respecto de la experiencia que tuvimos usando Groovy en un proyecto Android, sé de antemano que la atención y los reflectores se encuentran en otros lenguajes, sin embargo, a nosotros nos ayudo muchísimo la  la experiencia que teníamos con el lenguaje pero usándolo en otro contexto muy distinto, y aunque no escribiremos todo lo que hicimos en este post, si les comentaremos en algunos más que fue lo que hicimos y como nos beneficiamos.</p>
+
+<p>Explicarles como agregamos el plugin de Groovy dentro de un proyecto Android está de más, pueden consultarlo directamente en su <a href="https://github.com/groovy/groovy-android-gradle-plugin">repositorio de GitHub</a>. Lo que me gustaría mencionar es que ya está en una versión estable y confiable como para usarse.</p>
+
+<!-- more -->
+
+<h2 id="la-estructura-de-un-proyecto">La estructura de un proyecto</h2>
+
+<p>Al igual que un proyecto Android(Java), hay mucha similaridad integrando Groovy:</p>
+
+<pre><code class="language-plain">▾ app/
+  ▾ src/
+    ▾ main/
+      ▾ groovy/com/makingdevs/mybarista/
+        ▾ common/
+            CamaraUtil.groovy
+            ImageUtil.groovy
+            LocationUtil.groovy
+            SingleFragmentActivity.groovy
+            WithFragment.groovy
+        ▾ database/
+        ▾ model/
+          ▸ command/
+          ▸ repository/
+            Comment.groovy
+            GPSLocation.groovy
+            S3Asset.groovy
+            User.groovy
+        ▾ network/
+          ▾ impl/
+              RetrofitTemplate.groovy
+            FoursquareRestOperations.groovy
+            S3AssetRestOperations.groovy
+            UserRestOperations.groovy
+        ▾ service/
+            CommentManager.groovy
+            CommentManagerImpl.groovy
+            FoursquareManager.groovy
+            FoursquareManagerImpl.groovy
+            S3assetManager.groovy
+            S3assetManagerImpl.groovy
+        ▾ ui/
+          ▾ activity/
+              PrincipalActivity.groovy
+          ▾ adapter/
+              CommentAdapter.groovy
+              UserAdapter.groovy
+          ▾ fragment/
+              CameraFragment.groovy
+              CommentsFragment.groovy
+        ▾ view/
+            CustomFontTextView.groovy
+      ▸ res/
+    app.iml
+    proguard-rules.pro
+▾ fastlane/
+    Appfile
+    Fastfile
+  android_app.iml
+  Gemfile
+  Gemfile.lock
+  gradle.properties
+  gradlew*
+  gradlew.bat
+  local.properties
+  README.md
+  settings.gradle
+</code></pre>
+
+<h2 id="los-modelos">Los modelos</h2>
+
+<p>La ventaja de los POGOS de Groovy se siente al declarar o instanciar algún objeto de dominio:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">groovy.transform.CompileStatic</span>
+
+<span style="color:#a2f">@CompileStatic</span>
+<span style="color:#a2f;font-weight:bold">class</span> <span style="color:#00f">User</span> <span style="color:#666">{</span>
+    String id
+    String username
+    String token
+<span style="color:#666">}</span></code></pre></div>
+
+<p>Ahora instanciamos nuestra clase en cualquier parte:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">User <span style="color:#00a000">getUserSession</span><span style="color:#666">(</span>Context context<span style="color:#666">)</span> <span style="color:#666">{</span>
+    SharedPreferences session <span style="color:#666">=</span> context<span style="color:#666">.</span><span style="color:#b44">getSharedPreferences</span><span style="color:#666">(</span><span style="color:#b44">&#34;UserSession&#34;</span><span style="color:#666">,</span>Context<span style="color:#666">.</span><span style="color:#b44">MODE_PRIVATE</span><span style="color:#666">)</span>
+    String username <span style="color:#666">=</span> session<span style="color:#666">.</span><span style="color:#b44">getString</span><span style="color:#666">(</span><span style="color:#b44">&#34;username&#34;</span><span style="color:#666">,</span><span style="color:#a2f;font-weight:bold">null</span><span style="color:#666">);</span>
+    String token <span style="color:#666">=</span> session<span style="color:#666">.</span><span style="color:#b44">getString</span><span style="color:#666">(</span><span style="color:#b44">&#34;token&#34;</span><span style="color:#666">,</span><span style="color:#a2f;font-weight:bold">null</span><span style="color:#666">)</span>
+    String id <span style="color:#666">=</span> session<span style="color:#666">.</span><span style="color:#b44">getString</span><span style="color:#666">(</span><span style="color:#b44">&#34;id&#34;</span><span style="color:#666">,</span><span style="color:#a2f;font-weight:bold">null</span><span style="color:#666">)</span>
+    <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#00a000">User</span><span style="color:#666">(</span><span style="color:#a0a000">username:</span>username<span style="color:#666">,</span><span style="color:#a0a000">token:</span>token<span style="color:#666">,</span><span style="color:#a0a000">id:</span>id<span style="color:#666">)</span>
+<span style="color:#666">}</span></code></pre></div>
+
+<p>La nota <strong>importante</strong> aquí es la forma de la instanciación y que no hay palabra reservada <code>return</code>, al igual que la declaración del método como <code>public</code> no es necesaria. Además de que puedes llamar de forma abreviada a sus atributos.</p>
+
+<h2 id="staticcompile"><code>@StaticCompile</code></h2>
+
+<p><strong>Groovy es un lenguaje de tipado dinámico opcional</strong>, lo cuál significa que podemos beneficiarnos de ciertos elementos del lenguaje y estar seguros de que compilará correctamente; esta anotación hace al compilador mas estricto, con la ventaja de optimizar el código de byte dando como resultado una mejor ejecución. Los desarrolladores recomiendan el uso intenso de esta anotación en todas las clases dentro del proyecto Android:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">android.content.Context</span>
+<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">android.content.Intent</span>
+<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">android.support.v4.app.Fragment</span>
+<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">com.makingdevs.app.common.SingleFragmentActivity</span>
+<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">com.makingdevs.app.ui.fragment.RegistrationFragment</span>
+<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">groovy.transform.CompileStatic</span>
+
+<span style="color:#a2f">@CompileStatic</span>
+<span style="color:#a2f;font-weight:bold">class</span> <span style="color:#00f">RegistrationActivity</span> <span style="color:#a2f;font-weight:bold">extends</span> SingleFragmentActivity<span style="color:#666">{</span>
+
+    <span style="color:#a2f;font-weight:bold">static</span> Intent <span style="color:#00a000">newIntentWithContext</span><span style="color:#666">(</span>Context context<span style="color:#666">){</span>
+        Intent intent <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#00a000">Intent</span><span style="color:#666">(</span>context<span style="color:#666">,</span> RegistrationActivity<span style="color:#666">)</span>
+        intent
+    <span style="color:#666">}</span>
+
+    <span style="color:#a2f">@Override</span>
+    Fragment <span style="color:#00a000">createFragment</span><span style="color:#666">()</span> <span style="color:#666">{</span>
+        <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#00a000">RegistrationFragment</span><span style="color:#666">()</span>
+    <span style="color:#666">}</span>
+<span style="color:#666">}</span></code></pre></div>
+
+<p>Realmente este es un tema que se puede extender un poco más, pero iniciando con esto es suficiente.</p>
+
+<h2 id="los-closures">Los closures</h2>
+
+<p>Para quién ya ha programado en Groovy conocerá que los closures son un elemento fundamental, para quiénes no, podrán compararlos con las lambdas de Java 8 o simplemente como lo que son: closures.</p>
+
+<p>La forma general del closure en Groovy es:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#666">{</span> p1<span style="color:#666">,</span>p2<span style="color:#666">,</span>p3<span style="color:#666">...</span> <span style="color:#666">-&gt;</span> body <span style="color:#666">}</span></code></pre></div>
+
+<p>Y creo que es de las partes de las que más podemos comentar, incluso creo que cada beneficio particular que nos da Groovy con los closures lo podremos comentar en un post por separado.</p>
+
+<h3 id="implementando-interfaces-con-closures">Implementando interfaces con Closures</h3>
+
+<p>El evento más solicitado dentro de una app Android es el <em>click</em> de un componente, con un closure podemos tratarlo:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f">@CompileStatic</span>
+<span style="color:#a2f;font-weight:bold">public</span> <span style="color:#a2f;font-weight:bold">class</span> <span style="color:#00f">SomeFragment</span> <span style="color:#a2f;font-weight:bold">extends</span> Fragment <span style="color:#666">{</span>
+
+    FloatingActionButton mButtonGoChekin
+
+    <span style="color:#080;font-style:italic">// ...more code...
+</span><span style="color:#080;font-style:italic"></span>
+    <span style="color:#a2f">@Override</span>
+    View <span style="color:#00a000">onCreateView</span><span style="color:#666">(</span>LayoutInflater inflater<span style="color:#666">,</span>
+                      <span style="color:#a2f">@Nullable</span> ViewGroup container<span style="color:#666">,</span> <span style="color:#a2f">@Nullable</span> Bundle savedInstanceState<span style="color:#666">)</span> <span style="color:#666">{</span>
+
+        mButtonGoChekin<span style="color:#666">=</span> <span style="color:#666">(</span>FloatingActionButton<span style="color:#666">)</span> root<span style="color:#666">.</span><span style="color:#b44">findViewById</span><span style="color:#666">(</span>R<span style="color:#666">.</span><span style="color:#b44">id</span><span style="color:#666">.</span><span style="color:#b44">button_go_chekin</span><span style="color:#666">)</span>
+        mButtonGoChekin<span style="color:#666">.</span><span style="color:#b44">onClickListener</span> <span style="color:#666">=</span> <span style="color:#666">{</span>
+            Intent intent <span style="color:#666">=</span> AnotherActivity<span style="color:#666">.</span><span style="color:#b44">newIntentWithContext</span><span style="color:#666">(</span>getContext<span style="color:#666">())</span>
+            startActivity<span style="color:#666">(</span>intent<span style="color:#666">)</span>
+        <span style="color:#666">}</span>
+    <span style="color:#666">}</span>
+<span style="color:#666">}</span></code></pre></div>
+
+<p>Ahora aquí una de las que más me gusta en conjunto con otra anotación de Groovy <code>@Singleton</code>, de la cual hablaremos en otro post.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f">@Singleton</span>
+<span style="color:#a2f">@CompileStatic</span>
+<span style="color:#a2f;font-weight:bold">class</span> <span style="color:#00f">RetrofitTemplate</span> <span style="color:#666">{</span>
+
+    Retrofit retrofit <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> Retrofit<span style="color:#666">.</span><span style="color:#b44">Builder</span><span style="color:#666">()</span>
+            <span style="color:#666">.</span><span style="color:#b44">addConverterFactory</span><span style="color:#666">(</span>GsonConverterFactory<span style="color:#666">.</span><span style="color:#b44">create</span><span style="color:#666">())</span>
+            <span style="color:#666">.</span><span style="color:#b44">baseUrl</span><span style="color:#666">(</span>BuildConfig<span style="color:#666">.</span><span style="color:#b44">API_SERVER_URL</span><span style="color:#666">)</span>
+            <span style="color:#666">.</span><span style="color:#b44">build</span><span style="color:#666">()</span>
+
+    <span style="color:#0b0;font-weight:bold">def</span> <span style="color:#00a000">withRetrofit</span><span style="color:#666">(</span>Class operations<span style="color:#666">,</span> Closure onSuccess<span style="color:#666">,</span> Closure onError<span style="color:#666">,</span> Closure action<span style="color:#666">){</span>
+        CustomRestOperations restOperations <span style="color:#666">=</span> retrofit<span style="color:#666">.</span><span style="color:#b44">create</span><span style="color:#666">(</span>operations<span style="color:#666">)</span> <span style="color:#a2f;font-weight:bold">as</span> CustomRestOperations
+        Call<span style="color:#666">&lt;</span>Checkin<span style="color:#666">&gt;</span> model <span style="color:#666">=</span> action<span style="color:#666">(</span>restOperations<span style="color:#666">)</span> <span style="color:#a2f;font-weight:bold">as</span> Call<span style="color:#666">&lt;</span>Checkin<span style="color:#666">&gt;</span>
+        <span style="color:#0b0;font-weight:bold">def</span> callback <span style="color:#666">=</span> <span style="color:#666">[</span>
+                onResponse <span style="color:#666">:</span>onSuccess<span style="color:#666">,</span>
+                onFailure <span style="color:#666">:</span> onError
+        <span style="color:#666">]</span>
+        model<span style="color:#666">.</span><span style="color:#b44">enqueue</span><span style="color:#666">(</span>callback <span style="color:#a2f;font-weight:bold">as</span> Callback<span style="color:#666">&lt;</span>Checkin<span style="color:#666">&gt;)</span>
+    <span style="color:#666">}</span>
+<span style="color:#666">}</span></code></pre></div>
+
+<p><strong>Podemos hacer que un mapa se comporte como la implementación de una interfaz</strong>, es sólo cuestión de usar los closures correctamente. Y también podemos ejecutar closures para mandarles parámetros listos para usarse en otros contextos.</p>
+
+<h2 id="conclusión">Conclusión</h2>
+
+<p>Si bien, Groovy agrega peso a las aplicaciones Android, creo que cada byte y cada línea vale todo lo que no tuvimos que codificar, la fluidez en el teclado y la productividad ganada.</p>
+
+	</article>
+</main>
+
+<div id="bottom-nav" class="text-center center-block">
+	<a href=" http://blog.makingdevs.com/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
+</div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "makingdevs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42842883-2', 'auto');
+    ga('send', 'pageview');
+    window.baseURL = "http:\/\/blog.makingdevs.com\/";
+  </script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  
+  
+  <script src="http://blog.makingdevs.com//js/App.js"></script>
+  
+</body>
+</html>

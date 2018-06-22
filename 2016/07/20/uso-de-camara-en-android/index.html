@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="">
+    <meta property="og:title" content="Uso de camara en android">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2016-07-20">
+    
+    <meta property="og:description" content="">
+    <meta property="og:url" content="http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android/">
+    <meta property="og:site_name" content="Blog de Making Devs">
+    
+    <meta property="og:tags" content="groovy">
+    
+    <meta property="og:tags" content="android">
+    
+    <meta property="og:tags" content="mobile">
+    
+    <meta property="og:tags" content="closure">
+    
+    <meta name="generator" content="Hugo 0.43-DEV" />
+    <title>Uso de camara en android &middot; Blog de Making Devs</title>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
+    
+    <link href="http://blog.makingdevs.com/index.xml" rel="alternate" type="application/rss+xml" title="Blog de Making Devs" />
+    
+    
+
+    
+    
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top visible-xs">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+				<a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+			
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				
+				
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+	<div class="row">
+		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
+	<div id="menu-content" class="vertical-align">
+		
+			<h1 class="text-center"><a href="http://blog.makingdevs.com/">Blog de Making Devs</a></h1>
+		
+		
+		
+			<small class="text-center center-block">El código que a veces olvidamos documentar.</small>
+		
+		
+		
+			<img id="profile-pic" src="http://blog.makingdevs.com//profile.jpeg" alt="My Picture" class="img-circle center-block">
+		
+		<div id="social" class="text-center">
+			
+
+			<a href="mailto:info@makingdevs.com"><i class="fa fa-envelope-o fa-2x"></i></a>
+		</div>
+		<div id="links" class="text-center">
+			
+			
+		</div>
+	</div>
+</div>
+
+		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
+			<div class="row">
+				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
+
+<main>
+
+  <header>
+    <h1 align=center>Uso de camara en android</h1>
+    
+    <section class="author">
+      <p align=center> <b>Redactado por: Juan Francisco Reyes Silva</b></p>
+    </section>
+    
+  </header>
+  </br>
+
+	<article>
+		
+
+<p>Android se enfoca al desarrollo móvil, como es de esperarse cuenta con las herramientas necesarias para hacer uso del hardware, en esta ocasión se mostrará cómo usar la cámara en un Activity. Adicionalmente, el ejemplo está hecho en Groovy, puedes leer más al respecto en el post anterior.</p>
+
+<!-- more -->
+
+<h2 id="intent-en-android">Intent en android</h2>
+
+<p>Para poder hacer uso de la cámara se realiza mediante intent, que son el mecanismo por el cual se comunica la aplicación en tiempo de ejecución con otros componentes, así como lanzar eventos, se cuenta con dos tipos los cuales son:
+<strong>Intento implícito</strong>
+Se puede iniciar una actividad en otra aplicación en el dispositivo
+<strong>Intento explicito</strong>
+Se especifica la clase de la actividad a empezar para que el sistema operativo la inicie</p>
+
+<h2 id="acceso-a-la-cámara">Acceso a la cámara</h2>
+
+<p>Android cuenta con la clase <strong>MediaStore</strong>, esta se encarga de proveer los medios de comunicación, el que nos interesa es <strong>ACTION_IMAGE_CAPTURE</strong>, este en el intent con el cual podemos hacer uso de la cámara.
+El siguiente metodo muestra como usar la camara nativa de Android, la clase que se encarga de usarlo es <strong>ExampleCamera</strong>.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">	<span style="color:#0b0;font-weight:bold">void</span> <span style="color:#00a000">launchCamera</span><span style="color:#666">()</span> <span style="color:#666">{</span>
+		Intent camera <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#00a000">Intent</span><span style="color:#666">(</span>MediaStore<span style="color:#666">.</span><span style="color:#b44">ACTION_IMAGE_CAPTURE</span><span style="color:#666">)</span>
+		<span style="color:#a2f;font-weight:bold">if</span> <span style="color:#666">(</span>camera<span style="color:#666">.</span><span style="color:#b44">resolveActivity</span><span style="color:#666">(</span>getPackageManager<span style="color:#666">()))</span> <span style="color:#666">{</span>
+			<span style="color:#a2f;font-weight:bold">try</span> <span style="color:#666">{</span>
+				filePhoto <span style="color:#666">=</span> createPhoto<span style="color:#666">(</span><span style="color:#b44">&#34;IMG_&#34;</span><span style="color:#666">)</span>
+				<span style="color:#666">}</span> <span style="color:#a2f;font-weight:bold">catch</span> <span style="color:#666">(</span>IOException ex<span style="color:#666">)</span> <span style="color:#666">{</span>
+					Log<span style="color:#666">.</span><span style="color:#b44">d</span><span style="color:#666">(</span>TAG<span style="color:#666">,</span> <span style="color:#b44">&#34;Error ${ex.message}&#34;</span><span style="color:#666">)</span>
+				<span style="color:#666">}</span>
+				<span style="color:#a2f;font-weight:bold">if</span> <span style="color:#666">(</span>filePhoto<span style="color:#666">)</span> <span style="color:#666">{</span>
+					camera<span style="color:#666">.</span><span style="color:#b44">putExtra</span><span style="color:#666">(</span>MediaStore<span style="color:#666">.</span><span style="color:#b44">EXTRA_OUTPUT</span><span style="color:#666">,</span> Uri<span style="color:#666">.</span><span style="color:#b44">fromFile</span><span style="color:#666">(</span>filePhoto<span style="color:#666">))</span>
+					startActivityForResult<span style="color:#666">(</span>camera<span style="color:#666">,</span> CAPTURE_IMAGE<span style="color:#666">)</span>
+			<span style="color:#666">}</span>
+		<span style="color:#666">}</span>
+	<span style="color:#666">}</span></code></pre></div>
+
+<h2 id="almacenamiento-externo">Almacenamiento externo</h2>
+
+<p>Al capturar una foto, esta debe ser almacenada para poder ser usada posteriormente, Android provee una unidad principal para ello, la cual puede ser su almacenamiento interno o una memoria SD.</p>
+
+<p>Para acceder a ese directorio, Android cuenta con una clase llamada <strong>Environment</strong>, el método que regresa el directorio de almacenamiento común/externo es <strong>getExternalStoragePublicDirectory(…)</strong>, el tipo de archivo son imágenes por lo cual el parámetro para este caso será <strong>Environment.DIRECTORY_PICTURES</strong>.</p>
+
+<p>El método <strong>createPhoto(&hellip;)</strong> se encarga de crear un directorio denominado <strong>ExampleCamera</strong> dentro de <strong>PICTURES</strong>, además de generar el archivo para cada foto, un dato interesante es que no se realizó el import de la clase <strong>File</strong>, la razón es que al usar <strong>groovy</strong>, ciertos paquetes vienen incluidos por default.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">	File <span style="color:#00a000">createPhoto</span><span style="color:#666">(</span>String name<span style="color:#666">)</span> <span style="color:#666">{</span>
+		File storagePhotos <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#00a000">File</span><span style="color:#666">(</span>Environment<span style="color:#666">.</span><span style="color:#b44">getExternalStoragePublicDirectory</span><span style="color:#666">(</span>Environment<span style="color:#666">.</span><span style="color:#b44">DIRECTORY_PICTURES</span><span style="color:#666">),</span> <span style="color:#b44">&#34;ExampleCamera&#34;</span><span style="color:#666">)</span>
+		<span style="color:#a2f;font-weight:bold">if</span> <span style="color:#666">(!</span>storagePhotos<span style="color:#666">.</span><span style="color:#b44">exists</span><span style="color:#666">())</span> <span style="color:#666">{</span>
+			<span style="color:#a2f;font-weight:bold">if</span> <span style="color:#666">(!</span>storagePhotos<span style="color:#666">.</span><span style="color:#b44">mkdirs</span><span style="color:#666">())</span> <span style="color:#666">{</span>
+				Log<span style="color:#666">.</span><span style="color:#b44">d</span><span style="color:#666">(</span>TAG<span style="color:#666">,</span> <span style="color:#b44">&#34;Error al crear directorio&#34;</span><span style="color:#666">)</span>
+			<span style="color:#666">}</span>
+		<span style="color:#666">}</span>
+		<span style="color:#a2f;font-weight:bold">new</span> <span style="color:#00a000">File</span><span style="color:#666">(</span>storagePhotos<span style="color:#666">.</span><span style="color:#b44">getPath</span><span style="color:#666">()</span> <span style="color:#666">+</span> File<span style="color:#666">.</span><span style="color:#b44">separator</span> <span style="color:#666">+</span> <span style="color:#b44">&#34;${name + new Date().format(&#34;</span>ddMMyyyy_HHmmss<span style="color:#b44">&#34;)}.jpg&#34;</span><span style="color:#666">)</span>
+	<span style="color:#666">}</span></code></pre></div>
+
+<h2 id="manipular-el-resultado-de-la-cámara">Manipular el resultado de la cámara</h2>
+
+<p>Cuando se captura la foto, una vez que termina se maneja el resultado con el método onActivityResult(…), donde se verifica el estatus de la captura de la foto, ya sea que se culminó o cancelado, ante lo cual se muestra un mensaje emergente haciendo uso de los <strong>Toast</strong>.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">	<span style="color:#a2f">@Override</span>
+	<span style="color:#a2f;font-weight:bold">protected</span> <span style="color:#0b0;font-weight:bold">void</span> <span style="color:#00a000">onActivityResult</span><span style="color:#666">(</span><span style="color:#0b0;font-weight:bold">int</span> requestCode<span style="color:#666">,</span> <span style="color:#0b0;font-weight:bold">int</span> resultCode<span style="color:#666">,</span> Intent data<span style="color:#666">)</span> <span style="color:#666">{</span>
+		<span style="color:#a2f;font-weight:bold">super</span><span style="color:#666">.</span><span style="color:#b44">onActivityResult</span><span style="color:#666">(</span>requestCode<span style="color:#666">,</span> resultCode<span style="color:#666">,</span> data<span style="color:#666">)</span>
+		<span style="color:#a2f;font-weight:bold">if</span> <span style="color:#666">(</span>requestCode <span style="color:#666">==</span> CAPTURE_IMAGE<span style="color:#666">)</span> <span style="color:#666">{</span>
+			<span style="color:#a2f;font-weight:bold">if</span> <span style="color:#666">(</span>resultCode <span style="color:#666">==</span> RESULT_OK<span style="color:#666">)</span> <span style="color:#666">{</span>
+				Toast<span style="color:#666">.</span><span style="color:#b44">makeText</span><span style="color:#666">(</span>getApplicationContext<span style="color:#666">(),</span> <span style="color:#b44">&#34;Exito al crear la foto&#34;</span><span style="color:#666">,</span> Toast<span style="color:#666">.</span><span style="color:#b44">LENGTH_SHORT</span><span style="color:#666">).</span><span style="color:#b44">show</span><span style="color:#666">()</span>
+			<span style="color:#666">}</span> <span style="color:#a2f;font-weight:bold">else</span> <span style="color:#00a000">if</span> <span style="color:#666">(</span>resultCode <span style="color:#666">==</span> RESULT_CANCELED<span style="color:#666">)</span> <span style="color:#666">{</span>
+				Toast<span style="color:#666">.</span><span style="color:#b44">makeText</span><span style="color:#666">(</span><span style="color:#a2f;font-weight:bold">this</span><span style="color:#666">,</span> <span style="color:#b44">&#34;Se cancelo la foto&#34;</span><span style="color:#666">,</span> Toast<span style="color:#666">.</span><span style="color:#b44">LENGTH_LONG</span><span style="color:#666">).</span><span style="color:#b44">show</span><span style="color:#666">()</span>
+			<span style="color:#666">}</span> <span style="color:#a2f;font-weight:bold">else</span> <span style="color:#666">{</span>
+				Toast<span style="color:#666">.</span><span style="color:#b44">makeText</span><span style="color:#666">(</span><span style="color:#a2f;font-weight:bold">this</span><span style="color:#666">,</span> <span style="color:#b44">&#34;Error al capturar la foto&#34;</span><span style="color:#666">,</span> Toast<span style="color:#666">.</span><span style="color:#b44">LENGTH_LONG</span><span style="color:#666">).</span><span style="color:#b44">show</span><span style="color:#666">()</span>
+			<span style="color:#666">}</span>
+		<span style="color:#666">}</span>
+	<span style="color:#666">}</span></code></pre></div>
+
+<h2 id="permisos-de-android">Permisos de Android</h2>
+
+<p>A la hora de manejar el hardware se debe de pedir ciertos permisos como son el escribir y leer en la memoria externa, así como usar la cámara, para esto se usa la etiqueta <code>&lt;uses-permission&gt;</code> donde se coloca que permiso es solicitado.
+<code>&lt;uses-feature android:name=&quot;android.hardware.camera&quot; android:required=&quot;true&quot; /&gt;</code>
+<code>&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</code></p>
+
+<h2 id="imports-default-groovy">Imports default groovy</h2>
+
+<p>Groovy realiza el import de los paquetes más usados, para reducir el código.
+<code>import java.lang.*</code>
+<code>import java.util.*</code>
+<code>import java.io.*</code>
+<code>import java.net.*</code>
+<code>import groovy.lang.*</code>
+<code>import groovy.util.*</code>
+<code>import java.math.BigInteger</code>
+<code>import java.math.BigDecimal</code></p>
+
+<p>Pueden encontrar el código completo <a href="https://github.com/reyes271292/camera_android"><em>aquí</em></a>.</p>
+
+	</article>
+</main>
+
+<div id="bottom-nav" class="text-center center-block">
+	<a href=" http://blog.makingdevs.com/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
+</div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "makingdevs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42842883-2', 'auto');
+    ga('send', 'pageview');
+    window.baseURL = "http:\/\/blog.makingdevs.com\/";
+  </script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  
+  
+  <script src="http://blog.makingdevs.com//js/App.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Groovy on Blog de Making Devs</title>
+    <link>http://blog.makingdevs.com/tags/groovy/</link>
+    <description>Recent content in Groovy on Blog de Making Devs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Jul 2016 22:53:27 -0500</lastBuildDate>
+    
+	<atom:link href="http://blog.makingdevs.com/tags/groovy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Uso de camara en android</title>
+      <link>http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android/</link>
+      <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/07/20/uso-de-camara-en-android/</guid>
+      <description>Android se enfoca al desarrollo móvil, como es de esperarse cuenta con las herramientas necesarias para hacer uso del hardware, en esta ocasión se mostrará cómo usar la cámara en un Activity. Adicionalmente, el ejemplo está hecho en Groovy, puedes leer más al respecto en el post anterior.
+Intent en android Para poder hacer uso de la cámara se realiza mediante intent, que son el mecanismo por el cual se comunica la aplicación en tiempo de ejecución con otros componentes, así como lanzar eventos, se cuenta con dos tipos los cuales son: Intento implícito Se puede iniciar una actividad en otra aplicación en el dispositivo Intento explicito Se especifica la clase de la actividad a empezar para que el sistema operativo la inicie</description>
+    </item>
+    
+    <item>
+      <title>Making Android con Groovy(otra vez)</title>
+      <link>http://blog.makingdevs.com/2016/07/19/making-android-con-groovyotra-vez/</link>
+      <pubDate>Tue, 19 Jul 2016 19:12:30 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/07/19/making-android-con-groovyotra-vez/</guid>
+      <description>En las vísperas de la fecha en la que escribo este post, habíamos decidido entrar más de lleno con Android dentro del equipo de desarrollo, sin embargo, la convicción fue como siempre hacerlo de forma diferente, o por lo menos algo diferente con respecto a una industria que parecía siempre hacer lo mismo con lo mismo.
+Es por ello que me gustaría escribirles al respecto de la experiencia que tuvimos usando Groovy en un proyecto Android, sé de antemano que la atención y los reflectores se encuentran en otros lenguajes, sin embargo, a nosotros nos ayudo muchísimo la la experiencia que teníamos con el lenguaje pero usándolo en otro contexto muy distinto, y aunque no escribiremos todo lo que hicimos en este post, si les comentaremos en algunos más que fue lo que hicimos y como nos beneficiamos.</description>
+    </item>
+    
+    <item>
+      <title>Uso de logback</title>
+      <link>http://blog.makingdevs.com/2016/03/28/uso-de-logback/</link>
+      <pubDate>Mon, 28 Mar 2016 09:13:56 -0600</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/03/28/uso-de-logback/</guid>
+      <description>En el proceso de desarrollo de software se implementan bitácoras o mejor conocidas como loggers que permiten tener información de salida útil al desarrollador en cuanto al correcto flujo de la aplicación.
+Este registro se divide en secciones: Logger, Formatter y Handler.
+ Logger: Es el responsable de captar el mensaje y pasarlo al marco de registro.
+ Formatter: Su función es dar formato a la salida. toma el objeto binario y realiza la conversión a una representación de cadena</description>
+    </item>
+    
+    <item>
+      <title>MicroServicios con Groovy</title>
+      <link>http://blog.makingdevs.com/2016/03/08/microservicios-con-groovy/</link>
+      <pubDate>Tue, 08 Mar 2016 21:38:08 -0600</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/03/08/microservicios-con-groovy/</guid>
+      <description>Si bien, existen muchas tecnologías muy completas que permiten la creación de servicios robustos, a veces me he visto en la necesidad de hacer algo pequeño. muy concreto pero mantenible, y que pueda soportar un volumen determinado. Es por esto que me he apoyado del poder que ofrece Groovy con ayuda de los Groovlets.
+La parte que me gusta de este acercamiento es que el poder del Scripting se pasa al navegador, o en este caso, a un cliente que consume algún servicio web.</description>
+    </item>
+    
+    <item>
+      <title>Pruebas funcionales con Geb y Spock</title>
+      <link>http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock/</link>
+      <pubDate>Mon, 07 Mar 2016 23:47:26 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock/</guid>
+      <description>Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario funcionen correctamente; son pruebas difíciles de implementar ya que deben realizarse desde la perspectiva del usuario y muchas veces las interfaces de usuario cambian constantemente.
+Geb es una herramienta para escribir pruebas funcionales con Groovy que hace uso del WebDriver de Selenium para la automatizacion del navegador y toma varias ideas de la biblioteca jQuery para la interacción con los elementos.</description>
+    </item>
+    
+    <item>
+      <title>Bitacorado de pruebas en Gradle</title>
+      <link>http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle/</link>
+      <pubDate>Fri, 22 Jan 2016 18:14:37 -0600</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle/</guid>
+      <description>Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el TestLoggingContainer, del cual pude obtener este fragmento:
+apply plugin: &amp;#39;java&amp;#39; test { testLogging { // set options for log level LIFECYCLE  events &amp;#34;failed&amp;#34; exceptionFormat &amp;#34;short&amp;#34; // set options for log level DEBUG  debug { events &amp;#34;started&amp;#34;, &amp;#34;skipped&amp;#34;, &amp;#34;failed&amp;#34; exceptionFormat &amp;#34;full&amp;#34; } // remove standard output/error logging from --info builds  // by assigning only &amp;#39;failed&amp;#39; and &amp;#39;skipped&amp;#39; events  info.</description>
+    </item>
+    
+    <item>
+      <title>Hot deployment en Gradle</title>
+      <link>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle/</link>
+      <pubDate>Sun, 26 Jul 2015 23:19:13 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle/</guid>
+      <description>Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre SpringLoaded.
+Después me di cuenta que frameworks como Dropwizard lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré un artículo en donde explica como ponerlo en acción usando propiamente Dropwizard.</description>
+    </item>
+    
+    <item>
+      <title>Borrado batch en Grails</title>
+      <link>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails/</link>
+      <pubDate>Fri, 01 May 2015 20:58:30 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails/</guid>
+      <description>En esta ocasión les quiero compartir la solución a un problema que tuve al borrar una colección de objetos en grails y con el GORM, si bien podría hacerlo con HQL o con SQL usando las bondades de Hibernate me gusto más el acercamiento que les quiero presentar.
+La necesidad era borrar un grupo de objetos en donde el contenido de su relación estuviera vacío, ejemplifico con la estructura de unas clases:</description>
+    </item>
+    
+  </channel>
+</rss>

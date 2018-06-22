@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="">
+    <meta property="og:title" content="Testing Vert.x with Spock">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2017-12-12">
+    
+    <meta property="og:description" content="">
+    <meta property="og:url" content="http://blog.makingdevs.com/2017/12/12/testing-vert.x-with-spock/">
+    <meta property="og:site_name" content="Blog de Making Devs">
+    
+    <meta name="generator" content="Hugo 0.43-DEV" />
+    <title>Testing Vert.x with Spock &middot; Blog de Making Devs</title>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
+    
+    <link href="http://blog.makingdevs.com/index.xml" rel="alternate" type="application/rss+xml" title="Blog de Making Devs" />
+    
+    
+
+    
+    
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top visible-xs">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+				<a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+			
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				
+				
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+	<div class="row">
+		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
+	<div id="menu-content" class="vertical-align">
+		
+			<h1 class="text-center"><a href="http://blog.makingdevs.com/">Blog de Making Devs</a></h1>
+		
+		
+		
+			<small class="text-center center-block">El código que a veces olvidamos documentar.</small>
+		
+		
+		
+			<img id="profile-pic" src="http://blog.makingdevs.com//profile.jpeg" alt="My Picture" class="img-circle center-block">
+		
+		<div id="social" class="text-center">
+			
+
+			<a href="mailto:info@makingdevs.com"><i class="fa fa-envelope-o fa-2x"></i></a>
+		</div>
+		<div id="links" class="text-center">
+			
+			
+		</div>
+	</div>
+</div>
+
+		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
+			<div class="row">
+				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
+
+<main>
+
+  <header>
+    <h1 align=center>Testing Vert.x with Spock</h1>
+    
+    <section class="author">
+      <p align=center> <b>Redactado por: neodevelop</b></p>
+    </section>
+    
+  </header>
+  </br>
+
+	<article>
+		
+
+<p>Recently I was trying to test some components in Vert.x, to make sure of the behavior of the message&rsquo;s receptions, how to store correctly in the Shared Map?, is the value in the Map?, and so on&hellip;</p>
+
+<p>So, Vert.x includes a <a href="http://vertx.io/docs/vertx-unit/java/">testing tool</a>, is based in JUnit, the best, it has a Runner the <code>VertxUnitRunner.class</code> for <strong>JUnit</strong>, and for scripts tests you can use <code>TestSuite.create</code>, but what is the thing, the sentence: <code>Async async = context.async();</code>, and you should call the <code>complete()</code> method of the <code>async</code> object to end the test. Something like this:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">Async async2 <span style="color:#666">=</span> context<span style="color:#666">.</span><span style="color:#b44">async</span><span style="color:#666">();</span>
+vertx<span style="color:#666">.</span><span style="color:#b44">eventBus</span><span style="color:#666">().</span><span style="color:#b44">consumer</span><span style="color:#666">(</span><span style="color:#b44">&#34;the-address&#34;</span><span style="color:#666">,</span> msg <span style="color:#666">-&gt;</span> <span style="color:#666">{</span>
+  async2<span style="color:#666">.</span><span style="color:#b44">complete</span><span style="color:#666">();</span>
+<span style="color:#666">});</span></code></pre></div>
+
+<p>Well, I don&rsquo;t say this is bad, or better, for me is an option, a good option. But I want to go more natural, also we are using Groovy, but if you are a Java developer you should give a chance to the JUnit support.</p>
+
+<p>This implementation maybe is not the best, we accept suggestions, but is the beginning of a set of Specs that we can define inside the project, and I want to show a simple setup, in some simple steps:</p>
+
+<p>The important parts in <strong>build.gradle</strong> are:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="color:#666">{</span>
+  compile <span style="color:#b44">&#39;org.slf4j:slf4j-api:1.7.21&#39;</span>
+  compile <span style="color:#b44">&#34;io.vertx:vertx-lang-groovy:3.5.0&#34;</span>  <span style="color:#080;font-style:italic">// Using Groovy !!!
+</span><span style="color:#080;font-style:italic"></span>  compile <span style="color:#b44">&#39;ch.qos.logback:logback-classic:1.2.3&#39;</span>
+  testCompile <span style="color:#b44">&#34;junit:junit:4.12&#34;</span>
+  testCompile <span style="color:#b44">&#39;org.spockframework:spock-core:0.7-groovy-2.0&#39;</span> <span style="color:#080;font-style:italic">// Spock rulz !!!!
+</span><span style="color:#080;font-style:italic"></span><span style="color:#666">}</span>
+
+<span style="color:#080;font-style:italic">// This is useful for Spock and Vert.x,
+</span><span style="color:#080;font-style:italic">// to identify the files where the Vert.x API is used
+</span><span style="color:#080;font-style:italic"></span>processResources <span style="color:#666">{</span>
+  from <span style="color:#b44">&#39;src/main/groovy&#39;</span>
+<span style="color:#666">}</span></code></pre></div>
+
+<p>The example only testing a simple consumer in the app, something like this:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#0b0;font-weight:bold">def</span> eb <span style="color:#666">=</span> vertx<span style="color:#666">.</span><span style="color:#b44">eventBus</span><span style="color:#666">()</span>
+
+eb<span style="color:#666">.</span><span style="color:#b44">consumer</span><span style="color:#666">(</span><span style="color:#b44">&#34;com.makingdevs.ping&#34;</span><span style="color:#666">)</span> <span style="color:#666">{</span> msg <span style="color:#666">-&gt;</span>
+  <span style="color:#080;font-style:italic">// Maybe we will use shared map in other post!!!
+</span><span style="color:#080;font-style:italic"></span>  eb<span style="color:#666">.</span><span style="color:#b44">send</span><span style="color:#666">(</span><span style="color:#b44">&#34;com.makingdevs.pong&#34;</span><span style="color:#666">,</span> <span style="color:#b44">&#34;Pong!&#34;</span><span style="color:#666">)</span>
+<span style="color:#666">}</span></code></pre></div>
+
+<p>The consumer is waiting for a message, when receives it send another message, we want to test that behavior.</p>
+
+<p>So, in the specification we use an instance of vertx, the directory where the verticles are located and a great component called <a href="http://spockframework.org/spock/javadoc/1.0/spock/util/concurrent/PollingConditions.html"><code>PollingConditions</code></a>.</p>
+
+<h2 id="the-class-pollingconditions-2">The class <a href="http://spockframework.org/spock/javadoc/1.0/spock/util/concurrent/PollingConditions.html"><code>PollingConditions</code></a></h2>
+
+<p>In brief, this class is useful to test async behaviours, those are executed in others threads not the main thread, so you have to wait for ending the executions inside them and compare wherever you want.</p>
+
+<p>The key element is: <code>conditions.eventually { }</code>, I&rsquo;m going to show it:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f;font-weight:bold">package</span> com<span style="color:#666">.</span><span style="color:#b44">makingdevs</span><span style="color:#666">.</span><span style="color:#b44">vertx</span>
+
+<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">io.vertx.core.Vertx</span>
+<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">spock.lang.*</span>
+<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">spock.util.concurrent.PollingConditions</span>
+
+<span style="color:#a2f">@Stepwise</span>
+<span style="color:#a2f;font-weight:bold">class</span> <span style="color:#00f">PingPongVerticleSpec</span> <span style="color:#a2f;font-weight:bold">extends</span> Specification <span style="color:#666">{</span>
+
+  <span style="color:#080;font-style:italic">// We use the vertx instance provided
+</span><span style="color:#080;font-style:italic"></span>  <span style="color:#a2f">@Shared</span> Vertx vertx
+  <span style="color:#080;font-style:italic">// Where are the verticle files?
+</span><span style="color:#080;font-style:italic"></span>  <span style="color:#a2f">@Shared</span> String baseDir <span style="color:#666">=</span> <span style="color:#b44">&#34;com/makingdevs/vertx&#34;</span>
+  <span style="color:#080;font-style:italic">// The verticle filename
+</span><span style="color:#080;font-style:italic"></span>  <span style="color:#a2f">@Shared</span> String verticleName <span style="color:#666">=</span> <span style="color:#b44">&#34;ReceiverVerticle.groovy&#34;</span>
+  <span style="color:#080;font-style:italic">// We use this id for deploy and undeploy
+</span><span style="color:#080;font-style:italic"></span>  <span style="color:#a2f">@Shared</span> String verticleId
+  <span style="color:#080;font-style:italic">// Look ma! The async magic...!
+</span><span style="color:#080;font-style:italic"></span>  PollingConditions conditions <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#00a000">PollingConditions</span><span style="color:#666">()</span>
+
+  <span style="color:#080;font-style:italic">/*
+</span><span style="color:#080;font-style:italic">  * For all the specs inside this file (executing once):
+</span><span style="color:#080;font-style:italic">  * - Deploying the verticle with the vertx instance
+</span><span style="color:#080;font-style:italic">  * - `assert` the deployment identifier
+</span><span style="color:#080;font-style:italic">  * - Waiting for deployment
+</span><span style="color:#080;font-style:italic">  */</span>
+  <span style="color:#0b0;font-weight:bold">def</span> <span style="color:#00a000">setupSpec</span><span style="color:#666">()</span> <span style="color:#666">{</span>
+    vertx <span style="color:#666">=</span> Vertx<span style="color:#666">.</span><span style="color:#b44">vertx</span><span style="color:#666">()</span>
+    vertx<span style="color:#666">.</span><span style="color:#b44">deployVerticle</span><span style="color:#666">(</span><span style="color:#b44">&#34;${baseDir}/${verticleName}&#34;</span><span style="color:#666">)</span> <span style="color:#666">{</span> deployResponse <span style="color:#666">-&gt;</span>
+      <span style="color:#a2f;font-weight:bold">assert</span> deployResponse<span style="color:#666">.</span><span style="color:#b44">succeeded</span><span style="color:#666">()</span>
+      verticleId <span style="color:#666">=</span> deployResponse<span style="color:#666">.</span><span style="color:#b44">result</span>
+    <span style="color:#666">}</span>
+    Thread<span style="color:#666">.</span><span style="color:#b44">sleep</span> <span style="color:#666">1000</span>
+  <span style="color:#666">}</span>
+
+  <span style="color:#080;font-style:italic">/*
+</span><span style="color:#080;font-style:italic">  * At the end of all the specs:
+</span><span style="color:#080;font-style:italic">  * - Waiting for attend all the messages
+</span><span style="color:#080;font-style:italic">  * - Undeploying the verticle
+</span><span style="color:#080;font-style:italic">  * - Closing vertx resource
+</span><span style="color:#080;font-style:italic">  */</span>
+  <span style="color:#0b0;font-weight:bold">def</span> <span style="color:#00a000">cleanupSpec</span><span style="color:#666">()</span> <span style="color:#666">{</span>
+    Thread<span style="color:#666">.</span><span style="color:#b44">sleep</span> <span style="color:#666">2000</span>
+    vertx<span style="color:#666">.</span><span style="color:#b44">undeploy</span><span style="color:#666">(</span>verticleId<span style="color:#666">)</span> <span style="color:#666">{</span> response <span style="color:#666">-&gt;</span>
+      <span style="color:#a2f;font-weight:bold">assert</span> response<span style="color:#666">.</span><span style="color:#b44">succeeded</span><span style="color:#666">()</span>
+      vertx<span style="color:#666">.</span><span style="color:#b44">close</span><span style="color:#666">()</span>
+    <span style="color:#666">}</span>
+  <span style="color:#666">}</span>
+
+  <span style="color:#0b0;font-weight:bold">def</span> <span style="color:#b44">&#34;Making Ping to a Verticle&#34;</span><span style="color:#666">(){</span>
+    <span style="color:#a0a000">given:</span> <span style="color:#b44">&#34;A message for send, and an empty response&#34;</span>
+      <span style="color:#0b0;font-weight:bold">def</span> message <span style="color:#666">=</span> <span style="color:#b44">&#34;Ping!&#34;</span>
+      <span style="color:#0b0;font-weight:bold">def</span> response <span style="color:#666">=</span> <span style="color:#b44">&#34;&#34;</span>
+    <span style="color:#a0a000">and:</span> <span style="color:#b44">&#34;A consumer in vertx for waiting the response&#34;</span>
+      vertx<span style="color:#666">.</span><span style="color:#b44">eventBus</span><span style="color:#666">().</span><span style="color:#b44">consumer</span><span style="color:#666">(</span><span style="color:#b44">&#34;com.makingdevs.pong&#34;</span><span style="color:#666">)</span> <span style="color:#666">{</span> msg <span style="color:#666">-&gt;</span>
+        response <span style="color:#666">=</span> msg<span style="color:#666">.</span><span style="color:#b44">body</span><span style="color:#666">()</span>
+      <span style="color:#666">}</span>
+    <span style="color:#a0a000">when:</span> <span style="color:#b44">&#34;We send a message, and wait...&#34;</span>
+      vertx<span style="color:#666">.</span><span style="color:#b44">eventBus</span><span style="color:#666">().</span><span style="color:#b44">send</span><span style="color:#666">(</span><span style="color:#b44">&#34;com.makingdevs.ping&#34;</span><span style="color:#666">,</span> message<span style="color:#666">)</span>
+      conditions<span style="color:#666">.</span><span style="color:#b44">eventually</span> <span style="color:#666">{</span> <span style="color:#080;font-style:italic">// This should happen...
+</span><span style="color:#080;font-style:italic"></span>        <span style="color:#a2f;font-weight:bold">assert</span> response <span style="color:#666">==</span> <span style="color:#b44">&#34;Pong!&#34;</span>
+      <span style="color:#666">}</span>
+    <span style="color:#a0a000">then:</span> <span style="color:#b44">&#34;We shouldn&#39;t thrown exception because conditions was satisfied...&#34;</span>
+      noExceptionThrown<span style="color:#666">()</span>
+  <span style="color:#666">}</span>
+
+<span style="color:#666">}</span></code></pre></div>
+
+<p>Here you are, tests the verticles declared in Vert.x with Spock, or alternatively called: Async Tests.</p>
+
+<p>The entire code is in <a href="https://github.com/neodevelop/VertxTestsWithSpock">GitHub ready to run the test</a>, enjoy!</p>
+
+<p>Be steady, and make tests to be happy.</p>
+
+	</article>
+</main>
+
+<div id="bottom-nav" class="text-center center-block">
+	<a href=" http://blog.makingdevs.com/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
+</div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "makingdevs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42842883-2', 'auto');
+    ga('send', 'pageview');
+    window.baseURL = "http:\/\/blog.makingdevs.com\/";
+  </script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  
+  
+  <script src="http://blog.makingdevs.com//js/App.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="">
+    <meta property="og:title" content="Clusterizacion con Camel">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2015-04-07">
+    
+    <meta property="og:description" content="">
+    <meta property="og:url" content="http://blog.makingdevs.com/2015/04/07/clusterizacion-con-camel/">
+    <meta property="og:site_name" content="Blog de Making Devs">
+    
+    <meta name="generator" content="Hugo 0.43-DEV" />
+    <title>Clusterizacion con Camel &middot; Blog de Making Devs</title>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
+    
+    <link href="http://blog.makingdevs.com/index.xml" rel="alternate" type="application/rss+xml" title="Blog de Making Devs" />
+    
+    
+
+    
+    
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top visible-xs">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+				<a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+			
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				
+				
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+	<div class="row">
+		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
+	<div id="menu-content" class="vertical-align">
+		
+			<h1 class="text-center"><a href="http://blog.makingdevs.com/">Blog de Making Devs</a></h1>
+		
+		
+		
+			<small class="text-center center-block">El código que a veces olvidamos documentar.</small>
+		
+		
+		
+			<img id="profile-pic" src="http://blog.makingdevs.com//profile.jpeg" alt="My Picture" class="img-circle center-block">
+		
+		<div id="social" class="text-center">
+			
+
+			<a href="mailto:info@makingdevs.com"><i class="fa fa-envelope-o fa-2x"></i></a>
+		</div>
+		<div id="links" class="text-center">
+			
+			
+		</div>
+	</div>
+</div>
+
+		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
+			<div class="row">
+				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
+
+<main>
+
+  <header>
+    <h1 align=center>Clusterizacion con Camel</h1>
+    
+    <section class="author">
+      <p align=center> <b>Redactado por: Jorge Acosta Lemus</b></p>
+    </section>
+    
+  </header>
+  </br>
+
+	<article>
+		<p>Camel ofrece distintas soluciones para ser escalado o para distribuir la carga en diferentes instancias, la soluciones que ofrece dependerá de como se encuentra nuestra infraestructura ( y configuración).</p>
+
+<ul>
+<li>Misma JVM y CamelContext</li>
+<li>Misma JVM pero diferente CamelContext</li>
+<li>Diferente JVM y CamelContext
+<!-- more --></li>
+</ul>
+
+<p>El problema que me vi envuelto fue de estas tres, la ultima, el clusterizar camel que se encontraban en diferentes JVM y CamelContext. Y en particular tuve un problema de mensajes duplicados. Para esto camel ofrece ciertas soluciones, un componente llamado <strong>Idempotent Consumer</strong>. El Idempotent Consumer pertenece a los patrones de EIP se usa para filtrar los mensajes duplicados. Este modelo se implementa utilizando la clase IdempotentConsumer. Este utiliza una expresión para calcular una cadena de mensaje ID único para un intercambio de mensajes, este ID puede ser consultado en la IdempotentRepository para ver si se ha visto antes, si se tiene no es tomado para ser procesado, en cambio si no se tiene, entonces el mensaje se procesa y la ID se añade al repositorio.</p>
+
+<p>Hay varios tipos de IdempotentRepository:</p>
+
+<ul>
+<li>MemoryIdempotentRepository</li>
+<li>FileIdempotentRepository</li>
+<li>HazelcastIdempotentRepository (Available as of Camel 2.8)</li>
+<li>JdbcMessageIdRepository (Available as of Camel 2.7)</li>
+<li>JpaMessageIdRepository</li>
+</ul>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f">@Grab</span><span style="color:#666">(</span>group<span style="color:#666">=</span><span style="color:#b44">&#39;org.slf4j&#39;</span><span style="color:#666">,</span> module<span style="color:#666">=</span><span style="color:#b44">&#39;slf4j-api&#39;</span><span style="color:#666">,</span> version<span style="color:#666">=</span><span style="color:#b44">&#39;1.7.10&#39;</span><span style="color:#666">)</span>
+<span style="color:#a2f">@Grab</span><span style="color:#666">(</span>group<span style="color:#666">=</span><span style="color:#b44">&#39;org.apache.camel&#39;</span><span style="color:#666">,</span> module<span style="color:#666">=</span><span style="color:#b44">&#39;camel-core&#39;</span><span style="color:#666">,</span> version<span style="color:#666">=</span><span style="color:#b44">&#39;2.12.0&#39;</span><span style="color:#666">)</span>
+<span style="color:#a2f">@Grab</span><span style="color:#666">(</span>group<span style="color:#666">=</span><span style="color:#b44">&#39;org.apache.camel&#39;</span><span style="color:#666">,</span> module<span style="color:#666">=</span><span style="color:#b44">&#39;camel-mail&#39;</span><span style="color:#666">,</span> version<span style="color:#666">=</span><span style="color:#b44">&#39;2.12.0&#39;</span><span style="color:#666">)</span>
+
+<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">org.apache.camel.impl.DefaultCamelContext</span>
+<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">org.apache.camel.builder.RouteBuilder</span>
+<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">org.apache.camel.processor.idempotent.FileIdempotentRepository</span>
+
+<span style="color:#0b0;font-weight:bold">def</span> camelContext <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#00a000">DefaultCamelContext</span><span style="color:#666">()</span>
+camelContext<span style="color:#666">.</span><span style="color:#b44">addRoutes</span><span style="color:#666">(</span><span style="color:#a2f;font-weight:bold">new</span> <span style="color:#00a000">RouteBuilder</span><span style="color:#666">()</span> <span style="color:#666">{</span>
+  <span style="color:#0b0;font-weight:bold">def</span> <span style="color:#0b0;font-weight:bold">void</span> <span style="color:#00a000">configure</span><span style="color:#666">()</span> <span style="color:#666">{</span>
+    from<span style="color:#666">(</span><span style="color:#b44">&#34;imaps://imap.gmail.com?username=jorge@makingdevs.com&#34;</span>
+      <span style="color:#666">+</span> <span style="color:#b44">&#34;&amp;password=m4k1ngd3vs&#34;</span>
+      <span style="color:#666">+</span> <span style="color:#b44">&#34;&amp;consumer.delay=6000&#34;</span><span style="color:#666">)</span>
+    <span style="color:#666">.</span><span style="color:#b44">idempotentConsumer</span><span style="color:#666">(</span> header<span style="color:#666">(</span><span style="color:#b44">&#34;Message-ID&#34;</span><span style="color:#666">),</span>
+      FileIdempotentRepository<span style="color:#666">.</span><span style="color:#b44">fileIdempotentRepository</span><span style="color:#666">(</span>
+        <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#00a000">File</span><span style="color:#666">(</span><span style="color:#b44">&#34;idempotentRepository.txt&#34;</span><span style="color:#666">)))</span>
+    <span style="color:#666">.</span><span style="color:#b44">to</span><span style="color:#666">(</span><span style="color:#b44">&#34;log:groovymail?showAll=true&amp;multiline=true&#34;</span><span style="color:#666">)</span> <span style="color:#666">}</span> <span style="color:#666">})</span>
+
+camelContext<span style="color:#666">.</span><span style="color:#b44">start</span><span style="color:#666">()</span>
+addShutdownHook<span style="color:#666">{</span> camelContext<span style="color:#666">.</span><span style="color:#b44">stop</span><span style="color:#666">()</span> <span style="color:#666">}</span>
+<span style="color:#a2f;font-weight:bold">synchronized</span><span style="color:#666">(</span><span style="color:#a2f;font-weight:bold">this</span><span style="color:#666">){</span> <span style="color:#a2f;font-weight:bold">this</span><span style="color:#666">.</span><span style="color:#b44">wait</span><span style="color:#666">()</span> <span style="color:#666">}</span></code></pre></div>
+
+<p>Este es un script ejemplo el cual utiliza <code>FileIdempotentRepository</code> utilizando un archivo ejemplo para llevar el control, si exploramos el archivo ahí se encuentra los id de los mensajes procesados.</p>
+
+<p><img src="/images/camel_output.png" alt="Camel output" /></p>
+
+<p>Asi si hay un mensaje el cual ya se encuentra dentro de este archivo se ignora y no es procesado. En mi caso utilize JpaMessageIdRepository dentro de grails y fue muy simple utilizar este componente solo agregue la dependencia de camel sql en el buildConfig.groovy</p>
+
+<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">runtime <span style="">&#39;</span>org<span style="color:#666">.</span><span style="color:#b44">apache</span><span style="color:#666">.</span><span style="color:#b44">camel</span><span style="color:#666">:</span>camel<span style="color:#666">-</span><span style="color:#a0a000">sql:</span><span style="color:#666">2.13</span><span style="color:#666">.</span><span style="color:#666">0</span><span style="">’</span></code></pre></div></p>
+
+<p>y agregue el bean en resources.groovy</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">org.apache.camel.processor.idempotent.jdbc.JdbcMessageIdRepository</span>
+
+beans <span style="color:#666">=</span> <span style="color:#666">{</span>
+  messageIdRepository<span style="color:#666">(</span>JdbcMessageIdRepository<span style="color:#666">,</span>ref<span style="color:#666">(</span><span style="color:#b44">&#39;dataSource&#39;</span><span style="color:#666">),</span><span style="color:#b44">&#39;jdbcProcessorName&#39;</span><span style="color:#666">)</span>
+<span style="color:#666">}</span></code></pre></div>
+
+<p>y por ultimo agregue el <em>idempotentComponent</em>.</p>
+
+	</article>
+</main>
+
+<div id="bottom-nav" class="text-center center-block">
+	<a href=" http://blog.makingdevs.com/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
+</div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "makingdevs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42842883-2', 'auto');
+    ga('send', 'pageview');
+    window.baseURL = "http:\/\/blog.makingdevs.com\/";
+  </script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  
+  
+  <script src="http://blog.makingdevs.com//js/App.js"></script>
+  
+</body>
+</html>

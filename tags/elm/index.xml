@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elm on Blog de Making Devs</title>
+    <link>http://blog.makingdevs.com/tags/elm/</link>
+    <description>Recent content in Elm on Blog de Making Devs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 Sep 2016 11:22:01 -0500</lastBuildDate>
+    
+	<atom:link href="http://blog.makingdevs.com/tags/elm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Routing en Elm</title>
+      <link>http://blog.makingdevs.com/2016/09/10/routing-en-elm/</link>
+      <pubDate>Sat, 10 Sep 2016 11:22:01 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/09/10/routing-en-elm/</guid>
+      <description>La URL es un bit interesante de nuestra applicación, nos permite regresar a un estado, o compartir ese estado con alguien más; y en Elm, el Routing, es la segunda cosa más importante que deberías conocer después del propio lenguaje. Así que empecemos.
+ANATOMÍA DE UNA URL Una URL es una dirección dada para un recurso único en la web y está compuesta de diferentes partes: un protocolo, un host, un nombre de dominio, opcionalmente un path y el nombre del archivo:</description>
+    </item>
+    
+  </channel>
+</rss>

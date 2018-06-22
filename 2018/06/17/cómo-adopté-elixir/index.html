@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="¿Cómo comencé a usar Elixir?">
+    <meta property="og:title" content="¿Cómo adopté Elixir?">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2018-06-17">
+    
+    <meta property="og:description" content="¿Cómo comencé a usar Elixir?">
+    <meta property="og:url" content="http://blog.makingdevs.com/2018/06/17/c%C3%B3mo-adopt%C3%A9-elixir/">
+    <meta property="og:site_name" content="Blog de Making Devs">
+    
+    <meta property="og:tags" content="elixir">
+    
+    <meta property="og:tags" content="nerves">
+    
+    <meta property="og:tags" content="phoenix">
+    
+    <meta property="og:tags" content="phoenixframework">
+    
+    <meta name="generator" content="Hugo 0.43-DEV" />
+    <title>¿Cómo adopté Elixir? &middot; Blog de Making Devs</title>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
+    
+    <link href="http://blog.makingdevs.com/index.xml" rel="alternate" type="application/rss+xml" title="Blog de Making Devs" />
+    
+    
+
+    
+    
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top visible-xs">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+				<a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+			
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				
+				
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+	<div class="row">
+		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
+	<div id="menu-content" class="vertical-align">
+		
+			<h1 class="text-center"><a href="http://blog.makingdevs.com/">Blog de Making Devs</a></h1>
+		
+		
+		
+			<small class="text-center center-block">El código que a veces olvidamos documentar.</small>
+		
+		
+		
+			<img id="profile-pic" src="http://blog.makingdevs.com//profile.jpeg" alt="My Picture" class="img-circle center-block">
+		
+		<div id="social" class="text-center">
+			
+
+			<a href="mailto:info@makingdevs.com"><i class="fa fa-envelope-o fa-2x"></i></a>
+		</div>
+		<div id="links" class="text-center">
+			
+			
+		</div>
+	</div>
+</div>
+
+		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
+			<div class="row">
+				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
+
+<main>
+
+  <header>
+    <h1 align=center>¿Cómo adopté Elixir?</h1>
+    
+    <section class="author">
+      <p align=center> <b>Redactado por: neodevelop</b></p>
+    </section>
+    
+  </header>
+  </br>
+
+	<article>
+		
+
+<p>LLevo ya un par de años escuchando y haciendo Elixir, no con la intensidad que quisiera pero tampoco lo he perdido de vista; soy un programador con preferencias dinámicas opcionales, sin embargo, me gusta mucho la <em>magia</em>(compilador) que <em>Haskell</em> ofrece al programar.</p>
+
+<p>De hace ya un par de años he querido comenzar una serie de artículos basados en LISP, sin embargo, el trabajo y los compromisos empresariales no lo han permitido, creo importante que los programadores conozcan las bases de la programación funcional, no por ser mejor, si no por que permite mejorar el/los paradigmas que estés usando. Al no tener la oportunidad de hacerlo, y ver que Elixir tiene/cuenta/cubre con los conceptos de la programación funcional y además pueden crearse sistemas productivos interesantes(no es que con Haskell o LISP no se pueda, más bien es una cosa de contextos), pues la he tomado como una buena opción para comenzar para mçi y el equipo con el que trabajo.</p>
+
+<p>El punto en este texto no es platicar la introducción a Elixir, de eso hay ya varias publicaciones, más bien redactar como se me ha presentado de a poco la oportunidad de subirme a una plataforma como Erlang y Elixr, y con ello escribir una muy breve serie de artículos que muestren como resolví problemas, o use bibliotecas de tal manera que no encontré una explicación que me ayudará lo suficiente, o poner esos pequeños temas que creo que son importantes en el diseño de una app con Elixir.</p>
+
+<h2 id="barcamp-de-diseño-de-software-https-www-youtube-com-watch-v-swwemymdo-o"><a href="https://www.youtube.com/watch?v=SWwEMYMDo_o">Barcamp de diseño de software</a></h2>
+
+<h3 id="artesanos-de-software-2013">Artesanos de software 2013</h3>
+
+<p>En esta charla, @hiphoox nos platica de como es que está diseñado el lenguaje Elixir y la forma en que los sistemas pueden crecer, parafraseando comenta que en su opinión se le hace la forma adecuada en la cual un sistema tiene que crecer.</p>
+
+<p>Este evento ha sido sin duda de los más reveladores e interesantes, no se ha repetido desde entonces algo similar.</p>
+
+<p>En este momento el lenguaje elixir estaba en su version v0.12.0.</p>
+
+<h2 id="workshop-de-elixir-por-hiphoox">Workshop de Elixir por Hiphoox</h2>
+
+<p>Poco tiempo después, el mismo @hiphoox organizó un pequeño taller de 4 días con donde mostó el poder del lenguaje y de un framweork llamado Phoenix en sus primeras versions.</p>
+
+<p>De aquí, por más que busqué no encontré fotos o código que me ayudarán a recordar más al respecto, sin embargo, las sesiones que tomé me ayudaron a comprender el poder del lenguaje, del framework, pero sobre todo de algo denominado OTP.</p>
+
+<h2 id="elixir-friends-2015-https-github-com-elixirfriendsmx-elixir-dojo-mx"><a href="https://github.com/ElixirFriendsMx/elixir_dojo_mx">Elixir Friends 2015</a></h2>
+
+<p>Una serie de sesiones realizadas y organizadas por @MachinesAreUs, en donde pude adentrarme mucho más al lenguaje. La intención: Llegar mejor preparado al evento que se iba a realizar próximamente.</p>
+
+<p>Las sesiones muy intensas, pues eran vespertinas y nocturnas, la cooperación y el ánimo de todos me ayudaron a resistir después de jornadas de trabajo, en retrospectiva, fue un trabajo inspirador hecho por Agustín. El lenguaje me hacía más sentido pero empecé a tener las dudas más grandes al respecto del poder de la plataforma: Los procesos.</p>
+
+<h2 id="erlang-factory-lite-2015-http-www-erlang-factory-com-mexico2015"><a href="http://www.erlang-factory.com/mexico2015">Erlang Factory Lite 2015</a></h2>
+
+<p>El primer evento de Erlang en México, en donde, José Valim creador de Elixir, vino a platicarnos del diseño del framwork Phoenix, mayormente sentí la emoción de conocer muy poco de lo que se hablaba y el interés que se generó alrededor.</p>
+
+<p>El ver como crearon las abstracciones que permitían usar el framework, y sin saberlo usar el poder de los procesos por debajo fue sorprendente; crear sistemas de ese estilo es lo que se necesita, es lo que tenía que empezar a hacer.</p>
+
+<h2 id="code-camp-dic-2016-twinder-https-github-com-codecampmx-twinder-tree-master-lib"><a href="https://github.com/CodeCampMx/twinder/tree/master/lib">Code Camp Dic 2016 - Twinder</a></h2>
+
+<p><a href="https://www.meetup.com/es-ES/meetup-group-JfQVZcAL/photos/27466559/456582599/?photoId=456582599&amp;photoAlbumId=27466559">https://www.meetup.com/es-ES/meetup-group-JfQVZcAL/photos/27466559/456582599/?photoId=456582599&amp;photoAlbumId=27466559</a></p>
+
+<p>Un evento organizado por Artesanos de Software, en donde mentores y aprendices se juntan para transmitir conocimiento, una prueba que me ayudo a mostrar como mentor mi habilidad en el lenguaje, con un par de personas que estaban interesadas y que era su primer acercamiento, y como aprendizaje validado, tenía que aterrizar en claro todas las ideas y conceptos de tal manera que fueran condensados, me di cuenta, que sabía de la sintaxis, pero me faltaba mucho por aprender al respecto de la plataforma, es decir, procesos y OTP.</p>
+
+<h2 id="erlang-factory-lite-2016-http-www-erlang-factory-com-mexico2016"><a href="http://www.erlang-factory.com/mexico2016">Erlang Factory Lite 2016</a></h2>
+
+<p>El siguiente evento de Erlang en México, realizado en WeWork, incluso recuerdo que fui a apoyar a @hiphoox a guíar turísticamente a Bruce Tate con las cervezas, realmente todo un honor.</p>
+
+<p>Era muy claro que Erlang es la plataforma a adoptar, y Elixir el lenguaje, sin embargo, me faltaba ponerlo en las prioridades tanto personales como empresariales, el evento estuvo lleno de temas que tenía que profundizar, la decisión en su momento fue adoptarlo pero de forma empresarial, es decir, proveer una línea de desarrollo basada en Elixir.</p>
+
+<h2 id="entrenamiento-en-md-2017-https-github-com-makingdevs-elixir-training-0217"><a href="https://github.com/makingdevs/elixir-training-0217">Entrenamiento en MD 2017</a></h2>
+
+<p>Eventualmente, organizamos con ayuda de @hiphoox un entrenamiento en MakingDevs, que permitierá acercar a la gente al conocimiento formal del lenguaje, de la plataforma y de Phoenix; fueron varias sesiones que nos ayudaron a comprender, la sintaxis, OTP y como construir aplicaciones distribuidas y escalables. En breve, fue revelador.</p>
+
+<h2 id="elixir-conf-2017-http-elixirconf-mx"><a href="http://elixirconf.mx/">Elixir Conf 2017</a></h2>
+
+<p>Este evento tuvo una charlas inspiradoras que alinearon lo que alguna vez quise hacer mientras estudiaba, mi meta era desarrollar hardware y software a medida, y aunque hoy es el día en que totalmente no desarrollo hardware, me emociona mucho saber lo que se puede hacer, he visto en el sitio del proyecto Nerves varios ejemplos que son verdaderamente sorprendentes, y la primer charla fue dada por Justin Schneck el creador de Nerves, donde dió una sesión introductoria y demostrativa del poder de Elixir en un hardware muy pequeño como el Raspberry. He de confesar que terminando la charla de Justin hice el pedido de un Raspberry Pi 3 en Amazon.</p>
+
+<p>Otro suceso que me agradó fue ver a un ex-integrante del equipo dando una charla en el mismo evento, pues fue la apuesta que hicimos para crecer, y observar el nivel de ponencia que dió fue por mucho gratificante, saber que la gente puede tomar sus propias decisiones y actuar en consecuencia en lo que a nuevas tecnologías se refiere es parte del objetivo que tenemos.</p>
+
+<h2 id="lunafreya">LunaFreya</h2>
+
+<p>Una vez con todo esto encima, me decidí a retomar &ldquo;el camino del alquimista&rdquo; y tocar Elixir pero subiéndome al Raspberry que recientemente compré, empecé capturando datos físicos de un Arduino y transformándolos dentro del dispositivo para activar una cámara de múltiples formas.</p>
+
+<p>De hecho, de eso es lo que pienso escribir en diversas breves partes(no como esta) siguiendo a esta publicación,</p>
+
+<h2 id="material-de-estudio-que-me-ha-servido">Material de estudio que me ha servido</h2>
+
+<p>Entre los recursos que me han servido(aparte de las documentaciones de los sitios) para el mejor entendimiento son las siguientes (aunque de algunos no los he cubierto al 100%):</p>
+
+<ul>
+<li>Elixir in action, Manning.</li>
+<li>Programming Elixir, Pragmatic Programmers.</li>
+<li>The Little Elixir &amp; OTP Guidebook, Manning.</li>
+<li>Programming Phoenix, Pragmatic Programmers.</li>
+<li>Functional Web Development with Elixir, OTP, and Phoenix, Pragmatic Programmers.</li>
+<li>LearnElixir.tv</li>
+<li>LearnPhoenix.tv</li>
+<li><a href="https://elixirschool.com/es/">Elixir School</a></li>
+<li>El meetup de Elixir en México</li>
+<li><a href="http://learnyousomeerlang.com/content">Learn you some Erlang for great good</a></li>
+<li><a href="http://shop.oreilly.com/product/9780596518189.do">Erlang Programming</a></li>
+</ul>
+
+<p>Y aunque existen más lugares dónde se puede encontrar contenido de calidad, estos son los que para mi forma de aprendizaje me han servido.</p>
+
+<h2 id="qué-sigue">¿Qué sigue?</h2>
+
+<p>Continuar el camino, crear cada vez más aplicaciones, afortunadamente algunos clientes se han convencido de usarlo(o los hemos convencido), y hemos de asumir algunos riesgos tanto para ellos como para nosotros, sin embargo, la emoción de cumplir la meta podrá ser suficiente para que lleguemos a cumplir la meta.</p>
+
+<p>En este punto me doy cuenta que vengo siguiendo esto de un par de años, y que no cuento con el conocimiento que quisiera del lenguaje y la plataforma, sin embargo, eso siempre será motivante para profundizar cada vez más&hellip;</p>
+
+	</article>
+</main>
+
+<div id="bottom-nav" class="text-center center-block">
+	<a href=" http://blog.makingdevs.com/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
+</div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "makingdevs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42842883-2', 'auto');
+    ga('send', 'pageview');
+    window.baseURL = "http:\/\/blog.makingdevs.com\/";
+  </script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  
+  
+  <script src="http://blog.makingdevs.com//js/App.js"></script>
+  
+</body>
+</html>

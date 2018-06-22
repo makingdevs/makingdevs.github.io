@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="">
+    <meta property="og:title" content="MicroServicios con Groovy">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2016-03-08">
+    
+    <meta property="og:description" content="">
+    <meta property="og:url" content="http://blog.makingdevs.com/2016/03/08/microservicios-con-groovy/">
+    <meta property="og:site_name" content="Blog de Making Devs">
+    
+    <meta property="og:tags" content="groovy">
+    
+    <meta property="og:tags" content="servlet">
+    
+    <meta name="generator" content="Hugo 0.43-DEV" />
+    <title>MicroServicios con Groovy &middot; Blog de Making Devs</title>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
+    
+    <link href="http://blog.makingdevs.com/index.xml" rel="alternate" type="application/rss+xml" title="Blog de Making Devs" />
+    
+    
+
+    
+    
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top visible-xs">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+				<a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+			
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				
+				
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+	<div class="row">
+		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
+	<div id="menu-content" class="vertical-align">
+		
+			<h1 class="text-center"><a href="http://blog.makingdevs.com/">Blog de Making Devs</a></h1>
+		
+		
+		
+			<small class="text-center center-block">El código que a veces olvidamos documentar.</small>
+		
+		
+		
+			<img id="profile-pic" src="http://blog.makingdevs.com//profile.jpeg" alt="My Picture" class="img-circle center-block">
+		
+		<div id="social" class="text-center">
+			
+
+			<a href="mailto:info@makingdevs.com"><i class="fa fa-envelope-o fa-2x"></i></a>
+		</div>
+		<div id="links" class="text-center">
+			
+			
+		</div>
+	</div>
+</div>
+
+		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
+			<div class="row">
+				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
+
+<main>
+
+  <header>
+    <h1 align=center>MicroServicios con Groovy</h1>
+    
+    <section class="author">
+      <p align=center> <b>Redactado por: José Juan Reyes Zuñiga</b></p>
+    </section>
+    
+  </header>
+  </br>
+
+	<article>
+		<p>Si bien, existen muchas tecnologías muy completas que permiten la creación de servicios robustos, a veces me he visto en la necesidad de hacer algo pequeño. muy concreto pero mantenible, y que pueda soportar un volumen determinado. Es por esto que me he apoyado del poder que ofrece Groovy con ayuda de los <a href="http://docs.groovy-lang.org/latest/html/api/groovy/servlet/GroovyServlet.html">Groovlets</a>.</p>
+
+<p>La parte que me gusta de este acercamiento es que el poder del Scripting se pasa al navegador, o en este caso, a un cliente que consume algún servicio web. Cuando usamos <em>Groovlets</em> tenemos disponible lo sisguiente:</p>
+
+<ul>
+<li><em>request</em> - <code>HttpServletRequest</code></li>
+<li><em>response</em> - <code>HttpServletResponse</code></li>
+<li><em>application</em> - <code>ServletContext</code></li>
+<li><em>session</em> - <code>HttpSession</code></li>
+<li><em>out</em> - <code>PrintWriter</code></li>
+<li><em>headers</em> - <code>Header[]</code></li>
+<li><em>params</em> - Un objeto tipo <code>Map</code> que contiene los parámetros</li>
+</ul>
+
+<!-- more -->
+
+<p>Ahora bien, que la configuración XML si es el caso es muy sencilla y sólo tenemos que agregar el Servlet de Groovy y hacer el mapeo.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;servlet&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;servlet-name&gt;</span>Groovy<span style="color:#008000;font-weight:bold">&lt;/servlet-name&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;servlet-class&gt;</span>groovy.servlet.GroovyServlet<span style="color:#008000;font-weight:bold">&lt;/servlet-class&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/servlet&gt;</span>
+
+<span style="color:#008000;font-weight:bold">&lt;servlet-mapping&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;servlet-name&gt;</span>Groovy<span style="color:#008000;font-weight:bold">&lt;/servlet-name&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;url-pattern&gt;</span>*.groovy<span style="color:#008000;font-weight:bold">&lt;/url-pattern&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;url-pattern&gt;</span>*.gdo<span style="color:#008000;font-weight:bold">&lt;/url-pattern&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/servlet-mapping&gt;</span></code></pre></div>
+
+<p><em>Nota: Que el mapeo no necesariamente es estricto con la extensión, podemos usar la que querramos.</em></p>
+
+<p>Y aunque la implementación que muestro no sería la más <em>adecuada</em>, sirve de ejemplo para mostrar en pocas líneas la mayoría de los elementos antes mencionado:</p>
+
+<p>Me apoyo de un par de clases que <em>modelan</em> un almacén de datos.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">todos<span style="color:#666">.</span><span style="color:#b44">groovy</span>
+<span style="color:#a2f;font-weight:bold">class</span> <span style="color:#00f">Todo</span> <span style="color:#666">{</span>
+  String description
+<span style="color:#666">}</span>
+
+<span style="color:#a2f">@Singleton</span> <span style="color:#080;font-style:italic">// Only one instance
+</span><span style="color:#080;font-style:italic"></span><span style="color:#a2f;font-weight:bold">class</span> <span style="color:#00f">TodoManager</span> <span style="color:#666">{</span>
+  List<span style="color:#666">&lt;</span>Todo<span style="color:#666">&gt;</span> todos <span style="color:#666">=</span> <span style="color:#666">[]</span>
+<span style="color:#666">}</span></code></pre></div>
+
+<p>Podemos jugar con el reponse directamente para decirle que cualquier respuesta sería JSON:</p>
+
+<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">todos<span style="color:#666">.</span><span style="color:#b44">groovy</span>
+response<span style="color:#666">.</span><span style="color:#b44">contentType</span> <span style="color:#666">=</span> <span style="color:#b44">&#39;application/json&#39;</span></code></pre></div>
+Buscar algún encabezado en particular para validar nuestra solicitud:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">todos<span style="color:#666">.</span><span style="color:#b44">groovy</span>
+<span style="color:#0b0;font-weight:bold">def</span> contentType <span style="color:#666">=</span> headers<span style="color:#666">.</span><span style="color:#b44">find</span> <span style="color:#666">{</span> k<span style="color:#666">,</span>v <span style="color:#666">-&gt;</span> k<span style="color:#666">.</span><span style="color:#b44">toLowerCase</span><span style="color:#666">()</span> <span style="color:#666">==</span> <span style="color:#b44">&#39;content-type&#39;</span> <span style="color:#666">}?.</span><span style="color:#b44">value</span>
+
+<span style="color:#a2f;font-weight:bold">if</span><span style="color:#666">(</span>contentType <span style="color:#666">!=</span> <span style="color:#b44">&#34;application/json&#34;</span><span style="color:#666">){</span>
+  response<span style="color:#666">.</span><span style="color:#b44">status</span> <span style="color:#666">=</span> HttpServletResponse<span style="color:#666">.</span><span style="color:#b44">SC_BAD_REQUEST</span> <span style="color:#080;font-style:italic">// We return a status code 400
+</span><span style="color:#080;font-style:italic"></span>  <span style="color:#080;font-style:italic">// Using the json method included
+</span><span style="color:#080;font-style:italic"></span>  json<span style="color:#666">(</span><span style="color:#a0a000">status:</span><span style="color:#b44">&#34;Please use &#39;application/json&#39; header, just received ${headers} instead&#34;</span><span style="color:#666">)</span>
+  <span style="color:#a2f;font-weight:bold">return</span> <span style="color:#080;font-style:italic">// And nothing more...
+</span><span style="color:#080;font-style:italic"></span><span style="color:#666">}</span></code></pre></div>
+
+<p>A partir de aquí podemos jugar con el método de envío y hacer algunas acciones, aquí una muestra muy simple:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">todos<span style="color:#666">.</span><span style="color:#b44">groovy</span>
+<span style="color:#00a000">switch</span><span style="color:#666">(</span>request<span style="color:#666">.</span><span style="color:#b44">method</span><span style="color:#666">.</span><span style="color:#b44">toLowerCase</span><span style="color:#666">()){</span> <span style="color:#080;font-style:italic">// Validating the method
+</span><span style="color:#080;font-style:italic"></span>  <span style="color:#a2f;font-weight:bold">case</span> <span style="color:#b44">&#39;get&#39;</span><span style="color:#666">:</span>
+    json<span style="color:#666">(</span><span style="color:#a0a000">todos:</span>TodoManager<span style="color:#666">.</span><span style="color:#b44">instance</span><span style="color:#666">.</span><span style="color:#b44">todos</span><span style="color:#666">)</span> <span style="color:#080;font-style:italic">// Using the instance
+</span><span style="color:#080;font-style:italic"></span>  <span style="color:#a2f;font-weight:bold">break</span>
+  <span style="color:#a2f;font-weight:bold">case</span> <span style="color:#b44">&#39;post&#39;</span><span style="color:#666">:</span>
+    Todo todo <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#00a000">Todo</span><span style="color:#666">(</span><span style="color:#a0a000">description:</span>params<span style="color:#666">?.</span><span style="color:#b44">todo</span> <span style="color:#666">?:</span> <span style="color:#b44">&#34;No description&#34;</span><span style="color:#666">)</span>
+    TodoManager<span style="color:#666">.</span><span style="color:#b44">instance</span><span style="color:#666">.</span><span style="color:#b44">todos</span> <span style="color:#666">&lt;&lt;</span> todo
+    response<span style="color:#666">.</span><span style="color:#b44">status</span> <span style="color:#666">=</span> HttpServletResponse<span style="color:#666">.</span><span style="color:#b44">SC_CREATED</span>
+    <span style="color:#00a000">json</span><span style="color:#666">(</span><span style="color:#a0a000">todo:</span>todo<span style="color:#666">)</span>
+  <span style="color:#a2f;font-weight:bold">break</span>
+  <span style="color:#a2f;font-weight:bold">default</span><span style="color:#666">:</span>
+    response<span style="color:#666">.</span><span style="color:#b44">status</span> <span style="color:#666">=</span> HttpServletResponse<span style="color:#666">.</span><span style="color:#b44">SC_BAD_REQUEST</span>
+    <span style="color:#00a000">json</span><span style="color:#666">(</span><span style="color:#a0a000">status:</span><span style="color:#b44">&#34;Method &#39;${request.method.toLowerCase()}&#39; not supported&#34;</span><span style="color:#666">)</span>
+<span style="color:#666">}</span></code></pre></div>
+
+<p>Puedes incluir estos tres últimos fragmentos en un archivo y todo funcionará sin problemas. Aunque, nuevamente no es la forma más adecuada, muestra muy bien el potencial del simple uso del Groovlet.</p>
+
+<p>Al final podrías usar <code>@Grab</code> para obtener las dependencias de <em>Jetty</em> y levantar el contenedor en el mismo archivo.</p>
+
+<p><strong>Conclusión</strong>: En un par de líneas puedes conseguir un servicio pequeño, entendible y listo para pasarse a un proyecto de Gradle que permita estructurarlo mejor para irle creciendo.</p>
+
+	</article>
+</main>
+
+<div id="bottom-nav" class="text-center center-block">
+	<a href=" http://blog.makingdevs.com/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
+</div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "makingdevs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42842883-2', 'auto');
+    ga('send', 'pageview');
+    window.baseURL = "http:\/\/blog.makingdevs.com\/";
+  </script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  
+  
+  <script src="http://blog.makingdevs.com//js/App.js"></script>
+  
+</body>
+</html>

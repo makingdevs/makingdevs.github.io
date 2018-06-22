@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="">
+    <meta property="og:title" content="Copying files to vagrant">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2017-06-18">
+    
+    <meta property="og:description" content="">
+    <meta property="og:url" content="http://blog.makingdevs.com/2017/06/18/copying-files-to-vagrant/">
+    <meta property="og:site_name" content="Blog de Making Devs">
+    
+    <meta property="og:tags" content="operations">
+    
+    <meta property="og:tags" content="vagrant">
+    
+    <meta property="og:tags" content="virtual box">
+    
+    <meta property="og:tags" content="developer tools">
+    
+    <meta name="generator" content="Hugo 0.43-DEV" />
+    <title>Copying files to vagrant &middot; Blog de Making Devs</title>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
+    
+    <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
+    
+    <link href="http://blog.makingdevs.com/index.xml" rel="alternate" type="application/rss+xml" title="Blog de Making Devs" />
+    
+    
+
+    
+    
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top visible-xs">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+				<a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+			
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				
+				
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+	<div class="row">
+		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
+	<div id="menu-content" class="vertical-align">
+		
+			<h1 class="text-center"><a href="http://blog.makingdevs.com/">Blog de Making Devs</a></h1>
+		
+		
+		
+			<small class="text-center center-block">El código que a veces olvidamos documentar.</small>
+		
+		
+		
+			<img id="profile-pic" src="http://blog.makingdevs.com//profile.jpeg" alt="My Picture" class="img-circle center-block">
+		
+		<div id="social" class="text-center">
+			
+
+			<a href="mailto:info@makingdevs.com"><i class="fa fa-envelope-o fa-2x"></i></a>
+		</div>
+		<div id="links" class="text-center">
+			
+			
+		</div>
+	</div>
+</div>
+
+		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
+			<div class="row">
+				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
+
+<main>
+
+  <header>
+    <h1 align=center>Copying files to vagrant</h1>
+    
+    <section class="author">
+      <p align=center> <b>Redactado por: Felipe Juarez</b></p>
+    </section>
+    
+  </header>
+  </br>
+
+	<article>
+		<p>Well, one of the common things to do in Vagrant is copying files. So for achieve that task we need to prepare a file like <a href="http://blog.makingdevs.com/2017/06/01/creating-virtual-machines-with-vagrant/">this</a>.</p>
+
+<p>Once we have that file, we change <code>config.vm.box = &quot;ubuntu/trusty64&quot;</code> for <code>config.vm.box = &quot;centos/7&quot;</code>. And modify it like follow:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Vagrant.configure<span style="color:#666">(</span><span style="color:#b44">&#34;2&#34;</span><span style="color:#666">)</span> <span style="color:#a2f;font-weight:bold">do</span> |config|
+  config.vm.box <span style="color:#666">=</span> <span style="color:#b44">&#34;centos/7&#34;</span>
+  config.vm.provision <span style="color:#b44">&#34;file&#34;</span>, source: <span style="color:#b44">&#34;lorem_ipsum.txt&#34;</span>, destination: <span style="color:#b44">&#34;~/lorem_ipsum.txt&#34;</span>
+end</code></pre></div>
+
+<p>Alright we run the command for execute our file.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">❯ vagrant up
+Bringing machine <span style="color:#b44">&#39;default&#39;</span> up with <span style="color:#b44">&#39;virtualbox&#39;</span> provider...
+<span style="color:#666">==</span>&gt; default: Importing base box <span style="color:#b44">&#39;centos/7&#39;</span>...
+<span style="color:#666">==</span>&gt; default: Matching MAC address <span style="color:#a2f;font-weight:bold">for</span> NAT networking...
+<span style="color:#666">==</span>&gt; default: Checking <span style="color:#a2f;font-weight:bold">if</span> box <span style="color:#b44">&#39;centos/7&#39;</span> is up to date...
+<span style="color:#666">==</span>&gt; default: A newer version of the box <span style="color:#b44">&#39;centos/7&#39;</span> is available! You <span style="color:#b8860b">currently</span>
+<span style="color:#666">==</span>&gt; default: have version <span style="color:#b44">&#39;1611.01&#39;</span>. The latest is version <span style="color:#b44">&#39;1705.01&#39;</span>. <span style="color:#b8860b">Run</span>
+<span style="color:#666">==</span>&gt; default: <span style="color:#b44">`</span>vagrant box update<span style="color:#b44">`</span> to update.
+<span style="color:#666">==</span>&gt; default: Setting the name of the VM: vagrant-blog_default_1497801835273_73320
+<span style="color:#666">==</span>&gt; default: Clearing any previously <span style="color:#a2f">set</span> network interfaces...
+<span style="color:#666">==</span>&gt; default: Preparing network interfaces based on configuration...
+    default: Adapter <span style="color:#666">1</span>: <span style="color:#b8860b">nat</span>
+<span style="color:#666">==</span>&gt; default: Forwarding ports...
+    default: <span style="color:#666">22</span> <span style="color:#666">(</span>guest<span style="color:#666">)</span> <span style="color:#666">=</span>&gt; <span style="color:#666">2222</span> <span style="color:#666">(</span>host<span style="color:#666">)</span> <span style="color:#666">(</span>adapter <span style="color:#666">1</span><span style="color:#666">)</span>
+<span style="color:#666">==</span>&gt; default: Booting VM...
+<span style="color:#666">==</span>&gt; default: Waiting <span style="color:#a2f;font-weight:bold">for</span> machine to boot. This may take a few minutes...
+    default: SSH address: <span style="color:#666">127</span>.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+    default:
+    default: Vagrant insecure key detected. Vagrant will automatically replace
+    default: this with a newly generated keypair <span style="color:#a2f;font-weight:bold">for</span> better security.
+    default:
+    default: Inserting generated public key within guest...
+    default: Removing insecure key from the guest <span style="color:#a2f;font-weight:bold">if</span> it<span style="">&#39;</span>s present...
+    default: Key inserted! Disconnecting and reconnecting using new SSH key...
+<span style="color:#666">==</span>&gt; default: Machine booted and ready!
+<span style="color:#666">==</span>&gt; default: Checking <span style="color:#a2f;font-weight:bold">for</span> guest additions in VM...
+    default: No guest additions were detected on the base box <span style="color:#a2f;font-weight:bold">for</span> this VM! Guest
+    default: additions are required <span style="color:#a2f;font-weight:bold">for</span> forwarded ports, shared folders, host only
+    default: networking, and more. If SSH fails on this machine, please install
+    default: the guest additions and repackage the box to <span style="color:#a2f;font-weight:bold">continue</span>.
+    default:
+    default: This is not an error message; everything may <span style="color:#a2f;font-weight:bold">continue</span> to work properly,
+    default: in which <span style="color:#a2f;font-weight:bold">case</span> you may ignore this message.
+<span style="color:#666">==</span>&gt; default: Rsyncing folder: /Users/sohjiro/workspace/vagrant-blog/ <span style="color:#666">=</span>&gt; /vagrant
+<span style="color:#666">==</span>&gt; default: Running provisioner: file...</code></pre></div>
+
+<p>After that is finished, we connect to the machine with <code>ssh</code> command and list the filesystem</p>
+
+<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">❯ vagrant ssh
+<span style="color:#666">[</span>vagrant@localhost ~<span style="color:#666">]</span>$ ls -lt
+total <span style="color:#666">4</span>
+-rw-r--r--. <span style="color:#666">1</span> vagrant vagrant <span style="color:#666">16</span> Jun <span style="color:#666">19</span> <span style="color:#666">03</span>:02 lorem_ipsum.txt
+<span style="color:#666">[</span>vagrant@localhost ~<span style="color:#666">]</span>$</code></pre></div></p>
+
+<p>And that&rsquo;s all, We just copy a file into our <code>Vagrant</code> machine</p>
+
+	</article>
+</main>
+
+<div id="bottom-nav" class="text-center center-block">
+	<a href=" http://blog.makingdevs.com/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
+</div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "makingdevs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42842883-2', 'auto');
+    ga('send', 'pageview');
+    window.baseURL = "http:\/\/blog.makingdevs.com\/";
+  </script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  
+  <script src="http://blog.makingdevs.com//js/App.js"></script>
+  
+</body>
+</html>

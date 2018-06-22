@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="">
+    <meta property="og:title" content="Add complete bootstrap to Phoenix">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2016-03-24">
+    
+    <meta property="og:description" content="">
+    <meta property="og:url" content="http://blog.makingdevs.com/2016/03/24/add-complete-bootstrap-to-phoenix/">
+    <meta property="og:site_name" content="Blog de Making Devs">
+    
+    <meta property="og:tags" content="phoenix">
+    
+    <meta property="og:tags" content="elixir">
+    
+    <meta property="og:tags" content="bootstrap">
+    
+    <meta name="generator" content="Hugo 0.43-DEV" />
+    <title>Add complete bootstrap to Phoenix &middot; Blog de Making Devs</title>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
+    
+    <link href="http://blog.makingdevs.com/index.xml" rel="alternate" type="application/rss+xml" title="Blog de Making Devs" />
+    
+    
+
+    
+    
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top visible-xs">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+				<a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+			
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				
+				
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+	<div class="row">
+		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
+	<div id="menu-content" class="vertical-align">
+		
+			<h1 class="text-center"><a href="http://blog.makingdevs.com/">Blog de Making Devs</a></h1>
+		
+		
+		
+			<small class="text-center center-block">El código que a veces olvidamos documentar.</small>
+		
+		
+		
+			<img id="profile-pic" src="http://blog.makingdevs.com//profile.jpeg" alt="My Picture" class="img-circle center-block">
+		
+		<div id="social" class="text-center">
+			
+
+			<a href="mailto:info@makingdevs.com"><i class="fa fa-envelope-o fa-2x"></i></a>
+		</div>
+		<div id="links" class="text-center">
+			
+			
+		</div>
+	</div>
+</div>
+
+		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
+			<div class="row">
+				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
+
+<main>
+
+  <header>
+    <h1 align=center>Add complete bootstrap to Phoenix</h1>
+    
+    <section class="author">
+      <p align=center> <b>Redactado por: Felipe Juárez Murillo</b></p>
+    </section>
+    
+  </header>
+  </br>
+
+	<article>
+		<p>It has been a while since I make a post and this is my first post in English so be gentle with me :P</p>
+
+<p>Since a couple of months I been working in a language called <a href="http://elixir-lang.org/">elixir</a> and with his web framework <a href="http://www.phoenixframework.org/">phoenix</a>, I have had a lot of fun with these elements. But sometimes I been struggling with configurations that should be easy maybe I don&rsquo;t read that carefully or maybe I&rsquo;m a knucklehead, but whatever the reasone is, I hope this configuration works for you and give you a little help of how configure your Javascripts third parties for your Phoenix application.</p>
+
+<!-- more -->
+
+<p>When you create a new application with phoenix you will notice (when you start the server) that actually <code>phoenix</code> have <a href="http://getbootstrap.com/">bootstrap</a> but that is not true at all, if you want to add a <code>dropdown</code> or something more sophisticated like a <code>dialog</code> or a <code>carousel</code> you will find that there is no <code>javascript</code> and the only thing that you have is the <code>stylesheet</code> so in order to add the complete <code>bootstrap</code> you need a couple steps before.</p>
+
+<p>Well let&rsquo;s get started with this thing:</p>
+
+<p>In order to manage all the libraries that you need to work with it is recommended to install <a href="http://bower.io/">bower</a>. Actually <code>phoenix</code> in his <a href="http://www.phoenixframework.org/docs/static-assets">Static Assets</a> page encourage you to do it.</p>
+
+<p>So we are going to follow this path and add bootstrap with <code>bower</code> but first we are going to create the <code>bower.json</code> file for storing our dependencies:</p>
+
+<pre><code class="language-sh">bower init
+</code></pre>
+
+<p>Then we are going to create a file named <code>.bowerrc</code> with this file we are going to tell to <code>bower</code> where are going to need to put all the <code>javascripts</code> that we need it from now on. In this file we are going to put the next instruction:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+  <span style="color:#b44">&#34;directory&#34;</span><span style="color:#666">:</span> <span style="color:#b44">&#34;web/static/vendor&#34;</span>
+}
+</code></pre></div>
+
+<p>Now is the time to install <code>bootstrap</code> and for that we need to run the following instruction in your shell:</p>
+
+<pre><code class="language-sh">bower install -S bootstrap
+</code></pre>
+
+<p>Now that we have <code>bootstrap</code> if you check your <code>vendor</code> directory you will see that there is not only <code>bootstrap</code>, it is also <code>jquery</code> (because is a dependency for <code>bootstrap</code>), if have not heard of <code>bower</code> before I recommend you to look for other proyects it will save you a lot of time and space in your repository.</p>
+
+<p>Well at this moment, if you run your <code>phoenix.server</code> you will find a couple of errors, so lets fix that:</p>
+
+<ol>
+<li>Let&rsquo;s remove the <code>bootstrap css</code> that <code>phoenix</code> ships with. For this open your <code>web/static/css/app.css</code> and remove the first 6 lines of code of the file.</li>
+<li>Then open your <code>brunch-config.js</code> and in the <code>conventions</code> section add the following:</li>
+</ol>
+
+<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">   conventions<span style="color:#666">:</span> {
+     assets<span style="color:#666">:</span> <span style="color:#b68">/^(web\/static\/assets)/</span>,
+     ignored<span style="color:#666">:</span> [
+       <span style="color:#b68">/^(web\/static\/vendor\/bootstrap\/)(?!.*min.(js|css)$)/</span>,
+       <span style="color:#b68">/^(web\/static\/vendor\/jquery\/)(?!.*min.js)/</span>
+     ]
+   }
+   
+</code></pre></div>
+3. After that you will need to load <code>jquery</code> and <code>bootstrap</code> in order, i.e. First <code>jquery</code> and then <code>bootstrap</code>. This is because <code>brunch</code> will merge all js in alphabetical order and we require that <code>jquery</code> loads first. For this we move to the <code>joinTo</code> in the <code>files</code> section and add the next lines:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">   files<span style="color:#666">:</span> {
+     javascripts<span style="color:#666">:</span> {
+       joinTo<span style="color:#666">:</span> <span style="color:#b44">&#34;js/app.js&#34;</span>,
+       order<span style="color:#666">:</span> {
+         before<span style="color:#666">:</span> [
+           <span style="color:#b44">&#34;web/static/vendor/jquery/dist/jquery.min.js&#34;</span>,
+           <span style="color:#b44">&#34;web/static/vendor/bootstrap/dist/js/bootstrap.js&#34;</span>
+         ]
+       }
+     },
+   ... more code ...
+   
+</code></pre></div>
+
+<p>After this you can open the main layout of your application and put the next code:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#008000;font-weight:bold">div</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;dropdown&#34;</span>&gt;
+  &lt;<span style="color:#008000;font-weight:bold">button</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;btn btn-default dropdown-toggle&#34;</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;button&#34;</span> <span style="color:#b44">id</span><span style="color:#666">=</span><span style="color:#b44">&#34;dropdownMenu1&#34;</span> <span style="color:#b44">data-toggle</span><span style="color:#666">=</span><span style="color:#b44">&#34;dropdown&#34;</span> <span style="color:#b44">aria-haspopup</span><span style="color:#666">=</span><span style="color:#b44">&#34;true&#34;</span> <span style="color:#b44">aria-expanded</span><span style="color:#666">=</span><span style="color:#b44">&#34;true&#34;</span>&gt;
+    Dropdown
+    &lt;<span style="color:#008000;font-weight:bold">span</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;caret&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">span</span>&gt;
+  &lt;/<span style="color:#008000;font-weight:bold">button</span>&gt;
+  &lt;<span style="color:#008000;font-weight:bold">ul</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;dropdown-menu&#34;</span> <span style="color:#b44">aria-labelledby</span><span style="color:#666">=</span><span style="color:#b44">&#34;dropdownMenu1&#34;</span>&gt;
+    &lt;<span style="color:#008000;font-weight:bold">li</span>&gt;&lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;#&#34;</span>&gt;Action&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
+    &lt;<span style="color:#008000;font-weight:bold">li</span>&gt;&lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;#&#34;</span>&gt;Another action&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
+    &lt;<span style="color:#008000;font-weight:bold">li</span>&gt;&lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;#&#34;</span>&gt;Something else here&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
+    &lt;<span style="color:#008000;font-weight:bold">li</span> <span style="color:#b44">role</span><span style="color:#666">=</span><span style="color:#b44">&#34;separator&#34;</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;divider&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
+    &lt;<span style="color:#008000;font-weight:bold">li</span>&gt;&lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;#&#34;</span>&gt;Separated link&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
+  &lt;/<span style="color:#008000;font-weight:bold">ul</span>&gt;
+&lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;</code></pre></div>
+
+<p>And this is going to work as expected. Now you can make use of everything that <code>boostrap</code> have.</p>
+
+<p>Oh! I forgot for copying the fonts and icons that <code>bootstrap</code> have you need to use a tool called <code>assetsmanager-brunch</code> this is for manage assets that are not minify or uglify like images or fonts. For this we need to do:</p>
+
+<ol>
+<li>Install <code>assetsmanager-brunch</code> with <code>npm</code> help. Run the following <code>npm install --save assetsmanager-brunch</code></li>
+<li>Then in the <code>plugins</code> section add the following code:</li>
+</ol>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">   assetsmanager<span style="color:#666">:</span> {
+       copyTo<span style="color:#666">:</span> {
+         <span style="color:#b44">&#39;/&#39;</span> <span style="color:#666">:</span> [<span style="color:#b44">&#39;web/static/vendor/bootstrap/dist/fonts&#39;</span>]
+       }
+   }
+</code></pre></div>
+
+<p>That&rsquo;s all folks! At least for this post I hope you enjoy and Good Luck, Have Fun!</p>
+
+	</article>
+</main>
+
+<div id="bottom-nav" class="text-center center-block">
+	<a href=" http://blog.makingdevs.com/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
+</div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "makingdevs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42842883-2', 'auto');
+    ga('send', 'pageview');
+    window.baseURL = "http:\/\/blog.makingdevs.com\/";
+  </script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  
+  
+  <script src="http://blog.makingdevs.com//js/App.js"></script>
+  
+</body>
+</html>

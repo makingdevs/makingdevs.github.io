@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eip on Blog de Making Devs</title>
+    <link>http://blog.makingdevs.com/categories/eip/</link>
+    <description>Recent content in Eip on Blog de Making Devs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Apr 2015 19:56:54 -0500</lastBuildDate>
+    
+	<atom:link href="http://blog.makingdevs.com/categories/eip/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Clusterizacion con Camel</title>
+      <link>http://blog.makingdevs.com/2015/04/07/clusterizacion-con-camel/</link>
+      <pubDate>Tue, 07 Apr 2015 19:56:54 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2015/04/07/clusterizacion-con-camel/</guid>
+      <description>Camel ofrece distintas soluciones para ser escalado o para distribuir la carga en diferentes instancias, la soluciones que ofrece dependerá de como se encuentra nuestra infraestructura ( y configuración).
+ Misma JVM y CamelContext Misma JVM pero diferente CamelContext Diferente JVM y CamelContext   El problema que me vi envuelto fue de estas tres, la ultima, el clusterizar camel que se encontraban en diferentes JVM y CamelContext. Y en particular tuve un problema de mensajes duplicados.</description>
+    </item>
+    
+  </channel>
+</rss>
