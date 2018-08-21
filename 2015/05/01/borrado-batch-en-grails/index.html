@@ -19,7 +19,7 @@
     
     <meta property="og:tags" content="gorm">
     
-    <meta name="generator" content="Hugo 0.43-DEV" />
+    <meta name="generator" content="Hugo 0.47.1" />
     <title>Borrado batch en Grails &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -108,15 +108,15 @@
 
 <p>La necesidad era borrar un grupo de objetos en donde el contenido de su relación estuviera vacío, ejemplifico con la estructura de unas clases:</p>
 
-<script src="//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=domains.groovy"></script>
+<script type="application/javascript" src="//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=domains.groovy"></script>
 
 <p>El primer acercamiento que tuve fue obtener la lista de elementos y hacer una condicional buscando los elementos vacíos, después borrar&hellip;</p>
 
-<script src="//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete1.groovy"></script>
+<script type="application/javascript" src="//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete1.groovy"></script>
 
 <p>Una vez hecho, mejoramos intentamos mejorar el código con una búsqueda mucho más refinada y ejecutando el borrado, para ello nos apoyamos de los <strong>where queries</strong>:</p>
 
-<script src="//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete2.groovy"></script>
+<script type="application/javascript" src="//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete2.groovy"></script>
 
 <p>Basado en la documentación de Grails:</p>
 
@@ -138,7 +138,7 @@
 
 <p>Finalmente nuestra solución es:</p>
 
-<script src="//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete3.groovy"></script>
+<script type="application/javascript" src="//gist.github.com/neodevelop/54953d90cc778b71548a.js?file=delete3.groovy"></script>
 
 <p>Con esto, tenemos una búsqueda refinada y el borrado de los elementos directo, inclusive el método <code>deleteAll</code> regresa un entero con la cantidad de registros afectados.</p>
 
@@ -153,7 +153,7 @@
 
 
   <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     

@@ -6,10 +6,19 @@
     <description>Recent content in Spock on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Mar 2016 23:47:26 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 22 Sep 2016 15:06:05 -0500</lastBuildDate>
     
 	<atom:link href="http://blog.makingdevs.com/tags/spock/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Presentación en Android Nights</title>
+      <link>http://blog.makingdevs.com/2016/09/22/presentaci%C3%B3n-en-android-nights/</link>
+      <pubDate>Thu, 22 Sep 2016 15:06:05 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/09/22/presentaci%C3%B3n-en-android-nights/</guid>
+      <description>El pasado 18 de Agosto de 2016 tuvimos la oportunidad de presentar un conjunto de ideas en la Activity #15, creando una aplicación con el lenguaje Groovy como herramienta principal. Lo importante de esta presentación fue el conjunto de técnicas que ocupamos con ayuda del lenguaje dinámico Groovy combinando lo que mucha gente ya conoce en Java pero de una forma divertida, inclusivo descubrimos algunos patrones que en iOS son más naturales.</description>
+    </item>
     
     <item>
       <title>Pruebas funcionales con Geb y Spock</title>

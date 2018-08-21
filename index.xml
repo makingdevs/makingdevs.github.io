@@ -32,6 +32,19 @@ So, Vert.x includes a testing tool, is based in JUnit, the best, it has a Runner
     </item>
     
     <item>
+      <title>Develop with VertX</title>
+      <link>http://blog.makingdevs.com/2017/07/24/develop-with-vertx/</link>
+      <pubDate>Mon, 24 Jul 2017 16:34:54 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2017/07/24/develop-with-vertx/</guid>
+      <description>Recently we used the project Vertx for develop a project. Now I&amp;rsquo;m going to talk about the basic functionality.
+ VertX is a tool-kit for building reactive applications on the JVM.
+ It has many interesting features:
+ Actor model based. It&amp;rsquo;s polyglot: you can use with Java, Groovy, Ruby, Scala, Ceylon, Javascript, and Kotlin.  If you want to install vertx, please use Sdk Manager
+Verticles For the beginning it&amp;rsquo;s important know that VertX has a nervous system called Event Bus, where you can write and run Verticles.</description>
+    </item>
+    
+    <item>
       <title>Add public key to Vagrant</title>
       <link>http://blog.makingdevs.com/2017/07/04/add-public-key-to-vagrant/</link>
       <pubDate>Tue, 04 Jul 2017 22:06:52 -0500</pubDate>
@@ -95,6 +108,15 @@ Obviaré las partes de las instalaciones de las gemas y me enfocaré en el probl
 An Anonymous Function is a function without a name and is usually used for applying some sort of transformation to the arguments passed.
 According to Wikipedia an Anonymous Function is:
  A function definition that is not bound to an identifier.</description>
+    </item>
+    
+    <item>
+      <title>Presentación en Android Nights</title>
+      <link>http://blog.makingdevs.com/2016/09/22/presentaci%C3%B3n-en-android-nights/</link>
+      <pubDate>Thu, 22 Sep 2016 15:06:05 -0500</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2016/09/22/presentaci%C3%B3n-en-android-nights/</guid>
+      <description>El pasado 18 de Agosto de 2016 tuvimos la oportunidad de presentar un conjunto de ideas en la Activity #15, creando una aplicación con el lenguaje Groovy como herramienta principal. Lo importante de esta presentación fue el conjunto de técnicas que ocupamos con ayuda del lenguaje dinámico Groovy combinando lo que mucha gente ya conoce en Java pero de una forma divertida, inclusivo descubrimos algunos patrones que en iOS son más naturales.</description>
     </item>
     
     <item>

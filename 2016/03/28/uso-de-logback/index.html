@@ -17,7 +17,7 @@
     
     <meta property="og:tags" content="log">
     
-    <meta name="generator" content="Hugo 0.43-DEV" />
+    <meta name="generator" content="Hugo 0.47.1" />
     <title>Uso de logback &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -198,7 +198,7 @@ root<span style="color:#666">(</span>DEBUG<span style="color:#666">,</span> <spa
 
 <p>Ahora el archivo se crea una instancia de la clase Logger. Además de contar con el nivel del logger, respetando la configuración que se hizo en el archivo logback.groovy.</p>
 
-<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">org.slf4j.Logger</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">org.slf4j.Logger</span>
 <span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">org.slf4j.LoggerFactory</span>
 
 Logger log <span style="color:#666">=</span> LoggerFactory<span style="color:#666">.</span><span style="color:#b44">getLogger</span><span style="color:#666">(</span>getClass<span style="color:#666">())</span>
@@ -208,7 +208,7 @@ log<span style="color:#666">.</span><span style="color:#b44">debug</span> reques
 log<span style="color:#666">.</span><span style="color:#b44">error</span> <span style="color:#b44">&#34;Error&#34;</span>
 log<span style="color:#666">.</span><span style="color:#b44">warn</span> <span style="color:#b44">&#34;Warning&#34;</span>
 log<span style="color:#666">.</span><span style="color:#b44">info</span> <span style="color:#b44">&#34;Info&#34;</span>
-log<span style="color:#666">.</span><span style="color:#b44">trace</span> <span style="color:#b44">&#34;Trace&#34;</span></code></pre></div></p>
+log<span style="color:#666">.</span><span style="color:#b44">trace</span> <span style="color:#b44">&#34;Trace&#34;</span></code></pre></div>
 
 <p>Un ejemplo de como se vería:</p>
 
@@ -236,7 +236,7 @@ log<span style="color:#666">.</span><span style="color:#b44">trace</span> <span 
 
 
   <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     

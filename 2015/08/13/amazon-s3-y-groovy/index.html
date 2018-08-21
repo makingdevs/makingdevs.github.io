@@ -13,7 +13,7 @@
     <meta property="og:url" content="http://blog.makingdevs.com/2015/08/13/amazon-s3-y-groovy/">
     <meta property="og:site_name" content="Blog de Making Devs">
     
-    <meta name="generator" content="Hugo 0.43-DEV" />
+    <meta name="generator" content="Hugo 0.47.1" />
     <title>Amazon S3 y Groovy &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -122,11 +122,11 @@ S3Bucket<span style="color:#666">[]</span> myBuckets <span style="color:#666">=<
 
 <p>Despúes, una vez con todos los buckets, podemos listar los archivos contenidos dentro de bucket muy particular.</p>
 
-<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">String bucletName <span style="color:#666">=</span> <span style="color:#b44">&#34;makingdevs-bucket&#34;</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">String bucletName <span style="color:#666">=</span> <span style="color:#b44">&#34;makingdevs-bucket&#34;</span>
 
 bucket <span style="color:#666">=</span> myBuckets<span style="color:#666">.</span><span style="color:#b44">find</span> <span style="color:#666">{</span> it<span style="color:#666">.</span><span style="color:#b44">name</span><span style="color:#666">==</span>bucketName <span style="color:#666">}</span>
 
-s3Objects <span style="color:#666">=</span> s3Service<span style="color:#666">.</span><span style="color:#b44">listObjects</span><span style="color:#666">(</span>bucket<span style="color:#666">)</span></code></pre></div></p>
+s3Objects <span style="color:#666">=</span> s3Service<span style="color:#666">.</span><span style="color:#b44">listObjects</span><span style="color:#666">(</span>bucket<span style="color:#666">)</span></code></pre></div>
 
 <p>Finalmente, podemos subir un archivo específico hacia el bucket que deseamos.</p>
 
@@ -164,7 +164,7 @@ s3Service<span style="color:#666">.</span><span style="color:#b44">putObject</sp
 
 
   <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     

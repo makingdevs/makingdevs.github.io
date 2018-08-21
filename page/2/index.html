@@ -12,7 +12,7 @@
     <meta property="og:url" content="http://blog.makingdevs.com/">
     <meta property="og:site_name" content="Blog de Making Devs">
     
-    <meta name="generator" content="Hugo 0.43-DEV" />
+    <meta name="generator" content="Hugo 0.47.1" />
     <title>Blog de Making Devs &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -86,6 +86,44 @@
 		<h1>Recent Posts</h1>
 	
 </header>
+
+
+	<div class="panel panel-default">
+	<div class="panel-header">
+		<h3>
+			<a href="http://blog.makingdevs.com/2017/06/18/copying-files-to-vagrant/">Copying files to vagrant</a>
+			<br>
+			<small>
+				18 June 2017
+			</small>
+		</h3>
+	</div>
+	<div class="panel-body">
+		Well, one of the common things to do in Vagrant is copying files. So for achieve that task we need to prepare a file like this.
+Once we have that file, we change config.vm.box = &quot;ubuntu/trusty64&quot; for config.vm.box = &quot;centos/7&quot;. And modify it like follow:
+Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos/7&#34; config.vm.provision &#34;file&#34;, source: &#34;lorem_ipsum.txt&#34;, destination: &#34;~/lorem_ipsum.txt&#34; end Alright we run the command for execute our file.
+❯ vagrant up Bringing machine &#39;default&#39; up with &#39;virtualbox&#39; provider.
+		
+			... <a href="http://blog.makingdevs.com/2017/06/18/copying-files-to-vagrant/">Read More</a>
+		
+	</div>
+	<div class="panel-footer">
+		
+		<small class="text-muted">
+			
+			
+				<a href="http://blog.makingdevs.com/tags/operations"><span class="label label-success">operations</span></a>
+			
+				<a href="http://blog.makingdevs.com/tags/vagrant"><span class="label label-success">vagrant</span></a>
+			
+				<a href="http://blog.makingdevs.com/tags/virtual-box"><span class="label label-success">virtual box</span></a>
+			
+				<a href="http://blog.makingdevs.com/tags/developer-tools"><span class="label label-success">developer tools</span></a>
+			
+		</small>
+		
+	</div>
+</div>
 
 
 	<div class="panel panel-default">
@@ -194,51 +232,18 @@ Obviaré las partes de las instalaciones de las gemas y me enfocaré en el probl
 </div>
 
 
-	<div class="panel panel-default">
-	<div class="panel-header">
-		<h3>
-			<a href="http://blog.makingdevs.com/2016/11/05/fizzbuzz/">FizzBuzz</a>
-			<br>
-			<small>
-				5 November 2016
-			</small>
-		</h3>
-	</div>
-	<div class="panel-body">
-		Before we pass to how we can make a FizzBuzz game, we need to know something more basic about Elixir. Today we are going to learn something called Anonymous Function (a.k.a Lambda Expression)
-An Anonymous Function is a function without a name and is usually used for applying some sort of transformation to the arguments passed.
-According to Wikipedia an Anonymous Function is:
- A function definition that is not bound to an identifier.
-		
-			... <a href="http://blog.makingdevs.com/2016/11/05/fizzbuzz/">Read More</a>
-		
-	</div>
-	<div class="panel-footer">
-		
-		<small class="text-muted">
-			
-			
-				<a href="http://blog.makingdevs.com/tags/elixir"><span class="label label-success">elixir</span></a>
-			
-		</small>
-		
-	</div>
-</div>
-
-
 
 <div class="text-center center-block">
 	
 
 <ul class="pagination">
     
-    <li>
-        <a href="/" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+    <li class="page-item">
+        <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
     </li>
     
-    <li
-    >
-    <a href="/" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+    <li class="page-item">
+    <a href="/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
     </li>
     
     
@@ -250,8 +255,7 @@ According to Wikipedia an Anonymous Function is:
         
     
     
-    <li
-    ><a href="/">1</a></li>
+    <li class="page-item"><a class="page-link" href="/">1</a></li>
     
     
     
@@ -262,8 +266,7 @@ According to Wikipedia an Anonymous Function is:
         
     
     
-    <li
-    class="active"><a href="/page/2/">2</a></li>
+    <li class="page-item active"><a class="page-link" href="/page/2/">2</a></li>
     
     
     
@@ -274,8 +277,7 @@ According to Wikipedia an Anonymous Function is:
         
     
     
-    <li
-    ><a href="/page/3/">3</a></li>
+    <li class="page-item"><a class="page-link" href="/page/3/">3</a></li>
     
     
     
@@ -286,16 +288,7 @@ According to Wikipedia an Anonymous Function is:
         
     
     
-    <li class="disabled"><span aria-hidden="true">&hellip;</span></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
+    <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
     
     
     
@@ -315,17 +308,33 @@ According to Wikipedia an Anonymous Function is:
         
     
     
-    <li
-    ><a href="/page/7/">7</a></li>
     
     
-    <li
-    >
-    <a href="/page/3/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item"><a class="page-link" href="/page/8/">8</a></li>
+    
+    
+    <li class="page-item">
+    <a href="/page/3/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
     </li>
     
-    <li>
-        <a href="/page/7/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+    <li class="page-item">
+        <a href="/page/8/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
     </li>
     
 </ul>

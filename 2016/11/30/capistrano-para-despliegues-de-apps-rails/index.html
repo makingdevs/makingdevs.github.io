@@ -21,7 +21,7 @@
     
     <meta property="og:tags" content="deploy">
     
-    <meta name="generator" content="Hugo 0.43-DEV" />
+    <meta name="generator" content="Hugo 0.47.1" />
     <title>Capistrano para despliegues de apps Rails &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -188,12 +188,12 @@ namespace <span style="color:#b8860b">:deploy</span> <span style="color:#a2f;fon
 
 <p>Dentro del directorio <em>config/deploy/</em> existen un par de archivos que nos ayudan a definir elementos particulares de la instalación por cada ambiente, lo único que yo hice fue habilitar la máquina a través de autenticación de llave pública con el servidor de despliegue para que se pudieran comunicar por ssh. Y mis archivos quedaron así:</p>
 
-<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">set <span style="color:#b8860b">:stage</span>, <span style="color:#b8860b">:production</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">set <span style="color:#b8860b">:stage</span>, <span style="color:#b8860b">:production</span>
 set <span style="color:#b8860b">:puma_bind</span>, <span style="color:#008000">%w(tcp://0.0.0.0:3000)</span>
 set <span style="color:#b8860b">:branch</span>, <span style="color:#b44">&#39;production&#39;</span>
 set <span style="color:#b8860b">:deploy_to</span>, <span style="color:#b44">&#34;/var/www/</span><span style="color:#b68;font-weight:bold">#{</span>fetch(<span style="color:#b8860b">:application</span>)<span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">/production&#34;</span>
 
-server <span style="color:#b44">&#39;powerful.makingdevs.com&#39;</span>, <span style="color:#b8860b">user</span>: <span style="color:#b44">&#39;centos-user&#39;</span>, <span style="color:#b8860b">roles</span>: <span style="color:#008000">%w{app web}</span></code></pre></div></p>
+server <span style="color:#b44">&#39;powerful.makingdevs.com&#39;</span>, <span style="color:#b8860b">user</span>: <span style="color:#b44">&#39;centos-user&#39;</span>, <span style="color:#b8860b">roles</span>: <span style="color:#008000">%w{app web}</span></code></pre></div>
 
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">set <span style="color:#b8860b">:stage</span>, <span style="color:#b8860b">:stage</span>
 set <span style="color:#b8860b">:puma_bind</span>, <span style="color:#008000">%w(tcp://0.0.0.0:3001)</span>
@@ -219,7 +219,7 @@ server <span style="color:#b44">&#39;powerful.makingdevs.com&#39;</span>, <span 
 
 
   <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     

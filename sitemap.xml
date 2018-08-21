@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>http://blog.makingdevs.com/2017/07/24/develop-with-vertx/</loc>
+    <lastmod>2017-07-24T16:34:54-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.makingdevs.com/2017/07/04/add-public-key-to-vagrant/</loc>
     <lastmod>2017-07-04T22:06:52-05:00</lastmod>
   </url>
@@ -40,6 +45,11 @@
   <url>
     <loc>http://blog.makingdevs.com/2016/11/05/fizzbuzz/</loc>
     <lastmod>2016-11-05T19:35:08-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.makingdevs.com/2016/09/22/presentaci%C3%B3n-en-android-nights/</loc>
+    <lastmod>2016-09-22T15:06:05-05:00</lastmod>
   </url>
   
   <url>
@@ -289,7 +299,7 @@
   
   <url>
     <loc>http://blog.makingdevs.com/tags/geb/</loc>
-    <lastmod>2016-03-07T23:47:26-05:00</lastmod>
+    <lastmod>2016-09-22T15:06:05-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -331,7 +341,7 @@
   
   <url>
     <loc>http://blog.makingdevs.com/tags/groovy/</loc>
-    <lastmod>2016-07-20T22:53:27-05:00</lastmod>
+    <lastmod>2016-09-22T15:06:05-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -493,7 +503,7 @@
   
   <url>
     <loc>http://blog.makingdevs.com/tags/spock/</loc>
-    <lastmod>2016-03-07T23:47:26-05:00</lastmod>
+    <lastmod>2016-09-22T15:06:05-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -511,7 +521,7 @@
   
   <url>
     <loc>http://blog.makingdevs.com/tags/testing/</loc>
-    <lastmod>2016-03-07T23:47:26-05:00</lastmod>
+    <lastmod>2016-09-22T15:06:05-05:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -23,7 +23,7 @@
     
     <meta property="og:tags" content="public key">
     
-    <meta name="generator" content="Hugo 0.43-DEV" />
+    <meta name="generator" content="Hugo 0.47.1" />
     <title>Add public key to Vagrant &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -142,7 +142,7 @@ round-trip min/avg/max/stddev <span style="color:#666">=</span> <span style="col
 
 <p>And the second one is using <code>vagrant ssh</code> and checking the interface:</p>
 
-<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">❯ vagrant ssh
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">❯ vagrant ssh
 Last login: Wed Jul  <span style="color:#666">5</span> <span style="color:#666">04</span>:07:21 <span style="color:#666">2017</span> from <span style="color:#666">10</span>.0.2.2
 <span style="color:#666">[</span>vagrant@localhost ~<span style="color:#666">]</span>$ ip addr show eth1
 <span style="color:#666">3</span>: eth1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span style="color:#666">1500</span> qdisc pfifo_fast state UP qlen <span style="color:#666">1000</span>
@@ -152,7 +152,7 @@ Last login: Wed Jul  <span style="color:#666">5</span> <span style="color:#666">
     inet <span style="color:#666">192</span>.168.15.200/32 scope global eth1
        valid_lft forever preferred_lft forever
     inet6 fe80::a9a0:340d:44ab:6ed1/64 scope link
-       valid_lft forever preferred_lft forever</code></pre></div></p>
+       valid_lft forever preferred_lft forever</code></pre></div>
 
 <p>With that in place, we are going to add our <code>public key</code> (if you don&rsquo;t know how create one you can check <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">this github post</a>). So, we edit our <code>Vagrant</code> file again, as follows:</p>
 
@@ -178,13 +178,13 @@ end</code></pre></div>
 
 <p>Finally we can access to our <code>Vagrant</code> machine with pure <code>ssh vagrant@192.168.15.200</code>.</p>
 
-<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">❯ ssh vagrant@192.168.15.200
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">❯ ssh vagrant@192.168.15.200
 The authenticity of host <span style="color:#b44">&#39;192.168.15.200 (192.168.15.200)&#39;</span> can<span style="color:#b44">&#39;t be established.
 </span><span style="color:#b44">ECDSA key fingerprint is SHA256:d5Ak9sY7Gg1biVuQJ1Gdp6Axan3uq5+EkwMaoGSNQZw.
 </span><span style="color:#b44">Are you sure you want to continue connecting (yes/no)? yes
 </span><span style="color:#b44">Warning: Permanently added &#39;</span><span style="color:#666">192</span>.168.15.200<span style="">&#39;</span> <span style="color:#666">(</span>ECDSA<span style="color:#666">)</span> to the list of known hosts.
 Last login: Wed Jul  <span style="color:#666">5</span> <span style="color:#666">04</span>:37:17 <span style="color:#666">2017</span> from <span style="color:#666">10</span>.0.2.2
-<span style="color:#666">[</span>vagrant@localhost ~<span style="color:#666">]</span>$</code></pre></div></p>
+<span style="color:#666">[</span>vagrant@localhost ~<span style="color:#666">]</span>$</code></pre></div>
 
 <p>And that&rsquo;s all, with this you can access to the machine without password. And in the next post we are going to talk about <code>distillery</code>.</p>
 
@@ -197,7 +197,7 @@ Last login: Wed Jul  <span style="color:#666">5</span> <span style="color:#666">
 
 
   <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     

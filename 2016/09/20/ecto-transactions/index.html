@@ -17,7 +17,7 @@
     
     <meta property="og:tags" content="ecto">
     
-    <meta name="generator" content="Hugo 0.43-DEV" />
+    <meta name="generator" content="Hugo 0.47.1" />
     <title>Ecto Transactions &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -220,7 +220,7 @@ commit []
   <span style="color:#b8860b">updated_at</span>: <span style="color:#080;font-style:italic">#Ecto.DateTime&lt;2016-09-21 03:28:59&gt;}}</span></code></pre></div></li>
 </ul>
 
-<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-psql" data-lang="psql">ecto_simple&gt; select * from projects; select * from tasks;
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-psql" data-lang="psql">ecto_simple&gt; select * from projects; select * from tasks;
 +------+---------------------------+---------------------+---------------------+
 |   id | name                      | inserted_at         | updated_at          |
 |------+---------------------------+---------------------+---------------------|
@@ -233,7 +233,7 @@ SELECT 1
 |    1 | Should create task for example |            1 | 2016-09-21 03:28:59 | 2016-09-21 03:28:59 |
 +------+--------------------------------+--------------+---------------------+---------------------+
 SELECT 1
-Time: 0.003s</code></pre></div></p>
+Time: 0.003s</code></pre></div>
 
 <p>And for bad data we can obtain next results:</p>
 
@@ -283,7 +283,7 @@ iex(<span style="color:#666">9</span>)<span style="color:#666">&gt;</span></code
 
 
   <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     

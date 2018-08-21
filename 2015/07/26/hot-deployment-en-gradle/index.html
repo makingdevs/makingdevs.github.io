@@ -19,7 +19,7 @@
     
     <meta property="og:tags" content="plugins">
     
-    <meta name="generator" content="Hugo 0.43-DEV" />
+    <meta name="generator" content="Hugo 0.47.1" />
     <title>Hot deployment en Gradle &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -170,7 +170,7 @@ watch <span style="color:#666">{</span>
 
 <p>Al final del día, lo que encontre fue <a href="http://akhikhl.github.io/gretty-doc/index.html" title="gretty">el plugin de Gretty</a>, con el que fácilmente podemos usar un contenedor de Tomcat o Jetty y tener disponible el Hot deploy, creo que tiene algunos detalles de rendimiento pero es útil. Finalmente la configuración se reduce mucho y hay varias tareas disponibles, entre ellas <code>appRun</code>, que es la que levanta el elemento configuraco y lo dijo listo para los cambios:</p>
 
-<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#080;font-style:italic">// Using the new mechanism to include plugins
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#080;font-style:italic">// Using the new mechanism to include plugins
 </span><span style="color:#080;font-style:italic"></span>plugins <span style="color:#666">{</span>
   id <span style="color:#b44">&#39;groovy&#39;</span>
   id <span style="color:#b44">&#39;war&#39;</span>
@@ -190,7 +190,7 @@ gretty <span style="color:#666">{</span>
   <span style="color:#080;font-style:italic">// &#39;jetty7&#39;, &#39;jetty8&#39;, &#39;jetty9&#39;, &#39;tomcat7&#39;, &#39;tomcat8&#39;
 </span><span style="color:#080;font-style:italic"></span>  servletContainer <span style="color:#666">=</span> <span style="color:#b44">&#39;tomcat7&#39;</span>
   httpPort <span style="color:#666">=</span> <span style="color:#666">9091</span>
-<span style="color:#666">}</span></code></pre></div></p>
+<span style="color:#666">}</span></code></pre></div>
 
 <p>Creo que nos servirá bien un rato para las cosas que tenemos que hcaer, por que incluso soporta SpringBoot.</p>
 
@@ -203,7 +203,7 @@ gretty <span style="color:#666">{</span>
 
 
   <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     

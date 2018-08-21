@@ -21,7 +21,7 @@
     
     <meta property="og:tags" content="phoenixframework">
     
-    <meta name="generator" content="Hugo 0.43-DEV" />
+    <meta name="generator" content="Hugo 0.47.1" />
     <title>¿Cómo adopté Elixir? &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -104,17 +104,17 @@
 	<article>
 		
 
-<p>LLevo ya un par de años escuchando y haciendo Elixir, no con la intensidad que quisiera pero tampoco lo he perdido de vista; soy un programador con preferencias dinámicas opcionales, sin embargo, me gusta mucho la <em>magia</em>(compilador) que <em>Haskell</em> ofrece al programar.</p>
+<p>LLevo ya un par de años escuchando y haciendo <strong><a href="https://elixir-lang.org/">Elixir</a></strong>, no con la intensidad que quisiera pero tampoco lo he perdido de vista; soy un programador con preferencias dinámicas opcionales, sin embargo, me gusta mucho la <em>magia</em>(compilador) que <strong><a href="https://haskell-lang.org/">Haskell</a></strong> ofrece al programar.</p>
 
-<p>De hace ya un par de años he querido comenzar una serie de artículos basados en LISP, sin embargo, el trabajo y los compromisos empresariales no lo han permitido, creo importante que los programadores conozcan las bases de la programación funcional, no por ser mejor, si no por que permite mejorar el/los paradigmas que estés usando. Al no tener la oportunidad de hacerlo, y ver que Elixir tiene/cuenta/cubre con los conceptos de la programación funcional y además pueden crearse sistemas productivos interesantes(no es que con Haskell o LISP no se pueda, más bien es una cosa de contextos), pues la he tomado como una buena opción para comenzar para mçi y el equipo con el que trabajo.</p>
+<p>De hace ya un par de años he querido comenzar una serie de artículos basados en <strong><a href="https://common-lisp.net/">LISP</a></strong>, sin embargo, el trabajo y los compromisos empresariales no lo han permitido, creo importante que los programadores conozcan las bases de la programación funcional, no por ser mejor, si no por que permite mejorar el/los paradigmas que estés usando. Al no tener la oportunidad de hacerlo, y ver que Elixir tiene/cuenta/cubre con los conceptos de la programación funcional y además pueden crearse sistemas productivos interesantes(no es que con Haskell o LISP no se pueda, más bien es una cosa de contextos), pues la he tomado como una buena opción para comenzar para mí y el equipo con el que trabajo.</p>
 
-<p>El punto en este texto no es platicar la introducción a Elixir, de eso hay ya varias publicaciones, más bien redactar como se me ha presentado de a poco la oportunidad de subirme a una plataforma como Erlang y Elixr, y con ello escribir una muy breve serie de artículos que muestren como resolví problemas, o use bibliotecas de tal manera que no encontré una explicación que me ayudará lo suficiente, o poner esos pequeños temas que creo que son importantes en el diseño de una app con Elixir.</p>
+<p>El punto en este texto no es platicar la introducción a Elixir, de eso hay ya varias publicaciones, más bien redactar como se me ha presentado de a poco la oportunidad de subirme a una plataforma como <strong><a href="https://www.erlang.org/">Erlang</a></strong> y Elixir, y con ello escribir una muy breve serie de artículos que muestren como resolví problemas, o use bibliotecas de tal manera que no encontré una explicación que me ayudará lo suficiente, o poner esos pequeños temas que creo que son importantes en el diseño de una app con Elixir.</p>
 
 <h2 id="barcamp-de-diseño-de-software-https-www-youtube-com-watch-v-swwemymdo-o"><a href="https://www.youtube.com/watch?v=SWwEMYMDo_o">Barcamp de diseño de software</a></h2>
 
 <h3 id="artesanos-de-software-2013">Artesanos de software 2013</h3>
 
-<p>En esta charla, @hiphoox nos platica de como es que está diseñado el lenguaje Elixir y la forma en que los sistemas pueden crecer, parafraseando comenta que en su opinión se le hace la forma adecuada en la cual un sistema tiene que crecer.</p>
+<p>En esta charla, <a href="https://twitter.com/hiphoox">@hiphoox</a> nos platica de como es que está diseñado el lenguaje Elixir y la forma en que los sistemas pueden crecer, parafraseando comenta que en su opinión se le hace la forma adecuada en la cual un sistema tendría que crecer.</p>
 
 <p>Este evento ha sido sin duda de los más reveladores e interesantes, no se ha repetido desde entonces algo similar.</p>
 
@@ -122,19 +122,19 @@
 
 <h2 id="workshop-de-elixir-por-hiphoox">Workshop de Elixir por Hiphoox</h2>
 
-<p>Poco tiempo después, el mismo @hiphoox organizó un pequeño taller de 4 días con donde mostó el poder del lenguaje y de un framweork llamado Phoenix en sus primeras versions.</p>
+<p>Poco tiempo después, el mismo @hiphoox organizó un pequeño taller de 4 días con donde mostó el poder del lenguaje y de un framweork llamado <a href="https://phoenixframework.org/">Phoenix</a> en sus primeras versions.</p>
 
-<p>De aquí, por más que busqué no encontré fotos o código que me ayudarán a recordar más al respecto, sin embargo, las sesiones que tomé me ayudaron a comprender el poder del lenguaje, del framework, pero sobre todo de algo denominado OTP.</p>
+<p>De aquí, por más que busqué no encontré fotos o código que me ayudarán a recordar más al respecto, sin embargo, las sesiones que tomé me ayudaron a comprender el poder del lenguaje, del framework, pero sobre todo de algo denominado <a href="http://erlang.org/doc/design_principles/users_guide.html">OTP</a>.</p>
 
-<h2 id="elixir-friends-2015-https-github-com-elixirfriendsmx-elixir-dojo-mx"><a href="https://github.com/ElixirFriendsMx/elixir_dojo_mx">Elixir Friends 2015</a></h2>
+<h2 id="elixir-friends-2015-8"><a href="https://github.com/ElixirFriendsMx/elixir_dojo_mx">Elixir Friends 2015</a></h2>
 
-<p>Una serie de sesiones realizadas y organizadas por @MachinesAreUs, en donde pude adentrarme mucho más al lenguaje. La intención: Llegar mejor preparado al evento que se iba a realizar próximamente.</p>
+<p>Una serie de sesiones realizadas y organizadas por <a href="https://twitter.com/machinesareus">@MachinesAreUs</a>, en donde pude adentrarme mucho más al lenguaje. La intención: Llegar mejor preparado al evento que se iba a realizar próximamente.</p>
 
 <p>Las sesiones muy intensas, pues eran vespertinas y nocturnas, la cooperación y el ánimo de todos me ayudaron a resistir después de jornadas de trabajo, en retrospectiva, fue un trabajo inspirador hecho por Agustín. El lenguaje me hacía más sentido pero empecé a tener las dudas más grandes al respecto del poder de la plataforma: Los procesos.</p>
 
-<h2 id="erlang-factory-lite-2015-http-www-erlang-factory-com-mexico2015"><a href="http://www.erlang-factory.com/mexico2015">Erlang Factory Lite 2015</a></h2>
+<h2 id="erlang-factory-lite-2015-9"><a href="http://www.erlang-factory.com/mexico2015">Erlang Factory Lite 2015</a></h2>
 
-<p>El primer evento de Erlang en México, en donde, José Valim creador de Elixir, vino a platicarnos del diseño del framwork Phoenix, mayormente sentí la emoción de conocer muy poco de lo que se hablaba y el interés que se generó alrededor.</p>
+<p>El primer evento de Erlang en México, en donde, <a href="https://twitter.com/josevalim">José Valim creador de Elixir</a>, vino a platicarnos del diseño del framwork Phoenix, mayormente sentí la emoción de conocer muy poco de lo que se hablaba y el interés que se generó alrededor.</p>
 
 <p>El ver como crearon las abstracciones que permitían usar el framework, y sin saberlo usar el poder de los procesos por debajo fue sorprendente; crear sistemas de ese estilo es lo que se necesita, es lo que tenía que empezar a hacer.</p>
 
@@ -142,11 +142,11 @@
 
 <p><a href="https://www.meetup.com/es-ES/meetup-group-JfQVZcAL/photos/27466559/456582599/?photoId=456582599&amp;photoAlbumId=27466559">https://www.meetup.com/es-ES/meetup-group-JfQVZcAL/photos/27466559/456582599/?photoId=456582599&amp;photoAlbumId=27466559</a></p>
 
-<p>Un evento organizado por Artesanos de Software, en donde mentores y aprendices se juntan para transmitir conocimiento, una prueba que me ayudo a mostrar como mentor mi habilidad en el lenguaje, con un par de personas que estaban interesadas y que era su primer acercamiento, y como aprendizaje validado, tenía que aterrizar en claro todas las ideas y conceptos de tal manera que fueran condensados, me di cuenta, que sabía de la sintaxis, pero me faltaba mucho por aprender al respecto de la plataforma, es decir, procesos y OTP.</p>
+<p>Un evento organizado por <a href="http://artesanos.de/software/">Artesanos de Software</a>, en donde mentores y aprendices se juntan para transmitir conocimiento, una prueba que me ayudo a mostrar como mentor mi habilidad en el lenguaje, con un par de personas que estaban interesadas y que era su primer acercamiento, y como aprendizaje validado, tenía que aterrizar en claro todas las ideas y conceptos de tal manera que fueran condensados, me di cuenta, que sabía de la sintaxis, pero me faltaba mucho por aprender al respecto de la plataforma, es decir, procesos y OTP.</p>
 
 <h2 id="erlang-factory-lite-2016-http-www-erlang-factory-com-mexico2016"><a href="http://www.erlang-factory.com/mexico2016">Erlang Factory Lite 2016</a></h2>
 
-<p>El siguiente evento de Erlang en México, realizado en WeWork, incluso recuerdo que fui a apoyar a @hiphoox a guíar turísticamente a Bruce Tate con las cervezas, realmente todo un honor.</p>
+<p>El siguiente evento de Erlang en México, realizado en WeWork, incluso recuerdo que fui a apoyar a @hiphoox a guíar turísticamente a <a href="https://twitter.com/redrapids">Bruce Tate</a> con las cervezas, realmente todo un honor.</p>
 
 <p>Era muy claro que Erlang es la plataforma a adoptar, y Elixir el lenguaje, sin embargo, me faltaba ponerlo en las prioridades tanto personales como empresariales, el evento estuvo lleno de temas que tenía que profundizar, la decisión en su momento fue adoptarlo pero de forma empresarial, es decir, proveer una línea de desarrollo basada en Elixir.</p>
 
@@ -156,11 +156,11 @@
 
 <h2 id="elixir-conf-2017-http-elixirconf-mx"><a href="http://elixirconf.mx/">Elixir Conf 2017</a></h2>
 
-<p>Este evento tuvo una charlas inspiradoras que alinearon lo que alguna vez quise hacer mientras estudiaba, mi meta era desarrollar hardware y software a medida, y aunque hoy es el día en que totalmente no desarrollo hardware, me emociona mucho saber lo que se puede hacer, he visto en el sitio del proyecto Nerves varios ejemplos que son verdaderamente sorprendentes, y la primer charla fue dada por Justin Schneck el creador de Nerves, donde dió una sesión introductoria y demostrativa del poder de Elixir en un hardware muy pequeño como el Raspberry. He de confesar que terminando la charla de Justin hice el pedido de un Raspberry Pi 3 en Amazon.</p>
+<p>Este evento tuvo una charlas inspiradoras que alinearon lo que alguna vez quise hacer mientras estudiaba, mi meta era desarrollar hardware y software a medida, y aunque hoy es el día en que totalmente no desarrollo hardware, me emociona mucho saber lo que se puede hacer, he visto en el sitio del proyecto Nerves varios ejemplos que son verdaderamente sorprendentes, y la primer charla fue dada por <a href="https://twitter.com/mobileoverlord">Justin Schneck</a> el creador de <a href="https://nerves-project.org/">Nerves</a>, donde dió una sesión introductoria y demostrativa del poder de Elixir en un hardware muy pequeño como el Raspberry. He de confesar que terminando la charla de Justin hice el pedido de un Raspberry Pi 3 en Amazon.</p>
 
 <p>Otro suceso que me agradó fue ver a un ex-integrante del equipo dando una charla en el mismo evento, pues fue la apuesta que hicimos para crecer, y observar el nivel de ponencia que dió fue por mucho gratificante, saber que la gente puede tomar sus propias decisiones y actuar en consecuencia en lo que a nuevas tecnologías se refiere es parte del objetivo que tenemos.</p>
 
-<h2 id="lunafreya">LunaFreya</h2>
+<h2 id="lunafreya-16"><a href="https://github.com/makingdevs/lunafreya">LunaFreya</a></h2>
 
 <p>Una vez con todo esto encima, me decidí a retomar &ldquo;el camino del alquimista&rdquo; y tocar Elixir pero subiéndome al Raspberry que recientemente compré, empecé capturando datos físicos de un Arduino y transformándolos dentro del dispositivo para activar una cámara de múltiples formas.</p>
 
@@ -171,15 +171,15 @@
 <p>Entre los recursos que me han servido(aparte de las documentaciones de los sitios) para el mejor entendimiento son las siguientes (aunque de algunos no los he cubierto al 100%):</p>
 
 <ul>
-<li>Elixir in action, Manning.</li>
-<li>Programming Elixir, Pragmatic Programmers.</li>
-<li>The Little Elixir &amp; OTP Guidebook, Manning.</li>
-<li>Programming Phoenix, Pragmatic Programmers.</li>
-<li>Functional Web Development with Elixir, OTP, and Phoenix, Pragmatic Programmers.</li>
-<li>LearnElixir.tv</li>
-<li>LearnPhoenix.tv</li>
+<li><a href="https://www.manning.com/books/elixir-in-action-second-edition">Elixir in action, Manning.</a></li>
+<li><a href="https://pragprog.com/book/elixir/programming-elixir">Programming Elixir, Pragmatic Programmers.</a></li>
+<li><a href="https://www.manning.com/books/the-little-elixir-and-otp-guidebook">The Little Elixir &amp; OTP Guidebook, Manning.</a></li>
+<li><a href="https://pragprog.com/book/phoenix/programming-phoenix">Programming Phoenix, Pragmatic Programmers.</a></li>
+<li><a href="https://pragprog.com/book/lhelph/functional-web-development-with-elixir-otp-and-phoenix">Functional Web Development with Elixir, OTP, and Phoenix, Pragmatic Programmers.</a></li>
+<li><a href="LearnElixir.tv">LearnElixir.tv</a></li>
+<li><a href="LearnPhoenix.tv">LearnPhoenix.tv</a></li>
 <li><a href="https://elixirschool.com/es/">Elixir School</a></li>
-<li>El meetup de Elixir en México</li>
+<li><a href="https://www.meetup.com/es/Elixir-Mexico-City/">El meetup de Elixir en México</a></li>
 <li><a href="http://learnyousomeerlang.com/content">Learn you some Erlang for great good</a></li>
 <li><a href="http://shop.oreilly.com/product/9780596518189.do">Erlang Programming</a></li>
 </ul>
@@ -201,7 +201,7 @@
 
 
   <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     

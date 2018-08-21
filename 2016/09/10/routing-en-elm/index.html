@@ -19,7 +19,7 @@
     
     <meta property="og:tags" content="functional programming">
     
-    <meta name="generator" content="Hugo 0.43-DEV" />
+    <meta name="generator" content="Hugo 0.47.1" />
     <title>Routing en Elm &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -138,27 +138,27 @@
 
 <p><code>Navigation.program</code> nos proveé de una función <code>urlUpdate</code> para actualizar el modelo cada que el <code>parser</code>produzca nuevos datos.</p>
 
-<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=1-routing-with.elm"></script>
+<script type="application/javascript" src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=1-routing-with.elm"></script>
 
 <h3 id="define-las-rutas">DEFINE LAS RUTAS.</h3>
 
 <p>Es importante mencionar que el orden de los matchers importa, para más detalle sobre ello revisa la <a href="http://package.elm-lang.org/packages/evancz/url-parser/latest/">documentación</a></p>
 
-<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=2-routes.elm"></script>
+<script type="application/javascript" src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=2-routes.elm"></script>
 
 <h3 id="así-es-como-funciona-y-se-implementa">ASÍ ES COMO FUNCIONA&hellip; Y SE IMPLEMENTA.</h3>
 
 <p>Cuando queremos acceder a un documento en particular de un servidor web, escribimos una <code>URL</code> en la location bar, y un par de cosas suceden: primeramente la URL es partida en sus diferentes partes. Es entonces cuando la biblioteca <code>Navigation</code> nos genera un record <code>Navigation.Location</code> con dos partes de ella: el Path y los Parámetros, e inmediatamente manda llamar al <code>parser</code> quien será el responsable de transformar esa <code>URL</code> de tipo <code>String</code> en datos útiles.</p>
 
-<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=3-parser.elm"></script>
+<script type="application/javascript" src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=3-parser.elm"></script>
 
 <p>Es entonces cuando este record es tomado por una función llamada <code>hashParser</code> que enviará el <code>string</code> resultante a la función <code>Navigation.makeParser</code>que vive dentro de <code>parser</code>, y así mismo se incluirán como párametro las rutas que ya hemos definido anteriormente:</p>
 
-<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=4-navigation-location.elm"></script>
+<script type="application/javascript" src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=4-navigation-location.elm"></script>
 
 <p>Finalmente el <code>parser</code> regresa un resultado, si es <code>OK</code> nos devolerá la ruta que hace match y definiremos la acción correspondiente, de lo contrario caeremos en el <code>error</code>.</p>
 
-<script src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=5-url-update.elm"></script>
+<script type="application/javascript" src="//gist.github.com/gothwski/7bfeec986a90d34eb283830d8903081f.js?file=5-url-update.elm"></script>
 
 	</article>
 </main>
@@ -169,7 +169,7 @@
 
 
   <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     

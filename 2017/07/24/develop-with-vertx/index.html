@@ -4,23 +4,21 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <meta name="description" content="">
-    <meta property="og:title" content="Bitacorado de pruebas en Gradle">
+    <meta property="og:title" content="Develop with VertX">
     
     <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2016-01-22">
+    <meta property="article:published_time" content="2017-07-24">
     
     <meta property="og:description" content="">
-    <meta property="og:url" content="http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle/">
+    <meta property="og:url" content="http://blog.makingdevs.com/2017/07/24/develop-with-vertx/">
     <meta property="og:site_name" content="Blog de Making Devs">
     
-    <meta property="og:tags" content="groovy">
-    
-    <meta property="og:tags" content="gradle">
-    
     <meta name="generator" content="Hugo 0.47.1" />
-    <title>Bitacorado de pruebas en Gradle &middot; Blog de Making Devs</title>
+    <title>Develop with VertX &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
     
     <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
     
@@ -88,43 +86,96 @@
 <main>
 
   <header>
-    <h1 align=center>Bitacorado de pruebas en Gradle</h1>
+    <h1 align=center>Develop with VertX</h1>
     
     <section class="author">
-      <p align=center> <b>Redactado por: José Juan Reyes Zuñiga</b></p>
+      <p align=center> <b>Redactado por: Carlo Gilmar Padilla Santana</b></p>
     </section>
     
   </header>
   </br>
 
 	<article>
-		<p>Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el <a href="https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.logging.TestLoggingContainer.html">TestLoggingContainer</a>, del cual pude obtener este fragmento:</p>
+		
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">apply <span style="color:#a0a000">plugin:</span> <span style="">&#39;</span>java<span style="">&#39;</span>
+<p>Recently we used the project <strong>Vertx</strong> for develop a project. Now I&rsquo;m going to talk about the basic functionality.</p>
 
-test <span style="color:#666">{</span>
-  testLogging <span style="color:#666">{</span>
-    <span style="color:#080;font-style:italic">// set options for log level LIFECYCLE
-</span><span style="color:#080;font-style:italic"></span>    events <span style="color:#b44">&#34;failed&#34;</span>
-      exceptionFormat <span style="color:#b44">&#34;short&#34;</span>
+<blockquote>
+<p>VertX is a tool-kit for building reactive applications on the <strong>JVM</strong>.</p>
+</blockquote>
 
-      <span style="color:#080;font-style:italic">// set options for log level DEBUG
-</span><span style="color:#080;font-style:italic"></span>      debug <span style="color:#666">{</span>
-        events <span style="color:#b44">&#34;started&#34;</span><span style="color:#666">,</span> <span style="color:#b44">&#34;skipped&#34;</span><span style="color:#666">,</span> <span style="color:#b44">&#34;failed&#34;</span>
-          exceptionFormat <span style="color:#b44">&#34;full&#34;</span>
-      <span style="color:#666">}</span>
+<p>It has many interesting features:</p>
 
-    <span style="color:#080;font-style:italic">// remove standard output/error logging from --info builds
-</span><span style="color:#080;font-style:italic"></span>    <span style="color:#080;font-style:italic">// by assigning only &#39;failed&#39; and &#39;skipped&#39; events
-</span><span style="color:#080;font-style:italic"></span>    info<span style="color:#666">.</span><span style="color:#b44">events</span> <span style="color:#666">=</span> <span style="color:#666">[</span><span style="color:#b44">&#34;failed&#34;</span><span style="color:#666">,</span> <span style="color:#b44">&#34;skipped&#34;</span><span style="color:#666">]</span>
-  <span style="color:#666">}</span>
-<span style="color:#666">}</span></code></pre></div>
+<ol>
+<li>Actor model based.</li>
+<li>It&rsquo;s polyglot: you can use with Java, <strong>Groovy</strong>, Ruby, Scala, Ceylon, Javascript, and Kotlin.</li>
+</ol>
 
-<p>En donde pongo todo los tipos de eventos del proyecto que son <code>events &quot;started&quot;, &quot;passed&quot;, &quot;skipped&quot;, &quot;failed&quot;</code> y con ello obtengo una salida como la siguiente:</p>
+<p>If you want to install vertx, please use <a href="http://sdkman.io/">Sdk Manager</a></p>
 
-<p><img src="/images/test_logging.png" alt="Screenshot 1" /></p>
+<h3 id="verticles">Verticles</h3>
 
-<p>Muy útil cuando no queremos hacer bitácora manual de que pruebas se están corriendo, Gradle ya cuenta con ella.</p>
+<p>For the beginning it&rsquo;s important know that VertX has a nervous system called <strong>Event Bus</strong>, where you can write and run <strong>Verticles</strong>.</p>
+
+<blockquote>
+<p><strong>Verticles</strong> are chunks of code that get deployed and run by Vert.x.</p>
+</blockquote>
+
+<p>In groovy, a verticle is called <strong>consumer</strong>.</p>
+
+<p>Every verticle have an identifier, it&rsquo;s only a <strong>String</strong>. It could be deployed on a script or a class, and into him you can receive a message from another part of the Event Bus, and send a reply.</p>
+
+<p>A Vertx Verticle:</p>
+
+<ul>
+<li>Run on the event bus.</li>
+<li>Have a address identifier (string)</li>
+<li>Have a deployment ID (deployment identifier)</li>
+<li>It can receive a message and send a reply to the same message</li>
+<li>It can send message for other verticles</li>
+</ul>
+
+<p><img src="/vertx/vertx1.png" alt="" /></p>
+
+<p>You can run a script with:</p>
+
+<blockquote>
+<p>vertx run sample.groovy</p>
+</blockquote>
+
+<p>A simple groovy consumer:</p>
+
+<script type="application/javascript" src="//gist.github.com/carlogilmar/cd95ccc0836f07e4df0b1853a8df0ba3.js"></script>
+
+<p><img src="/vertx/vertx5.png" alt="" /></p>
+
+<h3 id="deploy-verticles">Deploy Verticles</h3>
+
+<p>The <strong>verticles</strong> can be deployed for be available on the event bus. When a <strong>verticle</strong> be deployed, it will be available on the Event Bus. You can deploy one consumer, or N instances of the same consumer.</p>
+
+<p><img src="/vertx/vertx2.png" alt="" /></p>
+
+<h3 id="sending-messages">Sending Messages</h3>
+
+<p>You can send messages to verticle through it owns address. And it could be point to point, or a broadcast. With this simple concepts we can make a simple design using VertX verticles.</p>
+
+<p>Ping-Pong simple example.</p>
+
+<script type="application/javascript" src="//gist.github.com/carlogilmar/14103ad6243d1dbc7f7be062e798958f.js"></script>
+
+<p><img src="/vertx/vertx4.png" alt="" /></p>
+
+<p>This are only the basics concepts of VertX, because this toolkit is much bigger and useful.</p>
+
+<p><img src="/vertx/vertx3.png" alt="" /></p>
+
+<p>You can learn more on VertX site <a href="http://vertx.io/docs/">Vertx Site</a></p>
+
+<p>Visit the <a href="https://groups.google.com/forum/#!forum/vertx"> VertX Google Group </a></p>
+
+<p>Thanks for reading.</p>
+
+<p><a href="https://twitter.com/carlogilmar">@carlogilmar</a></p>
 
 	</article>
 </main>
@@ -180,6 +231,8 @@ test <span style="color:#666">{</span>
   <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
   
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
   
   <script src="http://blog.makingdevs.com//js/App.js"></script>
   

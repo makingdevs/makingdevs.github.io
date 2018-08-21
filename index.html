@@ -12,7 +12,7 @@
     <meta property="og:url" content="http://blog.makingdevs.com/">
     <meta property="og:site_name" content="Blog de Making Devs">
     
-    <meta name="generator" content="Hugo 0.43-DEV" />
+    <meta name="generator" content="Hugo 0.47.1" />
     <title>Blog de Making Devs &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -155,6 +155,37 @@ So, Vert.x includes a testing tool, is based in JUnit, the best, it has a Runner
 	<div class="panel panel-default">
 	<div class="panel-header">
 		<h3>
+			<a href="http://blog.makingdevs.com/2017/07/24/develop-with-vertx/">Develop with VertX</a>
+			<br>
+			<small>
+				24 July 2017
+			</small>
+		</h3>
+	</div>
+	<div class="panel-body">
+		Recently we used the project Vertx for develop a project. Now I&rsquo;m going to talk about the basic functionality.
+ VertX is a tool-kit for building reactive applications on the JVM.
+ It has many interesting features:
+ Actor model based. It&rsquo;s polyglot: you can use with Java, Groovy, Ruby, Scala, Ceylon, Javascript, and Kotlin.  If you want to install vertx, please use Sdk Manager
+Verticles For the beginning it&rsquo;s important know that VertX has a nervous system called Event Bus, where you can write and run Verticles.
+		
+			... <a href="http://blog.makingdevs.com/2017/07/24/develop-with-vertx/">Read More</a>
+		
+	</div>
+	<div class="panel-footer">
+		
+		<small class="text-muted">
+			
+			
+		</small>
+		
+	</div>
+</div>
+
+
+	<div class="panel panel-default">
+	<div class="panel-header">
+		<h3>
 			<a href="http://blog.makingdevs.com/2017/07/04/add-public-key-to-vagrant/">Add public key to Vagrant</a>
 			<br>
 			<small>
@@ -192,57 +223,18 @@ Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos/7&#34; co
 </div>
 
 
-	<div class="panel panel-default">
-	<div class="panel-header">
-		<h3>
-			<a href="http://blog.makingdevs.com/2017/06/18/copying-files-to-vagrant/">Copying files to vagrant</a>
-			<br>
-			<small>
-				18 June 2017
-			</small>
-		</h3>
-	</div>
-	<div class="panel-body">
-		Well, one of the common things to do in Vagrant is copying files. So for achieve that task we need to prepare a file like this.
-Once we have that file, we change config.vm.box = &quot;ubuntu/trusty64&quot; for config.vm.box = &quot;centos/7&quot;. And modify it like follow:
-Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos/7&#34; config.vm.provision &#34;file&#34;, source: &#34;lorem_ipsum.txt&#34;, destination: &#34;~/lorem_ipsum.txt&#34; end Alright we run the command for execute our file.
-❯ vagrant up Bringing machine &#39;default&#39; up with &#39;virtualbox&#39; provider.
-		
-			... <a href="http://blog.makingdevs.com/2017/06/18/copying-files-to-vagrant/">Read More</a>
-		
-	</div>
-	<div class="panel-footer">
-		
-		<small class="text-muted">
-			
-			
-				<a href="http://blog.makingdevs.com/tags/operations"><span class="label label-success">operations</span></a>
-			
-				<a href="http://blog.makingdevs.com/tags/vagrant"><span class="label label-success">vagrant</span></a>
-			
-				<a href="http://blog.makingdevs.com/tags/virtual-box"><span class="label label-success">virtual box</span></a>
-			
-				<a href="http://blog.makingdevs.com/tags/developer-tools"><span class="label label-success">developer tools</span></a>
-			
-		</small>
-		
-	</div>
-</div>
-
-
 
 <div class="text-center center-block">
 	
 
 <ul class="pagination">
     
-    <li>
-        <a href="/" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+    <li class="page-item">
+        <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
     </li>
     
-    <li
-    class="disabled">
-    <a href="" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+    <li class="page-item disabled">
+    <a href="" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
     </li>
     
     
@@ -254,8 +246,7 @@ Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos/7&#34; co
         
     
     
-    <li
-    class="active"><a href="/">1</a></li>
+    <li class="page-item active"><a class="page-link" href="/">1</a></li>
     
     
     
@@ -266,8 +257,7 @@ Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos/7&#34; co
         
     
     
-    <li
-    ><a href="/page/2/">2</a></li>
+    <li class="page-item"><a class="page-link" href="/page/2/">2</a></li>
     
     
     
@@ -278,8 +268,7 @@ Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos/7&#34; co
         
     
     
-    <li
-    ><a href="/page/3/">3</a></li>
+    <li class="page-item"><a class="page-link" href="/page/3/">3</a></li>
     
     
     
@@ -290,16 +279,7 @@ Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos/7&#34; co
         
     
     
-    <li class="disabled"><span aria-hidden="true">&hellip;</span></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
+    <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
     
     
     
@@ -319,17 +299,33 @@ Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos/7&#34; co
         
     
     
-    <li
-    ><a href="/page/7/">7</a></li>
     
     
-    <li
-    >
-    <a href="/page/2/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item"><a class="page-link" href="/page/8/">8</a></li>
+    
+    
+    <li class="page-item">
+    <a href="/page/2/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
     </li>
     
-    <li>
-        <a href="/page/7/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+    <li class="page-item">
+        <a href="/page/8/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
     </li>
     
 </ul>
