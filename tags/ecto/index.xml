@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ecto on Blog de Making Devs</title>
+    <title>ecto on Blog de Making Devs</title>
     <link>http://blog.makingdevs.com/tags/ecto/</link>
-    <description>Recent content in Ecto on Blog de Making Devs</description>
+    <description>Recent content in ecto on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 20 Sep 2016 19:35:08 -0500</lastBuildDate>

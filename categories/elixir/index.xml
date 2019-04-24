@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Elixir on Blog de Making Devs</title>
+    <title>elixir on Blog de Making Devs</title>
     <link>http://blog.makingdevs.com/categories/elixir/</link>
-    <description>Recent content in Elixir on Blog de Making Devs</description>
+    <description>Recent content in elixir on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 11 Jan 2017 13:11:46 -0600</lastBuildDate>

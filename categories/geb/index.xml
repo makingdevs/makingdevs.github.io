@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Geb on Blog de Making Devs</title>
+    <title>geb on Blog de Making Devs</title>
     <link>http://blog.makingdevs.com/categories/geb/</link>
-    <description>Recent content in Geb on Blog de Making Devs</description>
+    <description>Recent content in geb on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Mar 2016 23:47:26 -0500</lastBuildDate>

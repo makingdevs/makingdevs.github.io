@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Groovy on Blog de Making Devs</title>
+    <title>groovy on Blog de Making Devs</title>
     <link>http://blog.makingdevs.com/categories/groovy/</link>
-    <description>Recent content in Groovy on Blog de Making Devs</description>
+    <description>Recent content in groovy on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Jul 2016 22:53:27 -0500</lastBuildDate>

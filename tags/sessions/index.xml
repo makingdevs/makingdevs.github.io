@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sessions on Blog de Making Devs</title>
+    <link>http://blog.makingdevs.com/tags/sessions/</link>
+    <description>Recent content in sessions on Blog de Making Devs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.makingdevs.com/tags/sessions/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Meet Vim Sessions</title>
+      <link>http://blog.makingdevs.com/2019/04/20/meet-vim-sessions/</link>
+      <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.makingdevs.com/2019/04/20/meet-vim-sessions/</guid>
+      <description>A few weeks ago, while I was tracking and debugging a system in which I&amp;rsquo;m currently working, the client told me that another part of the system was having troubles.
+Suddenly, I&amp;rsquo;m on verge of close all the Vim&amp;rsquo;s buffer I&amp;rsquo;ve just opened because I need to switch branches meaning that I need a way to know in which files I was working before closing them.
+Needless to say, it was hard to found those files and I even haven&amp;rsquo;t made a change in them (I have just found them) Additionally, is a huge project with a lot of micro projects so, at this point, I didn&amp;rsquo;t know in which project I was working (I know my mistake).</description>
+    </item>
+    
+  </channel>
+</rss>

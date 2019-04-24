@@ -12,7 +12,7 @@
     <meta property="og:url" content="http://blog.makingdevs.com/">
     <meta property="og:site_name" content="Blog de Making Devs">
     
-    <meta name="generator" content="Hugo 0.47.1" />
+    <meta name="generator" content="Hugo 0.55.3" />
     <title>Blog de Making Devs &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -91,6 +91,38 @@
 	<div class="panel panel-default">
 	<div class="panel-header">
 		<h3>
+			<a href="http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle/">Bitacorado de pruebas en Gradle</a>
+			<br>
+			<small>
+				22 January 2016
+			</small>
+		</h3>
+	</div>
+	<div class="panel-body">
+		Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el TestLoggingContainer, del cual pude obtener este fragmento:
+apply plugin: &#39;java&#39; test { testLogging { // set options for log level LIFECYCLE  events &#34;failed&#34; exceptionFormat &#34;short&#34; // set options for log level DEBUG  debug { events &#34;started&#34;, &#34;skipped&#34;, &#34;failed&#34; exceptionFormat &#34;full&#34; } // remove standard output/error logging from --info builds  // by assigning only &#39;failed&#39; and &#39;skipped&#39; events  info.
+		
+			... <a href="http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle/">Read More</a>
+		
+	</div>
+	<div class="panel-footer">
+		
+		<small class="text-muted">
+			
+			
+				<a href="http://blog.makingdevs.com/tags/groovy"><span class="label label-success">groovy</span></a>
+			
+				<a href="http://blog.makingdevs.com/tags/gradle"><span class="label label-success">gradle</span></a>
+			
+		</small>
+		
+	</div>
+</div>
+
+
+	<div class="panel panel-default">
+	<div class="panel-header">
+		<h3>
 			<a href="http://blog.makingdevs.com/2015/08/13/amazon-s3-y-groovy/">Amazon S3 y Groovy</a>
 			<br>
 			<small>
@@ -115,7 +147,7 @@ El caso muy puntual que tuve que resolver fue subir un archivo y despúes borrar
 	<div class="panel panel-default">
 	<div class="panel-header">
 		<h3>
-			<a href="http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism/">Revisión del libro - The Software Craftsman: Professionalism</a>
+			<a href="http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro-the-software-craftsman-professionalism/">Revisión del libro - The Software Craftsman: Professionalism</a>
 			<br>
 			<small>
 				2 August 2015
@@ -126,7 +158,7 @@ El caso muy puntual que tuve que resolver fue subir un archivo y despúes borrar
 		Libro que al igual que The Pragmatic Programmer: From Journeyman to Master se ganó estar en mis libros de cabecera, y se ha ganado un lugar muy especial en mi librero.
 El escritor, y desarrollador de toda la vida Sandro Mancuso, plasma muy bien la idea que el tiene acerca de lo que todo desarrollador de software, y en mi opinión personal lo que debería buscar todo desarrollador, para cambiar su entorno de trabajo y ayudarnos a todos (porque estamos en el mismo barco) a cambiar la mentalidad de los clientes, de que no somos la clase de persona/profesional que la mayor parte del mundo cree que somos:  Unos micos tirando lineas de código a diestra y siniestra, y haciendo el código lo más ilegible posible para que nada ni nadie pueda entenderlo Unos personajes que se sientan en el cuarto más oscuro del sótano de la empresa y que nadie conoce (usualmente cuentan leyendas de que terror de ellos) Los padrinos mágicos de los clientes que hacen que se cumplan sus deseos y que en un parpadear de ojos ya lo tiene funcionando en producción y libre de defectos Las personas que arreglan los defectos del sistema con su teclado mágico Personas o cosas que transforman café, cerveza o en su defecto bebidas energéticas en líneas de código que pasan por una caja mágica que lo transforma en un sistema para su empresa  Mientras más leía este libro más me iba dando cuenta de que muchas de las cosas que el plasmó las había pasado en algún momento, que otras pocas las estaba pasando y que muchas otras parecían estar a la vuelta de la esquina, como si de un libro de adivinación se tratase.
 		
-			... <a href="http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism/">Read More</a>
+			... <a href="http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro-the-software-craftsman-professionalism/">Read More</a>
 		
 	</div>
 	<div class="panel-footer">
@@ -180,40 +212,6 @@ Después me di cuenta que frameworks como Dropwizard lo usan, y que incluso Spri
 </div>
 
 
-	<div class="panel panel-default">
-	<div class="panel-header">
-		<h3>
-			<a href="http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails/">Borrado batch en Grails</a>
-			<br>
-			<small>
-				1 May 2015
-			</small>
-		</h3>
-	</div>
-	<div class="panel-body">
-		En esta ocasión les quiero compartir la solución a un problema que tuve al borrar una colección de objetos en grails y con el GORM, si bien podría hacerlo con HQL o con SQL usando las bondades de Hibernate me gusto más el acercamiento que les quiero presentar.
-La necesidad era borrar un grupo de objetos en donde el contenido de su relación estuviera vacío, ejemplifico con la estructura de unas clases:
-		
-			... <a href="http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails/">Read More</a>
-		
-	</div>
-	<div class="panel-footer">
-		
-		<small class="text-muted">
-			
-			
-				<a href="http://blog.makingdevs.com/tags/groovy"><span class="label label-success">groovy</span></a>
-			
-				<a href="http://blog.makingdevs.com/tags/grails"><span class="label label-success">grails</span></a>
-			
-				<a href="http://blog.makingdevs.com/tags/gorm"><span class="label label-success">gorm</span></a>
-			
-		</small>
-		
-	</div>
-</div>
-
-
 
 <div class="text-center center-block">
 	
@@ -227,6 +225,7 @@ La necesidad era borrar un grupo de objetos en donde el contenido de su relació
     <li class="page-item">
     <a href="/page/5/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
     </li>
+    
     
     
     

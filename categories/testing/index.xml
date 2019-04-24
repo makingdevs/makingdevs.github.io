@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Testing on Blog de Making Devs</title>
+    <title>testing on Blog de Making Devs</title>
     <link>http://blog.makingdevs.com/categories/testing/</link>
-    <description>Recent content in Testing on Blog de Making Devs</description>
+    <description>Recent content in testing on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Mar 2016 23:47:26 -0500</lastBuildDate>

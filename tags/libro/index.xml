@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Libro on Blog de Making Devs</title>
+    <title>libro on Blog de Making Devs</title>
     <link>http://blog.makingdevs.com/tags/libro/</link>
-    <description>Recent content in Libro on Blog de Making Devs</description>
+    <description>Recent content in libro on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Aug 2015 18:44:42 -0500</lastBuildDate>
@@ -13,10 +13,10 @@
     
     <item>
       <title>Revisión del libro - The Software Craftsman: Professionalism</title>
-      <link>http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism/</link>
+      <link>http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro-the-software-craftsman-professionalism/</link>
       <pubDate>Sun, 02 Aug 2015 18:44:42 -0500</pubDate>
       
-      <guid>http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro---the-software-craftsman-professionalism/</guid>
+      <guid>http://blog.makingdevs.com/2015/08/02/revisi%C3%B3n-del-libro-the-software-craftsman-professionalism/</guid>
       <description>Libro que al igual que The Pragmatic Programmer: From Journeyman to Master se ganó estar en mis libros de cabecera, y se ha ganado un lugar muy especial en mi librero.
 El escritor, y desarrollador de toda la vida Sandro Mancuso, plasma muy bien la idea que el tiene acerca de lo que todo desarrollador de software, y en mi opinión personal lo que debería buscar todo desarrollador, para cambiar su entorno de trabajo y ayudarnos a todos (porque estamos en el mismo barco) a cambiar la mentalidad de los clientes, de que no somos la clase de persona/profesional que la mayor parte del mundo cree que somos:  Unos micos tirando lineas de código a diestra y siniestra, y haciendo el código lo más ilegible posible para que nada ni nadie pueda entenderlo Unos personajes que se sientan en el cuarto más oscuro del sótano de la empresa y que nadie conoce (usualmente cuentan leyendas de que terror de ellos) Los padrinos mágicos de los clientes que hacen que se cumplan sus deseos y que en un parpadear de ojos ya lo tiene funcionando en producción y libre de defectos Las personas que arreglan los defectos del sistema con su teclado mágico Personas o cosas que transforman café, cerveza o en su defecto bebidas energéticas en líneas de código que pasan por una caja mágica que lo transforma en un sistema para su empresa  Mientras más leía este libro más me iba dando cuenta de que muchas de las cosas que el plasmó las había pasado en algún momento, que otras pocas las estaba pasando y que muchas otras parecían estar a la vuelta de la esquina, como si de un libro de adivinación se tratase.</description>
     </item>

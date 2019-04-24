@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Deploy on Blog de Making Devs</title>
+    <title>deploy on Blog de Making Devs</title>
     <link>http://blog.makingdevs.com/tags/deploy/</link>
-    <description>Recent content in Deploy on Blog de Making Devs</description>
+    <description>Recent content in deploy on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 30 Nov 2016 16:46:05 -0600</lastBuildDate>

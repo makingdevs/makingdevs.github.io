@@ -23,7 +23,7 @@
     
     <meta property="og:tags" content="public key">
     
-    <meta name="generator" content="Hugo 0.47.1" />
+    <meta name="generator" content="Hugo 0.55.3" />
     <title>Add public key to Vagrant &middot; Blog de Making Devs</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -162,12 +162,12 @@ Last login: Wed Jul  <span style="color:#666">5</span> <span style="color:#666">
   config.vm.network <span style="color:#b44">&#34;public_network&#34;</span>, bridge: <span style="color:#b44">&#34;en0: Wi-Fi (AirPort)&#34;</span>, auto_config: <span style="color:#a2f">false</span>
   config.vm.provision <span style="color:#b44">&#34;shell&#34;</span>, run: <span style="color:#b44">&#34;always&#34;</span>, inline: <span style="color:#b44">&#34;ip addr add 192.168.15.200 dev eth1&#34;</span>
 
-  config.ssh.insert_key <span style="color:#666">=</span> <span style="color:#a2f">false</span> <span style="color:#080;font-style:italic"># 1
-</span><span style="color:#080;font-style:italic"></span>  config.ssh.private_key_path <span style="color:#666">=</span> <span style="color:#666">[</span><span style="color:#b44">&#39;~/.vagrant.d/insecure_private_key&#39;</span>, <span style="color:#b44">&#39;~/.ssh/id_rsa&#39;</span><span style="color:#666">]</span> <span style="color:#080;font-style:italic"># 2
-</span><span style="color:#080;font-style:italic"></span>  config.vm.provision <span style="color:#b44">&#34;file&#34;</span>, source: <span style="color:#b44">&#34;~/.ssh/id_rsa.pub&#34;</span>, destination: <span style="color:#b44">&#34;~/.ssh/authorized_keys&#34;</span> <span style="color:#080;font-style:italic"># 3
-</span><span style="color:#080;font-style:italic"></span>
-  <span style="color:#080;font-style:italic"># 4
-</span><span style="color:#080;font-style:italic"></span>  config.vm.provision <span style="color:#b44">&#34;shell&#34;</span>, inline: <span style="color:#b44">&lt;&lt;-EOC
+  config.ssh.insert_key <span style="color:#666">=</span> <span style="color:#a2f">false</span> <span style="color:#080;font-style:italic"># 1</span>
+  config.ssh.private_key_path <span style="color:#666">=</span> <span style="color:#666">[</span><span style="color:#b44">&#39;~/.vagrant.d/insecure_private_key&#39;</span>, <span style="color:#b44">&#39;~/.ssh/id_rsa&#39;</span><span style="color:#666">]</span> <span style="color:#080;font-style:italic"># 2</span>
+  config.vm.provision <span style="color:#b44">&#34;file&#34;</span>, source: <span style="color:#b44">&#34;~/.ssh/id_rsa.pub&#34;</span>, destination: <span style="color:#b44">&#34;~/.ssh/authorized_keys&#34;</span> <span style="color:#080;font-style:italic"># 3</span>
+
+  <span style="color:#080;font-style:italic"># 4</span>
+  config.vm.provision <span style="color:#b44">&#34;shell&#34;</span>, inline: <span style="color:#b44">&lt;&lt;-EOC
 </span><span style="color:#b44">    sudo sed -i -e &#34;\\#PasswordAuthentication yes# s#PasswordAuthentication yes#PasswordAuthentication no#g&#34; /etc/ssh/sshd_config
 </span><span style="color:#b44">    sudo systemctl restart sshd.service
 </span><span style="color:#b44">    echo &#34;finished&#34;
