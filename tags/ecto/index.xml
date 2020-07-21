@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ecto on Blog de Making Devs</title>
@@ -6,6 +6,8 @@
     <description>Recent content in ecto on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>info@makingdevs.com</managingEditor>
+    <webMaster>info@makingdevs.com</webMaster>
     <lastBuildDate>Tue, 20 Sep 2016 19:35:08 -0500</lastBuildDate>
     
 	<atom:link href="http://blog.makingdevs.com/tags/ecto/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +17,7 @@
       <title>Ecto Transactions</title>
       <link>http://blog.makingdevs.com/2016/09/20/ecto-transactions/</link>
       <pubDate>Tue, 20 Sep 2016 19:35:08 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/2016/09/20/ecto-transactions/</guid>
       <description>It has been a couple of months since I wrote something and was about phoenix and bootstrap. Today I&amp;rsquo;m going to talk about elixir, ecto and how to manage transactions
 Well in this post we are going to skip ecto setup (if for some way, it was need it, please leave a comment and I will make a post for it, but I think his documentation makes a fairly good example for it)</description>

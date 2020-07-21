@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>grails on Blog de Making Devs</title>
@@ -6,6 +6,8 @@
     <description>Recent content in grails on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>info@makingdevs.com</managingEditor>
+    <webMaster>info@makingdevs.com</webMaster>
     <lastBuildDate>Fri, 01 May 2015 20:58:30 -0500</lastBuildDate>
     
 	<atom:link href="http://blog.makingdevs.com/tags/grails/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +17,7 @@
       <title>Borrado batch en Grails</title>
       <link>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails/</link>
       <pubDate>Fri, 01 May 2015 20:58:30 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/2015/05/01/borrado-batch-en-grails/</guid>
       <description>En esta ocasión les quiero compartir la solución a un problema que tuve al borrar una colección de objetos en grails y con el GORM, si bien podría hacerlo con HQL o con SQL usando las bondades de Hibernate me gusto más el acercamiento que les quiero presentar.
 La necesidad era borrar un grupo de objetos en donde el contenido de su relación estuviera vacío, ejemplifico con la estructura de unas clases:</description>

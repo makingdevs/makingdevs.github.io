@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>plugins on Blog de Making Devs</title>
@@ -6,6 +6,8 @@
     <description>Recent content in plugins on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>info@makingdevs.com</managingEditor>
+    <webMaster>info@makingdevs.com</webMaster>
     <lastBuildDate>Sun, 26 Jul 2015 23:19:13 -0500</lastBuildDate>
     
 	<atom:link href="http://blog.makingdevs.com/tags/plugins/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +17,7 @@
       <title>Hot deployment en Gradle</title>
       <link>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle/</link>
       <pubDate>Sun, 26 Jul 2015 23:19:13 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle/</guid>
       <description>Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre SpringLoaded.
 Después me di cuenta que frameworks como Dropwizard lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré un artículo en donde explica como ponerlo en acción usando propiamente Dropwizard.</description>

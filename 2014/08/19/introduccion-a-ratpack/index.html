@@ -1,229 +1,399 @@
 <!DOCTYPE html>
-<html lang="en">
-<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta name="description" content="">
-    <meta property="og:title" content="Introduccion a Ratpack">
-    
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2014-08-19">
-    
-    <meta property="og:description" content="">
-    <meta property="og:url" content="http://blog.makingdevs.com/2014/08/19/introduccion-a-ratpack/">
-    <meta property="og:site_name" content="Blog de Making Devs">
-    
-    <meta name="generator" content="Hugo 0.55.3" />
-    <title>Introduccion a Ratpack &middot; Blog de Making Devs</title>
-    
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
-    
-    <link href="http://blog.makingdevs.com/index.xml" rel="alternate" type="application/rss+xml" title="Blog de Making Devs" />
-    
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
     
 
-    
-    
-</head>
-<body>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<nav class="navbar navbar-default navbar-fixed-top visible-xs">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			
-				<a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
-			
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
+  <title>Introduccion a Ratpack - Blog de Making Devs</title>
+  <meta name="description" content="Es bueno estar de vuelta escribiendo, ya ha pasado bastante tiempo desde que hice un post así que vamos a ver algo que me ayudó en un curso. El día de hoy hablaremos de Ratpack y para ello primero vamos a dar una pequeña introducción de lo que es. Ratpack, como su página lo dice, es un conjunto de librerías de JAVA que facilita la rapidez, eficiencia, evolución y pruebas de aplicaciones HTTP, está construida sobre Netty y por ello posee muchos de los beneficios del motor del mismo."><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Blog de Making Devs",
+    
+    "url": "http:\/\/blog.makingdevs.com\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/blog.makingdevs.com\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/blog.makingdevs.com\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/blog.makingdevs.com\/2014\/08\/19\/introduccion-a-ratpack\/",
+          "name": "Introduccion a ratpack"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Felipe Juárez Murillo"
+  },
+  "headline": "Introduccion a Ratpack",
+  "description" : "Es bueno estar de vuelta escribiendo, ya ha pasado bastante tiempo desde que hice un post así que vamos a ver algo que me ayudó en un curso. El día de hoy hablaremos de Ratpack y para ello primero vamos a dar una pequeña introducción de lo que es. Ratpack, como su página lo dice, es un conjunto de librerías de JAVA que facilita la rapidez, eficiencia, evolución y pruebas de aplicaciones HTTP, está construida sobre Netty y por ello posee muchos de los beneficios del motor del mismo.",
+  "inLanguage" : "en",
+  "wordCount":  1939 ,
+  "datePublished" : "2014-08-19T00:34:28",
+  "dateModified" : "2014-08-19T00:34:28",
+  "image" : "http:\/\/blog.makingdevs.com\/images\/logo_black.png",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "http:\/\/blog.makingdevs.com\/2014\/08\/19\/introduccion-a-ratpack\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/blog.makingdevs.com\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/blog.makingdevs.com\/images\/logo_black.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Introduccion a Ratpack" />
+<meta property="og:description" content="Es bueno estar de vuelta escribiendo, ya ha pasado bastante tiempo desde que hice un post así que vamos a ver algo que me ayudó en un curso. El día de hoy hablaremos de Ratpack y para ello primero vamos a dar una pequeña introducción de lo que es. Ratpack, como su página lo dice, es un conjunto de librerías de JAVA que facilita la rapidez, eficiencia, evolución y pruebas de aplicaciones HTTP, está construida sobre Netty y por ello posee muchos de los beneficios del motor del mismo.">
+<meta property="og:image" content="http://blog.makingdevs.com/images/logo_black.png" />
+<meta property="og:url" content="http://blog.makingdevs.com/2014/08/19/introduccion-a-ratpack/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Blog de Making Devs" />
+
+  <meta name="twitter:title" content="Introduccion a Ratpack" />
+  <meta name="twitter:description" content="Es bueno estar de vuelta escribiendo, ya ha pasado bastante tiempo desde que hice un post así que vamos a ver algo que me ayudó en un curso. El día de hoy hablaremos de Ratpack y para ello primero …">
+  <meta name="twitter:image" content="http://blog.makingdevs.com/images/logo_black.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@makingdevs" />
+  <meta name="twitter:creator" content="@makingdevs" />
+  <meta name="generator" content="Hugo 0.74.2" />
+  <link rel="alternate" href="http://blog.makingdevs.com/index.xml" type="application/rss+xml" title="Blog de Making Devs"><link rel="stylesheet" href="http://blog.makingdevs.com/css/katex.min.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/fontawesome/css/all.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/bootstrap.min.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/main.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/fonts.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/highlight.min.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/codeblock.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/photoswipe.min.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/photoswipe.default-skin.min.css" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-42842883-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
 				
+					
+						<li>
+							
+								<a href="/2014/07/29/bienvenido-a-makingdevs/">Bienvenidos</a>
+							
+						</li>
+					
 				
-			</ul>
-		</div>
-	</div>
+					
+						<li>
+							
+								<a title="Archive" href="/post"><i class="fas fa-archive fa-lg"></i></a>
+							
+						</li>
+					
+				
+					
+						<li>
+							
+								<a title="Categories" href="/categories"><i class="fas fa-sitemap fa-lg"></i></a>
+							
+						</li>
+					
+				
+					
+						<li>
+							
+								<a title="Tags" href="/tags"><i class='fas fa-tags fa-lg'></i></a>
+							
+						</li>
+					
+				
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Blog de Making Devs" href="http://blog.makingdevs.com/">
+            <img class="avatar-img" src="http://blog.makingdevs.com/images/logo_black.png" alt="Blog de Making Devs" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
 </nav>
-<div class="container-fluid">
-	<div class="row">
-		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
-	<div id="menu-content" class="vertical-align">
-		
-			<h1 class="text-center"><a href="http://blog.makingdevs.com/">Blog de Making Devs</a></h1>
-		
-		
-		
-			<small class="text-center center-block">El código que a veces olvidamos documentar.</small>
-		
-		
-		
-			<img id="profile-pic" src="http://blog.makingdevs.com//profile.jpeg" alt="My Picture" class="img-circle center-block">
-		
-		<div id="social" class="text-center">
-			
 
-			<a href="mailto:info@makingdevs.com"><i class="fa fa-envelope-o fa-2x"></i></a>
-		</div>
-		<div id="links" class="text-center">
-			
-			
-		</div>
-	</div>
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
 </div>
 
-		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
-			<div class="row">
-				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
 
-<main>
+  
+  
+  
 
-  <header>
-    <h1 align=center>Introduccion a Ratpack</h1>
+
+
+
+
+
+  
+
+  <header class="header-section ">
     
-    <section class="author">
-      <p align=center> <b>Redactado por: Felipe Juárez Murillo</b></p>
-    </section>
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Introduccion a Ratpack</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on August 19, 2014
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;10&nbsp;minutes
+  
+  
+  
     
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Felipe Juárez Murillo
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
-  </br>
 
-	<article>
-		<p>Es bueno estar de vuelta escribiendo, ya ha pasado bastante tiempo desde que hice un post así que vamos a ver algo que me ayudó en un curso. El día de hoy hablaremos de Ratpack y para ello primero vamos a dar una pequeña introducción de lo que es. Ratpack, como su página lo dice, es un conjunto de librerías de JAVA que facilita la rapidez, eficiencia, evolución y pruebas de aplicaciones HTTP, está construida sobre Netty y por ello posee muchos de los beneficios del motor del mismo. Ratpack se enfoca en permitir applicaciones HTTP para ser eficientes, modulares y adaptativas a los nuevos requerimientos, tecnologías y buenas pruebas sobre el tiempo. Bueno vamos a dejar de momento las definiciones y vamos a lo bonito, el código.
-<!-- more -->
-Para este post vamos a hacer uso de gvm y de lazybones, para ello procederemos a instalar <a href="http://gvmtool.net/" title="gvm">gvm</a> Una vez listo procedemos a ejecutar el siguiente comando :
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gvm install lazybones</code></pre></div></p>
 
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Es bueno estar de vuelta escribiendo, ya ha pasado bastante tiempo desde que hice un post así que vamos a ver algo que me ayudó en un curso. El día de hoy hablaremos de Ratpack y para ello primero vamos a dar una pequeña introducción de lo que es. Ratpack, como su página lo dice, es un conjunto de librerías de JAVA que facilita la rapidez, eficiencia, evolución y pruebas de aplicaciones HTTP, está construida sobre Netty y por ello posee muchos de los beneficios del motor del mismo. Ratpack se enfoca en permitir applicaciones HTTP para ser eficientes, modulares y adaptativas a los nuevos requerimientos, tecnologías y buenas pruebas sobre el tiempo. Bueno vamos a dejar de momento las definiciones y vamos a lo bonito, el código.</p>
+<!-- raw HTML omitted -->
+<p>Para este post vamos a hacer uso de gvm y de lazybones, para ello procederemos a instalar <a href="http://gvmtool.net/" title="gvm">gvm</a> Una vez listo procedemos a ejecutar el siguiente comando :
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">gvm install lazybones</code></pre></div></p>
 <p>Y con ello tendremos lazybones instalado en nuestra máquina&hellip; bueno y ¿para que necesitamos lazybones si es un post sobre Ratpack? Lazybones es una herramienta de línea de comandos que nos permite generar una estructura de un proyecto para cualquier framework basado en plantillas predefinidas. Y Ratpack tiene varias plantillas para lazybones que pueden ser encontradas en</p>
-
 <p><a href="https://bintray.com/">Bintray</a> en el apartado de <a href="https://bintray.com/ratpack/lazybones">ratpack/lazybones repository</a>. Si desean saber un poco más de Lazybones pueden encontrarlo en la <a href="https://github.com/pledbrook/lazybones#running-it">documentación</a> Para crear la estructura del proyecto ejecutaremos la siguiente sentencia :/Users/makingdevs/Documents/proyectos/blog/prueba_hugo/respaldo/2015-04-29-introduccion-a-ratpack.markdown</p>
-
-<pre><code class="language-bash">lazybones create ratpack contact-book
-</code></pre>
-
-<p>Al ejecutar la instrucción nos aparecerá en pantalla una serie de instrucciones y también lo que ganamos al ejecutarla. A parte nos da la estructura de directorios que se genera y nos dice como levantar nuestra aplicación.</p>
-
-<pre><code class="language-bash">  &lt;proj&gt;
-    |
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">lazybones create ratpack contact-book
+</code></pre></div><p>Al ejecutar la instrucción nos aparecerá en pantalla una serie de instrucciones y también lo que ganamos al ejecutarla. A parte nos da la estructura de directorios que se genera y nos dice como levantar nuestra aplicación.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  &lt;proj&gt;
+    <span class="p">|</span>
     +- src
-        |
+        <span class="p">|</span>
         +- ratpack
-        |     |
-        |     +- ratpack.groovy
-        |     +- ratpack.properties
-        |     +- public          // Static assets in here
-        |          |
-        |          +- images
-        |          +- lib
-        |          +- scripts
-        |          +- styles
-        |
+        <span class="p">|</span>     <span class="p">|</span>
+        <span class="p">|</span>     +- ratpack.groovy
+        <span class="p">|</span>     +- ratpack.properties
+        <span class="p">|</span>     +- public          // Static assets in here
+        <span class="p">|</span>          <span class="p">|</span>
+        <span class="p">|</span>          +- images
+        <span class="p">|</span>          +- lib
+        <span class="p">|</span>          +- scripts
+        <span class="p">|</span>          +- styles
+        <span class="p">|</span>
         +- main
-        |   |
-        |   +- groovy
-                 |
+        <span class="p">|</span>   <span class="p">|</span>
+        <span class="p">|</span>   +- groovy
+                 <span class="p">|</span>
                  +- // App classes in here!
-        |
-        +- test
-            |
+        <span class="p">|</span>
+        +- <span class="nb">test</span>
+            <span class="p">|</span>
             +- groovy
-                 |
+                 <span class="p">|</span>
                  +- // Spock tests in here!
-</code></pre>
-
-<p>Para levantar el ejemplo nos movemos a la carpeta con cd, ejecutamos lo siguiente y nos preparamos un café porque va a descargar dependencias XD:
+</code></pre></div><p>Para levantar el ejemplo nos movemos a la carpeta con cd, ejecutamos lo siguiente y nos preparamos un café porque va a descargar dependencias XD:
 <code>./gradlew run</code></p>
-
-<p>Una vez que terminó de ejecutarse podemos ver lo que se creó en la url <a href="http://localhost:5050">http://localhost:5050</a> como podrán observar la página que se creó no es gran cosa pero ya tenemos lo necesario para trabajar en una aplicación un poco más compleja como iremos viendo a lo largo de este post. Como podremos ver en el <strong>README.md</strong> existen prácticamente tres archivos principales:</p>
-
+<p>Una vez que terminó de ejecutarse podemos ver lo que se creó en la url http://localhost:5050 como podrán observar la página que se creó no es gran cosa pero ya tenemos lo necesario para trabajar en una aplicación un poco más compleja como iremos viendo a lo largo de este post. Como podremos ver en el <strong>README.md</strong> existen prácticamente tres archivos principales:</p>
 <ul>
 <li><strong>build.gradle</strong></li>
 <li><strong>Ratpack.groovy</strong></li>
 <li><strong>index.html</strong></li>
 </ul>
-
 <p>El primero es un archivo de gradle (para los que no lo han manejado o conocen de él pueden revisar el siguiente <a href="http://www.gradle.org/documentation">link</a> pero a grandes rasgos gradle vendría siendo lo mismo que Maven pero con drogas XD. El segundo archivo es donde usualmente sucede la magia ya que es donde se resuelven las urls y se hace todo el show necesario. Y el tercer archivo no es más que una plantilla html que se visualiza a través del segundo archivo. Con los arvhivos que vamos a estar trabajando de momento son <strong>index.html</strong> y <strong>Ratpack.groovy</strong>. En el tag body del html dejamos lo siguiente:</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>${model.title}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is the main page of your contacts<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#008000;font-weight:bold">body</span>&gt;
-  &lt;<span style="color:#008000;font-weight:bold">section</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">h1</span>&gt;${model.title}&lt;/<span style="color:#008000;font-weight:bold">h1</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">p</span>&gt;This is the main page of your contacts&lt;/<span style="color:#008000;font-weight:bold">p</span>&gt;
-  &lt;/<span style="color:#008000;font-weight:bold">section</span>&gt;
-
-  &lt;<span style="color:#008000;font-weight:bold">footer</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;site-footer&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">footer</span>&gt;
-&lt;/<span style="color:#008000;font-weight:bold">body</span>&gt;</code></pre></div>
-
+  <span class="p">&lt;</span><span class="nt">footer</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;site-footer&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span></code></pre></div>
 <p>Y en el <strong>Ratpack.groovy</strong> dejamos lo siguiente:</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kn">import</span> <span class="nn">static</span> <span class="n">ratpack</span><span class="o">.</span><span class="na">groovy</span><span class="o">.</span><span class="na">Groovy</span><span class="o">.</span><span class="na">groovyTemplate</span>
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">ratpack</span><span class="o">.</span><span class="na">groovy</span><span class="o">.</span><span class="na">Groovy</span><span class="o">.</span><span class="na">ratpack</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">static</span> ratpack<span style="color:#666">.</span><span style="color:#b44">groovy</span><span style="color:#666">.</span><span style="color:#b44">Groovy</span><span style="color:#666">.</span><span style="color:#b44">groovyTemplate</span>
-<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">static</span> ratpack<span style="color:#666">.</span><span style="color:#b44">groovy</span><span style="color:#666">.</span><span style="color:#b44">Groovy</span><span style="color:#666">.</span><span style="color:#b44">ratpack</span>
+<span class="n">ratpack</span> <span class="o">{</span>
+  <span class="n">handlers</span> <span class="o">{</span>
+    <span class="n">get</span> <span class="o">{</span>
+      <span class="n">render</span> <span class="nf">groovyTemplate</span><span class="o">(</span><span class="s2">&#34;index.html&#34;</span><span class="o">,</span> <span class="nl">title:</span> <span class="s2">&#34;Contact book&#34;</span><span class="o">)</span>
+    <span class="o">}</span>
 
-ratpack <span style="color:#666">{</span>
-  handlers <span style="color:#666">{</span>
-    get <span style="color:#666">{</span>
-      render <span style="color:#00a000">groovyTemplate</span><span style="color:#666">(</span><span style="color:#b44">&#34;index.html&#34;</span><span style="color:#666">,</span> <span style="color:#a0a000">title:</span> <span style="color:#b44">&#34;Contact book&#34;</span><span style="color:#666">)</span>
-    <span style="color:#666">}</span>
-
-    assets <span style="color:#b44">&#34;public&#34;</span>
-  <span style="color:#666">}</span>
-<span style="color:#666">}</span></code></pre></div>
-
+    <span class="n">assets</span> <span class="s2">&#34;public&#34;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
 <p>Recargamos la página y vemos el cambio. Ahora vamos a añadir un form para poder agregar a un elemento a la lista de contactos. Para ello agregamos un link a nuestro <em>index.html</em></p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>${model.title}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is the main page of your contacts<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#008000;font-weight:bold">body</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">section</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">h1</span>&gt;${model.title}&lt;/<span style="color:#008000;font-weight:bold">h1</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">p</span>&gt;This is the main page of your contacts&lt;/<span style="color:#008000;font-weight:bold">p</span>&gt;
-    &lt;/<span style="color:#008000;font-weight:bold">section</span>&gt;
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;create&#34;</span><span class="p">&gt;</span>Create contact<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;create&#34;</span>&gt;Create contact&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt;
+    <span class="p">&lt;</span><span class="nt">footer</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;site-footer&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#008000;font-weight:bold">footer</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;site-footer&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">footer</span>&gt;
-
-    <span style="color:#080;font-style:italic">&lt;!-- build:js scripts/jquery.js --&gt;</span>
-    &lt;<span style="color:#008000;font-weight:bold">script</span> <span style="color:#b44">src</span><span style="color:#666">=</span><span style="color:#b44">&#34;lib/jquery/jquery.min.js&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">script</span>&gt;
-    <span style="color:#080;font-style:italic">&lt;!-- endbuild --&gt;</span>
-  &lt;/<span style="color:#008000;font-weight:bold">body</span>&gt;</code></pre></div>
-
+    <span class="c">&lt;!-- build:js scripts/jquery.js --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;lib/jquery/jquery.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- endbuild --&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span></code></pre></div>
 <p>Ahora para visualizar la nueva página le agregamos al archivo <strong>Ratpack.groovy</strong> lo siguiente :</p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">get<span style="color:#666">(</span><span style="color:#b44">&#39;contacts/new&#39;</span><span style="color:#666">)</span> <span style="color:#666">{</span>
-  render <span style="color:#00a000">groovyTemplate</span><span style="color:#666">(</span><span style="color:#b44">&#34;contacts/new.html&#34;</span><span style="color:#666">,</span> <span style="color:#a0a000">title:</span> <span style="color:#b44">&#34;New contact&#34;</span><span style="color:#666">)</span>
-<span style="color:#666">}</span></code></pre></div>
-
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">get</span><span class="o">(</span><span class="s1">&#39;contacts/new&#39;</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">render</span> <span class="nf">groovyTemplate</span><span class="o">(</span><span class="s2">&#34;contacts/new.html&#34;</span><span class="o">,</span> <span class="nl">title:</span> <span class="s2">&#34;New contact&#34;</span><span class="o">)</span>
+<span class="o">}</span></code></pre></div>
 <p>Y dentro de la carpeta de templates creamos una carpeta llamada contacts y dentro de ella agregamos un archivo llamado <strong>new.html</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="cp">&lt;!doctype html&gt;</span>
+  <span class="c">&lt;!--[if lt IE 7]&gt;      &lt;html class=&#34;no-js lt-ie9 lt-ie8 lt-ie7&#34;&gt; &lt;![endif]--&gt;</span>
+  <span class="c">&lt;!--[if IE 7]&gt;         &lt;html class=&#34;no-js lt-ie9 lt-ie8&#34;&gt; &lt;![endif]--&gt;</span>
+  <span class="c">&lt;!--[if IE 8]&gt;         &lt;html class=&#34;no-js lt-ie9&#34;&gt; &lt;![endif]--&gt;</span>
+  <span class="c">&lt;!--[if gt IE 8]&gt;&lt;!--&gt;</span> <span class="p">&lt;</span><span class="nt">html</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;no-js&#34;</span><span class="p">&gt;</span> <span class="c">&lt;!--&lt;![endif]--&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=edge,chrome=1&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Ratpack: ${model.title}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;description&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#080">&lt;!doctype html&gt;</span>
-  <span style="color:#080;font-style:italic">&lt;!--[if lt IE 7]&gt;      &lt;html class=&#34;no-js lt-ie9 lt-ie8 lt-ie7&#34;&gt; &lt;![endif]--&gt;</span>
-  <span style="color:#080;font-style:italic">&lt;!--[if IE 7]&gt;         &lt;html class=&#34;no-js lt-ie9 lt-ie8&#34;&gt; &lt;![endif]--&gt;</span>
-  <span style="color:#080;font-style:italic">&lt;!--[if IE 8]&gt;         &lt;html class=&#34;no-js lt-ie9&#34;&gt; &lt;![endif]--&gt;</span>
-  <span style="color:#080;font-style:italic">&lt;!--[if gt IE 8]&gt;&lt;!--&gt;</span> &lt;<span style="color:#008000;font-weight:bold">html</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;no-js&#34;</span>&gt; <span style="color:#080;font-style:italic">&lt;!--&lt;![endif]--&gt;</span>
-  &lt;<span style="color:#008000;font-weight:bold">head</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">meta</span> <span style="color:#b44">charset</span><span style="color:#666">=</span><span style="color:#b44">&#34;utf-8&#34;</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">meta</span> <span style="color:#b44">http-equiv</span><span style="color:#666">=</span><span style="color:#b44">&#34;X-UA-Compatible&#34;</span> <span style="color:#b44">content</span><span style="color:#666">=</span><span style="color:#b44">&#34;IE=edge,chrome=1&#34;</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">title</span>&gt;Ratpack: ${model.title}&lt;/<span style="color:#008000;font-weight:bold">title</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">meta</span> <span style="color:#b44">name</span><span style="color:#666">=</span><span style="color:#b44">&#34;description&#34;</span> <span style="color:#b44">content</span><span style="color:#666">=</span><span style="color:#b44">&#34;&#34;</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">meta</span> <span style="color:#b44">name</span><span style="color:#666">=</span><span style="color:#b44">&#34;viewport&#34;</span> <span style="color:#b44">content</span><span style="color:#666">=</span><span style="color:#b44">&#34;width=device-width&#34;</span>&gt;
-  &lt;/<span style="color:#008000;font-weight:bold">head</span>&gt;
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>${model.title}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
 
-  &lt;<span style="color:#008000;font-weight:bold">body</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">section</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">h1</span>&gt;${model.title}&lt;/<span style="color:#008000;font-weight:bold">h1</span>&gt;
-    &lt;/<span style="color:#008000;font-weight:bold">section</span>&gt;
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/&#34;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;/&#34;</span>&gt;Home&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt;
-
-    &lt;<span style="color:#008000;font-weight:bold">footer</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;site-footer&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">footer</span>&gt;
-  &lt;/<span style="color:#008000;font-weight:bold">body</span>&gt;
-&lt;/<span style="color:#008000;font-weight:bold">html</span>&gt;</code></pre></div>
-
+    <span class="p">&lt;</span><span class="nt">footer</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;site-footer&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
 <p>Así para cuando regresemos a la página y la recarguemos podemos ver el link y hasta el momento navegar la página sin problemas. Ahora vamos a agregar un pequeño formulario para poder capturar los datos del contacto, como son:</p>
-
 <ul>
 <li><strong>Nombre</strong></li>
 <li><strong>Apellidos</strong></li>
@@ -231,347 +401,342 @@ ratpack <span style="color:#666">{</span>
 <li><strong>Alias</strong></li>
 <li><strong>Teléfono</strong></li>
 </ul>
-
 <p>Para ello vamos a hacer un formulario común y silvestre en el html:</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>${model.title}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#008000;font-weight:bold">body</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">section</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">h1</span>&gt;${model.title}&lt;/<span style="color:#008000;font-weight:bold">h1</span>&gt;
-    &lt;/<span style="color:#008000;font-weight:bold">section</span>&gt;
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;/contacts&#34;</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;post&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;name&#34;</span><span class="p">/&gt;</span>Name<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;name&#34;</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#008000;font-weight:bold">form</span> <span style="color:#b44">action</span><span style="color:#666">=</span><span style="color:#b44">&#34;/contacts&#34;</span> <span style="color:#b44">method</span><span style="color:#666">=</span><span style="color:#b44">&#34;post&#34;</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;name&#34;</span>/&gt;Name&lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">input</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;text&#34;</span> <span style="color:#b44">name</span><span style="color:#666">=</span><span style="color:#b44">&#34;name&#34;</span> /&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;lastName&#34;</span><span class="p">/&gt;</span>Last name<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;lastName&#34;</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-      &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;lastName&#34;</span>/&gt;Last name&lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">input</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;text&#34;</span> <span style="color:#b44">name</span><span style="color:#666">=</span><span style="color:#b44">&#34;lastName&#34;</span> /&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;email&#34;</span><span class="p">/&gt;</span>Email<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;email&#34;</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-      &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;email&#34;</span>/&gt;Email&lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">input</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;text&#34;</span> <span style="color:#b44">name</span><span style="color:#666">=</span><span style="color:#b44">&#34;email&#34;</span> /&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;nickname&#34;</span><span class="p">/&gt;</span>Nickname<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;nickname&#34;</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-      &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;nickname&#34;</span>/&gt;Nickname&lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">input</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;text&#34;</span> <span style="color:#b44">name</span><span style="color:#666">=</span><span style="color:#b44">&#34;nickname&#34;</span> /&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;phone&#34;</span><span class="p">/&gt;</span>Phone<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;phone&#34;</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-      &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;phone&#34;</span>/&gt;Phone&lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">input</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;text&#34;</span> <span style="color:#b44">name</span><span style="color:#666">=</span><span style="color:#b44">&#34;phone&#34;</span> /&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span><span class="p">&gt;</span> Create <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 
-      &lt;<span style="color:#008000;font-weight:bold">button</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;submit&#34;</span>&gt; Create &lt;/<span style="color:#008000;font-weight:bold">button</span>&gt;
-    &lt;/<span style="color:#008000;font-weight:bold">form</span>&gt;
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/&#34;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;/&#34;</span>&gt;Home&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt;
-
-    &lt;<span style="color:#008000;font-weight:bold">footer</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;site-footer&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">footer</span>&gt;
-  &lt;/<span style="color:#008000;font-weight:bold">body</span>&gt;</code></pre></div>
-
+    <span class="p">&lt;</span><span class="nt">footer</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;site-footer&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span></code></pre></div>
 <p>Una vez que tenemos eso lo demás es cuestión de recibirlo y procesarlo para ello hacemos uso del handler post con el path al que va a responder y vamos a agregarlo a una variable global (esto es para efectos de ejemplo no intenten esto en casa o sus trabajos XD)</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">ratpack</span> <span class="o">{</span>
+  <span class="kt">def</span> <span class="n">contacts</span> <span class="o">=</span> <span class="o">[]</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">ratpack <span style="color:#666">{</span>
-  <span style="color:#0b0;font-weight:bold">def</span> contacts <span style="color:#666">=</span> <span style="color:#666">[]</span>
+  <span class="n">handlers</span> <span class="o">{</span>
+    <span class="n">get</span> <span class="o">{</span>
+      <span class="n">render</span> <span class="nf">groovyTemplate</span><span class="o">(</span><span class="s2">&#34;index.html&#34;</span><span class="o">,</span> <span class="nl">title:</span> <span class="s2">&#34;Contact book&#34;</span><span class="o">)</span>
+    <span class="o">}</span>
 
-  handlers <span style="color:#666">{</span>
-    get <span style="color:#666">{</span>
-      render <span style="color:#00a000">groovyTemplate</span><span style="color:#666">(</span><span style="color:#b44">&#34;index.html&#34;</span><span style="color:#666">,</span> <span style="color:#a0a000">title:</span> <span style="color:#b44">&#34;Contact book&#34;</span><span style="color:#666">)</span>
-    <span style="color:#666">}</span>
+    <span class="n">post</span><span class="o">(</span><span class="s1">&#39;contacts&#39;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Form</span> <span class="n">form</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">Form</span><span class="o">)</span>
+      <span class="kt">def</span> <span class="n">contact</span> <span class="o">=</span> <span class="o">[:]</span>
+      <span class="n">contact</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">contacts</span> <span class="o">?</span> <span class="n">contacts</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">max</span><span class="o">()</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">1</span>
+      <span class="n">contact</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">name</span>
+      <span class="n">contact</span><span class="o">.</span><span class="na">lastName</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">lastName</span>
+      <span class="n">contact</span><span class="o">.</span><span class="na">email</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">email</span>
+      <span class="n">contact</span><span class="o">.</span><span class="na">nickname</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">nickname</span>
+      <span class="n">contact</span><span class="o">.</span><span class="na">phone</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">phone</span>
+      <span class="n">contacts</span> <span class="o">&lt;&lt;</span> <span class="n">contact</span>
+      <span class="n">redirect</span> <span class="s2">&#34;/contacts/${contact.id}&#34;</span>
+    <span class="o">}</span>
 
-    post<span style="color:#666">(</span><span style="color:#b44">&#39;contacts&#39;</span><span style="color:#666">)</span> <span style="color:#666">{</span>
-      Form form <span style="color:#666">=</span> context<span style="color:#666">.</span><span style="color:#b44">parse</span><span style="color:#666">(</span>Form<span style="color:#666">)</span>
-      <span style="color:#0b0;font-weight:bold">def</span> contact <span style="color:#666">=</span> <span style="color:#666">[:]</span>
-      contact<span style="color:#666">.</span><span style="color:#b44">id</span> <span style="color:#666">=</span> contacts <span style="color:#666">?</span> contacts<span style="color:#666">.</span><span style="color:#b44">id</span><span style="color:#666">.</span><span style="color:#b44">max</span><span style="color:#666">()</span> <span style="color:#666">+</span> <span style="color:#666">1</span> <span style="color:#666">:</span> <span style="color:#666">1</span>
-      contact<span style="color:#666">.</span><span style="color:#b44">name</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">name</span>
-      contact<span style="color:#666">.</span><span style="color:#b44">lastName</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">lastName</span>
-      contact<span style="color:#666">.</span><span style="color:#b44">email</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">email</span>
-      contact<span style="color:#666">.</span><span style="color:#b44">nickname</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">nickname</span>
-      contact<span style="color:#666">.</span><span style="color:#b44">phone</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">phone</span>
-      contacts <span style="color:#666">&lt;&lt;</span> contact
-      redirect <span style="color:#b44">&#34;/contacts/${contact.id}&#34;</span>
-    <span style="color:#666">}</span>
+    <span class="n">get</span><span class="o">(</span><span class="s1">&#39;contacts/new&#39;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">render</span> <span class="nf">groovyTemplate</span><span class="o">(</span><span class="s2">&#34;contacts/new.html&#34;</span><span class="o">,</span> <span class="nl">title:</span> <span class="s2">&#34;New contact&#34;</span><span class="o">)</span>
+    <span class="o">}</span>
 
-    get<span style="color:#666">(</span><span style="color:#b44">&#39;contacts/new&#39;</span><span style="color:#666">)</span> <span style="color:#666">{</span>
-      render <span style="color:#00a000">groovyTemplate</span><span style="color:#666">(</span><span style="color:#b44">&#34;contacts/new.html&#34;</span><span style="color:#666">,</span> <span style="color:#a0a000">title:</span> <span style="color:#b44">&#34;New contact&#34;</span><span style="color:#666">)</span>
-    <span style="color:#666">}</span>
-
-    assets <span style="color:#b44">&#34;public&#34;</span>
-  <span style="color:#666">}</span>
-<span style="color:#666">}</span></code></pre></div>
-
+    <span class="n">assets</span> <span class="s2">&#34;public&#34;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
 <p>Como podrán observar mediante el <code>context.parse(Form)</code> obtenemos los datos enviados en la petición y de esa manera podemos acceder a los datos enviados como si fuera un mapa de groovy. Al final de la petición hacemos un redirect para ver los datos que se han creado con esa petición, pero de momento esto no funciona así que vamos a agregar un nuevo handler con algo que se le llama <em>pathTokens</em> y para ello agregamos lo siguiente:</p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">  get<span style="color:#666">(</span><span style="color:#b44">&#39;contacts/:id&#39;</span><span style="color:#666">)</span> <span style="color:#666">{</span>
-    <span style="color:#0b0;font-weight:bold">def</span> id <span style="color:#666">=</span> pathTokens<span style="color:#666">.</span><span style="color:#b44">asLong</span><span style="color:#666">(</span><span style="color:#b44">&#39;id&#39;</span><span style="color:#666">)</span>
-    <span style="color:#0b0;font-weight:bold">def</span> contact <span style="color:#666">=</span> contacts<span style="color:#666">.</span><span style="color:#b44">find</span> <span style="color:#666">{</span>
-      it<span style="color:#666">.</span><span style="color:#b44">id</span> <span style="color:#666">==</span> id
-    <span style="color:#666">}</span>
-    render <span style="color:#00a000">groovyTemplate</span><span style="color:#666">(</span><span style="color:#b44">&#34;contacts/show.html&#34;</span><span style="color:#666">,</span> <span style="color:#a0a000">contact:</span>contact<span style="color:#666">)</span>
-  <span style="color:#666">}</span></code></pre></div>
-
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy">  <span class="n">get</span><span class="o">(</span><span class="s1">&#39;contacts/:id&#39;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">def</span> <span class="n">id</span> <span class="o">=</span> <span class="n">pathTokens</span><span class="o">.</span><span class="na">asLong</span><span class="o">(</span><span class="s1">&#39;id&#39;</span><span class="o">)</span>
+    <span class="kt">def</span> <span class="n">contact</span> <span class="o">=</span> <span class="n">contacts</span><span class="o">.</span><span class="na">find</span> <span class="o">{</span>
+      <span class="n">it</span><span class="o">.</span><span class="na">id</span> <span class="o">==</span> <span class="n">id</span>
+    <span class="o">}</span>
+    <span class="n">render</span> <span class="nf">groovyTemplate</span><span class="o">(</span><span class="s2">&#34;contacts/show.html&#34;</span><span class="o">,</span> <span class="nl">contact:</span><span class="n">contact</span><span class="o">)</span>
+  <span class="o">}</span></code></pre></div>
 <p>Así mismo agregamos la página que va a visualizar los datos del contacto dentro de la carpeta <em>contacts</em>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Ratpack: Show contact<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#008000;font-weight:bold">html</span>&gt;
-  &lt;<span style="color:#008000;font-weight:bold">head</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">title</span>&gt;Ratpack: Show contact&lt;/<span style="color:#008000;font-weight:bold">title</span>&gt;
-  &lt;/<span style="color:#008000;font-weight:bold">head</span>&gt;
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Show contact<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
 
-  &lt;<span style="color:#008000;font-weight:bold">body</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">section</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">h1</span>&gt;Show contact&lt;/<span style="color:#008000;font-weight:bold">h1</span>&gt;
-    &lt;/<span style="color:#008000;font-weight:bold">section</span>&gt;
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;name&#34;</span><span class="p">/&gt;</span>Name : <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span> ${model.contact.name} <span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;name&#34;</span>/&gt;Name : &lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">span</span>&gt;&lt;<span style="color:#008000;font-weight:bold">strong</span>&gt; ${model.contact.name} &lt;/<span style="color:#008000;font-weight:bold">strong</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">span</span>&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;lastName&#34;</span><span class="p">/&gt;</span>Last name : <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span> ${model.contact.lastName} <span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-      &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;lastName&#34;</span>/&gt;Last name : &lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">span</span>&gt;&lt;<span style="color:#008000;font-weight:bold">strong</span>&gt; ${model.contact.lastName} &lt;/<span style="color:#008000;font-weight:bold">strong</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">span</span>&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;email&#34;</span><span class="p">/&gt;</span>Email : <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span> ${model.contact.email} <span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-      &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;email&#34;</span>/&gt;Email : &lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">span</span>&gt;&lt;<span style="color:#008000;font-weight:bold">strong</span>&gt; ${model.contact.email} &lt;/<span style="color:#008000;font-weight:bold">strong</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">span</span>&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;nickname&#34;</span><span class="p">/&gt;</span>Nickname : <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span> ${model.contact.nickname} <span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-      &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;nickname&#34;</span>/&gt;Nickname : &lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">span</span>&gt;&lt;<span style="color:#008000;font-weight:bold">strong</span>&gt; ${model.contact.nickname} &lt;/<span style="color:#008000;font-weight:bold">strong</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">span</span>&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;phone&#34;</span><span class="p">/&gt;</span>Phone : <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span> ${model.contact.phone} <span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-      &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;phone&#34;</span>/&gt;Phone : &lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">span</span>&gt;&lt;<span style="color:#008000;font-weight:bold">strong</span>&gt; ${model.contact.phone} &lt;/<span style="color:#008000;font-weight:bold">strong</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">span</span>&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
-    &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/&#34;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;contacts/new&#34;</span><span class="p">&gt;</span>New contact<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#008000;font-weight:bold">ul</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">li</span>&gt; &lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;/&#34;</span>&gt;Home&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt; &lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">li</span>&gt; &lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;contacts/new&#34;</span>&gt;New contact&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt; &lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
-    &lt;/<span style="color:#008000;font-weight:bold">ul</span>&gt;
-
-  &lt;/<span style="color:#008000;font-weight:bold">body</span>&gt;
-&lt;/<span style="color:#008000;font-weight:bold">html</span>&gt;</code></pre></div>
-
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
 <p>Ahora vamos a visualizar nuestra lista de contactos y para ello agregaremos un nuevo <em>handler</em> y un nuevo elemento llamado <em>byMethod</em>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy">  <span class="n">handler</span><span class="o">(</span><span class="s2">&#34;contacts&#34;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">byMethod</span> <span class="o">{</span>
+      <span class="n">get</span> <span class="o">{</span>
+        <span class="n">render</span> <span class="nf">groovyTemplate</span><span class="o">(</span><span class="s2">&#34;contacts/list.html&#34;</span><span class="o">,</span> <span class="nl">contacts:</span> <span class="n">contacts</span><span class="o">)</span>
+      <span class="o">}</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">  handler<span style="color:#666">(</span><span style="color:#b44">&#34;contacts&#34;</span><span style="color:#666">)</span> <span style="color:#666">{</span>
-    byMethod <span style="color:#666">{</span>
-      get <span style="color:#666">{</span>
-        render <span style="color:#00a000">groovyTemplate</span><span style="color:#666">(</span><span style="color:#b44">&#34;contacts/list.html&#34;</span><span style="color:#666">,</span> <span style="color:#a0a000">contacts:</span> contacts<span style="color:#666">)</span>
-      <span style="color:#666">}</span>
-
-      post <span style="color:#666">{</span>
-        Form form <span style="color:#666">=</span> context<span style="color:#666">.</span><span style="color:#b44">parse</span><span style="color:#666">(</span>Form<span style="color:#666">)</span>
-        <span style="color:#0b0;font-weight:bold">def</span> contact <span style="color:#666">=</span> <span style="color:#666">[:]</span>
-        contact<span style="color:#666">.</span><span style="color:#b44">id</span> <span style="color:#666">=</span> contacts <span style="color:#666">?</span> contacts<span style="color:#666">.</span><span style="color:#b44">id</span><span style="color:#666">.</span><span style="color:#b44">max</span><span style="color:#666">()</span> <span style="color:#666">+</span> <span style="color:#666">1</span> <span style="color:#666">:</span> <span style="color:#666">1</span>
-        contact<span style="color:#666">.</span><span style="color:#b44">name</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">name</span>
-        contact<span style="color:#666">.</span><span style="color:#b44">lastName</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">lastName</span>
-        contact<span style="color:#666">.</span><span style="color:#b44">email</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">email</span>
-        contact<span style="color:#666">.</span><span style="color:#b44">nickname</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">nickname</span>
-        contact<span style="color:#666">.</span><span style="color:#b44">phone</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">phone</span>
-        contacts <span style="color:#666">&lt;&lt;</span> contact
-        redirect <span style="color:#b44">&#34;/contacts/${contact.id}&#34;</span>
-      <span style="color:#666">}</span>
-    <span style="color:#666">}</span>
-  <span style="color:#666">}</span></code></pre></div>
-
+      <span class="n">post</span> <span class="o">{</span>
+        <span class="n">Form</span> <span class="n">form</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">Form</span><span class="o">)</span>
+        <span class="kt">def</span> <span class="n">contact</span> <span class="o">=</span> <span class="o">[:]</span>
+        <span class="n">contact</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">contacts</span> <span class="o">?</span> <span class="n">contacts</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">max</span><span class="o">()</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">1</span>
+        <span class="n">contact</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">name</span>
+        <span class="n">contact</span><span class="o">.</span><span class="na">lastName</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">lastName</span>
+        <span class="n">contact</span><span class="o">.</span><span class="na">email</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">email</span>
+        <span class="n">contact</span><span class="o">.</span><span class="na">nickname</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">nickname</span>
+        <span class="n">contact</span><span class="o">.</span><span class="na">phone</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">phone</span>
+        <span class="n">contacts</span> <span class="o">&lt;&lt;</span> <span class="n">contact</span>
+        <span class="n">redirect</span> <span class="s2">&#34;/contacts/${contact.id}&#34;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span></code></pre></div>
 <p>Lo que hará el <em>handler</em> es manejar la url &ldquo;contacts&rdquo; y delegarla por al método por el cual se haya realizado la petición en el caso de GET visualizará la lista de contactos pero si es por POST agregará los datos del contacto y después de agregarse se visualizará la información de dicho contacto. También agregaremos un link a la lista de contactos para poder visualizar cada uno de los datos de manera individual esto es por si se tiene información extra que no se muestre en el detalle general de la lista de contactos.</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Ratpack: Contact list<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#008000;font-weight:bold">html</span>&gt;
-  &lt;<span style="color:#008000;font-weight:bold">head</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">title</span>&gt;Ratpack: Contact list&lt;/<span style="color:#008000;font-weight:bold">title</span>&gt;
-  &lt;/<span style="color:#008000;font-weight:bold">head</span>&gt;
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Contact list<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
 
-  &lt;<span style="color:#008000;font-weight:bold">body</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">section</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">h1</span>&gt;Contact list&lt;/<span style="color:#008000;font-weight:bold">h1</span>&gt;
-    &lt;/<span style="color:#008000;font-weight:bold">section</span>&gt;
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">table</span> <span class="na">border</span><span class="o">=</span><span class="s">&#34;1&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Last name<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Phone<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Email<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Nickname<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Show<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+          <span class="err">&lt;</span>% model.contacts.each { %&gt;
+            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>${it.name}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>${it.lastName}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>${it.phone}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>${it.email}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>${it.nickname}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/contacts/${it.id}&#34;</span><span class="p">&gt;</span>Show<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+          <span class="err">&lt;</span>% } %&gt;
+        <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">table</span> <span style="color:#b44">border</span><span style="color:#666">=</span><span style="color:#b44">&#34;1&#34;</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">thead</span>&gt;
-          &lt;<span style="color:#008000;font-weight:bold">tr</span>&gt;
-            &lt;<span style="color:#008000;font-weight:bold">th</span>&gt;Name&lt;/<span style="color:#008000;font-weight:bold">th</span>&gt;
-            &lt;<span style="color:#008000;font-weight:bold">th</span>&gt;Last name&lt;/<span style="color:#008000;font-weight:bold">th</span>&gt;
-            &lt;<span style="color:#008000;font-weight:bold">th</span>&gt;Phone&lt;/<span style="color:#008000;font-weight:bold">th</span>&gt;
-            &lt;<span style="color:#008000;font-weight:bold">th</span>&gt;Email&lt;/<span style="color:#008000;font-weight:bold">th</span>&gt;
-            &lt;<span style="color:#008000;font-weight:bold">th</span>&gt;Nickname&lt;/<span style="color:#008000;font-weight:bold">th</span>&gt;
-            &lt;<span style="color:#008000;font-weight:bold">th</span>&gt;Show&lt;/<span style="color:#008000;font-weight:bold">th</span>&gt;
-          &lt;/<span style="color:#008000;font-weight:bold">tr</span>&gt;
-        &lt;/<span style="color:#008000;font-weight:bold">thead</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">tbody</span>&gt;
-          <span style="">&lt;</span>% model.contacts.each { %&gt;
-            &lt;<span style="color:#008000;font-weight:bold">tr</span>&gt;
-              &lt;<span style="color:#008000;font-weight:bold">td</span>&gt;${it.name}&lt;/<span style="color:#008000;font-weight:bold">td</span>&gt;
-              &lt;<span style="color:#008000;font-weight:bold">td</span>&gt;${it.lastName}&lt;/<span style="color:#008000;font-weight:bold">td</span>&gt;
-              &lt;<span style="color:#008000;font-weight:bold">td</span>&gt;${it.phone}&lt;/<span style="color:#008000;font-weight:bold">td</span>&gt;
-              &lt;<span style="color:#008000;font-weight:bold">td</span>&gt;${it.email}&lt;/<span style="color:#008000;font-weight:bold">td</span>&gt;
-              &lt;<span style="color:#008000;font-weight:bold">td</span>&gt;${it.nickname}&lt;/<span style="color:#008000;font-weight:bold">td</span>&gt;
-              &lt;<span style="color:#008000;font-weight:bold">td</span>&gt; &lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;/contacts/${it.id}&#34;</span>&gt;Show&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt; &lt;/<span style="color:#008000;font-weight:bold">td</span>&gt;
-            &lt;/<span style="color:#008000;font-weight:bold">tr</span>&gt;
-          <span style="">&lt;</span>% } %&gt;
-        &lt;/<span style="color:#008000;font-weight:bold">tbody</span>&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">table</span>&gt;
-    &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/&#34;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;contacts/new&#34;</span><span class="p">&gt;</span>New contact<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#008000;font-weight:bold">ul</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">li</span>&gt; &lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;/&#34;</span>&gt;Home&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt; &lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">li</span>&gt; &lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;contacts/new&#34;</span>&gt;New contact&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt; &lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
-    &lt;/<span style="color:#008000;font-weight:bold">ul</span>&gt;
-
-  &lt;/<span style="color:#008000;font-weight:bold">body</span>&gt;
-&lt;/<span style="color:#008000;font-weight:bold">html</span>&gt;</code></pre></div>
-
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
 <p>Ya nos falta poco para poder tener un <em>CRUD</em> completo, solo nos falta eliminar y actualizar (casi nada XD). Así que para ello vamos a agregar un <em>handler</em> más y anidar un <em>byMethod</em> como lo hicimos con el POST de <em>contacts</em>. Para ello hacemos lo siguiente:</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy">  <span class="n">handler</span><span class="o">(</span><span class="s2">&#34;contacts/:id&#34;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">byMethod</span> <span class="o">{</span>
+      <span class="n">get</span> <span class="o">{</span>
+        <span class="kt">def</span> <span class="n">id</span> <span class="o">=</span> <span class="n">pathTokens</span><span class="o">.</span><span class="na">asLong</span><span class="o">(</span><span class="s1">&#39;id&#39;</span><span class="o">)</span>
+        <span class="kt">def</span> <span class="n">contact</span> <span class="o">=</span> <span class="n">contacts</span><span class="o">.</span><span class="na">find</span> <span class="o">{</span>
+          <span class="n">it</span><span class="o">.</span><span class="na">id</span> <span class="o">==</span> <span class="n">id</span>
+        <span class="o">}</span>
+        <span class="n">render</span> <span class="nf">groovyTemplate</span><span class="o">(</span><span class="s2">&#34;contacts/show.html&#34;</span><span class="o">,</span> <span class="nl">contact:</span><span class="n">contact</span><span class="o">)</span>
+      <span class="o">}</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">  handler<span style="color:#666">(</span><span style="color:#b44">&#34;contacts/:id&#34;</span><span style="color:#666">)</span> <span style="color:#666">{</span>
-    byMethod <span style="color:#666">{</span>
-      get <span style="color:#666">{</span>
-        <span style="color:#0b0;font-weight:bold">def</span> id <span style="color:#666">=</span> pathTokens<span style="color:#666">.</span><span style="color:#b44">asLong</span><span style="color:#666">(</span><span style="color:#b44">&#39;id&#39;</span><span style="color:#666">)</span>
-        <span style="color:#0b0;font-weight:bold">def</span> contact <span style="color:#666">=</span> contacts<span style="color:#666">.</span><span style="color:#b44">find</span> <span style="color:#666">{</span>
-          it<span style="color:#666">.</span><span style="color:#b44">id</span> <span style="color:#666">==</span> id
-        <span style="color:#666">}</span>
-        render <span style="color:#00a000">groovyTemplate</span><span style="color:#666">(</span><span style="color:#b44">&#34;contacts/show.html&#34;</span><span style="color:#666">,</span> <span style="color:#a0a000">contact:</span>contact<span style="color:#666">)</span>
-      <span style="color:#666">}</span>
-
-        delete <span style="color:#666">{</span>
-          <span style="color:#0b0;font-weight:bold">def</span> id <span style="color:#666">=</span> pathTokens<span style="color:#666">.</span><span style="color:#b44">asLong</span><span style="color:#666">(</span><span style="color:#b44">&#39;id&#39;</span><span style="color:#666">)</span>
-          contacts <span style="color:#666">=</span> contacts<span style="color:#666">.</span><span style="color:#b44">findAll</span> <span style="color:#666">{</span>
-            it<span style="color:#666">.</span><span style="color:#b44">id</span> <span style="color:#666">!=</span> id
-          <span style="color:#666">}</span>
-          render <span style="color:#b44">&#34;ok&#34;</span>
-        <span style="color:#666">}</span>
-    <span style="color:#666">}</span>
-  <span style="color:#666">}</span></code></pre></div>
-
-<p>Ahora una pregunta, ¿Cómo hacemos para llamar a ese método desde la página? bueno para hacer eso vamos a requerir a jQuery y para ello ocuparemos <a href="http://bower.io/]">Bower</a> y para instalar jquery usamos el siguiente comando: <code>bower install jquery</code>.</p>
-
+        <span class="n">delete</span> <span class="o">{</span>
+          <span class="kt">def</span> <span class="n">id</span> <span class="o">=</span> <span class="n">pathTokens</span><span class="o">.</span><span class="na">asLong</span><span class="o">(</span><span class="s1">&#39;id&#39;</span><span class="o">)</span>
+          <span class="n">contacts</span> <span class="o">=</span> <span class="n">contacts</span><span class="o">.</span><span class="na">findAll</span> <span class="o">{</span>
+            <span class="n">it</span><span class="o">.</span><span class="na">id</span> <span class="o">!=</span> <span class="n">id</span>
+          <span class="o">}</span>
+          <span class="n">render</span> <span class="s2">&#34;ok&#34;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span></code></pre></div>
+<p>Ahora una pregunta, ¿Cómo hacemos para llamar a ese método desde la página? bueno para hacer eso vamos a requerir a jQuery y para ello ocuparemos <a href="http://bower.io/%5D">Bower</a> y para instalar jquery usamos el siguiente comando: <code>bower install jquery</code>.</p>
 <p>Esto nos creará una carpeta llamada <em>bower_components</em> que de momento moveremos a la carpeta de <strong>src/ratpack/public/lib</strong> para tenerla disponible en la aplicación:  <code>mv bower_components src/ratpack/public/lib/</code>.</p>
-
 <p>Una vez hecho procedemos a incluir el script en la app en la lista de contactos y agregamos un archivo más que es el que se encargará de eliminar el elemento.</p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#008000;font-weight:bold">script</span> <span style="color:#b44">src</span><span style="color:#666">=</span><span style="color:#b44">&#34;lib/bower_components/jquery/dist/jquery.js&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">script</span>&gt;
-  &lt;<span style="color:#008000;font-weight:bold">script</span> <span style="color:#b44">src</span><span style="color:#666">=</span><span style="color:#b44">&#34;scripts/delete.js&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">script</span>&gt;</code></pre></div>
-
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;lib/bower_components/jquery/dist/jquery.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;scripts/delete.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div>
 <p>El código de eliminar es relativamente sencillo ya que lo que vamos a hacer es que cada elemento con la clase delete vamos a añadir el evento click y vamos a realizar la llamada al server con los datos del href.</p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  $(<span style="color:#a2f;font-weight:bold">function</span>() {
-    $(<span style="color:#b44">&#34;.delete&#34;</span>).click(<span style="color:#a2f;font-weight:bold">function</span>(event) {
-      event.preventDefault();
-      <span style="color:#a2f;font-weight:bold">var</span> url <span style="color:#666">=</span> $(event.target).attr(<span style="color:#b44">&#39;href&#39;</span>);
-      $.ajax({
-        type<span style="color:#666">:</span> <span style="color:#b44">&#34;DELETE&#34;</span>,
-        url<span style="color:#666">:</span> url,
-      }).success(<span style="color:#a2f;font-weight:bold">function</span>(data) {
-        location.reload();
-      });
-    });
-  });
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript">  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;.delete&#34;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+      <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">);</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;DELETE&#34;</span><span class="p">,</span>
+        <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span>
+      <span class="p">}).</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
 </code></pre></div>
-
 <p>Una vez realizado esto podremos ver como nuestros datos cambian al eliminar un elemento de la lista de contactos. Veamos ahora como editar un elemento. Para la edición vamos a hacerlo de la manera más fácil que podamos esto es agregaremos en el <em>byMethod</em> anterior el método POST, agregamos otro GET más para visualizar la pantalla de edición y actualizaremos los datos de ese elemento, para ello requerimos crear una pantalla nueva y agregarla a la navegación:</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy">  <span class="n">get</span><span class="o">(</span><span class="s2">&#34;contacts/:id/edit&#34;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">def</span> <span class="n">id</span> <span class="o">=</span> <span class="n">pathTokens</span><span class="o">.</span><span class="na">asLong</span><span class="o">(</span><span class="s1">&#39;id&#39;</span><span class="o">)</span>
+    <span class="kt">def</span> <span class="n">contact</span> <span class="o">=</span> <span class="n">contacts</span><span class="o">.</span><span class="na">find</span> <span class="o">{</span>
+      <span class="n">it</span><span class="o">.</span><span class="na">id</span> <span class="o">==</span> <span class="n">id</span>
+    <span class="o">}</span>
+    <span class="n">render</span> <span class="nf">groovyTemplate</span><span class="o">(</span><span class="s2">&#34;contacts/edit.html&#34;</span><span class="o">,</span> <span class="nl">title:</span><span class="s2">&#34;Editing contact&#34;</span><span class="o">,</span> <span class="nl">contact:</span><span class="n">contact</span><span class="o">)</span>
+  <span class="o">}</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">  get<span style="color:#666">(</span><span style="color:#b44">&#34;contacts/:id/edit&#34;</span><span style="color:#666">)</span> <span style="color:#666">{</span>
-    <span style="color:#0b0;font-weight:bold">def</span> id <span style="color:#666">=</span> pathTokens<span style="color:#666">.</span><span style="color:#b44">asLong</span><span style="color:#666">(</span><span style="color:#b44">&#39;id&#39;</span><span style="color:#666">)</span>
-    <span style="color:#0b0;font-weight:bold">def</span> contact <span style="color:#666">=</span> contacts<span style="color:#666">.</span><span style="color:#b44">find</span> <span style="color:#666">{</span>
-      it<span style="color:#666">.</span><span style="color:#b44">id</span> <span style="color:#666">==</span> id
-    <span style="color:#666">}</span>
-    render <span style="color:#00a000">groovyTemplate</span><span style="color:#666">(</span><span style="color:#b44">&#34;contacts/edit.html&#34;</span><span style="color:#666">,</span> <span style="color:#a0a000">title:</span><span style="color:#b44">&#34;Editing contact&#34;</span><span style="color:#666">,</span> <span style="color:#a0a000">contact:</span>contact<span style="color:#666">)</span>
-  <span style="color:#666">}</span>
+  <span class="n">handler</span><span class="o">(</span><span class="s2">&#34;contacts/:id&#34;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">byMethod</span> <span class="o">{</span>
+      <span class="n">post</span> <span class="o">{</span>
+        <span class="kt">def</span> <span class="n">id</span> <span class="o">=</span> <span class="n">pathTokens</span><span class="o">.</span><span class="na">asLong</span><span class="o">(</span><span class="s1">&#39;id&#39;</span><span class="o">)</span>
+        <span class="kt">def</span> <span class="n">contact</span> <span class="o">=</span> <span class="n">contacts</span><span class="o">.</span><span class="na">find</span> <span class="o">{</span>
+          <span class="n">it</span><span class="o">.</span><span class="na">id</span> <span class="o">==</span> <span class="n">id</span>
+        <span class="o">}</span>
 
-  handler<span style="color:#666">(</span><span style="color:#b44">&#34;contacts/:id&#34;</span><span style="color:#666">)</span> <span style="color:#666">{</span>
-    byMethod <span style="color:#666">{</span>
-      post <span style="color:#666">{</span>
-        <span style="color:#0b0;font-weight:bold">def</span> id <span style="color:#666">=</span> pathTokens<span style="color:#666">.</span><span style="color:#b44">asLong</span><span style="color:#666">(</span><span style="color:#b44">&#39;id&#39;</span><span style="color:#666">)</span>
-        <span style="color:#0b0;font-weight:bold">def</span> contact <span style="color:#666">=</span> contacts<span style="color:#666">.</span><span style="color:#b44">find</span> <span style="color:#666">{</span>
-          it<span style="color:#666">.</span><span style="color:#b44">id</span> <span style="color:#666">==</span> id
-        <span style="color:#666">}</span>
+        <span class="n">Form</span> <span class="n">form</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">Form</span><span class="o">)</span>
+        <span class="n">contact</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">name</span>
+        <span class="n">contact</span><span class="o">.</span><span class="na">lastName</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">lastName</span>
+        <span class="n">contact</span><span class="o">.</span><span class="na">email</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">email</span>
+        <span class="n">contact</span><span class="o">.</span><span class="na">nickname</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">nickname</span>
+        <span class="n">contact</span><span class="o">.</span><span class="na">phone</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="na">phone</span>
 
-        Form form <span style="color:#666">=</span> context<span style="color:#666">.</span><span style="color:#b44">parse</span><span style="color:#666">(</span>Form<span style="color:#666">)</span>
-        contact<span style="color:#666">.</span><span style="color:#b44">name</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">name</span>
-        contact<span style="color:#666">.</span><span style="color:#b44">lastName</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">lastName</span>
-        contact<span style="color:#666">.</span><span style="color:#b44">email</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">email</span>
-        contact<span style="color:#666">.</span><span style="color:#b44">nickname</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">nickname</span>
-        contact<span style="color:#666">.</span><span style="color:#b44">phone</span> <span style="color:#666">=</span> form<span style="color:#666">.</span><span style="color:#b44">phone</span>
+        <span class="n">render</span> <span class="nf">groovyTemplate</span><span class="o">(</span><span class="s2">&#34;contacts/show.html&#34;</span><span class="o">,</span> <span class="nl">contact:</span><span class="n">contact</span><span class="o">)</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">  <span class="cp">&lt;!doctype html&gt;</span>
+  <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=edge,chrome=1&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 
-        render <span style="color:#00a000">groovyTemplate</span><span style="color:#666">(</span><span style="color:#b44">&#34;contacts/show.html&#34;</span><span style="color:#666">,</span> <span style="color:#a0a000">contact:</span>contact<span style="color:#666">)</span>
-      <span style="color:#666">}</span>
-    <span style="color:#666">}</span>
-  <span style="color:#666">}</span></code></pre></div>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>${model.title}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  <span style="color:#080">&lt;!doctype html&gt;</span>
-  &lt;<span style="color:#008000;font-weight:bold">html</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">head</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">meta</span> <span style="color:#b44">charset</span><span style="color:#666">=</span><span style="color:#b44">&#34;utf-8&#34;</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">meta</span> <span style="color:#b44">http-equiv</span><span style="color:#666">=</span><span style="color:#b44">&#34;X-UA-Compatible&#34;</span> <span style="color:#b44">content</span><span style="color:#666">=</span><span style="color:#b44">&#34;IE=edge,chrome=1&#34;</span>&gt;
-    &lt;/<span style="color:#008000;font-weight:bold">head</span>&gt;
+      <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;/contacts/${model.contact.id}&#34;</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;post&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;name&#34;</span><span class="p">/&gt;</span>Name<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;name&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${model.contact.name}&#34;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#008000;font-weight:bold">body</span>&gt;
-      &lt;<span style="color:#008000;font-weight:bold">section</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">h1</span>&gt;${model.title}&lt;/<span style="color:#008000;font-weight:bold">h1</span>&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">section</span>&gt;
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;lastName&#34;</span><span class="p">/&gt;</span>Last name<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;lastName&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${model.contact.lastName}&#34;</span><span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-      &lt;<span style="color:#008000;font-weight:bold">form</span> <span style="color:#b44">action</span><span style="color:#666">=</span><span style="color:#b44">&#34;/contacts/${model.contact.id}&#34;</span> <span style="color:#b44">method</span><span style="color:#666">=</span><span style="color:#b44">&#34;post&#34;</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-          &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;name&#34;</span>/&gt;Name&lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-          &lt;<span style="color:#008000;font-weight:bold">input</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;text&#34;</span> <span style="color:#b44">name</span><span style="color:#666">=</span><span style="color:#b44">&#34;name&#34;</span> <span style="color:#b44">value</span><span style="color:#666">=</span><span style="color:#b44">&#34;${model.contact.name}&#34;</span> /&gt;
-        &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;email&#34;</span><span class="p">/&gt;</span>Email<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;email&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${model.contact.email}&#34;</span><span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-        &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-          &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;lastName&#34;</span>/&gt;Last name&lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-          &lt;<span style="color:#008000;font-weight:bold">input</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;text&#34;</span> <span style="color:#b44">name</span><span style="color:#666">=</span><span style="color:#b44">&#34;lastName&#34;</span> <span style="color:#b44">value</span><span style="color:#666">=</span><span style="color:#b44">&#34;${model.contact.lastName}&#34;</span>/&gt;
-        &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;nickname&#34;</span><span class="p">/&gt;</span>Nickname<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;nickname&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${model.contact.nickname}&#34;</span><span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-        &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-          &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;email&#34;</span>/&gt;Email&lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-          &lt;<span style="color:#008000;font-weight:bold">input</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;text&#34;</span> <span style="color:#b44">name</span><span style="color:#666">=</span><span style="color:#b44">&#34;email&#34;</span> <span style="color:#b44">value</span><span style="color:#666">=</span><span style="color:#b44">&#34;${model.contact.email}&#34;</span>/&gt;
-        &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;phone&#34;</span><span class="p">/&gt;</span>Phone<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;phone&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${model.contact.phone}&#34;</span><span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-        &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-          &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;nickname&#34;</span>/&gt;Nickname&lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-          &lt;<span style="color:#008000;font-weight:bold">input</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;text&#34;</span> <span style="color:#b44">name</span><span style="color:#666">=</span><span style="color:#b44">&#34;nickname&#34;</span> <span style="color:#b44">value</span><span style="color:#666">=</span><span style="color:#b44">&#34;${model.contact.nickname}&#34;</span>/&gt;
-        &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span><span class="p">&gt;</span> Update <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 
-        &lt;<span style="color:#008000;font-weight:bold">div</span>&gt;
-          &lt;<span style="color:#008000;font-weight:bold">label</span> <span style="color:#b44">for</span><span style="color:#666">=</span><span style="color:#b44">&#34;phone&#34;</span>/&gt;Phone&lt;/<span style="color:#008000;font-weight:bold">label</span>&gt;
-          &lt;<span style="color:#008000;font-weight:bold">input</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;text&#34;</span> <span style="color:#b44">name</span><span style="color:#666">=</span><span style="color:#b44">&#34;phone&#34;</span> <span style="color:#b44">value</span><span style="color:#666">=</span><span style="color:#b44">&#34;${model.contact.phone}&#34;</span>/&gt;
-        &lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;
+      <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/&#34;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/contacts&#34;</span><span class="p">&gt;</span>Contact list<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/contacts/new&#34;</span><span class="p">&gt;</span>New contact<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 
-        &lt;<span style="color:#008000;font-weight:bold">button</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;submit&#34;</span>&gt; Update &lt;/<span style="color:#008000;font-weight:bold">button</span>&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">form</span>&gt;
-
-      &lt;<span style="color:#008000;font-weight:bold">ul</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">li</span>&gt; &lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;/&#34;</span>&gt;Home&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt; &lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">li</span>&gt; &lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;/contacts&#34;</span>&gt;Contact list&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt; &lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
-        &lt;<span style="color:#008000;font-weight:bold">li</span>&gt; &lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;/contacts/new&#34;</span>&gt;New contact&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt; &lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
-      &lt;/<span style="color:#008000;font-weight:bold">ul</span>&gt;
-
-      &lt;<span style="color:#008000;font-weight:bold">footer</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;site-footer&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">footer</span>&gt;
-    &lt;/<span style="color:#008000;font-weight:bold">body</span>&gt;
-  &lt;/<span style="color:#008000;font-weight:bold">html</span>&gt;</code></pre></div>
-
+      <span class="p">&lt;</span><span class="nt">footer</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;site-footer&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
 <p>Y de esta manera tenemos un pequeño CRUD con llamadas normales y un poco de jquery. En POST posteriores vamos a tomar este código y vamos a hacerle algunas mejoras. Para empezar haremos uso de los groovyTemplates como tal y ajustaremos esto a que se maneja más por REST. Espero les haya gustado y cualquier duda o comentario ya saben donde encontrarnos.</p>
-
 <p><strong>Saludos. GLHF.</strong></p>
 
-	</article>
-</main>
 
-<div id="bottom-nav" class="text-center center-block">
-	<a href=" http://blog.makingdevs.com/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
-</div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://blog.makingdevs.com/2014/07/29/bienvenido-a-makingdevs/" data-toggle="tooltip" data-placement="top" title="Bienvenido a MakingDevs">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://blog.makingdevs.com/2014/08/26/lectura-de-correo-con-apache-camel-y-groovy/" data-toggle="tooltip" data-placement="top" title="Lectura de correo con Apache Camel y Groovy">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
 
 
-  <div id="disqus_thread"></div>
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -591,34 +756,123 @@ ratpack <span style="color:#666">{</span>
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
 
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+    </div>
   </div>
-  
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+</div>
 
-    ga('create', 'UA-42842883-2', 'auto');
-    ga('send', 'pageview');
-    window.baseURL = "http:\/\/blog.makingdevs.com\/";
-  </script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-  
-  
-  <script src="http://blog.makingdevs.com//js/App.js"></script>
-  
-</body>
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:info@makingdevs.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/makingdevs" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/makingdevs" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/makingdevs" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/makingdevs" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/makingdevs" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2019
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.74.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="http://blog.makingdevs.com/js/katex.min.js"></script>
+<script src="http://blog.makingdevs.com/js/auto-render.min.js"></script>
+<script src="http://blog.makingdevs.com/js/jquery.min.js"></script>
+<script src="http://blog.makingdevs.com/js/bootstrap.min.js"></script>
+
+<script src="http://blog.makingdevs.com/js/main.js"></script>
+<script src="http://blog.makingdevs.com/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="http://blog.makingdevs.com/js/photoswipe.min.js"></script>
+<script src="http://blog.makingdevs.com/js/photoswipe-ui-default.min.js"></script><script src="http://blog.makingdevs.com/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
 </html>
+

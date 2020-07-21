@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Blog de Making Devs</title>
@@ -6,6 +6,8 @@
     <description>Recent content in Tags on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>info@makingdevs.com</managingEditor>
+    <webMaster>info@makingdevs.com</webMaster>
     <lastBuildDate>Sat, 20 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.makingdevs.com/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +17,7 @@
       <title>developer tools</title>
       <link>http://blog.makingdevs.com/tags/developer-tools/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/developer-tools/</guid>
       <description></description>
     </item>
@@ -24,7 +26,7 @@
       <title>sessions</title>
       <link>http://blog.makingdevs.com/tags/sessions/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/sessions/</guid>
       <description></description>
     </item>
@@ -33,35 +35,17 @@
       <title>vim</title>
       <link>http://blog.makingdevs.com/tags/vim/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/vim/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>config</title>
-      <link>http://blog.makingdevs.com/tags/config/</link>
-      <pubDate>Tue, 04 Sep 2018 19:22:54 -0500</pubDate>
-      
-      <guid>http://blog.makingdevs.com/tags/config/</guid>
       <description></description>
     </item>
     
     <item>
       <title>elixir</title>
       <link>http://blog.makingdevs.com/tags/elixir/</link>
-      <pubDate>Tue, 04 Sep 2018 19:22:54 -0500</pubDate>
-      
+      <pubDate>Sun, 17 Jun 2018 16:34:54 -0500</pubDate>
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/elixir/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>test</title>
-      <link>http://blog.makingdevs.com/tags/test/</link>
-      <pubDate>Tue, 04 Sep 2018 19:22:54 -0500</pubDate>
-      
-      <guid>http://blog.makingdevs.com/tags/test/</guid>
       <description></description>
     </item>
     
@@ -69,7 +53,7 @@
       <title>nerves</title>
       <link>http://blog.makingdevs.com/tags/nerves/</link>
       <pubDate>Sun, 17 Jun 2018 16:34:54 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/nerves/</guid>
       <description></description>
     </item>
@@ -78,7 +62,7 @@
       <title>phoenix</title>
       <link>http://blog.makingdevs.com/tags/phoenix/</link>
       <pubDate>Sun, 17 Jun 2018 16:34:54 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/phoenix/</guid>
       <description></description>
     </item>
@@ -87,7 +71,7 @@
       <title>phoenixframework</title>
       <link>http://blog.makingdevs.com/tags/phoenixframework/</link>
       <pubDate>Sun, 17 Jun 2018 16:34:54 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/phoenixframework/</guid>
       <description></description>
     </item>
@@ -96,7 +80,7 @@
       <title>operations</title>
       <link>http://blog.makingdevs.com/tags/operations/</link>
       <pubDate>Tue, 04 Jul 2017 22:06:52 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/operations/</guid>
       <description></description>
     </item>
@@ -105,7 +89,7 @@
       <title>public key</title>
       <link>http://blog.makingdevs.com/tags/public-key/</link>
       <pubDate>Tue, 04 Jul 2017 22:06:52 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/public-key/</guid>
       <description></description>
     </item>
@@ -114,7 +98,7 @@
       <title>vagrant</title>
       <link>http://blog.makingdevs.com/tags/vagrant/</link>
       <pubDate>Tue, 04 Jul 2017 22:06:52 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/vagrant/</guid>
       <description></description>
     </item>
@@ -123,7 +107,7 @@
       <title>virtual box</title>
       <link>http://blog.makingdevs.com/tags/virtual-box/</link>
       <pubDate>Tue, 04 Jul 2017 22:06:52 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/virtual-box/</guid>
       <description></description>
     </item>
@@ -132,7 +116,7 @@
       <title>math</title>
       <link>http://blog.makingdevs.com/tags/math/</link>
       <pubDate>Wed, 11 Jan 2017 13:11:46 -0600</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/math/</guid>
       <description></description>
     </item>
@@ -141,7 +125,7 @@
       <title>pattern matching</title>
       <link>http://blog.makingdevs.com/tags/pattern-matching/</link>
       <pubDate>Wed, 11 Jan 2017 13:11:46 -0600</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/pattern-matching/</guid>
       <description></description>
     </item>
@@ -150,7 +134,7 @@
       <title>capistrano</title>
       <link>http://blog.makingdevs.com/tags/capistrano/</link>
       <pubDate>Wed, 30 Nov 2016 16:46:05 -0600</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/capistrano/</guid>
       <description></description>
     </item>
@@ -159,7 +143,7 @@
       <title>deploy</title>
       <link>http://blog.makingdevs.com/tags/deploy/</link>
       <pubDate>Wed, 30 Nov 2016 16:46:05 -0600</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/deploy/</guid>
       <description></description>
     </item>
@@ -168,7 +152,7 @@
       <title>environment</title>
       <link>http://blog.makingdevs.com/tags/environment/</link>
       <pubDate>Wed, 30 Nov 2016 16:46:05 -0600</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/environment/</guid>
       <description></description>
     </item>
@@ -177,44 +161,8 @@
       <title>ruby</title>
       <link>http://blog.makingdevs.com/tags/ruby/</link>
       <pubDate>Wed, 30 Nov 2016 16:46:05 -0600</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/ruby/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>geb</title>
-      <link>http://blog.makingdevs.com/tags/geb/</link>
-      <pubDate>Thu, 22 Sep 2016 15:06:05 -0500</pubDate>
-      
-      <guid>http://blog.makingdevs.com/tags/geb/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>groovy</title>
-      <link>http://blog.makingdevs.com/tags/groovy/</link>
-      <pubDate>Thu, 22 Sep 2016 15:06:05 -0500</pubDate>
-      
-      <guid>http://blog.makingdevs.com/tags/groovy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>spock</title>
-      <link>http://blog.makingdevs.com/tags/spock/</link>
-      <pubDate>Thu, 22 Sep 2016 15:06:05 -0500</pubDate>
-      
-      <guid>http://blog.makingdevs.com/tags/spock/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>testing</title>
-      <link>http://blog.makingdevs.com/tags/testing/</link>
-      <pubDate>Thu, 22 Sep 2016 15:06:05 -0500</pubDate>
-      
-      <guid>http://blog.makingdevs.com/tags/testing/</guid>
       <description></description>
     </item>
     
@@ -222,7 +170,7 @@
       <title>ecto</title>
       <link>http://blog.makingdevs.com/tags/ecto/</link>
       <pubDate>Tue, 20 Sep 2016 19:35:08 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/ecto/</guid>
       <description></description>
     </item>
@@ -231,7 +179,7 @@
       <title>elm</title>
       <link>http://blog.makingdevs.com/tags/elm/</link>
       <pubDate>Sat, 10 Sep 2016 11:22:01 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/elm/</guid>
       <description></description>
     </item>
@@ -240,7 +188,7 @@
       <title>functional programming</title>
       <link>http://blog.makingdevs.com/tags/functional-programming/</link>
       <pubDate>Sat, 10 Sep 2016 11:22:01 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/functional-programming/</guid>
       <description></description>
     </item>
@@ -249,7 +197,7 @@
       <title>routing</title>
       <link>http://blog.makingdevs.com/tags/routing/</link>
       <pubDate>Sat, 10 Sep 2016 11:22:01 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/routing/</guid>
       <description></description>
     </item>
@@ -258,7 +206,7 @@
       <title>android</title>
       <link>http://blog.makingdevs.com/tags/android/</link>
       <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/android/</guid>
       <description></description>
     </item>
@@ -267,8 +215,17 @@
       <title>closure</title>
       <link>http://blog.makingdevs.com/tags/closure/</link>
       <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/closure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>groovy</title>
+      <link>http://blog.makingdevs.com/tags/groovy/</link>
+      <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
+      <author>info@makingdevs.com</author>
+      <guid>http://blog.makingdevs.com/tags/groovy/</guid>
       <description></description>
     </item>
     
@@ -276,7 +233,7 @@
       <title>mobile</title>
       <link>http://blog.makingdevs.com/tags/mobile/</link>
       <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/mobile/</guid>
       <description></description>
     </item>
@@ -285,7 +242,7 @@
       <title>log</title>
       <link>http://blog.makingdevs.com/tags/log/</link>
       <pubDate>Mon, 28 Mar 2016 09:13:56 -0600</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/log/</guid>
       <description></description>
     </item>
@@ -294,7 +251,7 @@
       <title>bootstrap</title>
       <link>http://blog.makingdevs.com/tags/bootstrap/</link>
       <pubDate>Thu, 24 Mar 2016 20:08:09 -0600</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/bootstrap/</guid>
       <description></description>
     </item>
@@ -303,8 +260,35 @@
       <title>servlet</title>
       <link>http://blog.makingdevs.com/tags/servlet/</link>
       <pubDate>Tue, 08 Mar 2016 21:38:08 -0600</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/servlet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>geb</title>
+      <link>http://blog.makingdevs.com/tags/geb/</link>
+      <pubDate>Mon, 07 Mar 2016 23:47:26 -0500</pubDate>
+      <author>info@makingdevs.com</author>
+      <guid>http://blog.makingdevs.com/tags/geb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spock</title>
+      <link>http://blog.makingdevs.com/tags/spock/</link>
+      <pubDate>Mon, 07 Mar 2016 23:47:26 -0500</pubDate>
+      <author>info@makingdevs.com</author>
+      <guid>http://blog.makingdevs.com/tags/spock/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>http://blog.makingdevs.com/tags/testing/</link>
+      <pubDate>Mon, 07 Mar 2016 23:47:26 -0500</pubDate>
+      <author>info@makingdevs.com</author>
+      <guid>http://blog.makingdevs.com/tags/testing/</guid>
       <description></description>
     </item>
     
@@ -312,7 +296,7 @@
       <title>gradle</title>
       <link>http://blog.makingdevs.com/tags/gradle/</link>
       <pubDate>Fri, 22 Jan 2016 18:14:37 -0600</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/gradle/</guid>
       <description></description>
     </item>
@@ -321,7 +305,7 @@
       <title>artesanos</title>
       <link>http://blog.makingdevs.com/tags/artesanos/</link>
       <pubDate>Sun, 02 Aug 2015 18:44:42 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/artesanos/</guid>
       <description></description>
     </item>
@@ -330,7 +314,7 @@
       <title>libro</title>
       <link>http://blog.makingdevs.com/tags/libro/</link>
       <pubDate>Sun, 02 Aug 2015 18:44:42 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/libro/</guid>
       <description></description>
     </item>
@@ -339,7 +323,7 @@
       <title>revisión</title>
       <link>http://blog.makingdevs.com/tags/revisi%C3%B3n/</link>
       <pubDate>Sun, 02 Aug 2015 18:44:42 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/revisi%C3%B3n/</guid>
       <description></description>
     </item>
@@ -348,7 +332,7 @@
       <title>plugins</title>
       <link>http://blog.makingdevs.com/tags/plugins/</link>
       <pubDate>Sun, 26 Jul 2015 23:19:13 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/plugins/</guid>
       <description></description>
     </item>
@@ -357,7 +341,7 @@
       <title>gorm</title>
       <link>http://blog.makingdevs.com/tags/gorm/</link>
       <pubDate>Fri, 01 May 2015 20:58:30 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/gorm/</guid>
       <description></description>
     </item>
@@ -366,7 +350,7 @@
       <title>grails</title>
       <link>http://blog.makingdevs.com/tags/grails/</link>
       <pubDate>Fri, 01 May 2015 20:58:30 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/tags/grails/</guid>
       <description></description>
     </item>

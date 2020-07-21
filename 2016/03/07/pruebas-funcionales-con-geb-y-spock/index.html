@@ -1,327 +1,513 @@
 <!DOCTYPE html>
-<html lang="en">
-<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta name="description" content="">
-    <meta property="og:title" content="Pruebas funcionales con Geb y Spock">
-    
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2016-03-07">
-    
-    <meta property="og:description" content="">
-    <meta property="og:url" content="http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock/">
-    <meta property="og:site_name" content="Blog de Making Devs">
-    
-    <meta property="og:tags" content="groovy">
-    
-    <meta property="og:tags" content="testing">
-    
-    <meta property="og:tags" content="spock">
-    
-    <meta property="og:tags" content="geb">
-    
-    <meta name="generator" content="Hugo 0.55.3" />
-    <title>Pruebas funcionales con Geb y Spock &middot; Blog de Making Devs</title>
-    
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
-    
-    <link href="http://blog.makingdevs.com/index.xml" rel="alternate" type="application/rss+xml" title="Blog de Making Devs" />
-    
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
     
 
-    
-    
-</head>
-<body>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<nav class="navbar navbar-default navbar-fixed-top visible-xs">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			
-				<a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
-			
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
+  <title>Pruebas funcionales con Geb y Spock - Blog de Making Devs</title>
+  <meta name="description" content="Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario funcionen correctamente; son pruebas difíciles de implementar ya que deben realizarse desde la perspectiva del usuario y muchas veces las interfaces de usuario cambian constantemente.
+Geb es una herramienta para escribir pruebas funcionales con Groovy que hace uso del WebDriver de Selenium para la automatizacion del navegador y toma varias ideas de la biblioteca jQuery para la interacción con los elementos."><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Blog de Making Devs",
+    
+    "url": "http:\/\/blog.makingdevs.com\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/blog.makingdevs.com\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/blog.makingdevs.com\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/blog.makingdevs.com\/2016\/03\/07\/pruebas-funcionales-con-geb-y-spock\/",
+          "name": "Pruebas funcionales con geb y spock"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Gamaliel Jiménez García"
+  },
+  "headline": "Pruebas funcionales con Geb y Spock",
+  "description" : "Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario funcionen correctamente; son pruebas difíciles de implementar ya que deben realizarse desde la perspectiva del usuario y muchas veces las interfaces de usuario cambian constantemente.\nGeb es una herramienta para escribir pruebas funcionales con Groovy que hace uso del WebDriver de Selenium para la automatizacion del navegador y toma varias ideas de la biblioteca jQuery para la interacción con los elementos.",
+  "inLanguage" : "en",
+  "wordCount":  1042 ,
+  "datePublished" : "2016-03-07T23:47:26",
+  "dateModified" : "2016-03-07T23:47:26",
+  "image" : "http:\/\/blog.makingdevs.com\/images\/logo_black.png",
+  "keywords" : [ "groovy, testing, spock, geb" ],
+  "mainEntityOfPage" : "http:\/\/blog.makingdevs.com\/2016\/03\/07\/pruebas-funcionales-con-geb-y-spock\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/blog.makingdevs.com\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/blog.makingdevs.com\/images\/logo_black.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Pruebas funcionales con Geb y Spock" />
+<meta property="og:description" content="Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario funcionen correctamente; son pruebas difíciles de implementar ya que deben realizarse desde la perspectiva del usuario y muchas veces las interfaces de usuario cambian constantemente.
+Geb es una herramienta para escribir pruebas funcionales con Groovy que hace uso del WebDriver de Selenium para la automatizacion del navegador y toma varias ideas de la biblioteca jQuery para la interacción con los elementos.">
+<meta property="og:image" content="http://blog.makingdevs.com/images/logo_black.png" />
+<meta property="og:url" content="http://blog.makingdevs.com/2016/03/07/pruebas-funcionales-con-geb-y-spock/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Blog de Making Devs" />
+
+  <meta name="twitter:title" content="Pruebas funcionales con Geb y Spock" />
+  <meta name="twitter:description" content="Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario funcionen correctamente; son pruebas difíciles de …">
+  <meta name="twitter:image" content="http://blog.makingdevs.com/images/logo_black.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@makingdevs" />
+  <meta name="twitter:creator" content="@makingdevs" />
+  <meta name="generator" content="Hugo 0.74.2" />
+  <link rel="alternate" href="http://blog.makingdevs.com/index.xml" type="application/rss+xml" title="Blog de Making Devs"><link rel="stylesheet" href="http://blog.makingdevs.com/css/katex.min.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/fontawesome/css/all.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/bootstrap.min.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/main.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/fonts.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/highlight.min.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/codeblock.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/photoswipe.min.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/photoswipe.default-skin.min.css" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-42842883-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
 				
+					
+						<li>
+							
+								<a href="/2014/07/29/bienvenido-a-makingdevs/">Bienvenidos</a>
+							
+						</li>
+					
 				
-			</ul>
-		</div>
-	</div>
+					
+						<li>
+							
+								<a title="Archive" href="/post"><i class="fas fa-archive fa-lg"></i></a>
+							
+						</li>
+					
+				
+					
+						<li>
+							
+								<a title="Categories" href="/categories"><i class="fas fa-sitemap fa-lg"></i></a>
+							
+						</li>
+					
+				
+					
+						<li>
+							
+								<a title="Tags" href="/tags"><i class='fas fa-tags fa-lg'></i></a>
+							
+						</li>
+					
+				
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Blog de Making Devs" href="http://blog.makingdevs.com/">
+            <img class="avatar-img" src="http://blog.makingdevs.com/images/logo_black.png" alt="Blog de Making Devs" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
 </nav>
-<div class="container-fluid">
-	<div class="row">
-		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
-	<div id="menu-content" class="vertical-align">
-		
-			<h1 class="text-center"><a href="http://blog.makingdevs.com/">Blog de Making Devs</a></h1>
-		
-		
-		
-			<small class="text-center center-block">El código que a veces olvidamos documentar.</small>
-		
-		
-		
-			<img id="profile-pic" src="http://blog.makingdevs.com//profile.jpeg" alt="My Picture" class="img-circle center-block">
-		
-		<div id="social" class="text-center">
-			
 
-			<a href="mailto:info@makingdevs.com"><i class="fa fa-envelope-o fa-2x"></i></a>
-		</div>
-		<div id="links" class="text-center">
-			
-			
-		</div>
-	</div>
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
 </div>
 
-		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
-			<div class="row">
-				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
 
-<main>
+  
+  
+  
 
-  <header>
-    <h1 align=center>Pruebas funcionales con Geb y Spock</h1>
+
+
+
+
+
+  
+
+  <header class="header-section ">
     
-    <section class="author">
-      <p align=center> <b>Redactado por: Gamaliel Jiménez García</b></p>
-    </section>
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Pruebas funcionales con Geb y Spock</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on March 7, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
+  
+  
+  
     
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Gamaliel Jiménez García
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
-  </br>
 
-	<article>
-		
 
-<p>Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario funcionen correctamente; son pruebas difíciles de implementar ya que deben realizarse desde la perspectiva del usuario y muchas veces las interfaces de usuario cambian constantemente.</p>
-
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Las pruebas funcionales se utilizan para verificar que los flujos de una aplicación que se definen en los casos de uso o historias de usuario funcionen correctamente; son pruebas difíciles de implementar ya que deben realizarse desde la perspectiva del usuario y muchas veces las interfaces de usuario cambian constantemente.</p>
 <p>Geb es una herramienta para escribir pruebas funcionales con Groovy que hace uso del <a href="http://www.seleniumhq.org/projects/webdriver/"><em>WebDriver de Selenium</em></a> para la automatizacion del navegador y toma varias ideas de la biblioteca jQuery para la interacción con los elementos. Utiliza el patrón de diseño <a href="http://martinfowler.com/bliki/PageObject.html"><em>Page Object</em></a> para mapear los elementos de las páginas en clases que representan cada una de las vistas.</p>
-
-<!-- more -->
-
+<!-- raw HTML omitted -->
 <h2 id="configuración-de-gradle">CONFIGURACIÓN DE GRADLE</h2>
-
 <p>A continuación se muestra la implementación de una prueba funcional integrando Geb con el framework de pruebas Spock.</p>
-
 <p>El primer paso es obtener las dependencias de Geb,Spock y el Selenium Driver para los diferentes navegadores. Para este ejemplo voy a utilizar Gradle para la ejecución de las pruebas y la administración de las dependencias.</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">build</span><span class="o">.</span><span class="na">gradle</span>
+<span class="n">apply</span> <span class="nl">plugin:</span><span class="s2">&#34;groovy&#34;</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">build<span style="color:#666">.</span><span style="color:#b44">gradle</span>
-apply <span style="color:#a0a000">plugin:</span><span style="color:#b44">&#34;groovy&#34;</span>
+<span class="n">repositories</span><span class="o">{</span>
+  <span class="n">jcenter</span><span class="o">()</span>
+<span class="o">}</span>
 
-repositories<span style="color:#666">{</span>
-  jcenter<span style="color:#666">()</span>
-<span style="color:#666">}</span>
+<span class="n">ext</span><span class="o">{</span>
+  <span class="n">drivers</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&#34;firefox&#34;</span><span class="o">,</span><span class="s2">&#34;chrome&#34;</span><span class="o">]</span>
+  <span class="n">groovyVersion</span> <span class="o">=</span> <span class="s2">&#34;2.4.4&#34;</span>
+  <span class="n">spockGroovyVersion</span> <span class="o">=</span> <span class="s2">&#34;2.4&#34;</span>
+  <span class="n">gebVersion</span> <span class="o">=</span> <span class="s2">&#34;0.12.1&#34;</span>
+  <span class="n">seleniumVersion</span> <span class="o">=</span> <span class="s2">&#34;2.44.0&#34;</span>
+<span class="o">}</span>
 
-ext<span style="color:#666">{</span>
-  drivers <span style="color:#666">=</span> <span style="color:#666">[</span><span style="color:#b44">&#34;firefox&#34;</span><span style="color:#666">,</span><span style="color:#b44">&#34;chrome&#34;</span><span style="color:#666">]</span>
-  groovyVersion <span style="color:#666">=</span> <span style="color:#b44">&#34;2.4.4&#34;</span>
-  spockGroovyVersion <span style="color:#666">=</span> <span style="color:#b44">&#34;2.4&#34;</span>
-  gebVersion <span style="color:#666">=</span> <span style="color:#b44">&#34;0.12.1&#34;</span>
-  seleniumVersion <span style="color:#666">=</span> <span style="color:#b44">&#34;2.44.0&#34;</span>
-<span style="color:#666">}</span>
-
-dependencies<span style="color:#666">{</span>
-  testCompile <span style="color:#b44">&#34;org.codehaus.groovy:groovy-all:${groovyVersion}&#34;</span>
-  testCompile <span style="color:#b44">&#34;org.gebish:geb-spock:${gebVersion}
-</span><span style="color:#b44">  testCompile &#34;</span>org<span style="color:#666">.</span><span style="color:#b44">spockframework</span><span style="color:#666">:</span>spock<span style="color:#666">-</span><span style="color:#a0a000">core:</span><span style="color:#666">1.0</span><span style="color:#666">-</span>groovy<span style="color:#666">-</span>$<span style="color:#666">{</span>spockGroovyVersion<span style="color:#666">}</span><span style="color:#b44">&#34;
-</span><span style="color:#b44">
-</span><span style="color:#b44">  drivers.each{ driver -&gt;
-</span><span style="color:#b44">    testCompile &#34;</span>org<span style="color:#666">.</span><span style="color:#b44">seleniumhq</span><span style="color:#666">.</span><span style="color:#b44">selenium</span><span style="color:#666">:</span>selenium<span style="color:#666">-</span>$<span style="color:#666">{</span>driver<span style="color:#666">}-</span><span style="color:#a0a000">driver:</span>$<span style="color:#666">{</span>seleniumVersion<span style="color:#666">}</span><span style="">&#34;</span>
-  <span style="color:#666">}</span>
-<span style="color:#666">}</span></code></pre></div>
-
+<span class="n">dependencies</span><span class="o">{</span>
+  <span class="n">testCompile</span> <span class="s2">&#34;org.codehaus.groovy:groovy-all:${groovyVersion}&#34;</span>
+  <span class="n">testCompile</span> <span class="s2">&#34;org.gebish:geb-spock:${gebVersion}
+</span><span class="s2">  testCompile &#34;</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">:</span><span class="n">spock</span><span class="o">-</span><span class="nl">core:</span><span class="mf">1.0</span><span class="o">-</span><span class="n">groovy</span><span class="o">-</span><span class="n">$</span><span class="o">{</span><span class="n">spockGroovyVersion</span><span class="o">}</span><span class="s2">&#34;
+</span><span class="s2">
+</span><span class="s2">  drivers.each{ driver -&gt;
+</span><span class="s2">    testCompile &#34;</span><span class="n">org</span><span class="o">.</span><span class="na">seleniumhq</span><span class="o">.</span><span class="na">selenium</span><span class="o">:</span><span class="n">selenium</span><span class="o">-</span><span class="n">$</span><span class="o">{</span><span class="n">driver</span><span class="o">}-</span><span class="nl">driver:</span><span class="n">$</span><span class="o">{</span><span class="n">seleniumVersion</span><span class="o">}</span><span class="err">&#34;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
 <p>Una vez que se definen las dependencias necesarias se crean las tareas para la ejecución de las pruebas en cada navegador que compone la lista.
 Geb permite realizar capturas de pantalla en cualquier punto del flujo de la aplicación que se está probando; para especificar el directorio donde se encontrarán estas imagenes se agrega la propiedad &ldquo;geb.build.reportsDir&rdquo; a las propiedades del sistema.</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">drivers</span><span class="o">.</span><span class="na">each</span><span class="o">{</span> <span class="n">driver</span> <span class="o">-&gt;</span>
+  <span class="n">task</span> <span class="s2">&#34;${driver}Test&#34;</span><span class="o">(</span><span class="nl">type:</span><span class="n">Test</span><span class="o">){</span>
+    <span class="n">reports</span><span class="o">{</span>
+      <span class="n">html</span><span class="o">.</span><span class="na">destination</span> <span class="o">=</span> <span class="n">reporting</span><span class="o">.</span><span class="na">file</span><span class="o">(</span><span class="s2">&#34;$name/tests&#34;</span><span class="o">)</span>
+    <span class="o">}</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">drivers<span style="color:#666">.</span><span style="color:#b44">each</span><span style="color:#666">{</span> driver <span style="color:#666">-&gt;</span>
-  task <span style="color:#b44">&#34;${driver}Test&#34;</span><span style="color:#666">(</span><span style="color:#a0a000">type:</span>Test<span style="color:#666">){</span>
-    reports<span style="color:#666">{</span>
-      html<span style="color:#666">.</span><span style="color:#b44">destination</span> <span style="color:#666">=</span> reporting<span style="color:#666">.</span><span style="color:#b44">file</span><span style="color:#666">(</span><span style="color:#b44">&#34;$name/tests&#34;</span><span style="color:#666">)</span>
-    <span style="color:#666">}</span>
+    <span class="n">outputs</span><span class="o">.</span><span class="na">upToDateWhen</span><span class="o">{</span> <span class="kc">false</span> <span class="o">}</span>
 
-    outputs<span style="color:#666">.</span><span style="color:#b44">upToDateWhen</span><span style="color:#666">{</span> <span style="color:#a2f;font-weight:bold">false</span> <span style="color:#666">}</span>
-
-    systemProperty <span style="color:#b44">&#34;geb.build.reportsDir&#34;</span><span style="color:#666">,</span>reporting<span style="color:#666">.</span><span style="color:#b44">file</span><span style="color:#666">(</span><span style="color:#b44">&#34;$name/geb&#34;</span><span style="color:#666">)</span>
-    systemProperty <span style="color:#b44">&#34;geb.env&#34;</span><span style="color:#666">,</span> driver
-  <span style="color:#666">}</span>
-<span style="color:#666">}</span></code></pre></div>
-
+    <span class="n">systemProperty</span> <span class="s2">&#34;geb.build.reportsDir&#34;</span><span class="o">,</span><span class="n">reporting</span><span class="o">.</span><span class="na">file</span><span class="o">(</span><span class="s2">&#34;$name/geb&#34;</span><span class="o">)</span>
+    <span class="n">systemProperty</span> <span class="s2">&#34;geb.env&#34;</span><span class="o">,</span> <span class="n">driver</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
 <p>Para que la automatización del navegador sea posible con Chrome es necesario descargar la versión más reciente del <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads"><em>WebDriver para Chrome</em></a> y definir en la propiedad del sistema el valor del directorio donde se encuentra.
 Finalmente se sobreescribe la tarea de test para que dependa de las creadas anteriormente y todas las pruebas se ejecuten al ejecutar el comando <code>gradle test</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">chromeTest</span><span class="o">{</span>
+  <span class="n">systemProperty</span> <span class="s2">&#34;webdriver.chrome.driver&#34;</span><span class="o">,</span><span class="s2">&#34;${System.properties[&#34;</span><span class="n">user</span><span class="o">.</span><span class="na">home</span><span class="s2">&#34;]}/.grails/chromedriver&#34;</span>
+<span class="o">}</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">chromeTest<span style="color:#666">{</span>
-  systemProperty <span style="color:#b44">&#34;webdriver.chrome.driver&#34;</span><span style="color:#666">,</span><span style="color:#b44">&#34;${System.properties[&#34;</span>user<span style="color:#666">.</span><span style="color:#b44">home</span><span style="color:#b44">&#34;]}/.grails/chromedriver&#34;</span>
-<span style="color:#666">}</span>
-
-test<span style="color:#666">{</span>
-  dependsOn drivers<span style="color:#666">.</span><span style="color:#b44">collect</span><span style="color:#666">{</span> driver <span style="color:#666">-&gt;</span> tasks<span style="color:#666">[</span><span style="color:#b44">&#34;${driver}Test&#34;</span><span style="color:#666">]</span> <span style="color:#666">}</span>
-  enabled <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">false</span>
-<span style="color:#666">}</span></code></pre></div>
-
+<span class="n">test</span><span class="o">{</span>
+  <span class="n">dependsOn</span> <span class="n">drivers</span><span class="o">.</span><span class="na">collect</span><span class="o">{</span> <span class="n">driver</span> <span class="o">-&gt;</span> <span class="n">tasks</span><span class="o">[</span><span class="s2">&#34;${driver}Test&#34;</span><span class="o">]</span> <span class="o">}</span>
+  <span class="n">enabled</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="o">}</span></code></pre></div>
 <h2 id="configuración-de-geb">CONFIGURACIÓN DE GEB</h2>
-
 <p>Antes de comenzar a escribir las pruebas es necesario crear el archivo de configuración de Geb.
 Aquí se crean las instancias del driver para Chrome y Firefox.</p>
-
 <p>El método <strong>waiting</strong> es útil en aplicaciones que utilizan AJAX ya que espera por un elemento el tiempo definido en la configuración, en este caso el tiempo será de 2 segundos.</p>
-
 <p>La propiedad <strong>baseUrl</strong> indíca la dirección de la aplicación que será probada, para este ejemplo se probará un flujo del sitio de MakingDevs.</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">GebConfig</span><span class="o">.</span><span class="na">groovy</span>
+<span class="kn">import</span> <span class="nn">org.openqa.selenium.chrome.ChromeDriver</span>
+<span class="kn">import</span> <span class="nn">org.openqa.selenium.firefox.FirefoxDriver</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">GebConfig<span style="color:#666">.</span><span style="color:#b44">groovy</span>
-<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">org.openqa.selenium.chrome.ChromeDriver</span>
-<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">org.openqa.selenium.firefox.FirefoxDriver</span>
+<span class="n">waiting</span><span class="o">{</span>
+  <span class="n">timeout</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="o">}</span>
 
-waiting<span style="color:#666">{</span>
-  timeout <span style="color:#666">=</span> <span style="color:#666">2</span>
-<span style="color:#666">}</span>
+<span class="n">environments</span><span class="o">{</span>
 
-environments<span style="color:#666">{</span>
+  <span class="n">chrome</span><span class="o">{</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="o">{</span>
+      <span class="kt">def</span> <span class="n">driverInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ChromeDriver</span><span class="o">()</span>
+      <span class="n">driverInstance</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">window</span><span class="o">().</span><span class="na">maximize</span><span class="o">()</span>
+      <span class="n">driverInstance</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
 
-  chrome<span style="color:#666">{</span>
-    driver <span style="color:#666">=</span> <span style="color:#666">{</span>
-      <span style="color:#0b0;font-weight:bold">def</span> driverInstance <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#00a000">ChromeDriver</span><span style="color:#666">()</span>
-      driverInstance<span style="color:#666">.</span><span style="color:#b44">manage</span><span style="color:#666">().</span><span style="color:#b44">window</span><span style="color:#666">().</span><span style="color:#b44">maximize</span><span style="color:#666">()</span>
-      driverInstance
-    <span style="color:#666">}</span>
-  <span style="color:#666">}</span>
+  <span class="n">firefox</span><span class="o">{</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="o">{</span>
+      <span class="kt">def</span> <span class="n">driverInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">()</span>
+      <span class="n">driverInstance</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">window</span><span class="o">().</span><span class="na">maximize</span><span class="o">()</span>
+      <span class="n">driverInstance</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
 
-  firefox<span style="color:#666">{</span>
-    driver <span style="color:#666">=</span> <span style="color:#666">{</span>
-      <span style="color:#0b0;font-weight:bold">def</span> driverInstance <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#00a000">FirefoxDriver</span><span style="color:#666">()</span>
-      driverInstance<span style="color:#666">.</span><span style="color:#b44">manage</span><span style="color:#666">().</span><span style="color:#b44">window</span><span style="color:#666">().</span><span style="color:#b44">maximize</span><span style="color:#666">()</span>
-      driverInstance
-    <span style="color:#666">}</span>
-  <span style="color:#666">}</span>
+<span class="o">}</span>
 
-<span style="color:#666">}</span>
-
-baseUrl <span style="color:#666">=</span> <span style="color:#b44">&#34;http://makingdevs.com&#34;</span></code></pre></div>
-
+<span class="n">baseUrl</span> <span class="o">=</span> <span class="s2">&#34;http://makingdevs.com&#34;</span></code></pre></div>
 <h2 id="page-objects">PAGE OBJECTS</h2>
-
 <p>Como se mencionó anteriormente, para la interacción con los elementos del sitio se deben crear clases que representen cada página de la aplicación. Estas clases se deben extender de la clase <strong>Page</strong> y en ellas deben mapearse los componentes con los que se va a interactuar dentro del closure estático <strong>content</strong>; los componentes pueden ser referenciados haciendo uso de los selectores que proporciona Geb y que son muy parecidos a los de la biblioteca jQuery.</p>
-
 <p>Dentro de cada clase Page puede declararse la propiedad estática <strong>url</strong> para que el navegador apunte a esa página cuando el método <strong>to()</strong> sea utilizado.</p>
-
 <p>El closure estático <strong>at</strong> ayuda a determinar si el navegador se encuentra actualmente en esa página al comprobar que un elemento de la página cumpla con una condición.</p>
-
 <p>Vamos a probar un flujo sencillo, en el cual el usuario consulta la información de un curso, para ello se necesitarán tres clases, MakingDevsHomePage, MakingDevsCoursesPage y MakingDevsCourseInfoPage:</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">makingdevs</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f;font-weight:bold">package</span> com<span style="color:#666">.</span><span style="color:#b44">makingdevs</span>
+<span class="kn">import</span> <span class="nn">geb.*</span>
 
-<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">geb.*</span>
+<span class="kd">class</span> <span class="nc">MakingDevsHomePage</span> <span class="kd">extends</span> <span class="n">Page</span><span class="o">{</span>
 
-<span style="color:#a2f;font-weight:bold">class</span> <span style="color:#00f">MakingDevsHomePage</span> <span style="color:#a2f;font-weight:bold">extends</span> Page<span style="color:#666">{</span>
+  <span class="kd">static</span> <span class="n">at</span> <span class="o">=</span> <span class="o">{</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&#34;. : MakingDevs - Welcome : .&#34;</span> <span class="o">}</span>
 
-  <span style="color:#a2f;font-weight:bold">static</span> at <span style="color:#666">=</span> <span style="color:#666">{</span> title <span style="color:#666">==</span> <span style="color:#b44">&#34;. : MakingDevs - Welcome : .&#34;</span> <span style="color:#666">}</span>
+  <span class="kd">static</span> <span class="n">content</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="n">coursesButton</span><span class="o">(</span><span class="nl">to:</span> <span class="n">MakingDevsCoursesPage</span><span class="o">){</span> <span class="n">$</span><span class="o">(</span><span class="s2">&#34;ul.nav a&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">)</span> <span class="o">}</span>
+  <span class="o">}</span>
 
-  <span style="color:#a2f;font-weight:bold">static</span> content <span style="color:#666">=</span> <span style="color:#666">{</span>
-    coursesButton<span style="color:#666">(</span><span style="color:#a0a000">to:</span> MakingDevsCoursesPage<span style="color:#666">){</span> $<span style="color:#666">(</span><span style="color:#b44">&#34;ul.nav a&#34;</span><span style="color:#666">,</span><span style="color:#666">1</span><span style="color:#666">)</span> <span style="color:#666">}</span>
-  <span style="color:#666">}</span>
+<span class="o">}</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">makingdevs</span>
 
-<span style="color:#666">}</span></code></pre></div>
+<span class="kn">import</span> <span class="nn">geb.*</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f;font-weight:bold">package</span> com<span style="color:#666">.</span><span style="color:#b44">makingdevs</span>
+<span class="kd">class</span> <span class="nc">MakingDevsCoursesPage</span> <span class="kd">extends</span> <span class="n">Page</span><span class="o">{</span>
 
-<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">geb.*</span>
+  <span class="kd">static</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;/training&#34;</span>
 
-<span style="color:#a2f;font-weight:bold">class</span> <span style="color:#00f">MakingDevsCoursesPage</span> <span style="color:#a2f;font-weight:bold">extends</span> Page<span style="color:#666">{</span>
+  <span class="kd">static</span> <span class="n">at</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="n">waitFor</span><span class="o">{</span> <span class="n">$</span><span class="o">(</span><span class="s2">&#34;.section-main-header&#34;</span><span class="o">)</span> <span class="o">}</span>
+    <span class="n">$</span><span class="o">(</span><span class="s2">&#34;.section-main-header&#34;</span><span class="o">).</span><span class="na">text</span><span class="o">()</span> <span class="o">==</span> <span class="s2">&#34;Nuestro entrenamiento&#34;</span>
+  <span class="o">}</span>
 
-  <span style="color:#a2f;font-weight:bold">static</span> url <span style="color:#666">=</span> <span style="color:#b44">&#34;/training&#34;</span>
+  <span class="kd">static</span> <span class="n">content</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="n">groovyCoursesDiv</span><span class="o">{</span> <span class="n">$</span><span class="o">(</span><span class="s2">&#34;.span7&#34;</span><span class="o">,</span><span class="mi">2</span><span class="o">).</span><span class="na">children</span><span class="o">(</span><span class="s2">&#34;ul&#34;</span><span class="o">)</span> <span class="o">}</span>
+  <span class="o">}</span>
 
-  <span style="color:#a2f;font-weight:bold">static</span> at <span style="color:#666">=</span> <span style="color:#666">{</span>
-    waitFor<span style="color:#666">{</span> $<span style="color:#666">(</span><span style="color:#b44">&#34;.section-main-header&#34;</span><span style="color:#666">)</span> <span style="color:#666">}</span>
-    $<span style="color:#666">(</span><span style="color:#b44">&#34;.section-main-header&#34;</span><span style="color:#666">).</span><span style="color:#b44">text</span><span style="color:#666">()</span> <span style="color:#666">==</span> <span style="color:#b44">&#34;Nuestro entrenamiento&#34;</span>
-  <span style="color:#666">}</span>
+<span class="o">}</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">makingdevs</span><span class="o">.</span><span class="na">pages</span>
 
-  <span style="color:#a2f;font-weight:bold">static</span> content <span style="color:#666">=</span> <span style="color:#666">{</span>
-    groovyCoursesDiv<span style="color:#666">{</span> $<span style="color:#666">(</span><span style="color:#b44">&#34;.span7&#34;</span><span style="color:#666">,</span><span style="color:#666">2</span><span style="color:#666">).</span><span style="color:#b44">children</span><span style="color:#666">(</span><span style="color:#b44">&#34;ul&#34;</span><span style="color:#666">)</span> <span style="color:#666">}</span>
-  <span style="color:#666">}</span>
+<span class="kn">import</span> <span class="nn">geb.*</span>
 
-<span style="color:#666">}</span></code></pre></div>
+<span class="kd">class</span> <span class="nc">CourseInfoPage</span> <span class="kd">extends</span> <span class="n">Page</span><span class="o">{</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f;font-weight:bold">package</span> com<span style="color:#666">.</span><span style="color:#b44">makingdevs</span><span style="color:#666">.</span><span style="color:#b44">pages</span>
+  <span class="kd">static</span> <span class="n">at</span> <span class="o">=</span> <span class="o">{</span> <span class="n">waitFor</span><span class="o">{</span> <span class="n">$</span><span class="o">(</span><span class="s2">&#34;i.icon-terminal&#34;</span><span class="o">)</span> <span class="o">}</span> <span class="o">}</span>
 
-<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">geb.*</span>
-
-<span style="color:#a2f;font-weight:bold">class</span> <span style="color:#00f">CourseInfoPage</span> <span style="color:#a2f;font-weight:bold">extends</span> Page<span style="color:#666">{</span>
-
-  <span style="color:#a2f;font-weight:bold">static</span> at <span style="color:#666">=</span> <span style="color:#666">{</span> waitFor<span style="color:#666">{</span> $<span style="color:#666">(</span><span style="color:#b44">&#34;i.icon-terminal&#34;</span><span style="color:#666">)</span> <span style="color:#666">}</span> <span style="color:#666">}</span>
-
-  <span style="color:#a2f;font-weight:bold">static</span> content <span style="color:#666">=</span> <span style="color:#666">{</span>
-    postTitle<span style="color:#666">{</span> $<span style="color:#666">(</span><span style="color:#b44">&#34;.post-title&#34;</span><span style="color:#666">)</span> <span style="color:#666">}</span>
-  <span style="color:#666">}</span>
-<span style="color:#666">}</span></code></pre></div>
-
+  <span class="kd">static</span> <span class="n">content</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="n">postTitle</span><span class="o">{</span> <span class="n">$</span><span class="o">(</span><span class="s2">&#34;.post-title&#34;</span><span class="o">)</span> <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
 <h2 id="integración-con-spock">INTEGRACIÓN CON SPOCK</h2>
-
 <p><a href="https://spockframework.github.io/spock/docs/1.0/introduction.html"><em>Spock</em></a> es un framework de pruebas y especificación que se caracteriza por su formato <em>Given-When-Then</em> que hace las pruebas más descriptivas.</p>
-
 <p>Al integrar Geb con Spock es posible definir que acciones que deben ocurrir al ejecutar la prueba funcional. Por ejemplo, en la primera prueba escrita en la siguiente clase se utiliza el método <strong>to</strong> dentro del bloque <em>when</em> para que el navegador se dirija a la página principal del sitio, una vez ahí se da click a un vínculo y finalmente se verifica que ese vínculo lleve a la página que muestra los cursos.</p>
-
 <p>La segunda prueba muestra algo más interesante, ya que implementa un <strong>Data Table</strong> de Spock para agrupar un conjunto de valores de entrada y salida separados por el símbolo <strong>|</strong>; la prueba verifica que al ir a la url declarada en MakingDevsCoursesPage se busque con el método <em>find</em> dentro de una sección referenciada por el selector groovyCoursesDiv el vínculo con un atributo href que comience con el valor declarado en la columna <em>_selectorUrl</em> de la tabla para después hacer click en el elemento y finalmente comparar el texto del componente asociado al selector de postTitle con el del valor en la columna <em>_postTitle</em>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">makingdevs</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#a2f;font-weight:bold">package</span> com<span style="color:#666">.</span><span style="color:#b44">makingdevs</span>
+<span class="kn">import</span> <span class="nn">geb.spock.GebReportingSpec</span>
+<span class="kn">import</span> <span class="nn">java.lang.Void</span> <span class="k">as</span> <span class="n">Should</span>
+<span class="kn">import</span> <span class="nn">com.makingdevs.pages.*</span>
 
-<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">geb.spock.GebReportingSpec</span>
-<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">java.lang.Void</span> <span style="color:#a2f;font-weight:bold">as</span> Should
-<span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">com.makingdevs.pages.*</span>
+<span class="kd">class</span> <span class="nc">MakingDevsSiteFunctionalSpec</span> <span class="kd">extends</span> <span class="n">GebReportingSpec</span><span class="o">{</span>
 
-<span style="color:#a2f;font-weight:bold">class</span> <span style="color:#00f">MakingDevsSiteFunctionalSpec</span> <span style="color:#a2f;font-weight:bold">extends</span> GebReportingSpec<span style="color:#666">{</span>
+  <span class="n">Should</span> <span class="s2">&#34;show the available courses&#34;</span><span class="o">(){</span>
+    <span class="nl">when:</span>
+      <span class="n">to</span> <span class="n">MakingDevsHomePage</span>
+    <span class="nl">and:</span>
+      <span class="n">coursesButton</span><span class="o">.</span><span class="na">click</span><span class="o">()</span>
 
-  Should <span style="color:#b44">&#34;show the available courses&#34;</span><span style="color:#666">(){</span>
-    <span style="color:#a0a000">when:</span>
-      to MakingDevsHomePage
-    <span style="color:#a0a000">and:</span>
-      coursesButton<span style="color:#666">.</span><span style="color:#b44">click</span><span style="color:#666">()</span>
+    <span class="nl">then:</span>
+      <span class="n">at</span> <span class="n">MakingDevsCoursesPage</span>
+  <span class="o">}</span>
 
-    <span style="color:#a0a000">then:</span>
-      at MakingDevsCoursesPage
-  <span style="color:#666">}</span>
+  <span class="n">Should</span> <span class="s2">&#34;show the course information&#34;</span><span class="o">(){</span>
+    <span class="nl">when:</span>
+      <span class="n">to</span> <span class="n">MakingDevsCoursesPage</span>
+    <span class="nl">and:</span>
+      <span class="n">groovyCoursesDiv</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="s2">&#34;a[href^=&#39;${_selectorUrl}&#34;</span><span class="o">).</span><span class="na">click</span><span class="o">()</span>
 
-  Should <span style="color:#b44">&#34;show the course information&#34;</span><span style="color:#666">(){</span>
-    <span style="color:#a0a000">when:</span>
-      to MakingDevsCoursesPage
-    <span style="color:#a0a000">and:</span>
-      groovyCoursesDiv<span style="color:#666">.</span><span style="color:#b44">find</span><span style="color:#666">(</span><span style="color:#b44">&#34;a[href^=&#39;${_selectorUrl}&#34;</span><span style="color:#666">).</span><span style="color:#b44">click</span><span style="color:#666">()</span>
+    <span class="nl">then:</span>
+      <span class="n">at</span> <span class="n">CourseInfoPage</span>
+      <span class="n">postTitle</span><span class="o">.</span><span class="na">text</span><span class="o">()</span> <span class="o">==</span> <span class="n">_postTitle</span>
+    <span class="nl">where:</span>
+    <span class="n">_selectorUrl</span>                    <span class="o">|</span> <span class="n">_postTitle</span>
+    <span class="s2">&#34;/training/groovy-testing&#34;</span>      <span class="o">|</span> <span class="s2">&#34;Pruebas en la JVM con Groovy&#34;</span>
+    <span class="s2">&#34;/training/groovy-essentials&#34;</span>   <span class="o">|</span> <span class="s2">&#34;El lenguaje dinámico Groovy&#34;</span>
+    <span class="s2">&#34;/training/grails-intermediate&#34;</span> <span class="o">|</span> <span class="s2">&#34;Productividad con Grails&#34;</span>
+    <span class="s2">&#34;/training/groovy-intermediate&#34;</span> <span class="o">|</span> <span class="s2">&#34;Productividad con Groovy&#34;</span>
+  <span class="o">}</span>
 
-    <span style="color:#a0a000">then:</span>
-      at CourseInfoPage
-      postTitle<span style="color:#666">.</span><span style="color:#b44">text</span><span style="color:#666">()</span> <span style="color:#666">==</span> _postTitle
-    <span style="color:#a0a000">where:</span>
-    _selectorUrl                    <span style="color:#666">|</span> _postTitle
-    <span style="color:#b44">&#34;/training/groovy-testing&#34;</span>      <span style="color:#666">|</span> <span style="color:#b44">&#34;Pruebas en la JVM con Groovy&#34;</span>
-    <span style="color:#b44">&#34;/training/groovy-essentials&#34;</span>   <span style="color:#666">|</span> <span style="color:#b44">&#34;El lenguaje dinámico Groovy&#34;</span>
-    <span style="color:#b44">&#34;/training/grails-intermediate&#34;</span> <span style="color:#666">|</span> <span style="color:#b44">&#34;Productividad con Grails&#34;</span>
-    <span style="color:#b44">&#34;/training/groovy-intermediate&#34;</span> <span style="color:#666">|</span> <span style="color:#b44">&#34;Productividad con Groovy&#34;</span>
-  <span style="color:#666">}</span>
-
-<span style="color:#666">}</span></code></pre></div>
-
+<span class="o">}</span></code></pre></div>
 <p>Finalmente para correr las pruebas ejecutamos el comando <code>./gradlew firefoxTest</code> para Firefox o <code>./gradlew chromeTest</code> para chrome; la tarea <code>./gradlew test</code> corre las pruebas en ambos navegadores.</p>
-
 <p>Pueden encontrar el código completo <a href="https://github.com/egjimenezg/FunctionalTesting"><em>aquí</em></a>.</p>
 
-	</article>
-</main>
 
-<div id="bottom-nav" class="text-center center-block">
-	<a href=" http://blog.makingdevs.com/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
-</div>
+        
+          <div class="blog-tags">
+            
+              <a href="http://blog.makingdevs.com//tags/groovy/">groovy</a>&nbsp;
+            
+              <a href="http://blog.makingdevs.com//tags/testing/">testing</a>&nbsp;
+            
+              <a href="http://blog.makingdevs.com//tags/spock/">spock</a>&nbsp;
+            
+              <a href="http://blog.makingdevs.com//tags/geb/">geb</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle/" data-toggle="tooltip" data-placement="top" title="Bitacorado de pruebas en Gradle">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://blog.makingdevs.com/2016/03/08/microservicios-con-groovy/" data-toggle="tooltip" data-placement="top" title="MicroServicios con Groovy">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
 
 
-  <div id="disqus_thread"></div>
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -341,34 +527,123 @@ baseUrl <span style="color:#666">=</span> <span style="color:#b44">&#34;http://m
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
 
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+    </div>
   </div>
-  
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+</div>
 
-    ga('create', 'UA-42842883-2', 'auto');
-    ga('send', 'pageview');
-    window.baseURL = "http:\/\/blog.makingdevs.com\/";
-  </script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-  
-  
-  <script src="http://blog.makingdevs.com//js/App.js"></script>
-  
-</body>
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:info@makingdevs.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/makingdevs" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/makingdevs" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/makingdevs" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/makingdevs" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/makingdevs" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2019
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.74.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="http://blog.makingdevs.com/js/katex.min.js"></script>
+<script src="http://blog.makingdevs.com/js/auto-render.min.js"></script>
+<script src="http://blog.makingdevs.com/js/jquery.min.js"></script>
+<script src="http://blog.makingdevs.com/js/bootstrap.min.js"></script>
+
+<script src="http://blog.makingdevs.com/js/main.js"></script>
+<script src="http://blog.makingdevs.com/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="http://blog.makingdevs.com/js/photoswipe.min.js"></script>
+<script src="http://blog.makingdevs.com/js/photoswipe-ui-default.min.js"></script><script src="http://blog.makingdevs.com/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
 </html>
+

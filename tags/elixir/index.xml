@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>elixir on Blog de Making Devs</title>
@@ -6,26 +6,18 @@
     <description>Recent content in elixir on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Sep 2018 19:22:54 -0500</lastBuildDate>
+    <managingEditor>info@makingdevs.com</managingEditor>
+    <webMaster>info@makingdevs.com</webMaster>
+    <lastBuildDate>Sun, 17 Jun 2018 16:34:54 -0500</lastBuildDate>
     
 	<atom:link href="http://blog.makingdevs.com/tags/elixir/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Entornos y configuración en Elixir</title>
-      <link>http://blog.makingdevs.com/2018/09/04/entornos-y-configuraci%C3%B3n-en-elixir/</link>
-      <pubDate>Tue, 04 Sep 2018 19:22:54 -0500</pubDate>
-      
-      <guid>http://blog.makingdevs.com/2018/09/04/entornos-y-configuraci%C3%B3n-en-elixir/</guid>
-      <description>Al estar desarollando un par de proyectos en Elixir, me di a la labor de tanto meter pruebas como usar elementos que simulen llamadas a otros sistemas. Y descubrí que Elixir cuenta con ello de formas distintas a lo que ya había manejado en otras plataformas, y sólo quiero ejemplificar un par de ellos, se que puede haber más o mejores pero estos me sirvieron para ciertos própositos.
-Simulación de componentes Mientras estaba desarrollando algo con Nerves y usando la cámara conectada a un Rasperry, me di cuenta que la biblioteca que manejaba la cámara contaba con una implementación que proveía la manera de simular el tomar una foto, dentro del archivo de configuración de la aplicacion config.</description>
-    </item>
-    
-    <item>
       <title>¿Cómo adopté Elixir?</title>
       <link>http://blog.makingdevs.com/2018/06/17/c%C3%B3mo-adopt%C3%A9-elixir/</link>
       <pubDate>Sun, 17 Jun 2018 16:34:54 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/2018/06/17/c%C3%B3mo-adopt%C3%A9-elixir/</guid>
       <description>LLevo ya un par de años escuchando y haciendo Elixir, no con la intensidad que quisiera pero tampoco lo he perdido de vista; soy un programador con preferencias dinámicas opcionales, sin embargo, me gusta mucho la magia(compilador) que Haskell ofrece al programar.
 De hace ya un par de años he querido comenzar una serie de artículos basados en LISP, sin embargo, el trabajo y los compromisos empresariales no lo han permitido, creo importante que los programadores conozcan las bases de la programación funcional, no por ser mejor, si no por que permite mejorar el/los paradigmas que estés usando.</description>
@@ -35,7 +27,7 @@ De hace ya un par de años he querido comenzar una serie de artículos basados e
       <title>Resolviendo la criba de Eratóstenes con Elixir</title>
       <link>http://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir/</link>
       <pubDate>Wed, 11 Jan 2017 13:11:46 -0600</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir/</guid>
       <description>Ya una vez más familiarizado con Elixir me dí a la tarea de resolver un problema que se encuentra documentado en la Wikipedia, la forma de obtener un conjunto de números primos y una solución es a través de la llamada (Criba de Eratótstenes)1 descrita así:
  Primer paso: listar los números naturales comprendidos entre 2 y n. Segundo paso: Se toma el primer número no rayado ni marcado, como número primo.</description>
@@ -45,7 +37,7 @@ De hace ya un par de años he querido comenzar una serie de artículos basados e
       <title>FizzBuzz</title>
       <link>http://blog.makingdevs.com/2016/11/05/fizzbuzz/</link>
       <pubDate>Sat, 05 Nov 2016 19:35:08 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/2016/11/05/fizzbuzz/</guid>
       <description>Before we pass to how we can make a FizzBuzz game, we need to know something more basic about Elixir. Today we are going to learn something called Anonymous Function (a.k.a Lambda Expression)
 An Anonymous Function is a function without a name and is usually used for applying some sort of transformation to the arguments passed.
@@ -57,7 +49,7 @@ According to Wikipedia an Anonymous Function is:
       <title>Ecto Transactions</title>
       <link>http://blog.makingdevs.com/2016/09/20/ecto-transactions/</link>
       <pubDate>Tue, 20 Sep 2016 19:35:08 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/2016/09/20/ecto-transactions/</guid>
       <description>It has been a couple of months since I wrote something and was about phoenix and bootstrap. Today I&amp;rsquo;m going to talk about elixir, ecto and how to manage transactions
 Well in this post we are going to skip ecto setup (if for some way, it was need it, please leave a comment and I will make a post for it, but I think his documentation makes a fairly good example for it)</description>
@@ -67,7 +59,7 @@ Well in this post we are going to skip ecto setup (if for some way, it was need 
       <title>Add complete bootstrap to Phoenix</title>
       <link>http://blog.makingdevs.com/2016/03/24/add-complete-bootstrap-to-phoenix/</link>
       <pubDate>Thu, 24 Mar 2016 20:08:09 -0600</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/2016/03/24/add-complete-bootstrap-to-phoenix/</guid>
       <description>It has been a while since I make a post and this is my first post in English so be gentle with me :P
 Since a couple of months I been working in a language called elixir and with his web framework phoenix, I have had a lot of fun with these elements. But sometimes I been struggling with configurations that should be easy maybe I don&amp;rsquo;t read that carefully or maybe I&amp;rsquo;m a knucklehead, but whatever the reasone is, I hope this configuration works for you and give you a little help of how configure your Javascripts third parties for your Phoenix application.</description>

@@ -1,211 +1,405 @@
 <!DOCTYPE html>
-<html lang="en">
-<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta name="description" content="">
-    <meta property="og:title" content="Add complete bootstrap to Phoenix">
-    
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2016-03-24">
-    
-    <meta property="og:description" content="">
-    <meta property="og:url" content="http://blog.makingdevs.com/2016/03/24/add-complete-bootstrap-to-phoenix/">
-    <meta property="og:site_name" content="Blog de Making Devs">
-    
-    <meta property="og:tags" content="phoenix">
-    
-    <meta property="og:tags" content="elixir">
-    
-    <meta property="og:tags" content="bootstrap">
-    
-    <meta name="generator" content="Hugo 0.55.3" />
-    <title>Add complete bootstrap to Phoenix &middot; Blog de Making Devs</title>
-    
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
-    
-    <link href="http://blog.makingdevs.com/index.xml" rel="alternate" type="application/rss+xml" title="Blog de Making Devs" />
-    
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
     
 
-    
-    
-</head>
-<body>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<nav class="navbar navbar-default navbar-fixed-top visible-xs">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			
-				<a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
-			
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
+  <title>Add complete bootstrap to Phoenix - Blog de Making Devs</title>
+  <meta name="description" content="It has been a while since I make a post and this is my first post in English so be gentle with me :P
+Since a couple of months I been working in a language called elixir and with his web framework phoenix, I have had a lot of fun with these elements. But sometimes I been struggling with configurations that should be easy maybe I don&rsquo;t read that carefully or maybe I&rsquo;m a knucklehead, but whatever the reasone is, I hope this configuration works for you and give you a little help of how configure your Javascripts third parties for your Phoenix application."><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Blog de Making Devs",
+    
+    "url": "http:\/\/blog.makingdevs.com\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/blog.makingdevs.com\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/blog.makingdevs.com\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/blog.makingdevs.com\/2016\/03\/24\/add-complete-bootstrap-to-phoenix\/",
+          "name": "Add complete bootstrap to phoenix"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Felipe Juárez Murillo"
+  },
+  "headline": "Add complete bootstrap to Phoenix",
+  "description" : "It has been a while since I make a post and this is my first post in English so be gentle with me :P\nSince a couple of months I been working in a language called elixir and with his web framework phoenix, I have had a lot of fun with these elements. But sometimes I been struggling with configurations that should be easy maybe I don\u0026rsquo;t read that carefully or maybe I\u0026rsquo;m a knucklehead, but whatever the reasone is, I hope this configuration works for you and give you a little help of how configure your Javascripts third parties for your Phoenix application.",
+  "inLanguage" : "en",
+  "wordCount":  678 ,
+  "datePublished" : "2016-03-24T20:08:09",
+  "dateModified" : "2016-03-24T20:08:09",
+  "image" : "http:\/\/blog.makingdevs.com\/images\/logo_black.png",
+  "keywords" : [ "phoenix, elixir, bootstrap" ],
+  "mainEntityOfPage" : "http:\/\/blog.makingdevs.com\/2016\/03\/24\/add-complete-bootstrap-to-phoenix\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/blog.makingdevs.com\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/blog.makingdevs.com\/images\/logo_black.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Add complete bootstrap to Phoenix" />
+<meta property="og:description" content="It has been a while since I make a post and this is my first post in English so be gentle with me :P
+Since a couple of months I been working in a language called elixir and with his web framework phoenix, I have had a lot of fun with these elements. But sometimes I been struggling with configurations that should be easy maybe I don&rsquo;t read that carefully or maybe I&rsquo;m a knucklehead, but whatever the reasone is, I hope this configuration works for you and give you a little help of how configure your Javascripts third parties for your Phoenix application.">
+<meta property="og:image" content="http://blog.makingdevs.com/images/logo_black.png" />
+<meta property="og:url" content="http://blog.makingdevs.com/2016/03/24/add-complete-bootstrap-to-phoenix/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Blog de Making Devs" />
+
+  <meta name="twitter:title" content="Add complete bootstrap to Phoenix" />
+  <meta name="twitter:description" content="It has been a while since I make a post and this is my first post in English so be gentle with me :P
+Since a couple of months I been working in a language called elixir and with his web framework …">
+  <meta name="twitter:image" content="http://blog.makingdevs.com/images/logo_black.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@makingdevs" />
+  <meta name="twitter:creator" content="@makingdevs" />
+  <meta name="generator" content="Hugo 0.74.2" />
+  <link rel="alternate" href="http://blog.makingdevs.com/index.xml" type="application/rss+xml" title="Blog de Making Devs"><link rel="stylesheet" href="http://blog.makingdevs.com/css/katex.min.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/fontawesome/css/all.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/bootstrap.min.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/main.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/fonts.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/highlight.min.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/codeblock.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/photoswipe.min.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/photoswipe.default-skin.min.css" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-42842883-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
 				
+					
+						<li>
+							
+								<a href="/2014/07/29/bienvenido-a-makingdevs/">Bienvenidos</a>
+							
+						</li>
+					
 				
-			</ul>
-		</div>
-	</div>
+					
+						<li>
+							
+								<a title="Archive" href="/post"><i class="fas fa-archive fa-lg"></i></a>
+							
+						</li>
+					
+				
+					
+						<li>
+							
+								<a title="Categories" href="/categories"><i class="fas fa-sitemap fa-lg"></i></a>
+							
+						</li>
+					
+				
+					
+						<li>
+							
+								<a title="Tags" href="/tags"><i class='fas fa-tags fa-lg'></i></a>
+							
+						</li>
+					
+				
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Blog de Making Devs" href="http://blog.makingdevs.com/">
+            <img class="avatar-img" src="http://blog.makingdevs.com/images/logo_black.png" alt="Blog de Making Devs" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
 </nav>
-<div class="container-fluid">
-	<div class="row">
-		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
-	<div id="menu-content" class="vertical-align">
-		
-			<h1 class="text-center"><a href="http://blog.makingdevs.com/">Blog de Making Devs</a></h1>
-		
-		
-		
-			<small class="text-center center-block">El código que a veces olvidamos documentar.</small>
-		
-		
-		
-			<img id="profile-pic" src="http://blog.makingdevs.com//profile.jpeg" alt="My Picture" class="img-circle center-block">
-		
-		<div id="social" class="text-center">
-			
 
-			<a href="mailto:info@makingdevs.com"><i class="fa fa-envelope-o fa-2x"></i></a>
-		</div>
-		<div id="links" class="text-center">
-			
-			
-		</div>
-	</div>
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
 </div>
 
-		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
-			<div class="row">
-				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
 
-<main>
+  
+  
+  
 
-  <header>
-    <h1 align=center>Add complete bootstrap to Phoenix</h1>
+
+
+
+
+
+  
+
+  <header class="header-section ">
     
-    <section class="author">
-      <p align=center> <b>Redactado por: Felipe Juárez Murillo</b></p>
-    </section>
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Add complete bootstrap to Phoenix</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on March 24, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+  
     
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Felipe Juárez Murillo
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
-  </br>
 
-	<article>
-		<p>It has been a while since I make a post and this is my first post in English so be gentle with me :P</p>
 
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>It has been a while since I make a post and this is my first post in English so be gentle with me :P</p>
 <p>Since a couple of months I been working in a language called <a href="http://elixir-lang.org/">elixir</a> and with his web framework <a href="http://www.phoenixframework.org/">phoenix</a>, I have had a lot of fun with these elements. But sometimes I been struggling with configurations that should be easy maybe I don&rsquo;t read that carefully or maybe I&rsquo;m a knucklehead, but whatever the reasone is, I hope this configuration works for you and give you a little help of how configure your Javascripts third parties for your Phoenix application.</p>
-
-<!-- more -->
-
+<!-- raw HTML omitted -->
 <p>When you create a new application with phoenix you will notice (when you start the server) that actually <code>phoenix</code> have <a href="http://getbootstrap.com/">bootstrap</a> but that is not true at all, if you want to add a <code>dropdown</code> or something more sophisticated like a <code>dialog</code> or a <code>carousel</code> you will find that there is no <code>javascript</code> and the only thing that you have is the <code>stylesheet</code> so in order to add the complete <code>bootstrap</code> you need a couple steps before.</p>
-
 <p>Well let&rsquo;s get started with this thing:</p>
-
 <p>In order to manage all the libraries that you need to work with it is recommended to install <a href="http://bower.io/">bower</a>. Actually <code>phoenix</code> in his <a href="http://www.phoenixframework.org/docs/static-assets">Static Assets</a> page encourage you to do it.</p>
-
 <p>So we are going to follow this path and add bootstrap with <code>bower</code> but first we are going to create the <code>bower.json</code> file for storing our dependencies:</p>
-
-<pre><code class="language-sh">bower init
-</code></pre>
-
-<p>Then we are going to create a file named <code>.bowerrc</code> with this file we are going to tell to <code>bower</code> where are going to need to put all the <code>javascripts</code> that we need it from now on. In this file we are going to put the next instruction:</p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
-  <span style="color:#b44">&#34;directory&#34;</span><span style="color:#666">:</span> <span style="color:#b44">&#34;web/static/vendor&#34;</span>
-}
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">bower init
+</code></pre></div><p>Then we are going to create a file named <code>.bowerrc</code> with this file we are going to tell to <code>bower</code> where are going to need to put all the <code>javascripts</code> that we need it from now on. In this file we are going to put the next instruction:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">&#34;directory&#34;</span><span class="o">:</span> <span class="s2">&#34;web/static/vendor&#34;</span>
+<span class="p">}</span>
 </code></pre></div>
-
 <p>Now is the time to install <code>bootstrap</code> and for that we need to run the following instruction in your shell:</p>
-
-<pre><code class="language-sh">bower install -S bootstrap
-</code></pre>
-
-<p>Now that we have <code>bootstrap</code> if you check your <code>vendor</code> directory you will see that there is not only <code>bootstrap</code>, it is also <code>jquery</code> (because is a dependency for <code>bootstrap</code>), if have not heard of <code>bower</code> before I recommend you to look for other proyects it will save you a lot of time and space in your repository.</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">bower install -S bootstrap
+</code></pre></div><p>Now that we have <code>bootstrap</code> if you check your <code>vendor</code> directory you will see that there is not only <code>bootstrap</code>, it is also <code>jquery</code> (because is a dependency for <code>bootstrap</code>), if have not heard of <code>bower</code> before I recommend you to look for other proyects it will save you a lot of time and space in your repository.</p>
 <p>Well at this moment, if you run your <code>phoenix.server</code> you will find a couple of errors, so lets fix that:</p>
-
 <ol>
 <li>Let&rsquo;s remove the <code>bootstrap css</code> that <code>phoenix</code> ships with. For this open your <code>web/static/css/app.css</code> and remove the first 6 lines of code of the file.</li>
 <li>Then open your <code>brunch-config.js</code> and in the <code>conventions</code> section add the following:</li>
 </ol>
-
-<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">   conventions<span style="color:#666">:</span> {
-     assets<span style="color:#666">:</span> <span style="color:#b68">/^(web\/static\/assets)/</span>,
-     ignored<span style="color:#666">:</span> [
-       <span style="color:#b68">/^(web\/static\/vendor\/bootstrap\/)(?!.*min.(js|css)$)/</span>,
-       <span style="color:#b68">/^(web\/static\/vendor\/jquery\/)(?!.*min.js)/</span>
-     ]
-   }
+<p><div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js">   <span class="nx">conventions</span><span class="o">:</span> <span class="p">{</span>
+     <span class="nx">assets</span><span class="o">:</span> <span class="sr">/^(web\/static\/assets)/</span><span class="p">,</span>
+     <span class="nx">ignored</span><span class="o">:</span> <span class="p">[</span>
+       <span class="sr">/^(web\/static\/vendor\/bootstrap\/)(?!.*min.(js|css)$)/</span><span class="p">,</span>
+       <span class="sr">/^(web\/static\/vendor\/jquery\/)(?!.*min.js)/</span>
+     <span class="p">]</span>
+   <span class="p">}</span>
    
 </code></pre></div>
 3. After that you will need to load <code>jquery</code> and <code>bootstrap</code> in order, i.e. First <code>jquery</code> and then <code>bootstrap</code>. This is because <code>brunch</code> will merge all js in alphabetical order and we require that <code>jquery</code> loads first. For this we move to the <code>joinTo</code> in the <code>files</code> section and add the next lines:</p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">   files<span style="color:#666">:</span> {
-     javascripts<span style="color:#666">:</span> {
-       joinTo<span style="color:#666">:</span> <span style="color:#b44">&#34;js/app.js&#34;</span>,
-       order<span style="color:#666">:</span> {
-         before<span style="color:#666">:</span> [
-           <span style="color:#b44">&#34;web/static/vendor/jquery/dist/jquery.min.js&#34;</span>,
-           <span style="color:#b44">&#34;web/static/vendor/bootstrap/dist/js/bootstrap.js&#34;</span>
-         ]
-       }
-     },
-   ... more code ...
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js">   <span class="nx">files</span><span class="o">:</span> <span class="p">{</span>
+     <span class="nx">javascripts</span><span class="o">:</span> <span class="p">{</span>
+       <span class="nx">joinTo</span><span class="o">:</span> <span class="s2">&#34;js/app.js&#34;</span><span class="p">,</span>
+       <span class="nx">order</span><span class="o">:</span> <span class="p">{</span>
+         <span class="nx">before</span><span class="o">:</span> <span class="p">[</span>
+           <span class="s2">&#34;web/static/vendor/jquery/dist/jquery.min.js&#34;</span><span class="p">,</span>
+           <span class="s2">&#34;web/static/vendor/bootstrap/dist/js/bootstrap.js&#34;</span>
+         <span class="p">]</span>
+       <span class="p">}</span>
+     <span class="p">},</span>
+   <span class="p">...</span> <span class="nx">more</span> <span class="nx">code</span> <span class="p">...</span>
    
 </code></pre></div>
-
 <p>After this you can open the main layout of your application and put the next code:</p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#008000;font-weight:bold">div</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;dropdown&#34;</span>&gt;
-  &lt;<span style="color:#008000;font-weight:bold">button</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;btn btn-default dropdown-toggle&#34;</span> <span style="color:#b44">type</span><span style="color:#666">=</span><span style="color:#b44">&#34;button&#34;</span> <span style="color:#b44">id</span><span style="color:#666">=</span><span style="color:#b44">&#34;dropdownMenu1&#34;</span> <span style="color:#b44">data-toggle</span><span style="color:#666">=</span><span style="color:#b44">&#34;dropdown&#34;</span> <span style="color:#b44">aria-haspopup</span><span style="color:#666">=</span><span style="color:#b44">&#34;true&#34;</span> <span style="color:#b44">aria-expanded</span><span style="color:#666">=</span><span style="color:#b44">&#34;true&#34;</span>&gt;
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-default dropdown-toggle&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;dropdownMenu1&#34;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&#34;dropdown&#34;</span> <span class="na">aria-haspopup</span><span class="o">=</span><span class="s">&#34;true&#34;</span> <span class="na">aria-expanded</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>
     Dropdown
-    &lt;<span style="color:#008000;font-weight:bold">span</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;caret&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">span</span>&gt;
-  &lt;/<span style="color:#008000;font-weight:bold">button</span>&gt;
-  &lt;<span style="color:#008000;font-weight:bold">ul</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;dropdown-menu&#34;</span> <span style="color:#b44">aria-labelledby</span><span style="color:#666">=</span><span style="color:#b44">&#34;dropdownMenu1&#34;</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">li</span>&gt;&lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;#&#34;</span>&gt;Action&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">li</span>&gt;&lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;#&#34;</span>&gt;Another action&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">li</span>&gt;&lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;#&#34;</span>&gt;Something else here&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">li</span> <span style="color:#b44">role</span><span style="color:#666">=</span><span style="color:#b44">&#34;separator&#34;</span> <span style="color:#b44">class</span><span style="color:#666">=</span><span style="color:#b44">&#34;divider&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
-    &lt;<span style="color:#008000;font-weight:bold">li</span>&gt;&lt;<span style="color:#008000;font-weight:bold">a</span> <span style="color:#b44">href</span><span style="color:#666">=</span><span style="color:#b44">&#34;#&#34;</span>&gt;Separated link&lt;/<span style="color:#008000;font-weight:bold">a</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">li</span>&gt;
-  &lt;/<span style="color:#008000;font-weight:bold">ul</span>&gt;
-&lt;/<span style="color:#008000;font-weight:bold">div</span>&gt;</code></pre></div>
-
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;caret&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-menu&#34;</span> <span class="na">aria-labelledby</span><span class="o">=</span><span class="s">&#34;dropdownMenu1&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Action<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Another action<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Something else here<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;separator&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;divider&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Separated link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <p>And this is going to work as expected. Now you can make use of everything that <code>boostrap</code> have.</p>
-
 <p>Oh! I forgot for copying the fonts and icons that <code>bootstrap</code> have you need to use a tool called <code>assetsmanager-brunch</code> this is for manage assets that are not minify or uglify like images or fonts. For this we need to do:</p>
-
-<ol>
+<ol start="4">
 <li>Install <code>assetsmanager-brunch</code> with <code>npm</code> help. Run the following <code>npm install --save assetsmanager-brunch</code></li>
 <li>Then in the <code>plugins</code> section add the following code:</li>
 </ol>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">   assetsmanager<span style="color:#666">:</span> {
-       copyTo<span style="color:#666">:</span> {
-         <span style="color:#b44">&#39;/&#39;</span> <span style="color:#666">:</span> [<span style="color:#b44">&#39;web/static/vendor/bootstrap/dist/fonts&#39;</span>]
-       }
-   }
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js">   <span class="nx">assetsmanager</span><span class="o">:</span> <span class="p">{</span>
+       <span class="nx">copyTo</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s1">&#39;/&#39;</span> <span class="o">:</span> <span class="p">[</span><span class="s1">&#39;web/static/vendor/bootstrap/dist/fonts&#39;</span><span class="p">]</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
 </code></pre></div>
-
 <p>That&rsquo;s all folks! At least for this post I hope you enjoy and Good Luck, Have Fun!</p>
 
-	</article>
-</main>
 
-<div id="bottom-nav" class="text-center center-block">
-	<a href=" http://blog.makingdevs.com/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
-</div>
+        
+          <div class="blog-tags">
+            
+              <a href="http://blog.makingdevs.com//tags/phoenix/">phoenix</a>&nbsp;
+            
+              <a href="http://blog.makingdevs.com//tags/elixir/">elixir</a>&nbsp;
+            
+              <a href="http://blog.makingdevs.com//tags/bootstrap/">bootstrap</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://blog.makingdevs.com/2016/03/08/microservicios-con-groovy/" data-toggle="tooltip" data-placement="top" title="MicroServicios con Groovy">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://blog.makingdevs.com/2016/03/28/uso-de-logback/" data-toggle="tooltip" data-placement="top" title="Uso de logback">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
 
 
-  <div id="disqus_thread"></div>
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -225,34 +419,123 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
 
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+    </div>
   </div>
-  
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+</div>
 
-    ga('create', 'UA-42842883-2', 'auto');
-    ga('send', 'pageview');
-    window.baseURL = "http:\/\/blog.makingdevs.com\/";
-  </script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-  
-  
-  <script src="http://blog.makingdevs.com//js/App.js"></script>
-  
-</body>
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:info@makingdevs.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/makingdevs" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/makingdevs" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/makingdevs" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/makingdevs" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/makingdevs" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2019
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.74.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="http://blog.makingdevs.com/js/katex.min.js"></script>
+<script src="http://blog.makingdevs.com/js/auto-render.min.js"></script>
+<script src="http://blog.makingdevs.com/js/jquery.min.js"></script>
+<script src="http://blog.makingdevs.com/js/bootstrap.min.js"></script>
+
+<script src="http://blog.makingdevs.com/js/main.js"></script>
+<script src="http://blog.makingdevs.com/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="http://blog.makingdevs.com/js/photoswipe.min.js"></script>
+<script src="http://blog.makingdevs.com/js/photoswipe-ui-default.min.js"></script><script src="http://blog.makingdevs.com/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
 </html>
+

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>public key on Blog de Making Devs</title>
@@ -6,6 +6,8 @@
     <description>Recent content in public key on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>info@makingdevs.com</managingEditor>
+    <webMaster>info@makingdevs.com</webMaster>
     <lastBuildDate>Tue, 04 Jul 2017 22:06:52 -0500</lastBuildDate>
     
 	<atom:link href="http://blog.makingdevs.com/categories/public-key/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +17,7 @@
       <title>Add public key to Vagrant</title>
       <link>http://blog.makingdevs.com/2017/07/04/add-public-key-to-vagrant/</link>
       <pubDate>Tue, 04 Jul 2017 22:06:52 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/2017/07/04/add-public-key-to-vagrant/</guid>
       <description>After copying a file to Vagrant and creating a basic file structure. We can continue with our series.
 So, in this post, we are going to talk about the following topics:

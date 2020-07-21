@@ -1,224 +1,423 @@
 <!DOCTYPE html>
-<html lang="en">
-<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta name="description" content="">
-    <meta property="og:title" content="Capistrano para despliegues de apps Rails">
-    
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2016-11-30">
-    
-    <meta property="og:description" content="">
-    <meta property="og:url" content="http://blog.makingdevs.com/2016/11/30/capistrano-para-despliegues-de-apps-rails/">
-    <meta property="og:site_name" content="Blog de Making Devs">
-    
-    <meta property="og:tags" content="ruby">
-    
-    <meta property="og:tags" content="capistrano">
-    
-    <meta property="og:tags" content="environment">
-    
-    <meta property="og:tags" content="deploy">
-    
-    <meta name="generator" content="Hugo 0.55.3" />
-    <title>Capistrano para despliegues de apps Rails &middot; Blog de Making Devs</title>
-    
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
-    
-    <link href="http://blog.makingdevs.com/index.xml" rel="alternate" type="application/rss+xml" title="Blog de Making Devs" />
-    
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
     
 
-    
-    
-</head>
-<body>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<nav class="navbar navbar-default navbar-fixed-top visible-xs">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			
-				<a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
-			
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
+  <title>Capistrano para despliegues de apps Rails - Blog de Making Devs</title>
+  <meta name="description" content="Hace tiempo que estabamos haciendo una aplicación Rails, me di a la tarear de investigar el tema obviado que es la forma en como se hace un despliegue lo más ordenado posible. Inclusive le pregunte al gran maestro @chillicoder al respecto, y efectivamente, mis sospechas eran correctas tenía que usar Capistrano(aunque chilli parece usar otra cosa), incluída la recomendación del maestro.
+Obviaré las partes de las instalaciones de las gemas y me enfocaré en el problema que tuve que resolver: un par de ambientes a instalar para una API hecha en Rails."><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Blog de Making Devs",
+    
+    "url": "http:\/\/blog.makingdevs.com\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/blog.makingdevs.com\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/blog.makingdevs.com\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/blog.makingdevs.com\/2016\/11\/30\/capistrano-para-despliegues-de-apps-rails\/",
+          "name": "Capistrano para despliegues de apps rails"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "José Juan Reyes Zuñiga"
+  },
+  "headline": "Capistrano para despliegues de apps Rails",
+  "description" : "Hace tiempo que estabamos haciendo una aplicación Rails, me di a la tarear de investigar el tema obviado que es la forma en como se hace un despliegue lo más ordenado posible. Inclusive le pregunte al gran maestro @chillicoder al respecto, y efectivamente, mis sospechas eran correctas tenía que usar Capistrano(aunque chilli parece usar otra cosa), incluída la recomendación del maestro.\nObviaré las partes de las instalaciones de las gemas y me enfocaré en el problema que tuve que resolver: un par de ambientes a instalar para una API hecha en Rails.",
+  "inLanguage" : "en",
+  "wordCount":  595 ,
+  "datePublished" : "2016-11-30T16:46:05",
+  "dateModified" : "2016-11-30T16:46:05",
+  "image" : "http:\/\/blog.makingdevs.com\/images\/logo_black.png",
+  "keywords" : [ "ruby, capistrano, environment, deploy" ],
+  "mainEntityOfPage" : "http:\/\/blog.makingdevs.com\/2016\/11\/30\/capistrano-para-despliegues-de-apps-rails\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/blog.makingdevs.com\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/blog.makingdevs.com\/images\/logo_black.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Capistrano para despliegues de apps Rails" />
+<meta property="og:description" content="Hace tiempo que estabamos haciendo una aplicación Rails, me di a la tarear de investigar el tema obviado que es la forma en como se hace un despliegue lo más ordenado posible. Inclusive le pregunte al gran maestro @chillicoder al respecto, y efectivamente, mis sospechas eran correctas tenía que usar Capistrano(aunque chilli parece usar otra cosa), incluída la recomendación del maestro.
+Obviaré las partes de las instalaciones de las gemas y me enfocaré en el problema que tuve que resolver: un par de ambientes a instalar para una API hecha en Rails.">
+<meta property="og:image" content="http://blog.makingdevs.com/images/logo_black.png" />
+<meta property="og:url" content="http://blog.makingdevs.com/2016/11/30/capistrano-para-despliegues-de-apps-rails/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Blog de Making Devs" />
+
+  <meta name="twitter:title" content="Capistrano para despliegues de apps Rails" />
+  <meta name="twitter:description" content="Hace tiempo que estabamos haciendo una aplicación Rails, me di a la tarear de investigar el tema obviado que es la forma en como se hace un despliegue lo más ordenado posible. Inclusive le pregunte al …">
+  <meta name="twitter:image" content="http://blog.makingdevs.com/images/logo_black.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@makingdevs" />
+  <meta name="twitter:creator" content="@makingdevs" />
+  <meta name="generator" content="Hugo 0.74.2" />
+  <link rel="alternate" href="http://blog.makingdevs.com/index.xml" type="application/rss+xml" title="Blog de Making Devs"><link rel="stylesheet" href="http://blog.makingdevs.com/css/katex.min.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/fontawesome/css/all.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/bootstrap.min.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/main.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/fonts.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/highlight.min.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/codeblock.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/photoswipe.min.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/photoswipe.default-skin.min.css" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-42842883-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
 				
+					
+						<li>
+							
+								<a href="/2014/07/29/bienvenido-a-makingdevs/">Bienvenidos</a>
+							
+						</li>
+					
 				
-			</ul>
-		</div>
-	</div>
+					
+						<li>
+							
+								<a title="Archive" href="/post"><i class="fas fa-archive fa-lg"></i></a>
+							
+						</li>
+					
+				
+					
+						<li>
+							
+								<a title="Categories" href="/categories"><i class="fas fa-sitemap fa-lg"></i></a>
+							
+						</li>
+					
+				
+					
+						<li>
+							
+								<a title="Tags" href="/tags"><i class='fas fa-tags fa-lg'></i></a>
+							
+						</li>
+					
+				
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Blog de Making Devs" href="http://blog.makingdevs.com/">
+            <img class="avatar-img" src="http://blog.makingdevs.com/images/logo_black.png" alt="Blog de Making Devs" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
 </nav>
-<div class="container-fluid">
-	<div class="row">
-		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
-	<div id="menu-content" class="vertical-align">
-		
-			<h1 class="text-center"><a href="http://blog.makingdevs.com/">Blog de Making Devs</a></h1>
-		
-		
-		
-			<small class="text-center center-block">El código que a veces olvidamos documentar.</small>
-		
-		
-		
-			<img id="profile-pic" src="http://blog.makingdevs.com//profile.jpeg" alt="My Picture" class="img-circle center-block">
-		
-		<div id="social" class="text-center">
-			
 
-			<a href="mailto:info@makingdevs.com"><i class="fa fa-envelope-o fa-2x"></i></a>
-		</div>
-		<div id="links" class="text-center">
-			
-			
-		</div>
-	</div>
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
 </div>
 
-		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
-			<div class="row">
-				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
 
-<main>
+  
+  
+  
 
-  <header>
-    <h1 align=center>Capistrano para despliegues de apps Rails</h1>
+
+
+
+
+
+  
+
+  <header class="header-section ">
     
-    <section class="author">
-      <p align=center> <b>Redactado por: José Juan Reyes Zuñiga</b></p>
-    </section>
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Capistrano para despliegues de apps Rails</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on November 30, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+  
+  
+  
     
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;José Juan Reyes Zuñiga
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
-  </br>
 
-	<article>
-		
 
-<p>Hace tiempo que estabamos haciendo una aplicación <em>Rails</em>, me di a la tarear de investigar el tema obviado que es la forma en como se hace un despliegue lo más ordenado posible. Inclusive le pregunte al gran maestro @chillicoder al respecto, y efectivamente, mis sospechas eran correctas tenía que usar Capistrano(aunque chilli parece usar otra cosa), incluída la recomendación del maestro.</p>
-
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Hace tiempo que estabamos haciendo una aplicación <em>Rails</em>, me di a la tarear de investigar el tema obviado que es la forma en como se hace un despliegue lo más ordenado posible. Inclusive le pregunte al gran maestro @chillicoder al respecto, y efectivamente, mis sospechas eran correctas tenía que usar Capistrano(aunque chilli parece usar otra cosa), incluída la recomendación del maestro.</p>
 <p>Obviaré las partes de las instalaciones de las gemas y me enfocaré en el problema que tuve que resolver: un par de ambientes a instalar para una API hecha en Rails.</p>
-
 <p>Para ser honesto me sorprendió lo estructurado en que se puede hacer un despliegue con Capistrano, incluso me gusto mucho que la recomendación siempre era la misma, dando pie a una buena forma de hacer dicho deploy.</p>
-
-<h2 id="el-archivo-config-deploy-rb">El archivo <em>config/deploy.rb</em></h2>
-
+<h2 id="el-archivo-_configdeployrb_">El archivo <em>config/deploy.rb</em></h2>
 <p>Cuando instalas Capistrano, viene consigo un archivo <em>deploy.rb</em> en donde puse lo siguiente:</p>
+<div class="highlight"><pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="c1"># config valid only for current version of Capistrano</span>
+<span class="n">lock</span> <span class="s1">&#39;3.6.1&#39;</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#080;font-style:italic"># config valid only for current version of Capistrano</span>
-lock <span style="color:#b44">&#39;3.6.1&#39;</span>
+<span class="n">set</span> <span class="ss">:application</span><span class="p">,</span> <span class="s1">&#39;barista&#39;</span>
+<span class="n">set</span> <span class="ss">:repo_url</span><span class="p">,</span> <span class="s1">&#39;git@github.com:makingdevs/MyBarista.git&#39;</span>
+<span class="n">set</span> <span class="ss">:rbenv_ruby</span><span class="p">,</span> <span class="s1">&#39;2.2.3&#39;</span>
 
-set <span style="color:#b8860b">:application</span>, <span style="color:#b44">&#39;barista&#39;</span>
-set <span style="color:#b8860b">:repo_url</span>, <span style="color:#b44">&#39;git@github.com:makingdevs/MyBarista.git&#39;</span>
-set <span style="color:#b8860b">:rbenv_ruby</span>, <span style="color:#b44">&#39;2.2.3&#39;</span>
+<span class="n">set</span> <span class="ss">:repo_tree</span><span class="p">,</span> <span class="s1">&#39;ruby_app&#39;</span>
 
-set <span style="color:#b8860b">:repo_tree</span>, <span style="color:#b44">&#39;ruby_app&#39;</span>
-
-set <span style="color:#b8860b">:puma_user</span>, fetch(<span style="color:#b8860b">:user</span>)
-set <span style="color:#b8860b">:linked_dirs</span>, fetch(<span style="color:#b8860b">:linked_dirs</span>, <span style="color:#666">[]</span>)<span style="color:#666">.</span>push(<span style="color:#b44">&#39;log&#39;</span>, <span style="color:#b44">&#39;tmp/pids&#39;</span>, <span style="color:#b44">&#39;tmp/cache&#39;</span>, <span style="color:#b44">&#39;tmp/sockets&#39;</span>, <span style="color:#b44">&#39;vendor/bundle&#39;</span>, <span style="color:#b44">&#39;public/system&#39;</span>, <span style="color:#b44">&#39;public/uploads&#39;</span>)
-set <span style="color:#b8860b">:linked_files</span>, fetch(<span style="color:#b8860b">:linked_files</span>, <span style="color:#666">[]</span>)<span style="color:#666">.</span>push(<span style="color:#b44">&#39;config/database.yml&#39;</span>, <span style="color:#b44">&#39;config/secrets.yml&#39;</span>)</code></pre></div>
-
+<span class="n">set</span> <span class="ss">:puma_user</span><span class="p">,</span> <span class="n">fetch</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
+<span class="n">set</span> <span class="ss">:linked_dirs</span><span class="p">,</span> <span class="n">fetch</span><span class="p">(</span><span class="ss">:linked_dirs</span><span class="p">,</span> <span class="o">[]</span><span class="p">)</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp/pids&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp/cache&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp/sockets&#39;</span><span class="p">,</span> <span class="s1">&#39;vendor/bundle&#39;</span><span class="p">,</span> <span class="s1">&#39;public/system&#39;</span><span class="p">,</span> <span class="s1">&#39;public/uploads&#39;</span><span class="p">)</span>
+<span class="n">set</span> <span class="ss">:linked_files</span><span class="p">,</span> <span class="n">fetch</span><span class="p">(</span><span class="ss">:linked_files</span><span class="p">,</span> <span class="o">[]</span><span class="p">)</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s1">&#39;config/database.yml&#39;</span><span class="p">,</span> <span class="s1">&#39;config/secrets.yml&#39;</span><span class="p">)</span></code></pre></div>
 <p>Aquí hay varias cosas que me gustaria comentar:</p>
-
 <ol>
 <li><code>:repo_tree</code> te ayuda a desplegar una carpeta interna del directorio base del repo, que es nuestro caso</li>
 <li><code>:linked_dirs</code> ayuda a crear enlances simbólicos de ciertos directorios que necesitarías</li>
 <li><code>:linked_file</code> excelente forma de hacer enlaces simbólicos de archivos que contienen la configuración externa, si no quieres usar variables de ambiente o sistema.</li>
 </ol>
-
 <p>Adicional a esto, en el mismo archivo tuve que eliminar algunas tareas y crear algunas para el manejo de puma:</p>
+<div class="highlight"><pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="s2">&#34;deploy:assets:precompile&#34;</span><span class="o">].</span><span class="n">clear_actions</span>
+<span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="s2">&#34;deploy:assets:backup_manifest&#34;</span><span class="o">].</span><span class="n">clear_actions</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#800">Rake</span><span style="color:#666">::</span><span style="color:#800">Task</span><span style="color:#666">[</span><span style="color:#b44">&#34;deploy:assets:precompile&#34;</span><span style="color:#666">].</span>clear_actions
-<span style="color:#800">Rake</span><span style="color:#666">::</span><span style="color:#800">Task</span><span style="color:#666">[</span><span style="color:#b44">&#34;deploy:assets:backup_manifest&#34;</span><span style="color:#666">].</span>clear_actions
+<span class="n">namespace</span> <span class="ss">:puma</span> <span class="k">do</span>
+  <span class="n">desc</span> <span class="s1">&#39;Create Directories for Puma Pids and Socket&#39;</span>
+  <span class="n">task</span> <span class="ss">:make_dirs</span> <span class="k">do</span>
+    <span class="n">on</span> <span class="n">roles</span><span class="p">(</span><span class="ss">:app</span><span class="p">)</span> <span class="k">do</span>
+      <span class="n">execute</span> <span class="s2">&#34;mkdir </span><span class="si">#{</span><span class="n">shared_path</span><span class="si">}</span><span class="s2">/tmp/sockets -p&#34;</span>
+      <span class="n">execute</span> <span class="s2">&#34;mkdir </span><span class="si">#{</span><span class="n">shared_path</span><span class="si">}</span><span class="s2">/tmp/pids -p&#34;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
 
-namespace <span style="color:#b8860b">:puma</span> <span style="color:#a2f;font-weight:bold">do</span>
-  desc <span style="color:#b44">&#39;Create Directories for Puma Pids and Socket&#39;</span>
-  task <span style="color:#b8860b">:make_dirs</span> <span style="color:#a2f;font-weight:bold">do</span>
-    on roles(<span style="color:#b8860b">:app</span>) <span style="color:#a2f;font-weight:bold">do</span>
-      execute <span style="color:#b44">&#34;mkdir </span><span style="color:#b68;font-weight:bold">#{</span>shared_path<span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">/tmp/sockets -p&#34;</span>
-      execute <span style="color:#b44">&#34;mkdir </span><span style="color:#b68;font-weight:bold">#{</span>shared_path<span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">/tmp/pids -p&#34;</span>
-    <span style="color:#a2f;font-weight:bold">end</span>
-  <span style="color:#a2f;font-weight:bold">end</span>
+  <span class="n">before</span> <span class="ss">:start</span><span class="p">,</span> <span class="ss">:make_dirs</span>
+<span class="k">end</span>
 
-  before <span style="color:#b8860b">:start</span>, <span style="color:#b8860b">:make_dirs</span>
-<span style="color:#a2f;font-weight:bold">end</span>
+<span class="n">namespace</span> <span class="ss">:deploy</span> <span class="k">do</span>
+  <span class="n">desc</span> <span class="s2">&#34;Make sure local git is in sync with remote.&#34;</span>
+  <span class="n">task</span> <span class="ss">:check_revision</span> <span class="k">do</span>
+    <span class="n">on</span> <span class="n">roles</span><span class="p">(</span><span class="ss">:app</span><span class="p">)</span> <span class="k">do</span>
+      <span class="k">unless</span> <span class="sb">`git rev-parse HEAD`</span> <span class="o">==</span> <span class="sb">`git rev-parse origin/master`</span>
+        <span class="nb">puts</span> <span class="s2">&#34;WARNING: HEAD is not the same as origin/master&#34;</span>
+        <span class="nb">puts</span> <span class="s2">&#34;Run `git push` to sync changes.&#34;</span>
+        <span class="nb">exit</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
 
-namespace <span style="color:#b8860b">:deploy</span> <span style="color:#a2f;font-weight:bold">do</span>
-  desc <span style="color:#b44">&#34;Make sure local git is in sync with remote.&#34;</span>
-  task <span style="color:#b8860b">:check_revision</span> <span style="color:#a2f;font-weight:bold">do</span>
-    on roles(<span style="color:#b8860b">:app</span>) <span style="color:#a2f;font-weight:bold">do</span>
-      <span style="color:#a2f;font-weight:bold">unless</span> <span style="color:#b44">`git rev-parse HEAD`</span> <span style="color:#666">==</span> <span style="color:#b44">`git rev-parse origin/master`</span>
-        <span style="color:#a2f">puts</span> <span style="color:#b44">&#34;WARNING: HEAD is not the same as origin/master&#34;</span>
-        <span style="color:#a2f">puts</span> <span style="color:#b44">&#34;Run `git push` to sync changes.&#34;</span>
-        <span style="color:#a2f">exit</span>
-      <span style="color:#a2f;font-weight:bold">end</span>
-    <span style="color:#a2f;font-weight:bold">end</span>
-  <span style="color:#a2f;font-weight:bold">end</span>
+  <span class="n">desc</span> <span class="s1">&#39;Initial Deploy&#39;</span>
+  <span class="n">task</span> <span class="ss">:initial</span> <span class="k">do</span>
+    <span class="n">on</span> <span class="n">roles</span><span class="p">(</span><span class="ss">:app</span><span class="p">)</span> <span class="k">do</span>
+      <span class="n">before</span> <span class="s1">&#39;deploy:restart&#39;</span><span class="p">,</span> <span class="s1">&#39;puma:start&#39;</span>
+      <span class="n">invoke</span> <span class="s1">&#39;deploy&#39;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
 
-  desc <span style="color:#b44">&#39;Initial Deploy&#39;</span>
-  task <span style="color:#b8860b">:initial</span> <span style="color:#a2f;font-weight:bold">do</span>
-    on roles(<span style="color:#b8860b">:app</span>) <span style="color:#a2f;font-weight:bold">do</span>
-      before <span style="color:#b44">&#39;deploy:restart&#39;</span>, <span style="color:#b44">&#39;puma:start&#39;</span>
-      invoke <span style="color:#b44">&#39;deploy&#39;</span>
-    <span style="color:#a2f;font-weight:bold">end</span>
-  <span style="color:#a2f;font-weight:bold">end</span>
+  <span class="n">desc</span> <span class="s1">&#39;Restart application&#39;</span>
+  <span class="n">task</span> <span class="ss">:restart</span> <span class="k">do</span>
+    <span class="n">on</span> <span class="n">roles</span><span class="p">(</span><span class="ss">:app</span><span class="p">),</span> <span class="k">in</span><span class="p">:</span> <span class="ss">:sequence</span><span class="p">,</span> <span class="ss">wait</span><span class="p">:</span> <span class="mi">5</span> <span class="k">do</span>
+      <span class="n">invoke</span> <span class="s1">&#39;puma:restart&#39;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
 
-  desc <span style="color:#b44">&#39;Restart application&#39;</span>
-  task <span style="color:#b8860b">:restart</span> <span style="color:#a2f;font-weight:bold">do</span>
-    on roles(<span style="color:#b8860b">:app</span>), <span style="color:#a2f;font-weight:bold">in</span>: <span style="color:#b8860b">:sequence</span>, <span style="color:#b8860b">wait</span>: <span style="color:#666">5</span> <span style="color:#a2f;font-weight:bold">do</span>
-      invoke <span style="color:#b44">&#39;puma:restart&#39;</span>
-    <span style="color:#a2f;font-weight:bold">end</span>
-  <span style="color:#a2f;font-weight:bold">end</span>
-
-  before <span style="color:#b8860b">:starting</span>,     <span style="color:#b8860b">:check_revision</span>
-  after  <span style="color:#b8860b">:finishing</span>,    <span style="color:#b8860b">:cleanup</span>
-  after  <span style="color:#b8860b">:finishing</span>,    <span style="color:#b8860b">:restart</span>
-<span style="color:#a2f;font-weight:bold">end</span></code></pre></div>
-
+  <span class="n">before</span> <span class="ss">:starting</span><span class="p">,</span>     <span class="ss">:check_revision</span>
+  <span class="n">after</span>  <span class="ss">:finishing</span><span class="p">,</span>    <span class="ss">:cleanup</span>
+  <span class="n">after</span>  <span class="ss">:finishing</span><span class="p">,</span>    <span class="ss">:restart</span>
+<span class="k">end</span></code></pre></div>
 <h2 id="los-archivos-de-ambientes">Los archivos de ambientes</h2>
-
 <p>Dentro del directorio <em>config/deploy/</em> existen un par de archivos que nos ayudan a definir elementos particulares de la instalación por cada ambiente, lo único que yo hice fue habilitar la máquina a través de autenticación de llave pública con el servidor de despliegue para que se pudieran comunicar por ssh. Y mis archivos quedaron así:</p>
+<div class="highlight"><pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">set</span> <span class="ss">:stage</span><span class="p">,</span> <span class="ss">:production</span>
+<span class="n">set</span> <span class="ss">:puma_bind</span><span class="p">,</span> <span class="sx">%w(tcp://0.0.0.0:3000)</span>
+<span class="n">set</span> <span class="ss">:branch</span><span class="p">,</span> <span class="s1">&#39;production&#39;</span>
+<span class="n">set</span> <span class="ss">:deploy_to</span><span class="p">,</span> <span class="s2">&#34;/var/www/</span><span class="si">#{</span><span class="n">fetch</span><span class="p">(</span><span class="ss">:application</span><span class="p">)</span><span class="si">}</span><span class="s2">/production&#34;</span>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">set <span style="color:#b8860b">:stage</span>, <span style="color:#b8860b">:production</span>
-set <span style="color:#b8860b">:puma_bind</span>, <span style="color:#008000">%w(tcp://0.0.0.0:3000)</span>
-set <span style="color:#b8860b">:branch</span>, <span style="color:#b44">&#39;production&#39;</span>
-set <span style="color:#b8860b">:deploy_to</span>, <span style="color:#b44">&#34;/var/www/</span><span style="color:#b68;font-weight:bold">#{</span>fetch(<span style="color:#b8860b">:application</span>)<span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">/production&#34;</span>
+<span class="n">server</span> <span class="s1">&#39;powerful.makingdevs.com&#39;</span><span class="p">,</span> <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;centos-user&#39;</span><span class="p">,</span> <span class="ss">roles</span><span class="p">:</span> <span class="sx">%w{app web}</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">set</span> <span class="ss">:stage</span><span class="p">,</span> <span class="ss">:stage</span>
+<span class="n">set</span> <span class="ss">:puma_bind</span><span class="p">,</span> <span class="sx">%w(tcp://0.0.0.0:3001)</span>
+<span class="n">set</span> <span class="ss">:branch</span><span class="p">,</span> <span class="s1">&#39;stage&#39;</span>
+<span class="n">set</span> <span class="ss">:deploy_to</span><span class="p">,</span> <span class="s2">&#34;/var/www/</span><span class="si">#{</span><span class="n">fetch</span><span class="p">(</span><span class="ss">:application</span><span class="p">)</span><span class="si">}</span><span class="s2">/stage&#34;</span>
 
-server <span style="color:#b44">&#39;powerful.makingdevs.com&#39;</span>, <span style="color:#b8860b">user</span>: <span style="color:#b44">&#39;centos-user&#39;</span>, <span style="color:#b8860b">roles</span>: <span style="color:#008000">%w{app web}</span></code></pre></div>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">set <span style="color:#b8860b">:stage</span>, <span style="color:#b8860b">:stage</span>
-set <span style="color:#b8860b">:puma_bind</span>, <span style="color:#008000">%w(tcp://0.0.0.0:3001)</span>
-set <span style="color:#b8860b">:branch</span>, <span style="color:#b44">&#39;stage&#39;</span>
-set <span style="color:#b8860b">:deploy_to</span>, <span style="color:#b44">&#34;/var/www/</span><span style="color:#b68;font-weight:bold">#{</span>fetch(<span style="color:#b8860b">:application</span>)<span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">/stage&#34;</span>
-
-server <span style="color:#b44">&#39;powerful.makingdevs.com&#39;</span>, <span style="color:#b8860b">user</span>: <span style="color:#b44">&#39;centos-user&#39;</span>, <span style="color:#b8860b">roles</span>: <span style="color:#008000">%w{app web}</span></code></pre></div>
-
+<span class="n">server</span> <span class="s1">&#39;powerful.makingdevs.com&#39;</span><span class="p">,</span> <span class="ss">user</span><span class="p">:</span> <span class="s1">&#39;centos-user&#39;</span><span class="p">,</span> <span class="ss">roles</span><span class="p">:</span> <span class="sx">%w{app web}</span></code></pre></div>
 <p>En donde puedo definir incluso el branch del repo que quiero desplegar, el puerto de puma donde quiero levantar y que no colisionen entre sí, y un directorio basado en el ambiente.</p>
-
 <p>Me gusta mucho el control que tiene Capistrano para revertir una versión, pues lo ordena de tal forma que guarda algunos respaldos de versiones desplegadas anteriormente listas para resintalarlse en caso de que algo salga mal.</p>
-
 <p>Capistrano hace todo, la transferencia de archivos, el ordenamiento, la instalación de puma y de las gemas de la app, incluso del propio runtime de Ruby, la creación de enlaces simbólicos, la descarga de cambios del repo, etc.</p>
-
 <p>Capistrano es la herramienta.</p>
 
-	</article>
-</main>
 
-<div id="bottom-nav" class="text-center center-block">
-	<a href=" http://blog.makingdevs.com/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
-</div>
+        
+          <div class="blog-tags">
+            
+              <a href="http://blog.makingdevs.com//tags/ruby/">ruby</a>&nbsp;
+            
+              <a href="http://blog.makingdevs.com//tags/capistrano/">capistrano</a>&nbsp;
+            
+              <a href="http://blog.makingdevs.com//tags/environment/">environment</a>&nbsp;
+            
+              <a href="http://blog.makingdevs.com//tags/deploy/">deploy</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://blog.makingdevs.com/2016/11/05/fizzbuzz/" data-toggle="tooltip" data-placement="top" title="FizzBuzz">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir/" data-toggle="tooltip" data-placement="top" title="Resolviendo la criba de Eratóstenes con Elixir">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
 
 
-  <div id="disqus_thread"></div>
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -238,34 +437,123 @@ server <span style="color:#b44">&#39;powerful.makingdevs.com&#39;</span>, <span 
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
 
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+    </div>
   </div>
-  
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+</div>
 
-    ga('create', 'UA-42842883-2', 'auto');
-    ga('send', 'pageview');
-    window.baseURL = "http:\/\/blog.makingdevs.com\/";
-  </script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-  
-  
-  <script src="http://blog.makingdevs.com//js/App.js"></script>
-  
-</body>
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:info@makingdevs.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/makingdevs" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/makingdevs" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/makingdevs" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/makingdevs" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/makingdevs" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2019
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.74.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="http://blog.makingdevs.com/js/katex.min.js"></script>
+<script src="http://blog.makingdevs.com/js/auto-render.min.js"></script>
+<script src="http://blog.makingdevs.com/js/jquery.min.js"></script>
+<script src="http://blog.makingdevs.com/js/bootstrap.min.js"></script>
+
+<script src="http://blog.makingdevs.com/js/main.js"></script>
+<script src="http://blog.makingdevs.com/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="http://blog.makingdevs.com/js/photoswipe.min.js"></script>
+<script src="http://blog.makingdevs.com/js/photoswipe-ui-default.min.js"></script><script src="http://blog.makingdevs.com/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
 </html>
+

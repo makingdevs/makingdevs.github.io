@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>nerves on Blog de Making Devs</title>
@@ -6,6 +6,8 @@
     <description>Recent content in nerves on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>info@makingdevs.com</managingEditor>
+    <webMaster>info@makingdevs.com</webMaster>
     <lastBuildDate>Sun, 17 Jun 2018 16:34:54 -0500</lastBuildDate>
     
 	<atom:link href="http://blog.makingdevs.com/tags/nerves/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +17,7 @@
       <title>¿Cómo adopté Elixir?</title>
       <link>http://blog.makingdevs.com/2018/06/17/c%C3%B3mo-adopt%C3%A9-elixir/</link>
       <pubDate>Sun, 17 Jun 2018 16:34:54 -0500</pubDate>
-      
+      <author>info@makingdevs.com</author>
       <guid>http://blog.makingdevs.com/2018/06/17/c%C3%B3mo-adopt%C3%A9-elixir/</guid>
       <description>LLevo ya un par de años escuchando y haciendo Elixir, no con la intensidad que quisiera pero tampoco lo he perdido de vista; soy un programador con preferencias dinámicas opcionales, sin embargo, me gusta mucho la magia(compilador) que Haskell ofrece al programar.
 De hace ya un par de años he querido comenzar una serie de artículos basados en LISP, sin embargo, el trabajo y los compromisos empresariales no lo han permitido, creo importante que los programadores conozcan las bases de la programación funcional, no por ser mejor, si no por que permite mejorar el/los paradigmas que estés usando.</description>

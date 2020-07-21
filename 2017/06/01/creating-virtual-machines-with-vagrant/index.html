@@ -1,223 +1,424 @@
 <!DOCTYPE html>
-<html lang="en">
-<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta name="description" content="">
-    <meta property="og:title" content="Creating virtual machines with Vagrant">
-    
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2017-06-01">
-    
-    <meta property="og:description" content="">
-    <meta property="og:url" content="http://blog.makingdevs.com/2017/06/01/creating-virtual-machines-with-vagrant/">
-    <meta property="og:site_name" content="Blog de Making Devs">
-    
-    <meta property="og:tags" content="operations">
-    
-    <meta property="og:tags" content="vagrant">
-    
-    <meta property="og:tags" content="virtual box">
-    
-    <meta property="og:tags" content="developer tools">
-    
-    <meta name="generator" content="Hugo 0.55.3" />
-    <title>Creating virtual machines with Vagrant &middot; Blog de Making Devs</title>
-    
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <link rel="stylesheet" href="http://blog.makingdevs.com/css/style.css">
-    
-    <link href="http://blog.makingdevs.com/index.xml" rel="alternate" type="application/rss+xml" title="Blog de Making Devs" />
-    
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
     
 
-    
-    
-</head>
-<body>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<nav class="navbar navbar-default navbar-fixed-top visible-xs">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			
-				<a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
-			
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
+  <title>Creating virtual machines with Vagrant - Blog de Making Devs</title>
+  <meta name="description" content="It&rsquo;s been awhile since I wrote a post, but in compensation I would make a series of post talking about deploying applications with edeliver. But for this, we need to prepare the path. So, in this first post I will talk about Vagrant and how to use to setup an environment.
+First of all, we&rsquo;re going to install Vagrant and Virtual Box. We&rsquo;ll download Vagrant from this link and follow the instructions(i."><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Blog de Making Devs",
+    
+    "url": "http:\/\/blog.makingdevs.com\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/blog.makingdevs.com\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/blog.makingdevs.com\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/blog.makingdevs.com\/2017\/06\/01\/creating-virtual-machines-with-vagrant\/",
+          "name": "Creating virtual machines with vagrant"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Felipe Juarez"
+  },
+  "headline": "Creating virtual machines with Vagrant",
+  "description" : "It\u0026rsquo;s been awhile since I wrote a post, but in compensation I would make a series of post talking about deploying applications with edeliver. But for this, we need to prepare the path. So, in this first post I will talk about Vagrant and how to use to setup an environment.\nFirst of all, we\u0026rsquo;re going to install Vagrant and Virtual Box. We\u0026rsquo;ll download Vagrant from this link and follow the instructions(i.",
+  "inLanguage" : "en",
+  "wordCount":  758 ,
+  "datePublished" : "2017-06-01T15:28:00",
+  "dateModified" : "2017-06-01T15:28:00",
+  "image" : "http:\/\/blog.makingdevs.com\/images\/logo_black.png",
+  "keywords" : [ "operations, vagrant, virtual box, developer tools" ],
+  "mainEntityOfPage" : "http:\/\/blog.makingdevs.com\/2017\/06\/01\/creating-virtual-machines-with-vagrant\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/blog.makingdevs.com\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/blog.makingdevs.com\/images\/logo_black.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Creating virtual machines with Vagrant" />
+<meta property="og:description" content="It&rsquo;s been awhile since I wrote a post, but in compensation I would make a series of post talking about deploying applications with edeliver. But for this, we need to prepare the path. So, in this first post I will talk about Vagrant and how to use to setup an environment.
+First of all, we&rsquo;re going to install Vagrant and Virtual Box. We&rsquo;ll download Vagrant from this link and follow the instructions(i.">
+<meta property="og:image" content="http://blog.makingdevs.com/images/logo_black.png" />
+<meta property="og:url" content="http://blog.makingdevs.com/2017/06/01/creating-virtual-machines-with-vagrant/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Blog de Making Devs" />
+
+  <meta name="twitter:title" content="Creating virtual machines with Vagrant" />
+  <meta name="twitter:description" content="It&rsquo;s been awhile since I wrote a post, but in compensation I would make a series of post talking about deploying applications with edeliver. But for this, we need to prepare the path. So, in …">
+  <meta name="twitter:image" content="http://blog.makingdevs.com/images/logo_black.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@makingdevs" />
+  <meta name="twitter:creator" content="@makingdevs" />
+  <meta name="generator" content="Hugo 0.74.2" />
+  <link rel="alternate" href="http://blog.makingdevs.com/index.xml" type="application/rss+xml" title="Blog de Making Devs"><link rel="stylesheet" href="http://blog.makingdevs.com/css/katex.min.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/fontawesome/css/all.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/bootstrap.min.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/main.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/fonts.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/highlight.min.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/codeblock.css" /><link rel="stylesheet" href="http://blog.makingdevs.com/css/photoswipe.min.css" />
+  <link rel="stylesheet" href="http://blog.makingdevs.com/css/photoswipe.default-skin.min.css" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-42842883-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
 				
+					
+						<li>
+							
+								<a href="/2014/07/29/bienvenido-a-makingdevs/">Bienvenidos</a>
+							
+						</li>
+					
 				
-			</ul>
-		</div>
-	</div>
+					
+						<li>
+							
+								<a title="Archive" href="/post"><i class="fas fa-archive fa-lg"></i></a>
+							
+						</li>
+					
+				
+					
+						<li>
+							
+								<a title="Categories" href="/categories"><i class="fas fa-sitemap fa-lg"></i></a>
+							
+						</li>
+					
+				
+					
+						<li>
+							
+								<a title="Tags" href="/tags"><i class='fas fa-tags fa-lg'></i></a>
+							
+						</li>
+					
+				
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Blog de Making Devs" href="http://blog.makingdevs.com/">
+            <img class="avatar-img" src="http://blog.makingdevs.com/images/logo_black.png" alt="Blog de Making Devs" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
 </nav>
-<div class="container-fluid">
-	<div class="row">
-		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
-	<div id="menu-content" class="vertical-align">
-		
-			<h1 class="text-center"><a href="http://blog.makingdevs.com/">Blog de Making Devs</a></h1>
-		
-		
-		
-			<small class="text-center center-block">El código que a veces olvidamos documentar.</small>
-		
-		
-		
-			<img id="profile-pic" src="http://blog.makingdevs.com//profile.jpeg" alt="My Picture" class="img-circle center-block">
-		
-		<div id="social" class="text-center">
-			
 
-			<a href="mailto:info@makingdevs.com"><i class="fa fa-envelope-o fa-2x"></i></a>
-		</div>
-		<div id="links" class="text-center">
-			
-			
-		</div>
-	</div>
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
 </div>
 
-		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
-			<div class="row">
-				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
 
-<main>
+  
+  
+  
 
-  <header>
-    <h1 align=center>Creating virtual machines with Vagrant</h1>
+
+
+
+
+
+  
+
+  <header class="header-section ">
     
-    <section class="author">
-      <p align=center> <b>Redactado por: Felipe Juarez</b></p>
-    </section>
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Creating virtual machines with Vagrant</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on June 1, 2017
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+  
     
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Felipe Juarez
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
-  </br>
 
-	<article>
-		<p>It&rsquo;s been awhile since I wrote a post, but in compensation I would make a series of post talking about deploying applications with edeliver. But for this, we need to prepare the path. So, in this first post I will talk about Vagrant and how to use to setup an environment.</p>
 
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>It&rsquo;s been awhile since I wrote a post, but in compensation I would make a series of post talking about deploying applications with edeliver. But for this, we need to prepare the path. So, in this first post I will talk about Vagrant and how to use to setup an environment.</p>
 <p>First of all, we&rsquo;re going to install <em>Vagrant</em> and <em>Virtual Box</em>. We&rsquo;ll download <em>Vagrant</em> from this <a href="https://www.vagrantup.com/downloads.html">link</a> and follow the instructions(i.e. next, next, next, agree, install) When that is complete, we can verify the correct installation using the command <code>vagrant -v</code></p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">❯ vagrant -v
-Vagrant <span style="color:#666">1</span>.9.3</code></pre></div>
-
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">❯ vagrant -v
+Vagrant 1.9.3</code></pre></div>
 <p>We can download <em>Virtual Box</em> from this <a href="https://www.virtualbox.org">link</a>. This step is required because <em>Vagrant</em> use images for running in a virtual machine. You can configure <em>Vagrant</em> to be used with other providers, but that is out of this scope.</p>
-
 <p>After that is finished, we can start with our first command which is <code>vagrant init</code>. Once that you run the command you will see a message like this</p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">❯ vagrant init
-A <span style="color:#b44">`</span>Vagrantfile<span style="color:#b44">`</span> has been placed in this directory. You are now
-ready to <span style="color:#b44">`</span>vagrant up<span style="color:#b44">`</span> your first virtual environment! Please <span style="color:#a2f">read</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">❯ vagrant init
+A <span class="sb">`</span>Vagrantfile<span class="sb">`</span> has been placed in this directory. You are now
+ready to <span class="sb">`</span>vagrant up<span class="sb">`</span> your first virtual environment! Please <span class="nb">read</span>
 the comments in the Vagrantfile as well as documentation on
-<span style="color:#b44">`</span>vagrantup.com<span style="color:#b44">`</span> <span style="color:#a2f;font-weight:bold">for</span> more information on using Vagrant.</code></pre></div>
-
+<span class="sb">`</span>vagrantup.com<span class="sb">`</span> <span class="k">for</span> more information on using Vagrant.</code></pre></div>
 <p>And a file called <code>Vagrant</code> is created with the following content (without comments)</p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Vagrant.configure<span style="color:#666">(</span><span style="color:#b44">&#34;2&#34;</span><span style="color:#666">)</span> <span style="color:#a2f;font-weight:bold">do</span> |config|
-  config.vm.box <span style="color:#666">=</span> <span style="color:#b44">&#34;base&#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">Vagrant.configure<span class="o">(</span><span class="s2">&#34;2&#34;</span><span class="o">)</span> <span class="k">do</span> <span class="p">|</span>config<span class="p">|</span>
+  config.vm.box <span class="o">=</span> <span class="s2">&#34;base&#34;</span>
 end</code></pre></div>
-
 <p>Change the <code>config.vm.box = &quot;base&quot;</code> for <code>config.vm.box = &quot;ubuntu/trusty64&quot;</code> and then run <code>vagrant up</code> you will see something like this:</p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">❯ vagrant up
-Bringing machine <span style="color:#b44">&#39;default&#39;</span> up with <span style="color:#b44">&#39;virtualbox&#39;</span> provider...
-<span style="color:#666">==</span>&gt; default: Box <span style="color:#b44">&#39;ubuntu/trusty64&#39;</span> could not be found. Attempting to find and install...
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">❯ vagrant up
+Bringing machine <span class="s1">&#39;default&#39;</span> up with <span class="s1">&#39;virtualbox&#39;</span> provider...
+<span class="o">==</span>&gt; default: Box <span class="s1">&#39;ubuntu/trusty64&#39;</span> could not be found. Attempting to find and install...
     default: Box Provider: virtualbox
-    default: Box Version: &gt;<span style="color:#666">=</span> <span style="color:#b8860b">0</span>
-<span style="color:#666">==</span>&gt; default: Loading metadata <span style="color:#a2f;font-weight:bold">for</span> box <span style="color:#b44">&#39;ubuntu/trusty64&#39;</span>
+    default: Box Version: &gt;<span class="o">=</span> <span class="nv">0</span>
+<span class="o">==</span>&gt; default: Loading metadata <span class="k">for</span> box <span class="s1">&#39;ubuntu/trusty64&#39;</span>
     default: URL: https://atlas.hashicorp.com/ubuntu/trusty64
-<span style="color:#666">==</span>&gt; default: Adding box <span style="color:#b44">&#39;ubuntu/trusty64&#39;</span> <span style="color:#666">(</span>v20170526.4.0<span style="color:#666">)</span> <span style="color:#a2f;font-weight:bold">for</span> provider: virtualbox
+<span class="o">==</span>&gt; default: Adding box <span class="s1">&#39;ubuntu/trusty64&#39;</span> <span class="o">(</span>v20170526.4.0<span class="o">)</span> <span class="k">for</span> provider: virtualbox
     default: Downloading: https://atlas.hashicorp.com/ubuntu/boxes/trusty64/versions/20170526.4.0/providers/virtualbox.box
-<span style="color:#666">==</span>&gt; default: Successfully added box <span style="color:#b44">&#39;ubuntu/trusty64&#39;</span> <span style="color:#666">(</span>v20170526.4.0<span style="color:#666">)</span> <span style="color:#a2f;font-weight:bold">for</span> <span style="color:#b44">&#39;virtualbox&#39;</span>!
-<span style="color:#666">==</span>&gt; default: Importing base box <span style="color:#b44">&#39;ubuntu/trusty64&#39;</span>...
-<span style="color:#666">==</span>&gt; default: Matching MAC address <span style="color:#a2f;font-weight:bold">for</span> NAT networking...
-<span style="color:#666">==</span>&gt; default: Checking <span style="color:#a2f;font-weight:bold">if</span> box <span style="color:#b44">&#39;ubuntu/trusty64&#39;</span> is up to date...
-<span style="color:#666">==</span>&gt; default: Setting the name of the VM: <span style="color:#b8860b">vagrant_default_1496339776983_29558</span>
-<span style="color:#666">==</span>&gt; default: Clearing any previously <span style="color:#a2f">set</span> forwarded ports...
-<span style="color:#666">==</span>&gt; default: Fixed port collision <span style="color:#a2f;font-weight:bold">for</span> <span style="color:#b8860b">22</span> <span style="color:#666">=</span>&gt; <span style="color:#666">2222</span>. Now on port <span style="color:#666">2200</span>.
-<span style="color:#666">==</span>&gt; default: Clearing any previously <span style="color:#a2f">set</span> network interfaces...
-<span style="color:#666">==</span>&gt; default: Preparing network interfaces based on configuration...
-    default: Adapter <span style="color:#666">1</span>: <span style="color:#b8860b">nat</span>
-<span style="color:#666">==</span>&gt; default: Forwarding ports...
-    default: <span style="color:#666">22</span> <span style="color:#666">(</span>guest<span style="color:#666">)</span> <span style="color:#666">=</span>&gt; <span style="color:#666">2200</span> <span style="color:#666">(</span>host<span style="color:#666">)</span> <span style="color:#666">(</span>adapter <span style="color:#666">1</span><span style="color:#666">)</span>
-<span style="color:#666">==</span>&gt; default: Booting VM...
-<span style="color:#666">==</span>&gt; default: Waiting <span style="color:#a2f;font-weight:bold">for</span> machine to boot. This may take a few minutes...
-    default: SSH address: <span style="color:#666">127</span>.0.0.1:2200
+<span class="o">==</span>&gt; default: Successfully added box <span class="s1">&#39;ubuntu/trusty64&#39;</span> <span class="o">(</span>v20170526.4.0<span class="o">)</span> <span class="k">for</span> <span class="s1">&#39;virtualbox&#39;</span>!
+<span class="o">==</span>&gt; default: Importing base box <span class="s1">&#39;ubuntu/trusty64&#39;</span>...
+<span class="o">==</span>&gt; default: Matching MAC address <span class="k">for</span> NAT networking...
+<span class="o">==</span>&gt; default: Checking <span class="k">if</span> box <span class="s1">&#39;ubuntu/trusty64&#39;</span> is up to date...
+<span class="o">==</span>&gt; default: Setting the name of the VM: <span class="nv">vagrant_default_1496339776983_29558</span>
+<span class="o">==</span>&gt; default: Clearing any previously <span class="nb">set</span> forwarded ports...
+<span class="o">==</span>&gt; default: Fixed port collision <span class="k">for</span> <span class="nv">22</span> <span class="o">=</span>&gt; 2222. Now on port 2200.
+<span class="o">==</span>&gt; default: Clearing any previously <span class="nb">set</span> network interfaces...
+<span class="o">==</span>&gt; default: Preparing network interfaces based on configuration...
+    default: Adapter 1: <span class="nv">nat</span>
+<span class="o">==</span>&gt; default: Forwarding ports...
+    default: <span class="m">22</span> <span class="o">(</span>guest<span class="o">)</span> <span class="o">=</span>&gt; <span class="m">2200</span> <span class="o">(</span>host<span class="o">)</span> <span class="o">(</span>adapter 1<span class="o">)</span>
+<span class="o">==</span>&gt; default: Booting VM...
+<span class="o">==</span>&gt; default: Waiting <span class="k">for</span> machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2200
     default: SSH username: vagrant
     default: SSH auth method: private key
     default: Warning: Remote connection disconnect. Retrying...
     default:
     default: Vagrant insecure key detected. Vagrant will automatically replace
-    default: this with a newly generated keypair <span style="color:#a2f;font-weight:bold">for</span> better security.
+    default: this with a newly generated keypair <span class="k">for</span> better security.
     default:
     default: Inserting generated public key within guest...
-    default: Removing insecure key from the guest <span style="color:#a2f;font-weight:bold">if</span> it<span style="">&#39;</span>s present...
+    default: Removing insecure key from the guest <span class="k">if</span> it<span class="err">&#39;</span>s present...
     default: Key inserted! Disconnecting and reconnecting using new SSH key...
-<span style="color:#666">==</span>&gt; default: Machine booted and ready!
-<span style="color:#666">==</span>&gt; default: Checking <span style="color:#a2f;font-weight:bold">for</span> guest additions in VM...
-    default: The guest additions on this VM <span style="color:#a2f;font-weight:bold">do</span> not match the installed version of
+<span class="o">==</span>&gt; default: Machine booted and ready!
+<span class="o">==</span>&gt; default: Checking <span class="k">for</span> guest additions in VM...
+    default: The guest additions on this VM <span class="k">do</span> not match the installed version of
     default: VirtualBox! In most cases this is fine, but in rare cases it can
     default: prevent things such as shared folders from working properly. If you see
     default: shared folder errors, please make sure the guest additions within the
     default: virtual machine match the version of VirtualBox you have installed on
     default: your host and reload your VM.
     default:
-    default: Guest Additions Version: <span style="color:#666">4</span>.3.36
-    default: VirtualBox Version: <span style="color:#666">5</span>.1
-<span style="color:#666">==</span>&gt; default: Mounting shared folders...
-    default: /vagrant <span style="color:#666">=</span>&gt; /Users/makingdevs/Documents/vagrant</code></pre></div>
-
+    default: Guest Additions Version: 4.3.36
+    default: VirtualBox Version: 5.1
+<span class="o">==</span>&gt; default: Mounting shared folders...
+    default: /vagrant <span class="o">=</span>&gt; /Users/makingdevs/Documents/vagrant</code></pre></div>
 <p>This shows you the basic setup for an ubuntu image. If you open your <em>Virtual Box</em>, you will see a new image created and ready to use. You can enter to that machine via SSH with <code>vagrant ssh</code></p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">❯ vagrant ssh
-Welcome to Ubuntu <span style="color:#666">14</span>.04.5 LTS <span style="color:#666">(</span>GNU/Linux <span style="color:#666">3</span>.13.0-119-generic x86_64<span style="color:#666">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">❯ vagrant ssh
+Welcome to Ubuntu 14.04.5 LTS <span class="o">(</span>GNU/Linux 3.13.0-119-generic x86_64<span class="o">)</span>
 
  * Documentation:  https://help.ubuntu.com/
 
- System information disabled due to load higher than <span style="color:#666">1</span>.0
+ System information disabled due to load higher than 1.0
 
   Get cloud support with Ubuntu Advantage Cloud Guest:
     http://www.ubuntu.com/business/services/cloud
 
-New release <span style="color:#b44">&#39;16.04.2 LTS&#39;</span> available.
-Run <span style="color:#b44">&#39;do-release-upgrade&#39;</span> to upgrade to it.
+New release <span class="s1">&#39;16.04.2 LTS&#39;</span> available.
+Run <span class="s1">&#39;do-release-upgrade&#39;</span> to upgrade to it.
 
 vagrant@vagrant-ubuntu-trusty-64:~$</code></pre></div>
-
 <p>In order to stop the machine you will use <code>vagrant halt</code></p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">❯ vagrant <span style="color:#b8860b">halt</span>
-<span style="color:#666">==</span>&gt; default: Attempting graceful shutdown of VM...</code></pre></div>
-
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">❯ vagrant <span class="nv">halt</span>
+<span class="o">==</span>&gt; default: Attempting graceful shutdown of VM...</code></pre></div>
 <p>In case that you won&rsquo;t need it anymore you can destroy it with <code>vagrant destroy</code></p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">❯ vagrant destroy
-    default: Are you sure you want to destroy the <span style="color:#b44">&#39;default&#39;</span> VM? <span style="color:#666">[</span>y/N<span style="color:#666">]</span> <span style="color:#b8860b">y</span>
-<span style="color:#666">==</span>&gt; default: Destroying VM and associated drives...</code></pre></div>
-
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">❯ vagrant destroy
+    default: Are you sure you want to destroy the <span class="s1">&#39;default&#39;</span> VM? <span class="o">[</span>y/N<span class="o">]</span> <span class="nv">y</span>
+<span class="o">==</span>&gt; default: Destroying VM and associated drives...</code></pre></div>
 <p>As complementary note, if you want to know which images you have downloaded you can always use <code>vagrant box list</code> to show them.</p>
-
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">❯ vagrant box list
-centos/7        <span style="color:#666">(</span>virtualbox, <span style="color:#666">1702</span>.01<span style="color:#666">)</span>
-ubuntu/trusty64 <span style="color:#666">(</span>virtualbox, <span style="color:#666">20170526</span>.4.0<span style="color:#666">)</span></code></pre></div>
-
-	</article>
-</main>
-
-<div id="bottom-nav" class="text-center center-block">
-	<a href=" http://blog.makingdevs.com/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">❯ vagrant box list
+centos/7        <span class="o">(</span>virtualbox, 1702.01<span class="o">)</span>
+ubuntu/trusty64 <span class="o">(</span>virtualbox, 20170526.4.0<span class="o">)</span></code></pre></div>
 
 
-  <div id="disqus_thread"></div>
+        
+          <div class="blog-tags">
+            
+              <a href="http://blog.makingdevs.com//tags/operations/">operations</a>&nbsp;
+            
+              <a href="http://blog.makingdevs.com//tags/vagrant/">vagrant</a>&nbsp;
+            
+              <a href="http://blog.makingdevs.com//tags/virtual-box/">virtual box</a>&nbsp;
+            
+              <a href="http://blog.makingdevs.com//tags/developer-tools/">developer tools</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir/" data-toggle="tooltip" data-placement="top" title="Resolviendo la criba de Eratóstenes con Elixir">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://blog.makingdevs.com/2017/06/18/copying-files-to-vagrant/" data-toggle="tooltip" data-placement="top" title="Copying files to vagrant">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -237,34 +438,123 @@ ubuntu/trusty64 <span style="color:#666">(</span>virtualbox, <span style="color:
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
 
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+    </div>
   </div>
-  
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+</div>
 
-    ga('create', 'UA-42842883-2', 'auto');
-    ga('send', 'pageview');
-    window.baseURL = "http:\/\/blog.makingdevs.com\/";
-  </script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-  
-  
-  <script src="http://blog.makingdevs.com//js/App.js"></script>
-  
-</body>
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:info@makingdevs.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/makingdevs" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/makingdevs" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/makingdevs" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/makingdevs" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/makingdevs" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2019
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://blog.makingdevs.com/">Blog de Making Devs</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.74.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="http://blog.makingdevs.com/js/katex.min.js"></script>
+<script src="http://blog.makingdevs.com/js/auto-render.min.js"></script>
+<script src="http://blog.makingdevs.com/js/jquery.min.js"></script>
+<script src="http://blog.makingdevs.com/js/bootstrap.min.js"></script>
+
+<script src="http://blog.makingdevs.com/js/main.js"></script>
+<script src="http://blog.makingdevs.com/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="http://blog.makingdevs.com/js/photoswipe.min.js"></script>
+<script src="http://blog.makingdevs.com/js/photoswipe-ui-default.min.js"></script><script src="http://blog.makingdevs.com/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
 </html>
+
