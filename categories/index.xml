@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Blog de Making Devs</title>
-    <link>http://blog.makingdevs.com/categories/</link>
+    <link>https://blog.makingdevs.com/categories/</link>
     <description>Recent content in Categories on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,267 +10,267 @@
     <webMaster>info@makingdevs.com</webMaster>
     <lastBuildDate>Tue, 04 Jul 2017 22:06:52 -0500</lastBuildDate>
     
-	<atom:link href="http://blog.makingdevs.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.makingdevs.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>developer tools</title>
-      <link>http://blog.makingdevs.com/categories/developer-tools/</link>
+      <link>https://blog.makingdevs.com/categories/developer-tools/</link>
       <pubDate>Tue, 04 Jul 2017 22:06:52 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/developer-tools/</guid>
+      <guid>https://blog.makingdevs.com/categories/developer-tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>operations</title>
-      <link>http://blog.makingdevs.com/categories/operations/</link>
+      <link>https://blog.makingdevs.com/categories/operations/</link>
       <pubDate>Tue, 04 Jul 2017 22:06:52 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/operations/</guid>
+      <guid>https://blog.makingdevs.com/categories/operations/</guid>
       <description></description>
     </item>
     
     <item>
       <title>public key</title>
-      <link>http://blog.makingdevs.com/categories/public-key/</link>
+      <link>https://blog.makingdevs.com/categories/public-key/</link>
       <pubDate>Tue, 04 Jul 2017 22:06:52 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/public-key/</guid>
+      <guid>https://blog.makingdevs.com/categories/public-key/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vagrant</title>
-      <link>http://blog.makingdevs.com/categories/vagrant/</link>
+      <link>https://blog.makingdevs.com/categories/vagrant/</link>
       <pubDate>Tue, 04 Jul 2017 22:06:52 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/vagrant/</guid>
+      <guid>https://blog.makingdevs.com/categories/vagrant/</guid>
       <description></description>
     </item>
     
     <item>
       <title>virtual box</title>
-      <link>http://blog.makingdevs.com/categories/virtual-box/</link>
+      <link>https://blog.makingdevs.com/categories/virtual-box/</link>
       <pubDate>Tue, 04 Jul 2017 22:06:52 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/virtual-box/</guid>
+      <guid>https://blog.makingdevs.com/categories/virtual-box/</guid>
       <description></description>
     </item>
     
     <item>
       <title>elixir</title>
-      <link>http://blog.makingdevs.com/categories/elixir/</link>
+      <link>https://blog.makingdevs.com/categories/elixir/</link>
       <pubDate>Wed, 11 Jan 2017 13:11:46 -0600</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/elixir/</guid>
+      <guid>https://blog.makingdevs.com/categories/elixir/</guid>
       <description></description>
     </item>
     
     <item>
       <title>functional programming</title>
-      <link>http://blog.makingdevs.com/categories/functional-programming/</link>
+      <link>https://blog.makingdevs.com/categories/functional-programming/</link>
       <pubDate>Wed, 11 Jan 2017 13:11:46 -0600</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/functional-programming/</guid>
+      <guid>https://blog.makingdevs.com/categories/functional-programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ruby</title>
-      <link>http://blog.makingdevs.com/categories/ruby/</link>
+      <link>https://blog.makingdevs.com/categories/ruby/</link>
       <pubDate>Wed, 30 Nov 2016 16:46:05 -0600</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/ruby/</guid>
+      <guid>https://blog.makingdevs.com/categories/ruby/</guid>
       <description></description>
     </item>
     
     <item>
       <title>development</title>
-      <link>http://blog.makingdevs.com/categories/development/</link>
+      <link>https://blog.makingdevs.com/categories/development/</link>
       <pubDate>Sat, 10 Sep 2016 11:22:01 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/development/</guid>
+      <guid>https://blog.makingdevs.com/categories/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>elm</title>
-      <link>http://blog.makingdevs.com/categories/elm/</link>
+      <link>https://blog.makingdevs.com/categories/elm/</link>
       <pubDate>Sat, 10 Sep 2016 11:22:01 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/elm/</guid>
+      <guid>https://blog.makingdevs.com/categories/elm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>android</title>
-      <link>http://blog.makingdevs.com/categories/android/</link>
+      <link>https://blog.makingdevs.com/categories/android/</link>
       <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/android/</guid>
+      <guid>https://blog.makingdevs.com/categories/android/</guid>
       <description></description>
     </item>
     
     <item>
       <title>groovy</title>
-      <link>http://blog.makingdevs.com/categories/groovy/</link>
+      <link>https://blog.makingdevs.com/categories/groovy/</link>
       <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/groovy/</guid>
+      <guid>https://blog.makingdevs.com/categories/groovy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mobile</title>
-      <link>http://blog.makingdevs.com/categories/mobile/</link>
+      <link>https://blog.makingdevs.com/categories/mobile/</link>
       <pubDate>Wed, 20 Jul 2016 22:53:27 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/mobile/</guid>
+      <guid>https://blog.makingdevs.com/categories/mobile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>phoenix</title>
-      <link>http://blog.makingdevs.com/categories/phoenix/</link>
+      <link>https://blog.makingdevs.com/categories/phoenix/</link>
       <pubDate>Thu, 24 Mar 2016 20:08:09 -0600</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/phoenix/</guid>
+      <guid>https://blog.makingdevs.com/categories/phoenix/</guid>
       <description></description>
     </item>
     
     <item>
       <title>architecture</title>
-      <link>http://blog.makingdevs.com/categories/architecture/</link>
+      <link>https://blog.makingdevs.com/categories/architecture/</link>
       <pubDate>Tue, 08 Mar 2016 21:38:08 -0600</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/architecture/</guid>
+      <guid>https://blog.makingdevs.com/categories/architecture/</guid>
       <description></description>
     </item>
     
     <item>
       <title>geb</title>
-      <link>http://blog.makingdevs.com/categories/geb/</link>
+      <link>https://blog.makingdevs.com/categories/geb/</link>
       <pubDate>Mon, 07 Mar 2016 23:47:26 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/geb/</guid>
+      <guid>https://blog.makingdevs.com/categories/geb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>spock</title>
-      <link>http://blog.makingdevs.com/categories/spock/</link>
+      <link>https://blog.makingdevs.com/categories/spock/</link>
       <pubDate>Mon, 07 Mar 2016 23:47:26 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/spock/</guid>
+      <guid>https://blog.makingdevs.com/categories/spock/</guid>
       <description></description>
     </item>
     
     <item>
       <title>testing</title>
-      <link>http://blog.makingdevs.com/categories/testing/</link>
+      <link>https://blog.makingdevs.com/categories/testing/</link>
       <pubDate>Mon, 07 Mar 2016 23:47:26 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/testing/</guid>
+      <guid>https://blog.makingdevs.com/categories/testing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cloud</title>
-      <link>http://blog.makingdevs.com/categories/cloud/</link>
+      <link>https://blog.makingdevs.com/categories/cloud/</link>
       <pubDate>Thu, 13 Aug 2015 22:47:08 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/cloud/</guid>
+      <guid>https://blog.makingdevs.com/categories/cloud/</guid>
       <description></description>
     </item>
     
     <item>
       <title>groovyi</title>
-      <link>http://blog.makingdevs.com/categories/groovyi/</link>
+      <link>https://blog.makingdevs.com/categories/groovyi/</link>
       <pubDate>Thu, 13 Aug 2015 22:47:08 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/groovyi/</guid>
+      <guid>https://blog.makingdevs.com/categories/groovyi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>s3</title>
-      <link>http://blog.makingdevs.com/categories/s3/</link>
+      <link>https://blog.makingdevs.com/categories/s3/</link>
       <pubDate>Thu, 13 Aug 2015 22:47:08 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/s3/</guid>
+      <guid>https://blog.makingdevs.com/categories/s3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>artesanos</title>
-      <link>http://blog.makingdevs.com/categories/artesanos/</link>
+      <link>https://blog.makingdevs.com/categories/artesanos/</link>
       <pubDate>Sun, 02 Aug 2015 18:44:42 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/artesanos/</guid>
+      <guid>https://blog.makingdevs.com/categories/artesanos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>libro</title>
-      <link>http://blog.makingdevs.com/categories/libro/</link>
+      <link>https://blog.makingdevs.com/categories/libro/</link>
       <pubDate>Sun, 02 Aug 2015 18:44:42 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/libro/</guid>
+      <guid>https://blog.makingdevs.com/categories/libro/</guid>
       <description></description>
     </item>
     
     <item>
       <title>revisión</title>
-      <link>http://blog.makingdevs.com/categories/revisi%C3%B3n/</link>
+      <link>https://blog.makingdevs.com/categories/revisi%C3%B3n/</link>
       <pubDate>Sun, 02 Aug 2015 18:44:42 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/revisi%C3%B3n/</guid>
+      <guid>https://blog.makingdevs.com/categories/revisi%C3%B3n/</guid>
       <description></description>
     </item>
     
     <item>
       <title>gradle</title>
-      <link>http://blog.makingdevs.com/categories/gradle/</link>
+      <link>https://blog.makingdevs.com/categories/gradle/</link>
       <pubDate>Sun, 26 Jul 2015 23:19:13 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/gradle/</guid>
+      <guid>https://blog.makingdevs.com/categories/gradle/</guid>
       <description></description>
     </item>
     
     <item>
       <title>web</title>
-      <link>http://blog.makingdevs.com/categories/web/</link>
+      <link>https://blog.makingdevs.com/categories/web/</link>
       <pubDate>Sun, 26 Jul 2015 23:19:13 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/web/</guid>
+      <guid>https://blog.makingdevs.com/categories/web/</guid>
       <description></description>
     </item>
     
     <item>
       <title>grails</title>
-      <link>http://blog.makingdevs.com/categories/grails/</link>
+      <link>https://blog.makingdevs.com/categories/grails/</link>
       <pubDate>Fri, 01 May 2015 20:58:30 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/grails/</guid>
+      <guid>https://blog.makingdevs.com/categories/grails/</guid>
       <description></description>
     </item>
     
     <item>
       <title>eip</title>
-      <link>http://blog.makingdevs.com/categories/eip/</link>
+      <link>https://blog.makingdevs.com/categories/eip/</link>
       <pubDate>Tue, 07 Apr 2015 19:56:54 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/eip/</guid>
+      <guid>https://blog.makingdevs.com/categories/eip/</guid>
       <description></description>
     </item>
     
     <item>
       <title>continuous integration</title>
-      <link>http://blog.makingdevs.com/categories/continuous-integration/</link>
+      <link>https://blog.makingdevs.com/categories/continuous-integration/</link>
       <pubDate>Thu, 06 Nov 2014 19:08:56 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/categories/continuous-integration/</guid>
+      <guid>https://blog.makingdevs.com/categories/continuous-integration/</guid>
       <description></description>
     </item>
     

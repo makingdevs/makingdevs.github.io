@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>developer tools on Blog de Making Devs</title>
-    <link>http://blog.makingdevs.com/tags/developer-tools/</link>
+    <link>https://blog.makingdevs.com/tags/developer-tools/</link>
     <description>Recent content in developer tools on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>info@makingdevs.com</webMaster>
     <lastBuildDate>Sat, 20 Apr 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.makingdevs.com/tags/developer-tools/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.makingdevs.com/tags/developer-tools/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Meet Vim Sessions</title>
-      <link>http://blog.makingdevs.com/2019/04/20/meet-vim-sessions/</link>
+      <link>https://blog.makingdevs.com/2019/04/20/meet-vim-sessions/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/2019/04/20/meet-vim-sessions/</guid>
+      <guid>https://blog.makingdevs.com/2019/04/20/meet-vim-sessions/</guid>
       <description>A few weeks ago, while I was tracking and debugging a system in which I&amp;rsquo;m currently working, the client told me that another part of the system was having troubles.
 Suddenly, I&amp;rsquo;m on verge of close all the Vim&amp;rsquo;s buffer I&amp;rsquo;ve just opened because I need to switch branches meaning that I need a way to know in which files I was working before closing them.
 Needless to say, it was hard to found those files and I even haven&amp;rsquo;t made a change in them (I have just found them) Additionally, is a huge project with a lot of micro projects so, at this point, I didn&amp;rsquo;t know in which project I was working (I know my mistake).</description>
@@ -26,10 +26,10 @@ Needless to say, it was hard to found those files and I even haven&amp;rsquo;t m
     
     <item>
       <title>Add public key to Vagrant</title>
-      <link>http://blog.makingdevs.com/2017/07/04/add-public-key-to-vagrant/</link>
+      <link>https://blog.makingdevs.com/2017/07/04/add-public-key-to-vagrant/</link>
       <pubDate>Tue, 04 Jul 2017 22:06:52 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/2017/07/04/add-public-key-to-vagrant/</guid>
+      <guid>https://blog.makingdevs.com/2017/07/04/add-public-key-to-vagrant/</guid>
       <description>After copying a file to Vagrant and creating a basic file structure. We can continue with our series.
 So, in this post, we are going to talk about the following topics:
  Assign an IP address Add your public key Access to vagrant machine without vagrant ssh  For the first point and taking the file structure previously mentioned, we modify as follow:
@@ -38,10 +38,10 @@ Vagrant.configure(&amp;#34;2&amp;#34;) do |config| config.vm.box = &amp;#34;cent
     
     <item>
       <title>Copying files to vagrant</title>
-      <link>http://blog.makingdevs.com/2017/06/18/copying-files-to-vagrant/</link>
+      <link>https://blog.makingdevs.com/2017/06/18/copying-files-to-vagrant/</link>
       <pubDate>Sun, 18 Jun 2017 10:13:05 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/2017/06/18/copying-files-to-vagrant/</guid>
+      <guid>https://blog.makingdevs.com/2017/06/18/copying-files-to-vagrant/</guid>
       <description>Well, one of the common things to do in Vagrant is copying files. So for achieve that task we need to prepare a file like this.
 Once we have that file, we change config.vm.box = &amp;quot;ubuntu/trusty64&amp;quot; for config.vm.box = &amp;quot;centos/7&amp;quot;. And modify it like follow:
 Vagrant.configure(&amp;#34;2&amp;#34;) do |config| config.vm.box = &amp;#34;centos/7&amp;#34; config.vm.provision &amp;#34;file&amp;#34;, source: &amp;#34;lorem_ipsum.txt&amp;#34;, destination: &amp;#34;~/lorem_ipsum.txt&amp;#34; end Alright we run the command for execute our file.
@@ -50,10 +50,10 @@ Vagrant.configure(&amp;#34;2&amp;#34;) do |config| config.vm.box = &amp;#34;cent
     
     <item>
       <title>Creating virtual machines with Vagrant</title>
-      <link>http://blog.makingdevs.com/2017/06/01/creating-virtual-machines-with-vagrant/</link>
+      <link>https://blog.makingdevs.com/2017/06/01/creating-virtual-machines-with-vagrant/</link>
       <pubDate>Thu, 01 Jun 2017 15:28:00 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/2017/06/01/creating-virtual-machines-with-vagrant/</guid>
+      <guid>https://blog.makingdevs.com/2017/06/01/creating-virtual-machines-with-vagrant/</guid>
       <description>It&amp;rsquo;s been awhile since I wrote a post, but in compensation I would make a series of post talking about deploying applications with edeliver. But for this, we need to prepare the path. So, in this first post I will talk about Vagrant and how to use to setup an environment.
 First of all, we&amp;rsquo;re going to install Vagrant and Virtual Box. We&amp;rsquo;ll download Vagrant from this link and follow the instructions(i.</description>
     </item>

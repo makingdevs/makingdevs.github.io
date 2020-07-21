@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>log on Blog de Making Devs</title>
-    <link>http://blog.makingdevs.com/tags/log/</link>
+    <link>https://blog.makingdevs.com/tags/log/</link>
     <description>Recent content in log on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>info@makingdevs.com</webMaster>
     <lastBuildDate>Mon, 28 Mar 2016 09:13:56 -0600</lastBuildDate>
     
-	<atom:link href="http://blog.makingdevs.com/tags/log/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.makingdevs.com/tags/log/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Uso de logback</title>
-      <link>http://blog.makingdevs.com/2016/03/28/uso-de-logback/</link>
+      <link>https://blog.makingdevs.com/2016/03/28/uso-de-logback/</link>
       <pubDate>Mon, 28 Mar 2016 09:13:56 -0600</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/2016/03/28/uso-de-logback/</guid>
+      <guid>https://blog.makingdevs.com/2016/03/28/uso-de-logback/</guid>
       <description>En el proceso de desarrollo de software se implementan bitácoras o mejor conocidas como loggers que permiten tener información de salida útil al desarrollador en cuanto al correcto flujo de la aplicación.
 Este registro se divide en secciones: Logger, Formatter y Handler.
   Logger: Es el responsable de captar el mensaje y pasarlo al marco de registro.

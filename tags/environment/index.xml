@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>environment on Blog de Making Devs</title>
-    <link>http://blog.makingdevs.com/tags/environment/</link>
+    <link>https://blog.makingdevs.com/tags/environment/</link>
     <description>Recent content in environment on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>info@makingdevs.com</webMaster>
     <lastBuildDate>Wed, 30 Nov 2016 16:46:05 -0600</lastBuildDate>
     
-	<atom:link href="http://blog.makingdevs.com/tags/environment/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.makingdevs.com/tags/environment/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Capistrano para despliegues de apps Rails</title>
-      <link>http://blog.makingdevs.com/2016/11/30/capistrano-para-despliegues-de-apps-rails/</link>
+      <link>https://blog.makingdevs.com/2016/11/30/capistrano-para-despliegues-de-apps-rails/</link>
       <pubDate>Wed, 30 Nov 2016 16:46:05 -0600</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/2016/11/30/capistrano-para-despliegues-de-apps-rails/</guid>
+      <guid>https://blog.makingdevs.com/2016/11/30/capistrano-para-despliegues-de-apps-rails/</guid>
       <description>Hace tiempo que estabamos haciendo una aplicación Rails, me di a la tarear de investigar el tema obviado que es la forma en como se hace un despliegue lo más ordenado posible. Inclusive le pregunte al gran maestro @chillicoder al respecto, y efectivamente, mis sospechas eran correctas tenía que usar Capistrano(aunque chilli parece usar otra cosa), incluída la recomendación del maestro.
 Obviaré las partes de las instalaciones de las gemas y me enfocaré en el problema que tuve que resolver: un par de ambientes a instalar para una API hecha en Rails.</description>
     </item>

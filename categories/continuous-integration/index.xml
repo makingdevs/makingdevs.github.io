@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>continuous integration on Blog de Making Devs</title>
-    <link>http://blog.makingdevs.com/categories/continuous-integration/</link>
+    <link>https://blog.makingdevs.com/categories/continuous-integration/</link>
     <description>Recent content in continuous integration on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>info@makingdevs.com</webMaster>
     <lastBuildDate>Thu, 06 Nov 2014 19:08:56 -0500</lastBuildDate>
     
-	<atom:link href="http://blog.makingdevs.com/categories/continuous-integration/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.makingdevs.com/categories/continuous-integration/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Personalizar notificaciones de correo en Jenkins</title>
-      <link>http://blog.makingdevs.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins/</link>
+      <link>https://blog.makingdevs.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins/</link>
       <pubDate>Thu, 06 Nov 2014 19:08:56 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins/</guid>
+      <guid>https://blog.makingdevs.com/2014/11/06/personalizar-notificaciones-de-correo-en-jenkins/</guid>
       <description>Las notificaciones son básicas para la correcta comunicación de los involucrados de nuestros proyectos como: Stakeholders/ Key Users / Developers / Clientes / Testers.
 Por esta razón te recomiendo personalizar las notificaciones por defecto de Jenkins.
 Objetivo: Informar los despliegues desde Jenkins por correo, usando el plugin: Email-ext

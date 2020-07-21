@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>functional programming on Blog de Making Devs</title>
-    <link>http://blog.makingdevs.com/categories/functional-programming/</link>
+    <link>https://blog.makingdevs.com/categories/functional-programming/</link>
     <description>Recent content in functional programming on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>info@makingdevs.com</webMaster>
     <lastBuildDate>Wed, 11 Jan 2017 13:11:46 -0600</lastBuildDate>
     
-	<atom:link href="http://blog.makingdevs.com/categories/functional-programming/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.makingdevs.com/categories/functional-programming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Resolviendo la criba de Eratóstenes con Elixir</title>
-      <link>http://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir/</link>
+      <link>https://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir/</link>
       <pubDate>Wed, 11 Jan 2017 13:11:46 -0600</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir/</guid>
+      <guid>https://blog.makingdevs.com/2017/01/11/resolviendo-la-criba-de-erat%C3%B3stenes-con-elixir/</guid>
       <description>Ya una vez más familiarizado con Elixir me dí a la tarea de resolver un problema que se encuentra documentado en la Wikipedia, la forma de obtener un conjunto de números primos y una solución es a través de la llamada (Criba de Eratótstenes)1 descrita así:
  Primer paso: listar los números naturales comprendidos entre 2 y n. Segundo paso: Se toma el primer número no rayado ni marcado, como número primo.</description>
     </item>

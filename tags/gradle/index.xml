@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gradle on Blog de Making Devs</title>
-    <link>http://blog.makingdevs.com/tags/gradle/</link>
+    <link>https://blog.makingdevs.com/tags/gradle/</link>
     <description>Recent content in gradle on Blog de Making Devs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,25 +10,25 @@
     <webMaster>info@makingdevs.com</webMaster>
     <lastBuildDate>Fri, 22 Jan 2016 18:14:37 -0600</lastBuildDate>
     
-	<atom:link href="http://blog.makingdevs.com/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.makingdevs.com/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Bitacorado de pruebas en Gradle</title>
-      <link>http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle/</link>
+      <link>https://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle/</link>
       <pubDate>Fri, 22 Jan 2016 18:14:37 -0600</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle/</guid>
+      <guid>https://blog.makingdevs.com/2016/01/22/bitacorado-de-pruebas-en-gradle/</guid>
       <description>Hace tiempo al correr unas pruebas con un proyecto de gradle tuve la necesidad de saber el orden y la forma en que se estaban corriendo ciertas pruebas, gradle arroja este resultado al final de la ejecución, sin embargo yo quería un bitacorado al momento de la ejecución, para lo cual buscando en la documentación me encontre con el TestLoggingContainer, del cual pude obtener este fragmento:
 apply plugin: &amp;#39;java&amp;#39; test { testLogging { // set options for log level LIFECYCLE  events &amp;#34;failed&amp;#34; exceptionFormat &amp;#34;short&amp;#34; // set options for log level DEBUG  debug { events &amp;#34;started&amp;#34;, &amp;#34;skipped&amp;#34;, &amp;#34;failed&amp;#34; exceptionFormat &amp;#34;full&amp;#34; } // remove standard output/error logging from --info builds  // by assigning only &amp;#39;failed&amp;#39; and &amp;#39;skipped&amp;#39; events  info.</description>
     </item>
     
     <item>
       <title>Hot deployment en Gradle</title>
-      <link>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle/</link>
+      <link>https://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle/</link>
       <pubDate>Sun, 26 Jul 2015 23:19:13 -0500</pubDate>
       <author>info@makingdevs.com</author>
-      <guid>http://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle/</guid>
+      <guid>https://blog.makingdevs.com/2015/07/26/hot-deployment-en-gradle/</guid>
       <description>Durante un tiempo estuve buscando de la forma de tener una aplicación web con Gradle y tener características como el hot deploy, Grails lo tiene y viendólo de forma interna usa un elemento de nombre SpringLoaded.
 Después me di cuenta que frameworks como Dropwizard lo usan, y que incluso SpringBoot a través del uso del CLI también, investigando un poco más al respecto y por la necesidad de tenerlo listo para algunos proyectos encontré un artículo en donde explica como ponerlo en acción usando propiamente Dropwizard.</description>
     </item>
