@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>domino on Blog de Making Devs</title>
+    <link>https://blog.makingdevs.com/tags/domino/</link>
+    <description>Recent content in domino on Blog de Making Devs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>info@makingdevs.com</managingEditor>
+    <webMaster>info@makingdevs.com</webMaster>
+    <lastBuildDate>Sun, 26 Jul 2020 17:09:15 -0500</lastBuildDate>
+    
+	<atom:link href="https://blog.makingdevs.com/tags/domino/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Agentes y Supervisores en OTP</title>
+      <link>https://blog.makingdevs.com/2020/07/26/agentes-y-supervisores-en-otp/</link>
+      <pubDate>Sun, 26 Jul 2020 17:09:15 -0500</pubDate>
+      <author>info@makingdevs.com</author>
+      <guid>https://blog.makingdevs.com/2020/07/26/agentes-y-supervisores-en-otp/</guid>
+      <description>Hace tiempo hemos estado construyendo un juego de Domino, basándonos sólo en el ecosistema proveído por Erlang/Elixir, y lo que deseo explicar aquí es una primer parte de los elementos que nos ayudaron a diseñarlo, sólo usando elementos basados en OTP, aquí explico el primero de ellos.
+Agentes en OTP Cuándo explico el funcionamiento de los procesos y llegamos a la parte de recursividad, toco la posibilidad de ¿cómo un proceso puede retener estado?</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Agentes y Supervisores en OTP - Blog de Making Devs</title>
+  <meta name="description" content="¿Cómo construimos aplicaciones con OTP?"><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Blog de Making Devs",
+    
+    "url": "https:\/\/blog.makingdevs.com\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/blog.makingdevs.com\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/blog.makingdevs.com\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/blog.makingdevs.com\/2020\/07\/26\/agentes-y-supervisores-en-otp\/",
+          "name": "Agentes y supervisores en o t p"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "neodevelop"
+  },
+  "headline": "Agentes y Supervisores en OTP",
+  "description" : "Hace tiempo hemos estado construyendo un juego de Domino, basándonos sólo en el ecosistema proveído por Erlang\/Elixir, y lo que deseo explicar aquí es una primer parte de los elementos que nos ayudaron a diseñarlo, sólo usando elementos basados en OTP, aquí explico el primero de ellos.\nAgentes en OTP Cuándo explico el funcionamiento de los procesos y llegamos a la parte de recursividad, toco la posibilidad de ¿cómo un proceso puede retener estado?",
+  "inLanguage" : "en",
+  "wordCount":  597 ,
+  "datePublished" : "2020-07-26T17:09:15",
+  "dateModified" : "2020-07-26T17:09:15",
+  "image" : "https:\/\/blog.makingdevs.com\/images\/logo_black.png",
+  "keywords" : [ "elixir, otp, domino" ],
+  "mainEntityOfPage" : "https:\/\/blog.makingdevs.com\/2020\/07\/26\/agentes-y-supervisores-en-otp\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/blog.makingdevs.com\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/blog.makingdevs.com\/images\/logo_black.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Agentes y Supervisores en OTP" />
+<meta property="og:description" content="¿Cómo construimos aplicaciones con OTP?">
+<meta property="og:image" content="https://blog.makingdevs.com/images/logo_black.png" />
+<meta property="og:url" content="https://blog.makingdevs.com/2020/07/26/agentes-y-supervisores-en-otp/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Blog de Making Devs" />
+
+  <meta name="twitter:title" content="Agentes y Supervisores en OTP" />
+  <meta name="twitter:description" content="¿Cómo construimos aplicaciones con OTP?">
+  <meta name="twitter:image" content="https://blog.makingdevs.com/images/logo_black.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@makingdevs" />
+  <meta name="twitter:creator" content="@makingdevs" />
+  <meta name="generator" content="Hugo 0.74.2" />
+  <link rel="alternate" href="https://blog.makingdevs.com/index.xml" type="application/rss+xml" title="Blog de Making Devs"><link rel="stylesheet" href="https://blog.makingdevs.com/css/katex.min.css" />
+  <link rel="stylesheet" href="https://blog.makingdevs.com/fontawesome/css/all.css" />
+  <link rel="stylesheet" href="https://blog.makingdevs.com/css/bootstrap.min.css" /><link rel="stylesheet" href="https://blog.makingdevs.com/css/main.css" /><link rel="stylesheet" href="https://blog.makingdevs.com/css/fonts.css" />
+  <link rel="stylesheet" href="https://blog.makingdevs.com/css/highlight.min.css" /><link rel="stylesheet" href="https://blog.makingdevs.com/css/codeblock.css" /><link rel="stylesheet" href="https://blog.makingdevs.com/css/photoswipe.min.css" />
+  <link rel="stylesheet" href="https://blog.makingdevs.com/css/photoswipe.default-skin.min.css" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-42842883-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://blog.makingdevs.com/">Blog de Making Devs</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+				
+					
+						<li>
+							
+								<a href="/2014/07/29/bienvenido-a-makingdevs/">Bienvenidos</a>
+							
+						</li>
+					
+				
+					
+						<li>
+							
+								<a title="Archive" href="/post"><i class="fas fa-archive fa-lg"></i></a>
+							
+						</li>
+					
+				
+					
+						<li>
+							
+								<a title="Categories" href="/categories"><i class="fas fa-sitemap fa-lg"></i></a>
+							
+						</li>
+					
+				
+					
+						<li>
+							
+								<a title="Tags" href="/tags"><i class='fas fa-tags fa-lg'></i></a>
+							
+						</li>
+					
+				
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Blog de Making Devs" href="https://blog.makingdevs.com/">
+            <img class="avatar-img" src="https://blog.makingdevs.com/images/logo_black.png" alt="Blog de Making Devs" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Agentes y Supervisores en OTP</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">¿Cómo construimos aplicaciones con OTP?</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 26, 2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+  
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;neodevelop
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Hace tiempo hemos estado construyendo un juego de <a href="https://domino.makingdevs.com">Domino</a>, basándonos sólo en el ecosistema proveído por Erlang/Elixir, y lo que deseo explicar aquí es una primer parte de los elementos que nos ayudaron a diseñarlo, sólo usando elementos basados en OTP, aquí explico el primero de ellos.</p>
+<h1 id="agentes-en-otp">Agentes en OTP</h1>
+<p>Cuándo explico el funcionamiento de los procesos y llegamos a la parte de recursividad, toco la posibilidad de ¿cómo un proceso puede retener estado?, y exactamente eso es un <em>Agente</em>, <em>abstracciones simples alrededor del estado</em>, los cuáles, compartírán y almacenarán estado que podrá ser accedido por otros procesos o por el mismo.</p>
+<p>La <a href="https://hexdocs.pm/elixir/Agent.html#content">documentación de Elixir al respecto de Agentes</a> provee de bastante información, de la cual tomaré lo esencial para detallar el uso que le dimos.</p>
+<p>Por ejemplo, ocuparémos un contador, y aunque simple, muestra cómo al final todo se trata de transformar el estado, y escalar la forma de uso.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elixir" data-lang="elixir"><span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">agent</span><span class="p">}</span> <span class="o">=</span> <span class="nc">Agent</span><span class="o">.</span><span class="n">start_link</span> <span class="n">fn</span> <span class="o">-&gt;</span> <span class="mi">0</span> <span class="n">end</span> <span class="c1"># {:ok, #PID&lt;0.327.0&gt;}</span>
+<span class="nc">Agent</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">fn</span> <span class="n">state</span> <span class="o">-&gt;</span> <span class="n">state</span> <span class="o">+</span> <span class="mi">1</span> <span class="n">end</span><span class="p">)</span> <span class="c1"># :ok</span>
+<span class="nc">Agent</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">fn</span> <span class="n">state</span> <span class="o">-&gt;</span> <span class="n">state</span> <span class="n">end</span><span class="p">)</span> <span class="c1"># 1</span>
+</code></pre></div><p>Y lo que queremos hacer es guardar el estado del juego, para lo cuál usare sólo un módulo, el cuál, contiene todos los elementos que queremos guardar que corresponden al juego, y algunas funciones que modifican la estructura.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elixir" data-lang="elixir"><span class="n">defmodule</span> <span class="nc">TheLiveCounter.Game</span> <span class="n">do</span>
+  <span class="n">alias</span> <span class="n">__MODULE__</span>
+  <span class="n">defstruct</span> <span class="ss">counter</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="ss">id</span><span class="p">:</span> <span class="mi">0</span>
+
+  <span class="n">def</span> <span class="n">create</span><span class="p">()</span> <span class="n">do</span>
+    <span class="p">%</span><span class="nc">Game</span><span class="p">{</span><span class="ss">id</span><span class="p">:</span> <span class="nc">System</span><span class="o">.</span><span class="n">unique_integer</span><span class="p">([</span><span class="ss">:positive</span><span class="p">])}</span>
+  <span class="n">end</span>
+
+  <span class="n">def</span> <span class="n">increase</span><span class="p">(%</span><span class="nc">Game</span><span class="p">{</span><span class="ss">counter</span><span class="p">:</span> <span class="n">counter</span><span class="p">}</span> <span class="o">=</span> <span class="n">game</span><span class="p">)</span> <span class="n">do</span>
+    <span class="p">%</span><span class="nc">Game</span><span class="p">{</span><span class="n">game</span> <span class="o">|</span> <span class="ss">counter</span><span class="p">:</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span>
+  <span class="n">end</span>
+<span class="n">end</span>
+</code></pre></div><h1 id="el-supervisor-dinámico">El supervisor dinámico</h1>
+<p>Lo que queremos es que este proceso sea creado, supervisado y en algún momento destruido, y que no sea el único proceso, para lo cuál, agregaremos un supervisor al árbol de supervisión dentro de nuestrop módulo principal en el archivo <em>application.ex</em>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elixir" data-lang="elixir"><span class="n">def</span> <span class="n">start</span><span class="p">(</span><span class="n">_type</span><span class="p">,</span> <span class="n">_args</span><span class="p">)</span> <span class="n">do</span>
+  <span class="n">children</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nc">TheLiveCounterWeb.Telemetry</span><span class="p">,</span>
+    <span class="p">{</span><span class="nc">Phoenix.PubSub</span><span class="p">,</span> <span class="ss">name</span><span class="p">:</span> <span class="nc">TheLiveCounter.PubSub</span><span class="p">},</span>
+    <span class="nc">TheLiveCounterWeb.Endpoint</span><span class="p">,</span>
+    <span class="c1"># NOTE: This is our supervisor</span>
+    <span class="p">{</span><span class="nc">DynamicSupervisor</span><span class="p">,</span> <span class="ss">strategy</span><span class="p">:</span> <span class="ss">:one_for_one</span><span class="p">,</span> <span class="ss">name</span><span class="p">:</span> <span class="nc">TheLiveCounter.DynamicSupervisor</span><span class="p">}</span>
+  <span class="p">]</span>
+
+  <span class="n">opts</span> <span class="o">=</span> <span class="p">[</span><span class="ss">strategy</span><span class="p">:</span> <span class="ss">:one_for_one</span><span class="p">,</span> <span class="ss">name</span><span class="p">:</span> <span class="nc">TheLiveCounter.Supervisor</span><span class="p">]</span>
+  <span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p">(</span><span class="n">children</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">end</span>
+</code></pre></div><p><code>TheLiveCounter.DynamicSupervisor</code> es el nombre por el cual referenciamos a nuestro proceso supervisor con el cuál podríamos obtener algún otro proceso que contenga a alguno de nuestros agentes.</p>
+<h1 id="el-supervisor-dinámico-y-los-agentes">El supervisor dinámico y los agentes</h1>
+<p>Una vez hecho esto podemos ejecutar la <code>iex</code> con el contenido de la aplicación y comprobar que todo está en orden, ocupemos el siguiente script:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elixir" data-lang="elixir"><span class="n">alias</span> <span class="nc">TheLiveCounter.Game</span>
+<span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">agent</span><span class="p">}</span> <span class="o">=</span> <span class="nc">DynamicSupervisor</span><span class="o">.</span><span class="n">start_child</span><span class="p">(</span>
+  <span class="nc">TheLiveCounter.DynamicSupervisor</span><span class="p">,</span>
+  <span class="p">{</span><span class="nc">Agent</span><span class="p">,</span> <span class="n">fn</span> <span class="o">-&gt;</span> <span class="nc">Game</span><span class="o">.</span><span class="n">create</span><span class="p">()</span> <span class="n">end</span><span class="p">})</span> <span class="c1"># {:ok, #PID&lt;0.331.0&gt;}</span>
+<span class="nc">Agent</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">fn</span> <span class="n">game</span> <span class="o">-&gt;</span> <span class="nc">Game</span><span class="o">.</span><span class="n">increase</span><span class="p">(</span><span class="n">game</span><span class="p">)</span> <span class="n">end</span><span class="p">)</span> <span class="c1"># :ok</span>
+<span class="nc">Agent</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="o">&amp;</span> <span class="ni">&amp;1</span><span class="p">)</span> <span class="c1"># %TheLiveCounter.Game{counter: 1, id: 2}</span>
+</code></pre></div><p>Una vez hecho esto ya podemos crear varios agentes supervisados que contienen la estructura de <code>Game</code>, y podemos manejar cada uno de ellos:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elixir" data-lang="elixir"><span class="n">alias</span> <span class="nc">TheLiveCounter.Game</span>
+<span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">another_agent</span><span class="p">}</span> <span class="o">=</span> <span class="nc">DynamicSupervisor</span><span class="o">.</span><span class="n">start_child</span><span class="p">(</span>
+  <span class="nc">TheLiveCounter.DynamicSupervisor</span><span class="p">,</span>
+  <span class="p">{</span><span class="nc">Agent</span><span class="p">,</span> <span class="n">fn</span> <span class="o">-&gt;</span> <span class="nc">Game</span><span class="o">.</span><span class="n">create</span><span class="p">()</span> <span class="n">end</span><span class="p">})</span> <span class="c1"># {:ok, #PID&lt;0.334.0&gt;}</span>
+<span class="nc">Agent</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">another_agent</span><span class="p">,</span> <span class="o">&amp;</span> <span class="ni">&amp;1</span><span class="p">)</span> <span class="c1"># %TheLiveCounter.Game{counter: 0, id: 34}</span>
+</code></pre></div><p>Es aquí en dónde podemos ocupar las funciones contenidas en el supervisor para obtener información al respecto de lo que está manejando, por ejemplo:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elixir" data-lang="elixir"><span class="nc">DynamicSupervisor</span><span class="o">.</span><span class="n">count_children</span><span class="p">(</span><span class="nc">TheLiveCounter.DynamicSupervisor</span><span class="p">)</span>
+<span class="c1"># %{active: 2, specs: 2, supervisors: 0, workers: 2}</span>
+<span class="nc">DynamicSupervisor</span><span class="o">.</span><span class="n">which_children</span><span class="p">(</span><span class="nc">TheLiveCounter.DynamicSupervisor</span><span class="p">)</span>
+<span class="c1"># [</span>
+<span class="c1">#   {:undefined, #PID&lt;0.331.0&gt;, :worker, [Agent]},</span>
+<span class="c1">#   {:undefined, #PID&lt;0.344.0&gt;, :worker, [Agent]}</span>
+<span class="c1"># ]</span>
+</code></pre></div><h2 id="esto-es-sólo-el-inicio">Esto es sólo el inicio</h2>
+<p>Con esto comenzamos a crear la estructura de almacenamiento y administración de los procesos que contienen el juego.</p>
+<h2 id="datos-adicionales-de-este-código">Datos adicionales de este código</h2>
+<p>Para no agregar complejidad cree un proyecto muy simple, removiendo lo que no necesite para evitar confusiones:</p>
+<p><code>mix phx.new the_live_counter --live --no-ecto --no-gettext --no-dashboard</code></p>
+<p>El juego lo puedes encontrar en <a href="https://domino.makingdevs.com">https://domino.makingdevs.com</a> y estamos agregando algunas funciones extras para que lo disfrutes mejor.</p>
+<h3 id="el-repositorio">El repositorio</h3>
+<p>Lo podrás encontrar en <a href="https://github.com/makingdevs/the_live_counter">GitHub de MakingDevs</a>, en dónde lo estaré trabajando para estas publicaciones.</p>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://blog.makingdevs.com//tags/elixir/">elixir</a>&nbsp;
+            
+              <a href="https://blog.makingdevs.com//tags/otp/">otp</a>&nbsp;
+            
+              <a href="https://blog.makingdevs.com//tags/domino/">domino</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://blog.makingdevs.com/2019/04/20/meet-vim-sessions/" data-toggle="tooltip" data-placement="top" title="Meet Vim Sessions">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "makingdevs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:info@makingdevs.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/makingdevs" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/makingdevs" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/makingdevs" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/makingdevs" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/makingdevs" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://blog.makingdevs.com/">Blog de Making Devs</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.74.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://blog.makingdevs.com/js/katex.min.js"></script>
+<script src="https://blog.makingdevs.com/js/auto-render.min.js"></script>
+<script src="https://blog.makingdevs.com/js/jquery.min.js"></script>
+<script src="https://blog.makingdevs.com/js/bootstrap.min.js"></script>
+
+<script src="https://blog.makingdevs.com/js/main.js"></script>
+<script src="https://blog.makingdevs.com/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://blog.makingdevs.com/js/photoswipe.min.js"></script>
+<script src="https://blog.makingdevs.com/js/photoswipe-ui-default.min.js"></script><script src="https://blog.makingdevs.com/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
