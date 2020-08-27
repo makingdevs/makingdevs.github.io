@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>info@makingdevs.com</managingEditor>
     <webMaster>info@makingdevs.com</webMaster>
-    <lastBuildDate>Sun, 26 Jul 2020 17:09:15 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2020 17:09:15 -0500</lastBuildDate>
     
 	<atom:link href="https://blog.makingdevs.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Diseño con procesos, usando Registry</title>
+      <link>https://blog.makingdevs.com/2020/08/20/dise%C3%B1o-con-procesos-usando-registry/</link>
+      <pubDate>Thu, 20 Aug 2020 17:09:15 -0500</pubDate>
+      <author>info@makingdevs.com</author>
+      <guid>https://blog.makingdevs.com/2020/08/20/dise%C3%B1o-con-procesos-usando-registry/</guid>
+      <description>Hace tiempo hemos estado construyendo un juego de Domino, basándonos sólo en el ecosistema proveído por Erlang/Elixir, y lo que deseo explicar aquí es una segunda parte de los elementos que nos ayudaron a diseñarlo, sólo usando elementos basados en OTP, aquí explico otro de ellos.
+ETS Cuándo estamos creando procesos de forma dinámica, queremos almacenar una referencia de ellos en alguna parte, y para ello nos sirve :ets; solamente recordar que no se recomienda usar ETS cómo un cache de forma prematura.</description>
+    </item>
     
     <item>
       <title>Agentes y Supervisores en OTP</title>

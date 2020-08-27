@@ -3,37 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.makingdevs.com/2020/07/26/agentes-y-supervisores-en-otp/</loc>
-    <lastmod>2020-07-26T17:09:15-05:00</lastmod>
+    <loc>https://blog.makingdevs.com/</loc>
+    <lastmod>2020-08-20T17:09:15-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.makingdevs.com/</loc>
-    <lastmod>2020-07-26T17:09:15-05:00</lastmod>
+    <loc>https://blog.makingdevs.com/tags/design/</loc>
+    <lastmod>2020-08-20T17:09:15-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.makingdevs.com/2020/08/20/dise%C3%B1o-con-procesos-usando-registry/</loc>
+    <lastmod>2020-08-20T17:09:15-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.makingdevs.com/tags/domino/</loc>
-    <lastmod>2020-07-26T17:09:15-05:00</lastmod>
+    <lastmod>2020-08-20T17:09:15-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.makingdevs.com/tags/elixir/</loc>
-    <lastmod>2020-07-26T17:09:15-05:00</lastmod>
+    <lastmod>2020-08-20T17:09:15-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.makingdevs.com/tags/otp/</loc>
-    <lastmod>2020-07-26T17:09:15-05:00</lastmod>
+    <lastmod>2020-08-20T17:09:15-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.makingdevs.com/post/</loc>
-    <lastmod>2020-07-26T17:09:15-05:00</lastmod>
+    <lastmod>2020-08-20T17:09:15-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.makingdevs.com/tags/</loc>
+    <lastmod>2020-08-20T17:09:15-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.makingdevs.com/2020/07/26/agentes-y-supervisores-en-otp/</loc>
     <lastmod>2020-07-26T17:09:15-05:00</lastmod>
   </url>
   

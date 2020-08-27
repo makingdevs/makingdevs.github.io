@@ -8,15 +8,24 @@
     <language>en-us</language>
     <managingEditor>info@makingdevs.com</managingEditor>
     <webMaster>info@makingdevs.com</webMaster>
-    <lastBuildDate>Sun, 26 Jul 2020 17:09:15 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2020 17:09:15 -0500</lastBuildDate>
     
 	<atom:link href="https://blog.makingdevs.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>design</title>
+      <link>https://blog.makingdevs.com/tags/design/</link>
+      <pubDate>Thu, 20 Aug 2020 17:09:15 -0500</pubDate>
+      <author>info@makingdevs.com</author>
+      <guid>https://blog.makingdevs.com/tags/design/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>domino</title>
       <link>https://blog.makingdevs.com/tags/domino/</link>
-      <pubDate>Sun, 26 Jul 2020 17:09:15 -0500</pubDate>
+      <pubDate>Thu, 20 Aug 2020 17:09:15 -0500</pubDate>
       <author>info@makingdevs.com</author>
       <guid>https://blog.makingdevs.com/tags/domino/</guid>
       <description></description>
@@ -25,7 +34,7 @@
     <item>
       <title>elixir</title>
       <link>https://blog.makingdevs.com/tags/elixir/</link>
-      <pubDate>Sun, 26 Jul 2020 17:09:15 -0500</pubDate>
+      <pubDate>Thu, 20 Aug 2020 17:09:15 -0500</pubDate>
       <author>info@makingdevs.com</author>
       <guid>https://blog.makingdevs.com/tags/elixir/</guid>
       <description></description>
@@ -34,7 +43,7 @@
     <item>
       <title>otp</title>
       <link>https://blog.makingdevs.com/tags/otp/</link>
-      <pubDate>Sun, 26 Jul 2020 17:09:15 -0500</pubDate>
+      <pubDate>Thu, 20 Aug 2020 17:09:15 -0500</pubDate>
       <author>info@makingdevs.com</author>
       <guid>https://blog.makingdevs.com/tags/otp/</guid>
       <description></description>
