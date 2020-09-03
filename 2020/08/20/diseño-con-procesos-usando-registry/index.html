@@ -56,9 +56,9 @@
     "name" : "neodevelop"
   },
   "headline": "Diseño con procesos, usando Registry",
-  "description" : "Hace tiempo hemos estado construyendo un juego de Domino, basándonos sólo en el ecosistema proveído por Erlang\/Elixir, y lo que deseo explicar aquí es una segunda parte de los elementos que nos ayudaron a diseñarlo, sólo usando elementos basados en OTP, aquí explico otro de ellos.\nETS Cuándo estamos creando procesos de forma dinámica, queremos almacenar una referencia de ellos en alguna parte, y para ello nos sirve :ets; solamente recordar que no se recomienda usar ETS cómo un cache de forma prematura.",
+  "description" : "Hace tiempo hemos estado construyendo un juego de Domino, basándonos sólo en el ecosistema proveído por Erlang\/Elixir, y lo que deseo explicar aquí es una segunda parte de los elementos que nos ayudaron a diseñarlo, sólo usando elementos basados en OTP, aquí explico otro de ellos.\nAquí puedes encontrar la primer parte: Agentes y supervisores en OTP\nETS Cuando estamos creando procesos de forma dinámica, queremos almacenar una referencia de ellos en alguna parte, y para ello nos sirve :ets; solamente recordar que no se recomienda usar ETS cómo un cache de forma prematura.",
   "inLanguage" : "en",
-  "wordCount":  769 ,
+  "wordCount":  780 ,
   "datePublished" : "2020-08-20T17:09:15",
   "dateModified" : "2020-08-20T17:09:15",
   "image" : "https:\/\/blog.makingdevs.com\/images\/logo_black.png",
@@ -291,12 +291,13 @@ if (!doNotTrack) {
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
         <p>Hace tiempo hemos estado construyendo un juego de <a href="https://domino.makingdevs.com">Domino</a>, basándonos sólo en el ecosistema proveído por Erlang/Elixir, y lo que deseo explicar aquí es una segunda parte de los elementos que nos ayudaron a diseñarlo, sólo usando elementos basados en OTP, aquí explico otro de ellos.</p>
+<p>Aquí puedes encontrar la primer parte: <a href="https://blog.makingdevs.com/2020/07/26/agentes-y-supervisores-en-otp/" title="OTP">Agentes y supervisores en OTP</a></p>
 <h1 id="ets">ETS</h1>
-<p>Cuándo estamos creando procesos de forma dinámica, queremos almacenar una referencia de ellos en alguna parte, y para ello nos sirve <a href="http://erlang.org/doc/man/ets.html"><code>:ets</code></a>; solamente recordar que no se recomienda usar ETS cómo un cache de forma prematura.</p>
-<p>ETS nos permite almacenar valores de Elixir en memoria, para su rápido acceso; en breve los datos son organizados en un conjunto de tablas dinámicas, las cuáles almacenan tuplas. Cada tabla es creada por un proceso y cuándo este termina entonces la tabla se destruye.</p>
+<p>Cuando estamos creando procesos de forma dinámica, queremos almacenar una referencia de ellos en alguna parte, y para ello nos sirve <a href="https://erlang.org/doc/man/ets.html"><code>:ets</code></a>; solamente recordar que no se recomienda usar <a href="https://erlang.org/doc/man/ets.html">ETS</a> cómo un cache de forma prematura.</p>
+<p><a href="https://erlang.org/doc/man/ets.html">ETS</a> nos permite almacenar valores de Elixir en memoria, para su rápido acceso; en breve los datos son organizados en un conjunto de tablas dinámicas, las cuáles almacenan tuplas. Cada tabla es creada por un proceso y cuándo este termina entonces la tabla se destruye.</p>
 <p>Existen tipos de tablas y la interface le pertenece a Erlang, sin embargo, ejemplos de este estilo ya vienen en la documentación de Elixir y Erlang, de hecho hay ejemplos de implementaciones de caché y de almacenes con ETS, pero hay una nota al final que sugiere el uso de Registry para dichas tareas.</p>
 <h1 id="registry">Registry</h1>
-<p>Usaré cómo referencia la documentación de <a href="https://hexdocs.pm/elixir/master/Registry.html"><code>Registry</code></a> en Elixir, diciendo que:</p>
+<p>Usaré como referencia la documentación de <a href="https://hexdocs.pm/elixir/master/Registry.html"><code>Registry</code></a> en Elixir, diciendo que:</p>
 <blockquote>
 <p>Es un almacén de procesos de llave valor, local, decentralizado y escalable.</p>
 </blockquote>
@@ -423,7 +424,7 @@ if (!doNotTrack) {
 <span class="nc">TheLiveCounter.Game</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 <span class="c1"># %TheLiveCounter.Game{counter: 0, id: 386, name: &#34;qzufjr&#34;}</span>
 </code></pre></div><p>Y aunque no se manejan explícitamente los procesos, sabemos que están en acción por debajo de dichas llamadas.</p>
-<p>Para finalizar, unan de las cosas que ofrece <code>Registry</code> es el hecho de que si el proceso termina por cualquier razón, entonces también es elminiado del registro, lo cuál hace más sencilla su manejo.</p>
+<p>Para finalizar, una de las cosas que ofrece <code>Registry</code> es el hecho de que si el proceso termina por cualquier razón, entonces también es eliminado del registro, lo cuál hace más sencillo su manejo.</p>
 
 
         

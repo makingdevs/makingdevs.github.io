@@ -58,7 +58,7 @@
   "headline": "Agentes y Supervisores en OTP",
   "description" : "Hace tiempo hemos estado construyendo un juego de Domino, basándonos sólo en el ecosistema proveído por Erlang\/Elixir, y lo que deseo explicar aquí es una primer parte de los elementos que nos ayudaron a diseñarlo, sólo usando elementos basados en OTP, aquí explico el primero de ellos.\nAgentes en OTP Cuándo explico el funcionamiento de los procesos y llegamos a la parte de recursividad, toco la posibilidad de ¿cómo un proceso puede retener estado?",
   "inLanguage" : "en",
-  "wordCount":  597 ,
+  "wordCount":  592 ,
   "datePublished" : "2020-07-26T17:09:15",
   "dateModified" : "2020-07-26T17:09:15",
   "image" : "https:\/\/blog.makingdevs.com\/images\/logo_black.png",
@@ -334,7 +334,7 @@ if (!doNotTrack) {
   <span class="p">{</span><span class="nc">Agent</span><span class="p">,</span> <span class="n">fn</span> <span class="o">-&gt;</span> <span class="nc">Game</span><span class="o">.</span><span class="n">create</span><span class="p">()</span> <span class="n">end</span><span class="p">})</span> <span class="c1"># {:ok, #PID&lt;0.331.0&gt;}</span>
 <span class="nc">Agent</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">fn</span> <span class="n">game</span> <span class="o">-&gt;</span> <span class="nc">Game</span><span class="o">.</span><span class="n">increase</span><span class="p">(</span><span class="n">game</span><span class="p">)</span> <span class="n">end</span><span class="p">)</span> <span class="c1"># :ok</span>
 <span class="nc">Agent</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="o">&amp;</span> <span class="ni">&amp;1</span><span class="p">)</span> <span class="c1"># %TheLiveCounter.Game{counter: 1, id: 2}</span>
-</code></pre></div><p>Una vez hecho esto ya podemos crear varios agentes supervisados que contienen la estructura de <code>Game</code>, y podemos manejar cada uno de ellos:</p>
+</code></pre></div><p>Enseguida, creamos varios agentes supervisados que contienen la estructura de <code>Game</code>, y podemos manejar cada uno de ellos:</p>
 <div class="highlight"><pre class="chroma"><code class="language-elixir" data-lang="elixir"><span class="n">alias</span> <span class="nc">TheLiveCounter.Game</span>
 <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">another_agent</span><span class="p">}</span> <span class="o">=</span> <span class="nc">DynamicSupervisor</span><span class="o">.</span><span class="n">start_child</span><span class="p">(</span>
   <span class="nc">TheLiveCounter.DynamicSupervisor</span><span class="p">,</span>
